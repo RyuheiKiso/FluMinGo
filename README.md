@@ -25,6 +25,7 @@ flutterによるクロスプラットフォーム対応、golangによるマイ�
 | データベース(本体メモリ) | sqlite | ORM使用 |
 | データベース(メイン) | postgres | ORM使用 |
 | 通信プロトコル | http3(quic) | |
+| デザイン | グラスモーフィズム | |
 
 ---
 
@@ -61,23 +62,42 @@ lib/
 ├── screens/
 │   ├── login/
 │   │   ├── model/
+│   │   │   └── login_model.dart
 │   │   ├── controller/
+│   │   │   └── login_controller.dart
 │   │   └── view/
+│   │       └── login_view.dart
 │   └── home/
 │       ├── model/
+│       │   └── home_model.dart
 │       ├── controller/
+│       │   └── home_controller.dart
 │       └── view/
+│           └── home_view.dart
+│   └── profile/
+│       ├── model/
+│       │   └── profile_model.dart
+│       ├── controller/
+│       │   └── profile_controller.dart
+│       └── view/
+│           └── profile_view.dart
 ├── util/
 │   ├── component/
-│   │   ├── textbox/
-│   │   ├── button/
-│   │   ├── label/
-│   │   ├── table/
-│   │   ├── modal/
-│   │   └── snakbar/
+│   │   ├── textbox.dart
+│   │   ├── button.dart
+│   │   ├── label.dart
+│   │   ├── table.dart
+│   │   ├── modal.dart
+│   │   └── snackbar.dart
 │   ├── http/
+│   │   └── http_client.dart
 │   ├── sqlite/
-│   └── http3/
+│   │   └── sqlite_helper.dart
+│   ├── http3/
+│   │   └── http3_client.dart
+│   └── base_page/
+│       ├── base_page.dart
+│       └── base_page_helper.dart
 ├── services/
 │   ├── api_service.dart
 │   └── auth_service.dart
@@ -148,3 +168,4 @@ microservice/
 └── service_name/
     └── entity/
         └── entity.go
+```
