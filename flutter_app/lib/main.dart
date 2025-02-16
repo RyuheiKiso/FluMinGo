@@ -1,3 +1,4 @@
+import 'dart:ui'; // Add this import for BackdropFilter
 import 'package:flutter/material.dart';
 import 'screens/login/view/login_view.dart';
 
@@ -13,9 +14,40 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(color: Colors.white),
+          headlineMedium: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+        ),
       ),
       home: LoginView(),
+    );
+  }
+}
+
+class GlassmorphismContainer extends StatelessWidget {
+  final Widget child;
+
+  const GlassmorphismContainer({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.2),
+        ),
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: child,
+      ),
     );
   }
 }
