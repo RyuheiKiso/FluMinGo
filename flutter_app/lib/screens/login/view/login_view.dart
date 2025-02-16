@@ -20,6 +20,7 @@ class LoginView extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center, // Center vertically
               children: [
                 TextField(
                   decoration: InputDecoration(labelText: 'ユーザー名'),
