@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 // ラベルコンポーネント
-class Label extends StatelessWidget {
+class LabelComponent extends StatelessWidget {
   final String text;
+  final TextStyle? style;
 
-  // コンストラクタ。textパラメータは必須。
-  const Label({super.key, required this.text});
+  const LabelComponent({super.key, required this.text, this.style});
 
   @override
   Widget build(BuildContext context) {
-    // Textウィジェットを返す。フォントサイズは16。
     return Text(
       text,
-      style: TextStyle(fontSize: 16),
+      style: style,
     );
   }
 }

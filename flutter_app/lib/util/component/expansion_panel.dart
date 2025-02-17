@@ -1,42 +1,76 @@
 import 'package:flutter/material.dart';
 
-/// カスタムエクスパンションパネル
-/// 
-/// [CustomExpansionPanel]はタイトルとコンテンツを受け取るカスタムエクスパンションパネルウィジェットです。
-/// 
-/// ```dart
-/// CustomExpansionPanel(
-///   title: 'タイトル',
-///   content: Text('コンテンツ'),
-/// )
-/// ```
-class CustomExpansionPanel extends StatelessWidget {
-  final String title;
-  final Widget content;
+// エクスパンションパネルコンポーネント
+class CustomExpansionPanel extends StatefulWidget {
+  const CustomExpansionPanel({super.key});
 
-  /// コンストラクタ
-  /// 
-  /// [title] エクスパンションパネルのタイトル
-  /// [content] エクスパンションパネルのコンテンツ
-  const CustomExpansionPanel({super.key, required this.title, required this.content});
+  @override
+  _CustomExpansionPanelState createState() => _CustomExpansionPanelState();
+}
+
+class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
+  // エクスパンションパネルのデータ
+  List<Item> _data = generateItems(5);
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      expansionCallback: (int index, bool isExpanded) {
-        // パネルの展開状態を切り替える
-      },
-      children: [
-        ExpansionPanel(
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(title),
-            );
-          },
-          body: content,
-          isExpanded: false,
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Container(
+        child: _buildPanel(),
+      ),
     );
   }
+
+  Widget _buildPanel() {
+    return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          _data[index].isExpanded = !isExpanded;
+        });
+      },
+      children: _data.map<ExpansionPanel>((Item item) {
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded) {
+            return ListTile(
+              title: Text(item.headerValue),
+            );
+          },
+          body: ListTile(
+            title: Text(item.expandedValue),
+            subtitle: Text('To delete this panel, tap the trash can icon'),
+            trailing: Icon(Icons.delete),
+            onTap: () {
+              setState(() {
+                _data.removeWhere((currentItem) => item == currentItem);
+              });
+            },
+          ),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    );
+  }
+}
+
+// エクスパンションパネルのアイテムクラス
+class Item {
+  Item({
+    required this.expandedValue,
+    required this.headerValue,
+    this.isExpanded = false,
+  });
+
+  String expandedValue;
+  String headerValue;
+  bool isExpanded;
+}
+
+// アイテムを生成する関数
+List<Item> generateItems(int numberOfItems) {
+  return List<Item>.generate(numberOfItems, (int index) {
+    return Item(
+      headerValue: 'Panel $index',
+      expandedValue: 'This is item number $index',
+    );
+  });
 }
