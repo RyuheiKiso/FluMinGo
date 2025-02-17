@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
 
 // テキストボックスコンポーネント
-class TextBox extends StatelessWidget {
-  final String label;
+class TextboxComponent extends StatelessWidget {
   final TextEditingController controller;
-  final bool obscureText;
+  final String? hintText;
+  final bool obscureText; // 新しいプロパティ
+  final TextInputType keyboardType; // 新しいプロパティ
+  final int? maxLength; // 新しいプロパティ
+  final TextStyle? style; // 新しいプロパティ
 
-  const TextBox({super.key, required this.label, required this.controller, this.obscureText = false});
+  const TextboxComponent({
+    super.key,
+    required this.controller,
+    this.hintText,
+    this.obscureText = false, // デフォルト値を設定
+    this.keyboardType = TextInputType.text, // デフォルト値を設定
+    this.maxLength, // 新しいプロパティ
+    this.style, // 新しいプロパティ
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      obscureText: obscureText,
       decoration: InputDecoration(
-        labelText: label,
+        hintText: hintText,
+        counterText: maxLength != null ? '' : null, // 新しいプロパティ
       ),
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      maxLength: maxLength, // 新しいプロパティ
+      style: style, // 新しいプロパティ
     );
   }
 }
