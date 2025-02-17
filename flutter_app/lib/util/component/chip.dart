@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 
-// チップコンポーネント
+/// チップコンポーネント
+/// 
+/// [CustomChip]はテキスト、背景色、およびテキストの色を受け取るカスタムチップウィジェットです。
+/// 
+/// ```dart
+/// CustomChip(
+///   label: 'Example',
+///   backgroundColor: Colors.blue,
+///   textColor: Colors.white,
+/// )
+/// ```
 class CustomChip extends StatelessWidget {
-  // チップに表示するテキスト
   final String label;
-  // チップの背景色
   final Color backgroundColor;
-  // チップのテキストの色
   final Color textColor;
 
-  // コンストラクタ
+  /// コンストラクタ
+  /// 
+  /// [label] チップに表示するテキスト
+  /// [backgroundColor] チップの背景色
+  /// [textColor] チップのテキストの色
   const CustomChip({
     super.key,
     required this.label,
@@ -21,12 +32,12 @@ class CustomChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       label: Text(
-        label, // チップに表示するテキスト
+        label,
         style: TextStyle(
-          color: textColor, // テキストの色
+          color: textColor,
         ),
       ),
-      backgroundColor: backgroundColor, // チップの背景色
+      backgroundColor: backgroundColor,
     );
   }
 }
