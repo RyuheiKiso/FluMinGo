@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 // フローティングアクションボタンコンポーネント
-class FloatingActionButtonComponent extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  const FloatingActionButtonComponent({super.key, required this.onPressed});
+class CustomFloatingActionButton extends StatelessWidget {
+  const CustomFloatingActionButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: onPressed,
+      // ボタンが押されたときの処理
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Floating Action Button Pressed')),
+        );
+      },
+      tooltip: 'Increment',
       child: Icon(Icons.add),
     );
   }

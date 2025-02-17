@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 
-// モーダルダイアログコンポーネント
-class Modal extends StatelessWidget {
+// モーダルコンポーネント
+class ModalComponent extends StatelessWidget {
+  // モーダルのコンテンツ
+  final Widget content;
+  // モーダルのタイトル
   final String title;
-  final String content;
-  final VoidCallback onConfirm;
 
-  const Modal({super.key, required this.title, required this.content, required this.onConfirm});
+  const ModalComponent({super.key, required this.content, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      // タイトルの表示
       title: Text(title),
-      content: Text(content),
-      actions: [
+      // コンテンツの表示
+      content: content,
+      actions: <Widget>[
+        // 閉じるボタン
         TextButton(
-          onPressed: onConfirm,
-          child: Text('確認'),
+          child: Text('閉じる'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ],
     );

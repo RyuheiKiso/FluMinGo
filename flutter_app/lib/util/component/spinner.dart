@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
-// スピナーコンポーネント
-class Spinner extends StatelessWidget {
+// カスタムスピナーコンポーネント
+class CustomSpinner extends StatelessWidget {
+  // スピナーのサイズ
   final double size;
+  // スピナーの色
   final Color color;
+  // アニメーションの速度
+  final Duration duration;
 
-  const Spinner({super.key, this.size = 50.0, this.color = Colors.blue});
+  CustomSpinner({this.size = 50.0, this.color = Colors.blue, this.duration = const Duration(seconds: 1)});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,7 @@ class Spinner extends StatelessWidget {
         height: size,
         child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(color),
+          strokeWidth: 5.0,
         ),
       ),
     );

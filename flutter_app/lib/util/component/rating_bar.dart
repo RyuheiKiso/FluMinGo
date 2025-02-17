@@ -1,22 +1,67 @@
 import 'package:flutter/material.dart';
 
 // レーティングバーコンポーネント
-class RatingBarComponent extends StatelessWidget {
+class RatingBar extends StatefulWidget {
+  // レーティングの値
   final int rating;
+  // 最大レーティング
   final int maxRating;
-  final ValueChanged<int> onRatingSelected;
+  // 塗りつぶされたアイコン
+  final IconData filledIcon;
+  // 塗りつぶされていないアイコン
+  final IconData unfilledIcon;
+  // 塗りつぶされたアイコンの色
+  final Color filledColor;
+  // 塗りつぶされていないアイコンの色
+  final Color unfilledColor;
+  // レーティング変更コールバック
+  final ValueChanged<int>? onRatingChanged;
 
-  const RatingBarComponent({super.key, required this.rating, required this.maxRating, required this.onRatingSelected});
+  const RatingBar({
+    super.key,
+    required this.rating,
+    this.maxRating = 5,
+    this.filledIcon = Icons.star,
+    this.unfilledIcon = Icons.star_border,
+    this.filledColor = Colors.amber,
+    this.unfilledColor = Colors.grey,
+    this.onRatingChanged,
+  });
+
+  @override
+  _RatingBarState createState() => _RatingBarState();
+}
+
+class _RatingBarState extends State<RatingBar> {
+  // 現在のレーティング
+  late int _currentRating;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentRating = widget.rating;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: List.generate(maxRating, (index) {
-        return IconButton(
-          icon: Icon(
-            index < rating ? Icons.star : Icons.star_border,
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(widget.maxRating, (index) {
+        return GestureDetector(
+          // アイコンがタップされたときの処理
+          onTap: () {
+            setState(() {
+              _currentRating = index + 1;
+            });
+            if (widget.onRatingChanged != null) {
+              widget.onRatingChanged!(_currentRating);
+            }
+          },
+          // アイコンの表示
+          child: Icon(
+            index < _currentRating ? widget.filledIcon : widget.unfilledIcon,
+            color: index < _currentRating ? widget.filledColor : widget.unfilledColor,
           ),
-          onPressed: () => onRatingSelected(index + 1),
         );
       }),
     );

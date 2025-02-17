@@ -1,38 +1,65 @@
 import 'package:flutter/material.dart';
 
 // カスタムウィザードビューコンポーネント
-class CustomWizardView extends StatefulWidget {
-  final List<Widget> steps;
+class WizardView extends StatefulWidget {
+  // ステップのリスト
+  final List<WizardStep> steps;
 
-  const CustomWizardView({super.key, required this.steps});
+  WizardView({required this.steps});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CustomWizardViewState createState() => _CustomWizardViewState();
+  _WizardViewState createState() => _WizardViewState();
 }
 
-class _CustomWizardViewState extends State<CustomWizardView> {
+class _WizardViewState extends State<WizardView> {
+  // 現在のステップ
   int _currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Stepper(
-      currentStep: _currentStep,
-      onStepContinue: () {
-        if (_currentStep < widget.steps.length - 1) {
-          setState(() {
-            _currentStep += 1;
-          });
-        }
-      },
-      onStepCancel: () {
-        if (_currentStep > 0) {
-          setState(() {
-            _currentStep -= 1;
-          });
-        }
-      },
-      steps: widget.steps.map((step) => Step(title: Text('ステップ ${widget.steps.indexOf(step) + 1}'), content: step)).toList(),
+    return Column(
+      children: [
+        // プログレスインジケーター
+        LinearProgressIndicator(
+          value: (_currentStep + 1) / widget.steps.length,
+        ),
+        // 現在のステップのコンテンツ
+        Expanded(
+          child: widget.steps[_currentStep].content,
+        ),
+        // ナビゲーションボタン
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (_currentStep > 0)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _currentStep--;
+                  });
+                },
+                child: Text('Back'),
+              ),
+            if (_currentStep < widget.steps.length - 1)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _currentStep++;
+                  });
+                },
+                child: Text('Next'),
+              ),
+          ],
+        ),
+      ],
     );
   }
+}
+
+// ウィザードステップクラス
+class WizardStep {
+  // ステップのコンテンツ
+  final Widget content;
+
+  WizardStep({required this.content});
 }

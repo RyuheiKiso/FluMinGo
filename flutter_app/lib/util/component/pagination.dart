@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 // ページネーションコンポーネント
-class Pagination extends StatelessWidget {
+class PaginationComponent extends StatelessWidget {
+  // 現在のページ
   final int currentPage;
+  // 総ページ数
   final int totalPages;
-  final Function(int) onPageChanged;
+  // ページ変更コールバック
+  final ValueChanged<int> onPageChanged;
 
-  const Pagination({super.key, 
+  // コンストラクタ
+  const PaginationComponent({
+    super.key,
     required this.currentPage,
     required this.totalPages,
     required this.onPageChanged,
@@ -16,25 +21,20 @@ class Pagination extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(totalPages, (index) {
-        return GestureDetector(
-          onTap: () => onPageChanged(index + 1),
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 4.0),
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: index + 1 == currentPage ? Colors.blue : Colors.grey,
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              '${index + 1}',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        );
-      }),
+      children: [
+        // 前のページボタン
+        IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: currentPage > 1 ? () => onPageChanged(currentPage - 1) : null,
+        ),
+        // ページ番号表示
+        Text('$currentPage / $totalPages'),
+        // 次のページボタン
+        IconButton(
+          icon: Icon(Icons.arrow_forward),
+          onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
+        ),
+      ],
     );
   }
 }

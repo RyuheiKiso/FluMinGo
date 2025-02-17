@@ -10,7 +10,7 @@ class CustomDivider extends StatelessWidget {
   final double indent;
   final double endIndent;
 
-  // コンストラクタ
+  // コンストラクタにコメントを追加
   const CustomDivider({
     super.key,
     this.color = Colors.black,
