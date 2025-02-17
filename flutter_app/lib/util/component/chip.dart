@@ -13,19 +13,22 @@ import 'package:flutter/material.dart';
 /// ```
 class CustomChip extends StatelessWidget {
   final String label;
-  final Color backgroundColor;
+  final Color color;
   final Color textColor;
+  final VoidCallback? onDeleted;
 
   /// コンストラクタ
   /// 
   /// [label] チップに表示するテキスト
-  /// [backgroundColor] チップの背景色
+  /// [color] チップの背景色
   /// [textColor] チップのテキストの色
+  /// [onDeleted] チップの削除アイコンが押されたときに呼び出されるコールバック
   const CustomChip({
     super.key,
     required this.label,
-    this.backgroundColor = Colors.grey,
+    this.color = Colors.blue,
     this.textColor = Colors.white,
+    this.onDeleted,
   });
 
   @override
@@ -37,7 +40,9 @@ class CustomChip extends StatelessWidget {
           color: textColor,
         ),
       ),
-      backgroundColor: backgroundColor,
+      backgroundColor: color,
+      // onDeletedがnullでない場合に削除アイコンを表示
+      onDeleted: onDeleted,
     );
   }
 }
