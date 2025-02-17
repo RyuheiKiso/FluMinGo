@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:yaml/yaml.dart';
 
 // エラーハンドラーヘルパー
@@ -26,12 +27,34 @@ class ErrorHandler {
   }
 
   // エラーメッセージを表示するメソッド
-  static void showError(String message) {
+  static void showError(BuildContext context, String message) {
     // ここにエラーメッセージ表示処理を実装
     if (kDebugMode) {
       print(message);
     }
     _logErrorToFile(message);
+    _showErrorDialog(context, message);
+  }
+
+  // エラーダイアログを表示するメソッド
+  static void _showErrorDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('エラー'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   // エラーログをファイルに保存するメソッド

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../error_handling/error_handler.dart';
 
 // ベースページクラス
 class BasePage extends StatelessWidget {
@@ -6,6 +7,10 @@ class BasePage extends StatelessWidget {
   final Widget body;
 
   const BasePage({super.key, required this.title, required this.body});
+
+  void showError(BuildContext context, String message) {
+    ErrorHandler.showError(context, message);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,4 +21,5 @@ class BasePage extends StatelessWidget {
       body: body,
     );
   }
+
 }
