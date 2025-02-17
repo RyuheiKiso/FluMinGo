@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class ProgressBarComponent extends StatelessWidget {
-  final double progress; // 進捗率 (0.0 - 1.0)
+  // 進捗率 (0.0 - 1.0)
+  final double progress;
+  // プログレスバーの色
   final Color color;
 
   /// コンストラクタ
@@ -23,9 +25,9 @@ class ProgressBarComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LinearProgressIndicator(
-      value: progress, // 進捗率を設定
-      valueColor: AlwaysStoppedAnimation<Color>(color), // プログレスバーの色
-      backgroundColor: color.withOpacity(0.3), // 背景色
+      value: progress,
+      valueColor: AlwaysStoppedAnimation<Color>(color),
+      backgroundColor: color.withOpacity(0.3),
     );
   }
 }

@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 
 // テキストボックスコンポーネント
 class TextboxComponent extends StatelessWidget {
+  // テキスト編集コントローラー
   final TextEditingController controller;
+  // ヒントテキスト
   final String? hintText;
-  final bool obscureText; // 新しいプロパティ
-  final TextInputType keyboardType; // 新しいプロパティ
-  final int? maxLength; // 新しいプロパティ
-  final TextStyle? style; // 新しいプロパティ
+  // テキストを隠すかどうか
+  final bool obscureText;
+  // キーボードタイプ
+  final TextInputType keyboardType;
+  // 最大文字数
+  final int? maxLength;
+  // テキストスタイル
+  final TextStyle? style;
 
   const TextboxComponent({
     super.key,
     required this.controller,
     this.hintText,
-    this.obscureText = false, // デフォルト値を設定
-    this.keyboardType = TextInputType.text, // デフォルト値を設定
-    this.maxLength, // 新しいプロパティ
-    this.style, // 新しいプロパティ
+    this.obscureText = false,
+    this.keyboardType = TextInputType.text,
+    this.maxLength,
+    this.style,
   });
 
   @override
@@ -25,12 +31,12 @@ class TextboxComponent extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
-        counterText: maxLength != null ? '' : null, // 新しいプロパティ
+        counterText: maxLength != null ? '' : null,
       ),
       obscureText: obscureText,
       keyboardType: keyboardType,
-      maxLength: maxLength, // 新しいプロパティ
-      style: style, // 新しいプロパティ
+      maxLength: maxLength,
+      style: style,
     );
   }
 }

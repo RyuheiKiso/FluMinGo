@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 class GlassmorphismContainer extends StatelessWidget {
   final Widget child;
 
+  // コンストラクタ
   const GlassmorphismContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      // ボックスデコレーションの設定
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
@@ -22,8 +24,10 @@ class GlassmorphismContainer extends StatelessWidget {
         ),
       ),
       child: ClipRRect(
+        // 角を丸める
         borderRadius: BorderRadius.circular(15),
         child: BackdropFilter(
+          // 背景をぼかす
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Container(
             alignment: Alignment.center,

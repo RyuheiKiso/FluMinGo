@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 // ページネーションコンポーネント
 class PaginationComponent extends StatelessWidget {
+  // 現在のページ
   final int currentPage;
+  // 総ページ数
   final int totalPages;
+  // ページ変更コールバック
   final ValueChanged<int> onPageChanged;
 
   // コンストラクタ

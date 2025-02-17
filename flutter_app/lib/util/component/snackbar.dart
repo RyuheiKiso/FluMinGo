@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // カスタムスナックバーコンポーネント
 class CustomSnackbar {
+  // スナックバーのメッセージ
   final String message;
   CustomSnackbar({required this.message});
 

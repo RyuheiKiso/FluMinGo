@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 // グリッドビューコンポーネント
 class GridViewComponent extends StatelessWidget {
+  // グリッドのアイテム
   final List<Widget> items;
+  // クロスアクシスのカウント
   final int crossAxisCount;
+  // パディング
   final double padding;
+  // スペーシング
   final double spacing;
 
   // コンストラクタにpaddingとspacingを追加

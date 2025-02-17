@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 
 // スキャフォールドコンポーネント
 class ScaffoldComponent extends StatelessWidget {
+  // タイトル
   final String title;
+  // ボディ
   final Widget body;
+  // フローティングアクションボタン
   final Widget? floatingActionButton;
+  // ボトムナビゲーションバー
   final Widget? bottomNavigationBar;
+  // ドロワー
   final Widget? drawer;
+  // アプリバーのリーディングウィジェット
   final Widget? appBarLeading;
+  // アプリバーのアクションウィジェットのリスト
   final List<Widget>? appBarActions;
+  // バックグラウンドカラー
   final Color? backgroundColor;
+  // ボトムインセットを避けるかどうか
   final bool resizeToAvoidBottomInset;
 
   // コンストラクタにコメントを追加

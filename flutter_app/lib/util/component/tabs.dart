@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 
 // タブコンポーネント
 class TabsComponent extends StatelessWidget {
+  // タブのリスト
   final List<Tab> tabs;
+  // タブコントローラー
   final TabController? controller;
-  final Color? indicatorColor; // 新しいプロパティ
-  final Color? labelColor; // 新しいプロパティ
-  final Color? unselectedLabelColor; // 新しいプロパティ
-  final EdgeInsetsGeometry? labelPadding; // 新しいプロパティ
+  // インジケーターの色
+  final Color? indicatorColor;
+  // ラベルの色
+  final Color? labelColor;
+  // 選択されていないラベルの色
+  final Color? unselectedLabelColor;
+  // ラベルのパディング
+  final EdgeInsetsGeometry? labelPadding;
 
   const TabsComponent({
     super.key,
@@ -15,8 +21,8 @@ class TabsComponent extends StatelessWidget {
     this.controller,
     this.indicatorColor,
     this.labelColor,
-    this.unselectedLabelColor, // 新しいプロパティ
-    this.labelPadding, // 新しいプロパティ
+    this.unselectedLabelColor,
+    this.labelPadding,
   });
 
   @override
@@ -26,8 +32,8 @@ class TabsComponent extends StatelessWidget {
       tabs: tabs,
       indicatorColor: indicatorColor,
       labelColor: labelColor,
-      unselectedLabelColor: unselectedLabelColor, // 新しいプロパティ
-      labelPadding: labelPadding, // 新しいプロパティ
+      unselectedLabelColor: unselectedLabelColor,
+      labelPadding: labelPadding,
     );
   }
 }

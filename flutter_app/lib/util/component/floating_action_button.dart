@@ -7,8 +7,8 @@ class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
+      // ボタンが押されたときの処理
       onPressed: () {
-        // ボタンが押されたときの処理
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Floating Action Button Pressed')),
         );

@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 
 // テーブルコンポーネント
 class TableComponent extends StatelessWidget {
+  // テーブル行のリスト
   final List<TableRow> rows;
+  // テーブルのボーダー
   final TableBorder? border;
+  // デフォルトの列幅
   final TableColumnWidth? defaultColumnWidth;
-  final TextDirection? textDirection; // 新しいプロパティ
-  final TextBaseline? textBaseline; // 新しいプロパティ
-  final TableCellVerticalAlignment defaultVerticalAlignment; // 新しいプロパティ
-  final EdgeInsetsGeometry? padding; // 新しいプロパティ
-  final Color? backgroundColor; // 新しいプロパティ
+  // テキストの方向
+  final TextDirection? textDirection;
+  // テキストのベースライン
+  final TextBaseline? textBaseline;
+  // デフォルトの垂直アライメント
+  final TableCellVerticalAlignment defaultVerticalAlignment;
+  // パディング
+  final EdgeInsetsGeometry? padding;
+  // 背景色
+  final Color? backgroundColor;
 
   const TableComponent({
     super.key,
@@ -18,17 +26,17 @@ class TableComponent extends StatelessWidget {
     this.defaultColumnWidth,
     this.textDirection,
     this.textBaseline,
-    this.defaultVerticalAlignment = TableCellVerticalAlignment.top, // デフォルト値を設定
-    this.padding, // 新しいプロパティ
-    this.backgroundColor, // 新しいプロパティ
+    this.defaultVerticalAlignment = TableCellVerticalAlignment.top,
+    this.padding,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor, // 新しいプロパティ
+      color: backgroundColor,
       child: Padding(
-        padding: padding ?? EdgeInsets.all(0), // 新しいプロパティ
+        padding: padding ?? EdgeInsets.all(0),
         child: Table(
           children: rows,
           border: border,

@@ -20,14 +20,23 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class CustomSlider extends StatelessWidget {
+  // スライダーの値
   final double value;
+  // 値が変更されたときに呼び出されるコールバック
   final void Function(double) onChanged;
+  // スライダーの最小値
   final double min;
+  // スライダーの最大値
   final double max;
+  // スライダーの分割数
   final int? divisions;
+  // スライダーのラベル
   final String? label;
+  // スライダーのアクティブカラー
   final Color? activeColor;
+  // スライダーのインアクティブカラー
   final Color? inactiveColor;
+  // スライダーのサムカラー
   final Color? thumbColor;
 
   /// コンストラクタ

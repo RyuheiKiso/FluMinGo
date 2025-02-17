@@ -12,11 +12,17 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class BadgeComponent extends StatelessWidget {
+  // バッジに表示するラベル
   final String label;
+  // バッジの背景色
   final Color? backgroundColor;
+  // ラベルのスタイル
   final TextStyle? labelStyle;
+  // バッジの内側の余白
   final EdgeInsetsGeometry? padding;
+  // バッジの角の丸み
   final double? borderRadius;
+  // バッジに表示するアイコン
   final Widget? icon; // 新しいプロパティ
 
   /// コンストラクタ
@@ -39,19 +45,26 @@ class BadgeComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // バッジのコンテナを返す
     return Container(
+      // バッジの内側の余白
       padding: padding ?? EdgeInsets.all(8.0),
+      // バッジの装飾
       decoration: BoxDecoration(
+        // バッジの背景色
         color: backgroundColor ?? Colors.red,
+        // バッジの角の丸み
         borderRadius: BorderRadius.circular(borderRadius ?? 12.0),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // アイコンが存在する場合
           if (icon != null) ...[
             icon!,
             SizedBox(width: 4.0),
           ],
+          // ラベルのテキスト
           Text(
             label,
             style: labelStyle ?? TextStyle(

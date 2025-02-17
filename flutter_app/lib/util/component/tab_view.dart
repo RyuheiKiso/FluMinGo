@@ -2,23 +2,30 @@ import 'package:flutter/material.dart';
 
 // タブビューコンポーネント
 class TabViewComponent extends StatelessWidget {
+  // タブのリスト
   final List<Widget> tabs;
+  // ビューのリスト
   final List<Widget> views;
+  // タブコントローラー
   final TabController? controller;
-  final bool isScrollable; // 新しいプロパティ
-  final Color? indicatorColor; // 新しいプロパティ
-  final Color? labelColor; // 新しいプロパティ
-  final Color? unselectedLabelColor; // 新しいプロパティ
+  // スクロール可能かどうか
+  final bool isScrollable;
+  // インジケーターの色
+  final Color? indicatorColor;
+  // ラベルの色
+  final Color? labelColor;
+  // 選択されていないラベルの色
+  final Color? unselectedLabelColor;
 
   const TabViewComponent({
     super.key,
     required this.tabs,
     required this.views,
     this.controller,
-    this.isScrollable = false, // デフォルト値を設定
-    this.indicatorColor, // 新しいプロパティ
-    this.labelColor, // 新しいプロパティ
-    this.unselectedLabelColor, // 新しいプロパティ
+    this.isScrollable = false,
+    this.indicatorColor,
+    this.labelColor,
+    this.unselectedLabelColor,
   });
 
   @override
@@ -31,9 +38,9 @@ class TabViewComponent extends StatelessWidget {
             controller: controller,
             tabs: tabs,
             isScrollable: isScrollable,
-            indicatorColor: indicatorColor, // 新しいプロパティ
-            labelColor: labelColor, // 新しいプロパティ
-            unselectedLabelColor: unselectedLabelColor, // 新しいプロパティ
+            indicatorColor: indicatorColor,
+            labelColor: labelColor,
+            unselectedLabelColor: unselectedLabelColor,
           ),
           Expanded(
             child: TabBarView(

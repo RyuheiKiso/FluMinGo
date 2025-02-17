@@ -6,6 +6,7 @@ class DropdownComponent<T> extends StatelessWidget {
   final T? value;
   final ValueChanged<T?> onChanged;
 
+  // コンストラクタ
   const DropdownComponent({super.key, required this.items, this.value, required this.onChanged});
 
   @override
@@ -42,6 +43,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
         height: 2,
         color: Colors.deepPurpleAccent,
       ),
+      // 値が変更されたときの処理
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;

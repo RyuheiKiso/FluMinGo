@@ -28,10 +28,15 @@ import 'package:flutter/material.dart';
 /// );
 /// ```
 class Breadcrumb extends StatelessWidget {
+  // パンクズリストのアイテム
   final List<BreadcrumbItem> items;
+  // アクティブなアイテムの色
   final Color activeColor;
+  // 非アクティブなアイテムの色
   final Color inactiveColor;
+  // アイテム間のセパレーターアイコン
   final IconData? separatorIcon;
+  // アイテム間の間隔
   final double spacing;
 
   /// コンストラクタ
@@ -52,6 +57,7 @@ class Breadcrumb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      // アイテムをビルド
       children: items.map((item) => _buildItem(item)).toList(),
     );
   }
@@ -60,10 +66,13 @@ class Breadcrumb extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
+          // アイテムがタップされたときの処理
           onTap: item.onTap,
           child: Row(
             children: [
+              // アイコンがある場合は表示
               if (item.icon != null) Icon(item.icon, color: item.isActive ? activeColor : inactiveColor),
+              // ツールチップがある場合は表示
               if (item.tooltip != null)
                 Tooltip(
                   message: item.tooltip!,
@@ -84,7 +93,9 @@ class Breadcrumb extends StatelessWidget {
             ],
           ),
         ),
+        // 最後のアイテムでない場合はセパレーターアイコンを表示
         if (item != items.last) Icon(separatorIcon, color: inactiveColor),
+        // アイテム間の間隔を設定
         SizedBox(width: spacing),
       ],
     );
@@ -93,10 +104,15 @@ class Breadcrumb extends StatelessWidget {
 
 /// パンクズリストのアイテム
 class BreadcrumbItem {
+  // アイテムのラベル
   final String label;
+  // アイテムがアクティブかどうか
   final bool isActive;
+  // アイテムがタップされたときに呼び出されるコールバック
   final VoidCallback onTap;
+  // アイテムのアイコン
   final IconData? icon;
+  // アイテムのツールチップ
   final String? tooltip;
 
   /// コンストラクタ

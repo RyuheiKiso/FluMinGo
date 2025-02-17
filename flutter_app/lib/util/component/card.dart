@@ -16,12 +16,19 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class CardComponent extends StatelessWidget {
+  // カード内に表示するウィジェット
   final Widget child;
+  // カードの背景色
   final Color? color;
+  // カードの影の高さ
   final double? elevation;
+  // カードの角丸
   final BorderRadius? borderRadius;
+  // カードの内側余白
   final EdgeInsetsGeometry? padding;
+  // カードの外側余白
   final EdgeInsetsGeometry? margin;
+  // カードの影の色
   final Color? shadowColor;
 
   /// コンストラクタ
@@ -46,15 +53,21 @@ class CardComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // 外側余白を設定
       margin: margin,
       child: Card(
+        // 背景色を設定
         color: color,
+        // 影の高さを設定
         elevation: elevation,
+        // 影の色を設定
         shadowColor: shadowColor,
+        // 角丸を設定
         shape: RoundedRectangleBorder(
           borderRadius: borderRadius ?? BorderRadius.zero,
         ),
         child: Padding(
+          // 内側余白を設定
           padding: padding ?? const EdgeInsets.all(16.0),
           child: child,
         ),

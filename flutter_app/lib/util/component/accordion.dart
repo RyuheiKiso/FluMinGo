@@ -11,13 +11,21 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class Accordion extends StatefulWidget {
+  // タイトル
   final String title;
+  // コンテンツ
   final Widget content;
+  // タイトルのスタイル
   final TextStyle? titleStyle;
+  // コンテンツのスタイル
   final TextStyle? contentStyle;
+  // タイトルの前に表示するアイコン
   final Icon? leadingIcon;
+  // アニメーションの時間
   final Duration animationDuration;
+  // アニメーションのカーブ
   final Curve animationCurve;
+  // 初期状態で展開されているかどうか
   final bool initiallyExpanded; // 新しいプロパティ
 
   /// コンストラクタ
@@ -47,39 +55,51 @@ class Accordion extends StatefulWidget {
 }
 
 class _AccordionState extends State<Accordion> with SingleTickerProviderStateMixin {
+  // アニメーションコントローラ
   late AnimationController _controller;
+  // アニメーション
   late Animation<double> _animation;
+  // 展開状態
   late bool _isExpanded; // 初期化を遅延
 
   @override
   void initState() {
     super.initState();
+    // アニメーションコントローラの初期化
     _controller = AnimationController(
       duration: widget.animationDuration,
       vsync: this,
     );
+    // アニメーションの初期化
     _animation = CurvedAnimation(
       parent: _controller,
       curve: widget.animationCurve,
     );
-    _isExpanded = widget.initiallyExpanded; // 初期状態を設定
+    // 初期状態を設定
+    _isExpanded = widget.initiallyExpanded; 
     if (_isExpanded) {
-      _controller.value = 1.0; // 初期状態で展開
+      // 初期状態で展開
+      _controller.value = 1.0; 
     }
   }
 
   @override
   void dispose() {
+    // アニメーションコントローラの破棄
     _controller.dispose();
     super.dispose();
   }
 
+  // タップ時の処理
   void _handleTap() {
     setState(() {
+      // 展開状態を反転
       _isExpanded = !_isExpanded;
       if (_isExpanded) {
+        // 展開アニメーション
         _controller.forward();
       } else {
+        // 折りたたみアニメーション
         _controller.reverse();
       }
     });
@@ -90,11 +110,13 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // タイトル部分
         ListTile(
           leading: widget.leadingIcon,
           title: Text(widget.title, style: widget.titleStyle),
           onTap: _handleTap,
         ),
+        // コンテンツ部分
         SizeTransition(
           sizeFactor: _animation,
           child: Padding(

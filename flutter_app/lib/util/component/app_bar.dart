@@ -40,20 +40,35 @@ import 'package:flutter/services.dart';
 /// )
 /// ```
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
+  // アプリバーのタイトル
   final String title;
+  // アプリバーの背景色
   final Color backgroundColor;
+  // タイトルのスタイル
   final TextStyle? titleStyle;
+  // アイコンのテーマ
   final IconThemeData? iconTheme;
+  // アプリバーのアクションボタン
   final List<Widget> actions;
+  // タイトルを中央に配置するかどうか
   final bool centerTitle;
+  // ステータスバーのスタイル
   final SystemUiOverlayStyle? systemOverlayStyle;
+  // アプリバーの先頭に表示するウィジェット
   final Widget? leading;
+  // アプリバーの影の高さ
   final double? elevation;
+  // 影の色
   final Color? shadowColor;
+  // アプリバーの形状
   final ShapeBorder? shape;
+  // アプリバーの下部に表示するウィジェット
   final PreferredSizeWidget? bottom;
+  // アプリバーの背景に表示するカスタムウィジェット
   final Widget? flexibleSpace;
+  // leadingウィジェットが指定されていない場合に自動的に戻るボタンを表示するかどうか
   final bool automaticallyImplyLeading;
+  // ステータスバーの明るさ
   final Brightness? brightness;
 
   /// コンストラクタ
@@ -95,21 +110,34 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      // タイトル
       title: Text(
         title,
         style: titleStyle,
       ),
+      // 背景色
       backgroundColor: backgroundColor,
+      // アイコンのテーマ
       iconTheme: iconTheme,
+      // アクションボタン
       actions: actions,
+      // タイトルを中央に配置するかどうか
       centerTitle: centerTitle,
+      // 先頭に表示するウィジェット
       leading: leading,
+      // 影の高さ
       elevation: elevation,
+      // 影の色
       shadowColor: shadowColor,
+      // 形状
       shape: shape,
+      // 下部に表示するウィジェット
       bottom: bottom,
+      // 背景に表示するカスタムウィジェット
       flexibleSpace: flexibleSpace,
+      // leadingウィジェットが指定されていない場合に自動的に戻るボタンを表示するかどうか
       automaticallyImplyLeading: automaticallyImplyLeading,
+      // ステータスバーのスタイル
       systemOverlayStyle: systemOverlayStyle ?? (brightness == Brightness.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark),
     );
   }

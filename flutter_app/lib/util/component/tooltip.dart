@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 // カスタムツールチップコンポーネント
 class CustomTooltip extends StatelessWidget {
+  // ツールチップのメッセージ
   final String message;
+  // ツールチップを表示する子ウィジェット
   final Widget child;
+  // ツールチップの表示位置
   final TooltipPosition position;
 
   CustomTooltip({required this.message, required this.child, this.position = TooltipPosition.above});

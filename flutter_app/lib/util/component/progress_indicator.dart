@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 
 // プログレスインジケーターコンポーネント
 class ProgressIndicatorComponent extends StatelessWidget {
+  // プログレスの値
   final double value;
-  final Color color; // カスタムカラー
-  final double size; // カスタムサイズ
-  final bool isAnimated; // アニメーションの有効/無効
-  final double strokeWidth; // カスタムストローク幅
-  final String? tooltip; // ツールチップ
+  // カスタムカラー
+  final Color color; 
+  // カスタムサイズ
+  final double size; 
+  // アニメーションの有効/無効
+  final bool isAnimated; 
+  // カスタムストローク幅
+  final double strokeWidth; 
+  // ツールチップ
+  final String? tooltip; 
 
   const ProgressIndicatorComponent({
     super.key,
     required this.value,
-    this.color = Colors.blue, // デフォルトカラー
-    this.size = 50.0, // デフォルトサイズ
-    this.isAnimated = true, // デフォルトでアニメーション有効
-    this.strokeWidth = 4.0, // デフォルトストローク幅
+    this.color = Colors.blue, 
+    this.size = 50.0, 
+    this.isAnimated = true, 
+    this.strokeWidth = 4.0, 
     this.tooltip,
   });
 
@@ -29,7 +35,7 @@ class ProgressIndicatorComponent extends StatelessWidget {
         child: CircularProgressIndicator(
           value: value,
           color: color,
-          strokeWidth: isAnimated ? strokeWidth : 0.0, // アニメーション無効時のストローク幅
+          strokeWidth: isAnimated ? strokeWidth : 0.0, 
         ),
       ),
     );

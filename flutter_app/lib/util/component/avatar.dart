@@ -22,16 +22,27 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class AvatarComponent extends StatelessWidget {
+  // アバター画像のURL
   final String imageUrl;
+  // アバターの半径
   final double radius;
+  // アバターの枠線の色
   final Color borderColor;
+  // アバターの枠線の幅
   final double borderWidth;
+  // プレースホルダー画像
   final ImageProvider placeholder;
+  // エラー時のデフォルト画像
   final ImageProvider errorImage;
+  // アバターがタップされた時のコールバック
   final VoidCallback? onTap;
+  // アバターの背景色
   final Color? backgroundColor;
+  // アバターの前景色
   final Color? foregroundColor;
+  // アバターの角の丸み
   final BorderRadius? borderRadius;
+  // アバターに追加する影
   final List<BoxShadow>? boxShadow;
 
   /// コンストラクタ
@@ -64,25 +75,39 @@ class AvatarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ジェスチャーデテクターを返す
     return GestureDetector(
+      // タップ時のコールバック
       onTap: onTap,
       child: Container(
+        // 枠線の幅に応じた内側の余白
         padding: EdgeInsets.all(borderWidth),
+        // コンテナの装飾
         decoration: BoxDecoration(
+          // 形状を円形に設定
           shape: BoxShape.circle,
+          // 枠線の設定
           border: Border.all(
             color: borderColor,
             width: borderWidth,
           ),
+          // 角の丸み
           borderRadius: borderRadius,
+          // 影の設定
           boxShadow: boxShadow,
         ),
         child: CircleAvatar(
+          // 背景画像
           backgroundImage: NetworkImage(imageUrl),
+          // 半径
           radius: radius,
+          // 背景画像のエラー時の処理
           onBackgroundImageError: (_, __) => errorImage,
+          // プレースホルダー画像
           child: Image(image: placeholder),
+          // 背景色
           backgroundColor: backgroundColor,
+          // 前景色
           foregroundColor: foregroundColor,
         ),
       ),

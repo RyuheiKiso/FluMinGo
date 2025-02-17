@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class CarouselComponent extends StatelessWidget {
+  // カルーセル内に表示するウィジェットのリスト
   final List<Widget> items;
 
   /// コンストラクタ
@@ -25,13 +26,16 @@ class CarouselComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
+      // ウィジェットのリストを表示
       children: items,
     );
   }
 }
 
 class Carousel extends StatefulWidget {
+  // カルーセル内に表示するウィジェットのリスト
   final List<Widget> items;
+  // ページが自動的に切り替わる間隔
   final Duration interval;
 
   /// コンストラクタ
@@ -45,12 +49,15 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
+  // 現在のページインデックス
   int _currentIndex = 0;
+  // ページコントローラ
   late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
+    // 初期ページを設定
     _pageController = PageController(initialPage: _currentIndex);
     // タイマーを使って自動的にページを切り替える
     Timer.periodic(widget.interval, (Timer timer) {
@@ -59,6 +66,7 @@ class _CarouselState extends State<Carousel> {
       } else {
         _currentIndex = 0;
       }
+      // ページをアニメーションで切り替える
       _pageController.animateToPage(
         _currentIndex,
         duration: Duration(milliseconds: 300),
@@ -69,6 +77,7 @@ class _CarouselState extends State<Carousel> {
 
   @override
   void dispose() {
+    // ページコントローラを破棄
     _pageController.dispose();
     super.dispose();
   }
@@ -76,8 +85,11 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      // ページコントローラを設定
       controller: _pageController,
+      // アイテムの数を設定
       itemCount: widget.items.length,
+      // アイテムをビルド
       itemBuilder: (context, index) {
         return widget.items[index];
       },

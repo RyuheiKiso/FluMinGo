@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 // トーストメッセージコンポーネント
 class CustomToast {
+  // トーストメッセージを表示するメソッド
   static void showToast(String message, {ToastGravity gravity = ToastGravity.BOTTOM, Color backgroundColor = Colors.black, Color textColor = Colors.white}) {
     Fluttertoast.showToast(
       msg: message,
@@ -40,7 +41,7 @@ class Toast {
       ),
     );
 
-    overlay?.insert(overlayEntry);
+    overlay.insert(overlayEntry);
     Future.delayed(duration, () {
       overlayEntry.remove();
     });

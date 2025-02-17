@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // カスタムツリービューコンポーネント
 class TreeView extends StatefulWidget {
+  // ノードのリスト
   final List<TreeNode> nodes;
   TreeView({required this.nodes});
 
@@ -10,6 +11,7 @@ class TreeView extends StatefulWidget {
 }
 
 class _TreeViewState extends State<TreeView> {
+  // 展開されたノードのマップ
   final Map<TreeNode, bool> _expandedNodes = {};
 
   @override
@@ -19,6 +21,7 @@ class _TreeViewState extends State<TreeView> {
     );
   }
 
+  // ノードを構築するメソッド
   Widget _buildNode(TreeNode node) {
     final isExpanded = _expandedNodes[node] ?? false;
     return ExpansionTile(
@@ -34,8 +37,11 @@ class _TreeViewState extends State<TreeView> {
   }
 }
 
+// ツリーノードクラス
 class TreeNode {
+  // ノードのラベル
   final String label;
+  // 子ノードのリスト
   final List<TreeNode> children;
   TreeNode({required this.label, this.children = const []});
 }

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 // リストビューコンポーネント
 class ListViewComponent extends StatelessWidget {
+  // リストのアイテム
   final List<Widget> items;
+  // パディング
   final double padding;
+  // スペーシング
   final double spacing;
 
   // コンストラクタにpaddingとspacingを追加

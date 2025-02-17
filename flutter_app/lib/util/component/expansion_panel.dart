@@ -21,6 +21,7 @@ class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
     );
   }
 
+  // パネルを構築するウィジェット
   Widget _buildPanel() {
     return ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
@@ -30,11 +31,13 @@ class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
       },
       children: _data.map<ExpansionPanel>((Item item) {
         return ExpansionPanel(
+          // ヘッダーのビルダー
           headerBuilder: (BuildContext context, bool isExpanded) {
             return ListTile(
               title: Text(item.headerValue),
             );
           },
+          // ボディのビルダー
           body: ListTile(
             title: Text(item.expandedValue),
             subtitle: Text('To delete this panel, tap the trash can icon'),
