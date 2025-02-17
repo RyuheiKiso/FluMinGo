@@ -1,23 +1,58 @@
 import 'package:flutter/material.dart';
 
 // ウィザードコンポーネント
-class WizardComponent extends StatelessWidget {
-  final List<Step> steps;
-  final int currentStep;
-  final ValueChanged<int> onStepTapped;
-  final VoidCallback onStepContinue;
-  final VoidCallback onStepCancel;
+class Wizard extends StatefulWidget {
+  final List<WizardStep> steps;
 
-  const WizardComponent({super.key, required this.steps, required this.currentStep, required this.onStepTapped, required this.onStepContinue, required this.onStepCancel});
+  Wizard({required this.steps});
+
+  @override
+  _WizardState createState() => _WizardState();
+}
+
+class _WizardState extends State<Wizard> {
+  int _currentStep = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Stepper(
-      steps: steps,
-      currentStep: currentStep,
-      onStepTapped: onStepTapped,
-      onStepContinue: onStepContinue,
-      onStepCancel: onStepCancel,
+    return Column(
+      children: [
+        LinearProgressIndicator(
+          value: (_currentStep + 1) / widget.steps.length,
+        ),
+        Expanded(
+          child: widget.steps[_currentStep].content,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (_currentStep > 0)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _currentStep--;
+                  });
+                },
+                child: Text('Back'),
+              ),
+            if (_currentStep < widget.steps.length - 1)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    _currentStep++;
+                  });
+                },
+                child: Text('Next'),
+              ),
+          ],
+        ),
+      ],
     );
   }
+}
+
+class WizardStep {
+  final Widget content;
+
+  WizardStep({required this.content});
 }
