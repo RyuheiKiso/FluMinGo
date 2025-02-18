@@ -1,5 +1,7 @@
 # レイヤー図
 
+以下のレイヤー図は、アプリケーションのアーキテクチャを示しています。
+
 ```mermaid
 classDiagram
     direction TB
@@ -18,4 +20,3 @@ classDiagram
     FrameworkAndDrivers --> InterfaceAdapter
     InterfaceAdapter --> UseCase
     UseCase --> Entities
-```
