@@ -6,105 +6,105 @@ Flutterプロジェクトのディレクトリ構成は以下の通りです。�
 
 ```plaintext
 FluMinGo/flutter_app/lib
-├── main.dart
-├── screens
-│   ├── home
+├── main.dart(エントリポイント)
+├── screens(画面群)
+│   ├── home(ホーム画面)
 │   │   ├── controller
-│   │   │   └── home_controller.dart
+│   │   │   └── home_controller.dart(ホーム画面のコントローラ)
 │   │   ├── model
-│   │   │   └── home_model.dart
+│   │   │   └── home_model.dart(ホーム画面のモデル)
 │   │   └── view
-│   │       └── home_view.dart
-│   ├── login
+│   │       └── home_view.dart(ホーム画面のUI)
+│   ├── login(ログイン画面)
 │   │   ├── controller
-│   │   │   └── login_controller.dart
+│   │   │   └── login_controller.dart(ログイン処理のコントローラ)
 │   │   ├── model
-│   │   │   └── login_model.dart
+│   │   │   └── login_model.dart(ログイン処理のモデル)
 │   │   └── view
-│   │       └── login_view.dart
-│   └── profile
+│   │       └── login_view.dart(ログイン画面のUI)
+│   └── profile(プロフィール画面)
 │       ├── controller
-│       │   └── profile_controller.dart
+│       │   └── profile_controller.dart(プロフィール画面のコントローラ)
 │       ├── model
-│       │   └── profile_model.dart
+│       │   └── profile_model.dart(プロフィール情報モデル)
 │       └── view
-│           └── profile_view.dart
-└── util
+│           └── profile_view.dart(プロフィール画面のUI)
+└── util(ユーティリティ)
     ├── base_page
-    │   ├── base_page.dart
-    │   └── base_page_helper.dart
+    │   ├── base_page.dart(基底ページクラス)
+    │   └── base_page_helper.dart(基底ページ関連のヘルパー)
     ├── component
-    │   ├── accordion.dart
-    │   ├── alert.dart
-    │   ├── app_bar.dart
-    │   ├── avatar.dart
-    │   ├── badge.dart
-    │   ├── bottom_navigation_bar.dart
-    │   ├── breadcrumb.dart
-    │   ├── button.dart
-    │   ├── card.dart
-    │   ├── carousel.dart
-    │   ├── chip.dart
-    │   ├── divider.dart
-    │   ├── drawer.dart
-    │   ├── dropdown.dart
-    │   ├── expansion_panel.dart
-    │   ├── floating_action_button.dart
-    │   ├── glassmorphism_container.dart
-    │   ├── grid.dart
-    │   ├── grid_view.dart
-    │   ├── label.dart
-    │   ├── list.dart
-    │   ├── list_view.dart
-    │   ├── modal.dart
-    │   ├── navigation_rail.dart
-    │   ├── pagination.dart
-    │   ├── progress_bar.dart
-    │   ├── progress_indicator.dart
-    │   ├── rating.dart
-    │   ├── rating_bar.dart
-    │   ├── refresh_indicator.dart
-    │   ├── scaffold.dart
-    │   ├── search_bar.dart
-    │   ├── slider.dart
-    │   ├── snackbar.dart
-    │   ├── spinner.dart
-    │   ├── stepper.dart
-    │   ├── switch.dart
-    │   ├── tab_bar.dart
-    │   ├── tab_view.dart
-    │   ├── table.dart
-    │   ├── tabs.dart
-    │   ├── textbox.dart
-    │   ├── timeline.dart
-    │   ├── toast.dart
-    │   ├── tooltip.dart
-    │   ├── tree.dart
-    │   ├── tree_view.dart
-    │   ├── wizard.dart
-    │   └── wizard_view.dart
+    │   ├── accordion.dart(アコーディオンUI)
+    │   ├── alert.dart(アラートUI)
+    │   ├── app_bar.dart(アプリバーUI)
+    │   ├── avatar.dart(アバターUI)
+    │   ├── badge.dart(バッジUI)
+    │   ├── bottom_navigation_bar.dart(ボトムナビゲーション)
+    │   ├── breadcrumb.dart(パンくずリスト)
+    │   ├── button.dart(ボタンUI)
+    │   ├── card.dart(カードUI)
+    │   ├── carousel.dart(カルーセルUI)
+    │   ├── chip.dart(チップUI)
+    │   ├── divider.dart(区切り線UI)
+    │   ├── drawer.dart(ドロワーUI)
+    │   ├── dropdown.dart(ドロップダウンUI)
+    │   ├── expansion_panel.dart(展開パネルUI)
+    │   ├── floating_action_button.dart(FAB)
+    │   ├── glassmorphism_container.dart(グラスモーフィズム)
+    │   ├── grid.dart(グリッドUI)
+    │   ├── grid_view.dart(グリッド表示)
+    │   ├── label.dart(ラベルUI)
+    │   ├── list.dart(リストUI)
+    │   ├── list_view.dart(リスト表示)
+    │   ├── modal.dart(モーダルUI)
+    │   ├── navigation_rail.dart(ナビゲーションレール)
+    │   ├── pagination.dart(ページネーション)
+    │   ├── progress_bar.dart(プログレスバーUI)
+    │   ├── progress_indicator.dart(読み込みインジケータ)
+    │   ├── rating.dart(評価UI)
+    │   ├── rating_bar.dart(評価バーUI)
+    │   ├── refresh_indicator.dart(更新インジケータ)
+    │   ├── scaffold.dart(ページ骨組みUI)
+    │   ├── search_bar.dart(検索バーUI)
+    │   ├── slider.dart(スライダーUI)
+    │   ├── snackbar.dart(スナックバーUI)
+    │   ├── spinner.dart(スピナーUI)
+    │   ├── stepper.dart(ステッパーUI)
+    │   ├── switch.dart(スイッチUI)
+    │   ├── tab_bar.dart(タブバーUI)
+    │   ├── tab_view.dart(タブ表示)
+    │   ├── table.dart(テーブルUI)
+    │   ├── tabs.dart(タブ切り替え)
+    │   ├── textbox.dart(テキストボックスUI)
+    │   ├── timeline.dart(タイムラインUI)
+    │   ├── toast.dart(トースト通知)
+    │   ├── tooltip.dart(ツールチップUI)
+    │   ├── tree.dart(ツリーUI)
+    │   ├── tree_view.dart(ツリービュー)
+    │   ├── wizard.dart(ウィザードUI)
+    │   └── wizard_view.dart(ウィザード画面)
     ├── encryption
-    │   └── encryption_helper.dart
+    │   └── encryption_helper.dart(暗号化機能)
     ├── error_handling
-    │   └── error_handler.dart
+    │   └── error_handler.dart(エラーハンドリング)
     ├── form
-    │   └── form_helper.dart
+    │   └── form_helper.dart(フォーム関連処理)
     ├── http
-    │   └── http_client.dart
+    │   └── http_client.dart(HTTPクライアント)
     ├── json
-    │   └── json_helper.dart
+    │   └── json_helper.dart(JSON処理)
     ├── logging
-    │   └── logging_helper.dart
+    │   └── logging_helper.dart(ログ機能)
     ├── math
-    │   └── math_helper.dart
+    │   └── math_helper.dart(数値計算)
     ├── sqlite
-    │   └── sqlite_helper.dart
+    │   └── sqlite_helper.dart(SQLite操作)
     ├── string
-    │   └── string_helper.dart
+    │   └── string_helper.dart(文字列処理)
     ├── validation
-    │   └── validation_helper.dart
+    │   └── validation_helper.dart(バリデーション処理)
     └── xml
-        └── xml_helper.dart
+        └── xml_helper.dart(XML処理)
 ```
 
 ### golang(共通機能-API)
@@ -114,14 +114,14 @@ FluMinGo/flutter_app/lib
 ```plaintext
 FluMinGo/golang/common_api
 ├── auth
-│   ├── auth_handler.go
-│   └── auth_service.go
+│   ├── auth_handler.go(認証ハンドラー)
+│   └── auth_service.go(認証サービス)
 ├── db
-│   ├── db_connection.go
-│   └── db_queries.go
+│   ├── db_connection.go(DB接続)
+│   └── db_queries.go(DBクエリ管理)
 └── middleware
-    ├── logging.go
-    └── recovery.go
+    ├── logging.go(ログミドルウェア)
+    └── recovery.go(リカバリミドルウェア)
 ```
 
 ### golang(個別API_interface and adapter)
@@ -131,11 +131,11 @@ FluMinGo/golang/common_api
 ```plaintext
 FluMinGo/golang/specific_api/interface_adapter
 ├── user
-│   ├── user_interface.go
-│   └── user_adapter.go
+│   ├── user_interface.go(ユーザーAPIのインターフェース)
+│   └── user_adapter.go(ユーザーAPIのアダプター)
 └── product
-    ├── product_interface.go
-    └── product_adapter.go
+    ├── product_interface.go(商品APIのインターフェース)
+    └── product_adapter.go(商品APIのアダプター)
 ```
 
 ### golang(個別API_use case)
@@ -145,11 +145,11 @@ FluMinGo/golang/specific_api/interface_adapter
 ```plaintext
 FluMinGo/golang/specific_api/use_case
 ├── user
-│   ├── user_use_case.go
-│   └── user_service.go
+│   ├── user_use_case.go(ユーザー関連ユースケース)
+│   └── user_service.go(ユーザーサービス)
 └── product
-    ├── product_use_case.go
-    └── product_service.go
+    ├── product_use_case.go(商品関連ユースケース)
+    └── product_service.go(商品サービス)
 ```
 
 ### golang(個別API_entities)
@@ -159,11 +159,11 @@ FluMinGo/golang/specific_api/use_case
 ```plaintext
 FluMinGo/golang/specific_api/entities
 ├── user
-│   ├── user.go
-│   └── user_repository.go
+│   ├── user.go(ユーザーモデル)
+│   └── user_repository.go(ユーザーリポジトリ)
 └── product
-    ├── product.go
-    └── product_repository.go
+    ├── product.go(商品モデル)
+    └── product_repository.go(商品リポジトリ)
 ```
 
 各ディレクトリの詳細については、各ファイルのコメントを参照してください。
