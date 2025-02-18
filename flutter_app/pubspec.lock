@@ -136,6 +136,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.6"
+  http3:
+    dependency: "direct main"
+    description:
+      name: http3
+      sha256: "2765b877c0418158ea0982b84d7df0d7f4644547b8287f34f60d3d7c4aff3d77"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.0"
   http_parser:
     dependency: transitive
     description:
@@ -256,6 +264,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.9.1"
+  quic:
+    dependency: "direct main"
+    description:
+      name: quic
+      sha256: "745c7fd62871cfb6d5940409292e8de5d59bad90802f57b969b3fb125ebf31e7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0-dev.0"
   sky_engine:
     dependency: transitive
     description: flutter
