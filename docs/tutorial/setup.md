@@ -20,3 +20,5 @@
     ```bash
     psql -U postgres -c "CREATE DATABASE flumingo;"
     ```
+
+詳細なセットアップ手順については、各技術の公式ドキュメントを参照してください。
