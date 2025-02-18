@@ -164,3 +164,6 @@ FluMinGo/golang/specific_api/entities
 └── product
     ├── product.go
     └── product_repository.go
+```
+
+各ディレクトリの詳細については、各ファイルのコメントを参照してください。
