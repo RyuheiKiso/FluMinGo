@@ -107,6 +107,8 @@ FluMinGo/flutter_app/lib
         └── xml_helper.dart(XML処理)
 ```
 
+各ディレクトリは、シングルリスポンシビリティの原則に従い、モジュール化されています。
+
 ### golang(共通機能-API)
 
 共通機能を提供するAPIのディレクトリ構成です。これには、認証やデータベース接続などの共通機能が含まれます。
@@ -165,5 +167,9 @@ FluMinGo/golang/specific_api/entities
     ├── product.go(商品モデル)
     └── product_repository.go(商品リポジトリ)
 ```
+
+### 補足 (高度な設計観点)
+- Flutter側はMVVMまたはBLoCパターンの実装を推奨
+- Golang側はドメイン駆動設計（DDD）の考え方を取り入れ、レイヤーごとの役割分担を明確化しています。
 
 各ディレクトリの詳細については、各ファイルのコメントを参照してください。
