@@ -1,29 +1,43 @@
 # セットアップ手順
 
 ### 前提条件
-- Flutter SDK ※最新安定版を推奨
-- Golang ※Module機能を活用
-- PostgreSQL ※SSL接続を検討
+- Flutter SDK  
+  ※ 最新安定版の利用および各プラットフォームごとの依存ライブラリの更新チェック
+- Golang  
+  ※ Module機能利用のため、バージョン互換性を事前検証
+- PostgreSQL  
+  ※ SSL接続、カスタムユーザー権限、バックアップ設定の確認
 
-### 手順
-1. リポジトリをクローンします。
-    ```bash
-    git clone https://github.com/your-repo/FluMinGo.git
-    cd FluMinGo
-    ```
-2. 必要な依存関係をインストールします。
-    ```bash
-    flutter pub get
-    go mod tidy
-    ```
-3. データベースをセットアップします。
-    ```bash
-    psql -U postgres -c "CREATE DATABASE flumingo;"
-    ```
+## 手順
+
+### 1. リポジトリのクローンと初期設定
+- クローン後、各サブモジュールの最新状態を確認
+- 依存ライブラリのバージョン整合性をチェック
+```bash
+git clone https://github.com/your-repo/FluMinGo.git
+cd FluMinGo
+```
+
+### 2. 依存関係のインストール
+- ネットワーク・プロキシ設定の確認
+- 環境変数の最適化を実施
+```bash
+flutter pub get
+go mod tidy
+```
+
+### 3. データベースセットアップ
+- 初回実行後、アクセス権限、拡張モジュールの確認
+- エラーログ確認で問題箇所を特定
+```bash
+psql -U postgres -c "CREATE DATABASE flumingo;"
+```
 
 詳細なセットアップ手順については、各技術の公式ドキュメントを参照してください。
 
-<!-- 追加: 高度なセットアップオプション -->
-### 補足 (高度なセットアップ)
-- DockerやKubernetesを利用した分散環境の構築例を合わせて検討してください。
-- 環境変数の設定（例：.envファイル）や秘密情報の管理方法も併せて確認を推奨します。
+## 補足 (高度なセットアップ)
+- **Docker/Kubernetes利用時**  
+  - 環境変数の暗号化、シークレット管理ツールとの連携
+  - ネットワークポリシーの適用
+- **.envファイル**  
+  - 秘密情報の管理方法も併せ検討
