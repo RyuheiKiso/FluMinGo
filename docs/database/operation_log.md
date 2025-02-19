@@ -1,8 +1,9 @@
-## 操作ログテーブル
+# 操作ログテーブル設計書
 
+## 概要
 ユーザーの操作（ログイン、更新、削除等）を記録するテーブルです。
 
-### テーブル定義
+## テーブル定義
 - テーブル名: `operation_log`
 
 | カラム名         | データ型      | 制約                                      | 説明                                               |
@@ -15,7 +16,7 @@
 | created_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP        | レコード作成日時                                  |
 | updated_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
-### 備考
+## 備考
 - `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください。
 - 適切なデータ整合性チェックを実装してください。
 - ログは監査・トラブルシュート目的で利用します。保管期間やアーカイブポリシーの策定を検討してください。
