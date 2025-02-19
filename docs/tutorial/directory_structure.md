@@ -4,14 +4,14 @@
 | フォルダ       | 役割                                      |
 |----------------|-----------------------------------------|
 | main.dart      | エントリーポイント                        |
-| screens        | 各画面（home, login, profileなど）を管理    |
+| screens        | 各画面（home, login, register, profileなど）を管理    |
 | util           | ユーティリティ機能（base_page, component 等） |
 
 ### Flutter
 各フォルダは以下の役割を担います：
 - **main.dart**：エントリーポイント
 - **screens**：  
-  - home, login, profileなど、各画面ごとにMVC構成を実装  
+  - home, login, register, profileなど、各画面ごとにMVC構成を実装  
   - controller, model, viewで責務を分離
 - **util**：ユーティリティ機能を集約  
   - base_page、component、encryptionなど、用途別に整理
@@ -37,6 +37,13 @@ FluMinGo/flutter_app/lib
 │   │   │   └── login_model.dart(ログイン処理のモデル)
 │   │   └── view
 │   │       └── login_view.dart(ログイン画面のUI)
+│   ├── register(ユーザー登録画面)
+│   │   ├── controller
+│   │   │   └── register_controller.dart(ユーザー登録のコントローラ)
+│   │   ├── model
+│   │   │   └── register_model.dart(ユーザー登録のモデル)
+│   │   └── view
+│   │       └── register_view.dart(ユーザー登録画面のUI)
 │   └── profile(プロフィール画面)
 │       ├── controller
 │       │   └── profile_controller.dart(プロフィール画面のコントローラ)
@@ -157,9 +164,12 @@ FluMinGo/golang/specific_api/interface_adapter
 ├── user
 │   ├── user_interface.go(ユーザーAPIのインターフェース)
 │   └── user_adapter.go(ユーザーAPIのアダプター)
-└── product
-    ├── product_interface.go(商品APIのインターフェース)
-    └── product_adapter.go(商品APIのアダプター)
+├── product
+│   ├── product_interface.go(商品APIのインターフェース)
+│   └── product_adapter.go(商品APIのアダプター)
+└── registration
+    ├── registration_interface.go (ユーザー登録APIのインターフェース)
+    └── registration_adapter.go (ユーザー登録APIのアダプター)
 ```
 
 ### golang(個別API_use case)
@@ -171,9 +181,12 @@ FluMinGo/golang/specific_api/use_case
 ├── user
 │   ├── user_use_case.go(ユーザー関連ユースケース)
 │   └── user_service.go(ユーザーサービス)
-└── product
-    ├── product_use_case.go(商品関連ユースケース)
-    └── product_service.go(商品サービス)
+├── product
+│   ├── product_use_case.go(商品関連ユースケース)
+│   └── product_service.go(商品サービス)
+└── registration
+    ├── registration_use_case.go (ユーザー登録ユースケース)
+    └── registration_service.go (ユーザー登録サービス)
 ```
 
 ### golang(個別API_entities)
@@ -185,9 +198,12 @@ FluMinGo/golang/specific_api/entities
 ├── user
 │   ├── user.go(ユーザーモデル)
 │   └── user_repository.go(ユーザーリポジトリ)
-└── product
-    ├── product.go(商品モデル)
-    └── product_repository.go(商品リポジトリ)
+├── product
+│   ├── product.go(商品モデル)
+│   └── product_repository.go(商品リポジトリ)
+└── registration
+    ├── registration.go (ユーザー登録モデル)
+    └── registration_repository.go (ユーザー登録リポジトリ)
 ```
 
 ### 補足 (高度な設計観点)

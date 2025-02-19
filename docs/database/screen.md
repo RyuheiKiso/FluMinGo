@@ -1,8 +1,9 @@
-## 機能（画面）管理テーブル
+# 機能（画面）管理テーブル設計書
 
-ドキュメントは、アプリケーション内の各画面に関する情報の管理について説明します。
+## 概要
+アプリケーション内の各画面に関する情報を管理するテーブルです。
 
-### テーブル定義
+## テーブル定義
 - テーブル名: `screen`
 
 | カラム名     | データ型      | 制約                                    | 説明                                   |
@@ -16,7 +17,7 @@
 | created_at   | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP     | レコード作成日時                        |
 | updated_at   | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時          |
 
-### 備考
+## 備考
 - `screen_name`は各画面を一意に識別するための名称です。
 - `route`は画面遷移管理に使用します。
 - 必要に応じて追加カラムやリレーションの設定を検討してください。
