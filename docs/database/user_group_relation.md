@@ -1,5 +1,6 @@
-## ユーザーグループ関連テーブル
+# ユーザーグループ関連テーブル設計書
 
+## 概要
 各グループに所属するユーザーを管理するリレーションテーブルです。
 
 ## テーブル定義
@@ -9,7 +10,7 @@
 |------------|--------------|-----------------------------------------------------------------|-----------------------------------------------|
 | id         | INT          | PRIMARY KEY, AUTO_INCREMENT                                     | リレーションの一意な識別子                      |
 | user_id    | INT          | NOT NULL                                                        | 対象ユーザーの識別子 (`user` テーブルの `id`)     |
-| group_id   | INT          | NOT NULL                                                        | 対象グループの識別子 (`permission_group` テーブルの `id`)|
+| group_id   | INT          | NOT NULL                                                        | 対象グループの識別子 (`permission_group` テーブルの `id`) |
 | role       | VARCHAR(50)  | DEFAULT NULL                                                    | グループ内での役割（例: 管理者、メンバー）         |
 | created_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP                             | リレーション作成日時                           |
 | updated_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | リレーション更新日時                           |
