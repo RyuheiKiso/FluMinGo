@@ -145,14 +145,19 @@ FluMinGo/flutter_app/lib
 ```plaintext
 FluMinGo/golang/common_api
 ├── auth
-│   ├── auth_handler.go(認証ハンドラー)
-│   └── auth_service.go(認証サービス)
+│   ├── auth_handler.go (認証ハンドラー)
+│   ├── auth_service.go (認証サービス)
+│   └── auth_repository.go (認証リポジトリ)
 ├── db
-│   ├── db_connection.go(DB接続)
-│   └── db_queries.go(DBクエリ管理)
+│   ├── db_connection.go (DB接続)
+│   └── db_queries.go (DBクエリ管理)
+├── gateway
+│   ├── gateway_handler.go (APIゲートウェイハンドラー)
+│   ├── authorization.go (認可処理)
+│   └── rate_limiter.go (レートリミッティング処理)
 └── middleware
-    ├── logging.go(ログミドルウェア)
-    └── recovery.go(リカバリミドルウェア)
+    ├── logging.go (ログミドルウェア)
+    └── recovery.go (リカバリミドルウェア)
 ```
 
 ### golang(個別API_interface and adapter)
