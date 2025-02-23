@@ -9,13 +9,12 @@ class CustomTooltip extends StatelessWidget {
   // ツールチップの表示位置
   final TooltipPosition position;
 
-  CustomTooltip({required this.message, required this.child, this.position = TooltipPosition.above});
+  const CustomTooltip({super.key, required this.message, required this.child, this.position = TooltipPosition.above});
 
   @override
   Widget build(BuildContext context) {
     return Tooltip(
       message: message,
-      child: child,
       decoration: BoxDecoration(
         color: Colors.grey[700],
         borderRadius: BorderRadius.circular(8),
@@ -24,6 +23,7 @@ class CustomTooltip extends StatelessWidget {
       waitDuration: Duration(milliseconds: 500),
       showDuration: Duration(seconds: 2),
       preferBelow: position == TooltipPosition.below,
+      child: child,
     );
   }
 }

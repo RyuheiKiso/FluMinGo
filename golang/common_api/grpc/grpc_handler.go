@@ -1,0 +1,43 @@
+package grpc
+
+import (
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+)
+
+// GRPCServer は gRPCサーバーの設定と管理を担当する構造体
+// 必要に応じてフィールドを追加してください
+type GRPCServer struct {
+	server *grpc.Server
+	// ...必要なフィールド...
+}
+
+// NewGRPCServer は新しい gRPCサーバーのインスタンスを作成します
+func NewGRPCServer() *GRPCServer {
+	return &GRPCServer{
+		server: grpc.NewServer(),
+	}
+}
+
+// Start は指定したアドレスで gRPCサーバーを起動します
+func (s *GRPCServer) Start(address string) error {
+	lis, err := net.Listen("tcp", address)
+	if err != nil {
+		log.Printf("リスナーの作成に失敗しました: %v", err)
+		return err
+	}
+	log.Printf("gRPCサーバーを %s で起動中...", address)
+
+	// サービスの登録はここで実施
+	// ...existing code...
+
+	return s.server.Serve(lis)
+}
+
+// Stop は gRPCサーバーを優雅に停止します
+func (s *GRPCServer) Stop() {
+	log.Println("gRPCサーバーを停止します...")
+	s.server.GracefulStop()
+}

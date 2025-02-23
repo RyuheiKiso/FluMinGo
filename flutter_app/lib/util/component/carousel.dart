@@ -42,9 +42,10 @@ class Carousel extends StatefulWidget {
   /// 
   /// [items] カルーセル内に表示するウィジェットのリスト
   /// [interval] ページが自動的に切り替わる間隔
-  Carousel({required this.items, this.interval = const Duration(seconds: 3)});
+  const Carousel({super.key, required this.items, this.interval = const Duration(seconds: 3)});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CarouselState createState() => _CarouselState();
 }
 

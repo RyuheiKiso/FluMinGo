@@ -24,6 +24,7 @@ class CustomDropdown extends StatefulWidget {
   const CustomDropdown({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomDropdownState createState() => _CustomDropdownState();
 }
 

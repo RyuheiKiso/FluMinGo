@@ -17,7 +17,7 @@ class CustomTabBar extends StatelessWidget {
   // タブのアイコンリスト
   final List<IconData>? icons;
 
-  CustomTabBar({
+  const CustomTabBar({super.key, 
     required this.tabs,
     required this.controller,
     this.indicatorColor = Colors.blue,

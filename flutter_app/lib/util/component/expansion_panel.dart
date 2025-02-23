@@ -5,12 +5,13 @@ class CustomExpansionPanel extends StatefulWidget {
   const CustomExpansionPanel({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomExpansionPanelState createState() => _CustomExpansionPanelState();
 }
 
 class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
   // エクスパンションパネルのデータ
-  List<Item> _data = generateItems(5);
+  final List<Item> _data = generateItems(5);
 
   @override
   Widget build(BuildContext context) {

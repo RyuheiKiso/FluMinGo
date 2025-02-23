@@ -13,7 +13,7 @@ class CustomSwitch extends StatelessWidget {
   // スイッチがオフのときの色
   final Color inactiveColor;
 
-  CustomSwitch({required this.value, required this.onChanged, this.label = '', this.activeColor = Colors.blue, this.inactiveColor = Colors.grey});
+  const CustomSwitch({super.key, required this.value, required this.onChanged, this.label = '', this.activeColor = Colors.blue, this.inactiveColor = Colors.grey});
 
   @override
   Widget build(BuildContext context) {

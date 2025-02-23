@@ -17,7 +17,7 @@ class CustomStepper extends StatelessWidget {
   // カスタムの「キャンセル」ボタン
   final Widget? customCancelButton;
 
-  CustomStepper({
+  const CustomStepper({super.key, 
     required this.steps,
     required this.currentStep,
     required this.onStepTapped,

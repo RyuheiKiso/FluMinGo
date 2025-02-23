@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 class TreeView extends StatefulWidget {
   // ノードのリスト
   final List<TreeNode> nodes;
-  TreeView({required this.nodes});
+  const TreeView({super.key, required this.nodes});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TreeViewState createState() => _TreeViewState();
 }
 
@@ -26,13 +27,13 @@ class _TreeViewState extends State<TreeView> {
     final isExpanded = _expandedNodes[node] ?? false;
     return ExpansionTile(
       title: Text(node.label),
-      children: node.children.map((child) => _buildNode(child)).toList(),
       initiallyExpanded: isExpanded,
       onExpansionChanged: (expanded) {
         setState(() {
           _expandedNodes[node] = expanded;
         });
       },
+      children: node.children.map((child) => _buildNode(child)).toList(),
     );
   }
 }

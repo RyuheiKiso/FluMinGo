@@ -51,7 +51,7 @@ class CustomSlider extends StatelessWidget {
   /// [inactiveColor] スライダーのインアクティブカラー
   /// [thumbColor] スライダーのサムカラー
   const CustomSlider({
-    Key? key,
+    super.key,
     required this.value,
     required this.onChanged,
     this.min = 0.0,
@@ -61,7 +61,7 @@ class CustomSlider extends StatelessWidget {
     this.activeColor,
     this.inactiveColor,
     this.thumbColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

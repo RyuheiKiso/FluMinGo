@@ -89,7 +89,7 @@ class FormHelper {
       return '$fieldNameを入力してください';
     }
     if (value.length < minLength || value.length > maxLength) {
-      return '$fieldNameは${minLength}文字以上${maxLength}文字以下で入力してください';
+      return '$fieldNameは$minLength文字以上$maxLength文字以下で入力してください';
     }
     return null;
   }
@@ -104,7 +104,7 @@ class FormHelper {
       return '有効な数値を入力してください';
     }
     if (number < min || number > max) {
-      return '$fieldNameは${min}以上${max}以下の数値を入力してください';
+      return '$fieldNameは$min以上$max以下の数値を入力してください';
     }
     return null;
   }
@@ -166,7 +166,7 @@ class FormHelper {
       return '$fieldNameを入力してください';
     }
     if (value.length != exactLength) {
-      return '$fieldNameは${exactLength}文字で入力してください';
+      return '$fieldNameは$exactLength文字で入力してください';
     }
     return null;
   }

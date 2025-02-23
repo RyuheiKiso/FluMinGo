@@ -29,6 +29,7 @@ class Toast {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
             decoration: BoxDecoration(
+              // ignore: deprecated_member_use
               color: backgroundColor.withOpacity(0.7),
               borderRadius: BorderRadius.circular(8.0),
             ),

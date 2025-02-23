@@ -23,7 +23,7 @@ class ScaffoldComponent extends StatelessWidget {
 
   // コンストラクタにコメントを追加
   const ScaffoldComponent({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
     this.floatingActionButton,
@@ -33,7 +33,7 @@ class ScaffoldComponent extends StatelessWidget {
     this.appBarActions,
     this.backgroundColor,
     this.resizeToAvoidBottomInset = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

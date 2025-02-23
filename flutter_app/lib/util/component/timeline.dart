@@ -22,10 +22,10 @@ class TimelineComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: events,
       scrollDirection: scrollDirection,
       reverse: reverse,
       controller: controller,
+      children: events,
     );
   }
 }

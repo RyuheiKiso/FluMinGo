@@ -68,6 +68,7 @@ class CustomAlert extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       // dismissibleプロパティを使用
       onWillPop: () async => dismissible, 

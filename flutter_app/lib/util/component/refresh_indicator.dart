@@ -21,7 +21,7 @@ class CustomRefreshIndicator extends StatelessWidget {
 
   // コンストラクタにコメントを追加
   const CustomRefreshIndicator({
-    Key? key,
+    super.key,
     required this.child,
     required this.onRefresh,
     this.color,
@@ -30,7 +30,7 @@ class CustomRefreshIndicator extends StatelessWidget {
     this.semanticsLabel,
     this.semanticsValue,
     this.edgePadding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

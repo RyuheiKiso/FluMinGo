@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 class Tree extends StatefulWidget {
   // ノードのリスト
   final List<TreeNode> nodes;
-  Tree({required this.nodes});
+  const Tree({super.key, required this.nodes});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TreeState createState() => _TreeState();
 }
 
