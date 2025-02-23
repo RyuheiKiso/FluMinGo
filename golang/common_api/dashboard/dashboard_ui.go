@@ -43,3 +43,9 @@ func (du *DashboardUI) NotifyRealTime(message string) error {
 	// ...リアルタイム通知の実装...
 	return nil
 }
+
+// ダッシュボードの状態を取得する機能を追加
+func (du *DashboardUI) GetStatus() string {
+	// 実際の実装はダッシュボードの状態を返す必要があります
+	return "OK"
+}
