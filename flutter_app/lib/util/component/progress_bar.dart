@@ -27,6 +27,7 @@ class ProgressBarComponent extends StatelessWidget {
     return LinearProgressIndicator(
       value: progress,
       valueColor: AlwaysStoppedAnimation<Color>(color),
+      // ignore: deprecated_member_use
       backgroundColor: color.withOpacity(0.3),
     );
   }
