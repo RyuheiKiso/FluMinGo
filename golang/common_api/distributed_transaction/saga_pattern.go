@@ -66,3 +66,9 @@ func (s *Saga) ExecuteWithRetry(ctx context.Context, retries int) error {
 func (s *Saga) LogSaga(status string) {
 	log.Printf("Saga status: %s", status)
 }
+
+// Sagaのバリデーション機能を追加
+func (s *Saga) ValidateSaga() bool {
+	// バリデーションロジックを実装
+	return len(s.steps) > 0
+}

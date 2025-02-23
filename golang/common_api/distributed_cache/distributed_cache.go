@@ -55,3 +55,9 @@ func UpdateCache(rdb *redis.Client, key string, value interface{}) error {
 func LogCacheOperation(operation, key string) {
 	fmt.Printf("Cache operation: %s, Key: %s\n", operation, key)
 }
+
+// キャッシュのバリデーション機能を追加
+func ValidateCacheKey(key string) bool {
+	// バリデーションロジックを実装
+	return key != ""
+}

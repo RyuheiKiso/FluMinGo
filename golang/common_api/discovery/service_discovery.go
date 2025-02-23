@@ -55,3 +55,9 @@ func (sd *ServiceDiscovery) UpdateService(serviceName, serviceURL string) error 
 func (sd *ServiceDiscovery) LogDiscovery(operation, serviceName string) {
 	fmt.Printf("Discovery operation: %s, Service: %s\n", operation, serviceName)
 }
+
+// サービス名のバリデーション機能を追加
+func ValidateServiceName(serviceName string) bool {
+	// バリデーションロジックを実装
+	return serviceName != ""
+}

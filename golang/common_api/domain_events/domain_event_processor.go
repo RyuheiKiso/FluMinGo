@@ -67,3 +67,10 @@ func (dep *DomainEventProcessor) RetryEvent(event string, retries int) error {
 func (dep *DomainEventProcessor) LogEvent(event string) {
 	fmt.Printf("Event logged: %s\n", event)
 }
+
+// ドメインイベントのバリデーション機能を追加
+// ValidateEvent はイベントのバリデーションを行います。
+func (dep *DomainEventProcessor) ValidateEvent(event string) bool {
+	// バリデーションロジックを実装
+	return event != ""
+}

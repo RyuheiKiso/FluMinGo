@@ -59,3 +59,9 @@ func (c *Container) UpdateService(name string, service interface{}) {
 func (c *Container) LogContainerOperation(operation, serviceName string) {
 	fmt.Printf("Container operation: %s, Service: %s\n", operation, serviceName)
 }
+
+// サービス名のバリデーション機能を追加
+func ValidateServiceName(serviceName string) bool {
+	// バリデーションロジックを実装
+	return serviceName != ""
+}

@@ -75,3 +75,9 @@ func (t *TwoPhaseCommit) ExecuteWithRetry(ctx context.Context, retries int) erro
 func (t *TwoPhaseCommit) LogTransaction(status string) {
 	log.Printf("Transaction status: %s", status)
 }
+
+// トランザクションのバリデーション機能を追加
+func (t *TwoPhaseCommit) ValidateTransaction() bool {
+	// バリデーションロジックを実装
+	return len(t.participants) > 0
+}
