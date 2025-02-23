@@ -1,6 +1,10 @@
 package compliance
 
 import (
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
+	"io"
 	"log"
 	"os"
 )
@@ -8,16 +12,17 @@ import (
 // 監査・コンプライアンス対応強化: アクセスログ収集、暗号化、レポート生成
 
 type ComplianceManager struct {
-	logFile *os.File
+	logFile       *os.File
+	encryptionKey string
 }
 
-func NewComplianceManager(logFilePath string) (*ComplianceManager, error) {
+func NewComplianceManager(logFilePath string, encryptionKey string) (*ComplianceManager, error) {
 	file, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return nil, err
 	}
 
-	return &ComplianceManager{logFile: file}, nil
+	return &ComplianceManager{logFile: file, encryptionKey: encryptionKey}, nil
 }
 
 func (c *ComplianceManager) LogAccess(message string) {
@@ -26,8 +31,18 @@ func (c *ComplianceManager) LogAccess(message string) {
 }
 
 func (c *ComplianceManager) EncryptData(data []byte) ([]byte, error) {
-	// 暗号化処理を実装
-	return data, nil
+	block, err := aes.NewCipher([]byte(c.encryptionKey))
+	if err != nil {
+		return nil, err
+	}
+	ciphertext := make([]byte, aes.BlockSize+len(data))
+	iv := ciphertext[:aes.BlockSize]
+	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
+		return nil, err
+	}
+	stream := cipher.NewCFBEncrypter(block, iv)
+	stream.XORKeyStream(ciphertext[aes.BlockSize:], data)
+	return ciphertext, nil
 }
 
 func (c *ComplianceManager) GenerateReport() ([]byte, error) {
