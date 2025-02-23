@@ -15,11 +15,13 @@ class GlassmorphismContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         gradient: LinearGradient(
+          // ignore: deprecated_member_use
           colors: [Colors.white.withOpacity(0.2), Colors.white.withOpacity(0.05)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         border: Border.all(
+          // ignore: deprecated_member_use
           color: Colors.white.withOpacity(0.1),
         ),
       ),
