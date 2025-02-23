@@ -20,6 +20,27 @@ type Cache struct {
 	TTL   time.Duration // キャッシュの有効期限を追加
 }
 
+// キャッシュのサイズ制限機能を追加
+func (c *Cache) SetMaxSize(maxSize int) {
+	c.Mutex.Lock()
+	defer c.Mutex.Unlock()
+	if len(c.Data) > maxSize {
+		for k := range c.Data {
+			delete(c.Data, k)
+			if len(c.Data) <= maxSize {
+				break
+			}
+		}
+	}
+}
+
+// キャッシュのエントリ数を取得する機能を追加
+func (c *Cache) GetEntryCount() int {
+	c.Mutex.RLock()
+	defer c.Mutex.RUnlock()
+	return len(c.Data)
+}
+
 // DBQueries provides common database query management functions.
 type DBQueries struct {
 	Cache Cache
