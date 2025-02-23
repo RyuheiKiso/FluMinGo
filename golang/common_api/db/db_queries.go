@@ -41,6 +41,16 @@ func (c *Cache) GetEntryCount() int {
 	return len(c.Data)
 }
 
+// キャッシュのヒット率を計測する機能を追加
+func (c *Cache) GetHitRate(totalQueries int) float64 {
+	c.Mutex.RLock()
+	defer c.Mutex.RUnlock()
+	if totalQueries == 0 {
+		return 0.0
+	}
+	return float64(len(c.Data)) / float64(totalQueries)
+}
+
 // DBQueries provides common database query management functions.
 type DBQueries struct {
 	Cache Cache
