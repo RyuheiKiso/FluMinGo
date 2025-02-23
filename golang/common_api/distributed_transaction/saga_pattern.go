@@ -39,3 +39,9 @@ func (s *Saga) rollback(ctx context.Context) {
 		}
 	}
 }
+
+// 現在のステップを取得する機能を追加
+func (s *Saga) CurrentStep() int {
+	// 現在のステップを返すロジックを実装
+	return len(s.steps)
+}

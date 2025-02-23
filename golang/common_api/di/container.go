@@ -28,3 +28,10 @@ func (c *Container) Resolve(name string) interface{} {
 
 	return c.services[name]
 }
+
+// サービスの削除機能を追加
+func (c *Container) Unregister(name string) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	delete(c.services, name)
+}

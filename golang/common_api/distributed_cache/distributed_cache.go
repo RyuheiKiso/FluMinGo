@@ -26,3 +26,8 @@ func SetCache(rdb *redis.Client, key string, value interface{}) error {
 func GetCache(rdb *redis.Client, key string) (string, error) {
 	return rdb.Get(ctx, key).Result()
 }
+
+// キャッシュの削除機能を追加
+func DeleteCache(rdb *redis.Client, key string) error {
+	return rdb.Del(ctx, key).Err()
+}

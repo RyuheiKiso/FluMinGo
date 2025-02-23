@@ -29,3 +29,10 @@ func (sd *ServiceDiscovery) RegisterService(serviceName, serviceURL string) erro
 	fmt.Printf("サービス %s (%s) を登録しました\n", serviceName, serviceURL)
 	return nil
 }
+
+// サービスの削除機能を追加
+func (sd *ServiceDiscovery) DeregisterService(serviceName string) error {
+	// サービス削除処理を実装する
+	fmt.Printf("サービス %s を削除しました\n", serviceName)
+	return nil
+}

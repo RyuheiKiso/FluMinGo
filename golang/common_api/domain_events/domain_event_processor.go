@@ -25,3 +25,14 @@ func (dep *DomainEventProcessor) TriggerAction(action string) error {
 	// ...アクショントリガーの実装...
 	return nil
 }
+
+// ドメインイベントのバッチ処理を追加
+// BatchProcessEvents は複数のドメインイベントをバッチ処理します。
+func (dep *DomainEventProcessor) BatchProcessEvents(events []string) error {
+	for _, event := range events {
+		if err := dep.ProcessEvent(event); err != nil {
+			return err
+		}
+	}
+	return nil
+}

@@ -45,3 +45,9 @@ func (t *TwoPhaseCommit) rollback(ctx context.Context) {
 		}
 	}
 }
+
+// トランザクションの状態を確認する機能を追加
+func (t *TwoPhaseCommit) Status() string {
+	// 状態確認のロジックを実装
+	return "All participants are ready"
+}

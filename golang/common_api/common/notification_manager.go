@@ -31,10 +31,7 @@ func (nm *NotificationManager) Subscribe(id string) <-chan string {
 func (nm *NotificationManager) Unsubscribe(id string) {
 	nm.mutex.Lock()
 	defer nm.mutex.Unlock()
-	if ch, exists := nm.subscribers[id]; exists {
-		close(ch)
-		delete(nm.subscribers, id)
-	}
+	delete(nm.subscribers, id)
 }
 
 // Notify は全てのサブスクライバーに通知を送信します。
