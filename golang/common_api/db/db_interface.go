@@ -42,3 +42,9 @@ type RetriableTransaction interface {
 	Transaction
 	Retry(attempts int, delay time.Duration) error
 }
+
+// トランザクションの状態を確認する機能を追加
+type TransactionStatus interface {
+	IsCommitted() bool
+	IsRolledBack() bool
+}
