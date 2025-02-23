@@ -5,9 +5,10 @@ class WizardView extends StatefulWidget {
   // ステップのリスト
   final List<WizardStep> steps;
 
-  WizardView({required this.steps});
+  const WizardView({super.key, required this.steps});
 
   @override
+  // ignore: library_private_types_in_public_api
   _WizardViewState createState() => _WizardViewState();
 }
 
