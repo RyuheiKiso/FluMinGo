@@ -52,6 +52,14 @@ func (conn *SQLDBConnector) Query(query string, args ...interface{}) (Rows, erro
 	return rows, nil
 }
 
+// クエリの実行時間を計測する機能を追加
+func (conn *SQLDBConnector) TimedQuery(query string, args ...interface{}) (Rows, time.Duration, error) {
+	start := time.Now()
+	rows, err := conn.Query(query, args...)
+	duration := time.Since(start)
+	return rows, duration, err
+}
+
 // Exec executes a query without returning any rows. For example: an INSERT or UPDATE.
 func (conn *SQLDBConnector) Exec(query string, args ...interface{}) (Result, error) {
 	res, err := conn.DB.Exec(query, args...)
