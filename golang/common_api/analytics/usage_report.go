@@ -89,3 +89,8 @@ func (ur *UsageReport) generateTextReport() (string, error) {
 	fmt.Println(report)
 	return report, nil
 }
+
+// レポートのデータを追加するメソッドを追加
+func (ur *UsageReport) AddData(newData map[string]interface{}) {
+	ur.data = append(ur.data, newData)
+}

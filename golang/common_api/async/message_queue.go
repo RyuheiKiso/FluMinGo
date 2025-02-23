@@ -119,3 +119,20 @@ func (mq *MessageQueue) Close() error {
 		return fmt.Errorf("unsupported broker type: %s", mq.brokerType)
 	}
 }
+
+// キューのメッセージ数を取得するメソッドを追加
+func (mq *MessageQueue) GetMessageCount(queueName string) (int, error) {
+	switch mq.brokerType {
+	case "kafka":
+		// Kafka のメッセージ数を取得するロジックを追加
+		return 0, nil // 仮の値を返す
+	case "rabbitmq":
+		queue, err := mq.rabbitChannel.QueueInspect(queueName)
+		if err != nil {
+			return 0, fmt.Errorf("failed to inspect queue: %w", err)
+		}
+		return queue.Messages, nil
+	default:
+		return 0, fmt.Errorf("unsupported broker type: %s", mq.brokerType)
+	}
+}

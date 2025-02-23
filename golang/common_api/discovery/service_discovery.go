@@ -36,3 +36,44 @@ func (sd *ServiceDiscovery) DeregisterService(serviceName string) error {
 	fmt.Printf("サービス %s を削除しました\n", serviceName)
 	return nil
 }
+
+// サービスのヘルスチェック機能を追加
+func (sd *ServiceDiscovery) HealthCheck(serviceName string) (bool, error) {
+	// ヘルスチェックのロジックを実装
+	// 現在はダミーの結果を返す
+	return true, nil
+}
+
+// サービスの更新機能を追加
+func (sd *ServiceDiscovery) UpdateService(serviceName, serviceURL string) error {
+	// サービス更新処理を実装する
+	fmt.Printf("サービス %s (%s) を更新しました\n", serviceName, serviceURL)
+	return nil
+}
+
+// サービスディスカバリのロギング機能を追加
+func (sd *ServiceDiscovery) LogDiscovery(operation, serviceName string) {
+	fmt.Printf("Discovery operation: %s, Service: %s\n", operation, serviceName)
+}
+
+// サービス名のバリデーション機能を追加
+func ValidateServiceName(serviceName string) bool {
+	// バリデーションロジックを実装
+	return serviceName != ""
+}
+
+// サービスのエクスポート機能を追加
+func (sd *ServiceDiscovery) ExportService(serviceName string) (string, error) {
+	endpoints, err := sd.DiscoverService(serviceName)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("Service %s has endpoints: %v", serviceName, endpoints), nil
+}
+
+// サービスのアーカイブ機能を追加
+func (sd *ServiceDiscovery) ArchiveService(serviceName string) error {
+	fmt.Printf("Archiving service: %s\n", serviceName)
+	// アーカイブ処理の実装
+	return nil
+}

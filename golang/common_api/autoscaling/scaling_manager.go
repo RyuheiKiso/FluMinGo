@@ -60,3 +60,9 @@ func (sm *ScalingManager) SetDesiredCapacity(capacity int) error {
 func (sm *ScalingManager) GetHistory() []string {
 	return sm.history
 }
+
+// スケーリングの履歴をクリアするメソッドを追加
+func (sm *ScalingManager) ClearHistory() {
+	sm.history = []string{}
+	sm.logger.Info("スケーリングの履歴をクリアしました")
+}

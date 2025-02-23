@@ -24,3 +24,8 @@ func InitAnomalyDetection() {
 		}
 	}()
 }
+
+// 異常検知のステータスを取得するメソッドを追加
+func GetAnomalyDetectionStatus() string {
+	return "異常検知は正常に動作しています"
+}

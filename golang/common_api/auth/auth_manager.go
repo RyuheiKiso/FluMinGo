@@ -39,3 +39,14 @@ func (am *AuthManager) Authenticate(username, password string) bool {
 	}
 	return storedPassword == password
 }
+
+// ユーザーのパスワードをリセットするメソッドを追加
+func (am *AuthManager) ResetPassword(username, newPassword string) error {
+	am.mutex.Lock()
+	defer am.mutex.Unlock()
+	if _, exists := am.users[username]; !exists {
+		return errors.New("ユーザーが存在しません")
+	}
+	am.users[username] = newPassword
+	return nil
+}

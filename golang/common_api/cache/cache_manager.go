@@ -38,3 +38,10 @@ func (cm *CacheManager) Delete(key string) {
 	defer cm.mutex.Unlock()
 	delete(cm.cache, key)
 }
+
+// キャッシュのサイズを取得するメソッドを追加
+func (cm *CacheManager) Size() int {
+	cm.mutex.RLock()
+	defer cm.mutex.RUnlock()
+	return len(cm.cache)
+}

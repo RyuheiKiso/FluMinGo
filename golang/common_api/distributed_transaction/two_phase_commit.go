@@ -2,7 +2,9 @@ package distributed_transaction
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"time"
 )
 
 // 二相コミットによるデータ一貫性保証
@@ -50,4 +52,42 @@ func (t *TwoPhaseCommit) rollback(ctx context.Context) {
 func (t *TwoPhaseCommit) Status() string {
 	// 状態確認のロジックを実装
 	return "All participants are ready"
+}
+
+// トランザクションのタイムアウト機能を追加
+func (t *TwoPhaseCommit) ExecuteWithTimeout(ctx context.Context, timeout time.Duration) error {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+	return t.Execute(ctx)
+}
+
+// トランザクションのリトライ機能を追加
+func (t *TwoPhaseCommit) ExecuteWithRetry(ctx context.Context, retries int) error {
+	for i := 0; i < retries; i++ {
+		if err := t.Execute(ctx); err == nil {
+			return nil
+		}
+	}
+	return fmt.Errorf("transaction failed after %d retries", retries)
+}
+
+// トランザクションのロギング機能を追加
+func (t *TwoPhaseCommit) LogTransaction(status string) {
+	log.Printf("Transaction status: %s", status)
+}
+
+// トランザクションのバリデーション機能を追加
+func (t *TwoPhaseCommit) ValidateTransaction() bool {
+	// バリデーションロジックを実装
+	return len(t.participants) > 0
+}
+
+// トランザクションのエクスポート機能を追加
+func (t *TwoPhaseCommit) ExportTransaction() string {
+	return fmt.Sprintf("Exporting transaction with %d participants", len(t.participants))
+}
+
+// トランザクションのアーカイブ機能を追加
+func (t *TwoPhaseCommit) ArchiveTransaction() string {
+	return fmt.Sprintf("Archiving transaction with %d participants", len(t.participants))
 }

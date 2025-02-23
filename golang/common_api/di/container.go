@@ -1,6 +1,7 @@
 package di
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -34,4 +35,47 @@ func (c *Container) Unregister(name string) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	delete(c.services, name)
+}
+
+// サービスの一覧を取得する機能を追加
+func (c *Container) ListServices() []string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	services := []string{}
+	for name := range c.services {
+		services = append(services, name)
+	}
+	return services
+}
+
+// サービスの更新機能を追加
+func (c *Container) UpdateService(name string, service interface{}) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	c.services[name] = service
+}
+
+// DIコンテナのロギング機能を追加
+func (c *Container) LogContainerOperation(operation, serviceName string) {
+	fmt.Printf("Container operation: %s, Service: %s\n", operation, serviceName)
+}
+
+// サービス名のバリデーション機能を追加
+func ValidateServiceName(serviceName string) bool {
+	// バリデーションロジックを実装
+	return serviceName != ""
+}
+
+// DIコンテナのエクスポート機能を追加
+func (c *Container) ExportContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Exporting container with services: %v", c.ListServices())
+}
+
+// DIコンテナのアーカイブ機能を追加
+func (c *Container) ArchiveContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Archiving container with services: %v", c.ListServices())
 }

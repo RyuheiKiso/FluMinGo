@@ -70,3 +70,8 @@ func (al *AuditLog) ExportLogs(filePath string) error {
 	al.logger.Info("監査ログをエクスポートしました: " + filePath)
 	return nil
 }
+
+// 監査ログのサイズを取得するメソッドを追加
+func (al *AuditLog) Size() int {
+	return len(al.GetLogs())
+}

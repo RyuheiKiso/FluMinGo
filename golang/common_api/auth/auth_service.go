@@ -15,6 +15,11 @@ type AuthService struct {
 	errorHandler common.ErrorHandler
 }
 
+// GetTokensByUsername implements Authenticator.
+func (s *AuthService) GetTokensByUsername(username string) ([]string, error) {
+	panic("unimplemented")
+}
+
 // NewAuthService creates a new AuthService.
 func NewAuthService(repo AuthRepository, tokenExpiry time.Duration, logger common.Logger, errorHandler common.ErrorHandler) *AuthService {
 	return &AuthService{repo: repo, tokenExpiry: tokenExpiry, logger: logger, errorHandler: errorHandler}
@@ -74,5 +79,23 @@ func (s *AuthService) ChangePassword(username, oldPassword, newPassword string) 
 	}
 	// 実際のパスワード変更ロジックをここに追加
 	s.logger.Info("パスワードが正常に変更されました")
+	return nil
+}
+
+// ユーザーのトークンをすべて削除するメソッドを追加
+func (s *AuthService) DeleteAllTokens(username string) error {
+	tokens, err := s.repo.GetTokensByUsername(username)
+	if err != nil {
+		s.logger.Error(s.errorHandler.HandleError(err))
+		return err
+	}
+	for _, token := range tokens {
+		err := s.DeleteToken(token)
+		if err != nil {
+			s.logger.Error(s.errorHandler.HandleError(err))
+			return err
+		}
+	}
+	s.logger.Info("ユーザーのすべてのトークンを削除しました: " + username)
 	return nil
 }

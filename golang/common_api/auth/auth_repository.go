@@ -8,6 +8,7 @@ type AuthRepository interface {
 	ValidateCredentials(username, password string) (bool, error)
 	SaveToken(username, token string) error
 	DeleteToken(token string) error
+	GetTokensByUsername(username string) ([]string, error) // 追加
 }
 
 // DummyAuthRepository is a simple implementation of AuthRepository.
@@ -39,6 +40,12 @@ func (r *DummyAuthRepository) DeleteToken(token string) error {
 	return nil
 }
 
+// GetTokensByUsername はユーザー名からすべてのトークンを取得するメソッドです。
+func (r *DummyAuthRepository) GetTokensByUsername(username string) ([]string, error) {
+	// 実装を追加
+	return nil, nil
+}
+
 // InMemoryAuthRepository is a simple in-memory implementation of AuthRepository.
 type InMemoryAuthRepository struct {
 	tokens map[string]string // key: token, value: username
@@ -64,4 +71,15 @@ func (repo *InMemoryAuthRepository) DeleteToken(token string) error {
 	}
 	delete(repo.tokens, token)
 	return nil
+}
+
+// ユーザー名からすべてのトークンを取得するメソッドを追加
+func (repo *InMemoryAuthRepository) GetTokensByUsername(username string) ([]string, error) {
+	tokens := []string{}
+	for token, user := range repo.tokens {
+		if user == username {
+			tokens = append(tokens, token)
+		}
+	}
+	return tokens, nil
 }

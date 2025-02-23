@@ -54,3 +54,10 @@ func (r *RateLimiter) AdjustLimit() {
 	log.Printf("Adjusting rate limit from %d to %d", r.limit, newLimit)
 	r.limit = newLimit
 }
+
+// レートリミッターの現在のリクエスト数を取得するメソッドを追加
+func (r *RateLimiter) GetCurrentRequests(key string) int {
+	r.mutex.Lock()
+	defer r.mutex.Unlock()
+	return r.requests[key]
+}
