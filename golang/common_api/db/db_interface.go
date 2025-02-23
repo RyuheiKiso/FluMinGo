@@ -8,6 +8,8 @@ type DBConnector interface {
 	Connect(connectionString string) error
 	Query(query string, args ...interface{}) (Rows, error)
 	Exec(query string, args ...interface{}) (Result, error)
+	// トランザクション管理機能を追加
+	Begin() (Transaction, error)
 }
 
 // Rows represents the result set from a query.
@@ -25,4 +27,10 @@ type Rows interface {
 type Result interface {
 	LastInsertId() (int64, error)
 	RowsAffected() (int64, error)
+}
+
+// Transaction はトランザクションを管理するインターフェースです。
+type Transaction interface {
+	Commit() error
+	Rollback() error
 }
