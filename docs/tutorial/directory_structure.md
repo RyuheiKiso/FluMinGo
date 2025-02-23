@@ -1,19 +1,21 @@
 # ディレクトリ構成
 
 ## Flutter プロジェクト概要
-| フォルダ       | 役割                                      |
-|----------------|-----------------------------------------|
-| main.dart      | エントリーポイント                        |
-| screens        | 各画面（home, login, register, profileなど）を管理    |
-| util           | ユーティリティ機能（base_page, component 等） |
+| フォルダ            | 役割                                                     |
+|---------------------|----------------------------------------------------------|
+| main.dart           | エントリーポイント                                       |
+| di                  | 依存性注入設定（DIコンテナの定義、依存関係の注入）                |
+| screens             | 各画面（home, login, register, profileなど）の管理              |
+| util                | ユーティリティ機能（base_page, component 等）               |
 
 ### Flutter
 各フォルダは以下の役割を担います：
 - **main.dart**：エントリーポイント
-- **screens**：  
-  - home, login, register, profileなど、各画面ごとにMVC構成を実装  
-  - controller, model, viewで責務を分離
-- **util**：ユーティリティ機能を集約  
+- **di**：
+  - injection_container.dart：依存性注入の設定と各サービスの登録
+- **screens**：
+  - 各画面ごとにMVC/MVVM/BLoCパターンを実装し、内部ロジックとUIを分離。内部実装は各モジュールの契約（インターフェース）に基づき、DIにより注入される。
+- **util**：ユーティリティ機能を集約
   - base_page、component、encryptionなど、用途別に整理
 
 Flutterプロジェクトのディレクトリ構成は、以下のように各フォルダが明確な役割を担っています。  
@@ -21,112 +23,114 @@ UI、ビジネスロジック、データ操作など、各層に分かれた設
 
 ```plaintext
 FluMinGo/flutter_app/lib
-├── main.dart(エントリポイント)
-├── screens(画面群)
-│   ├── home(ホーム画面)
+├── main.dart (エントリーポイント)
+├── di
+│   └── injection_container.dart (依存性注入の設定)
+├── screens
+│   ├── home
 │   │   ├── controller
-│   │   │   └── home_controller.dart(ホーム画面のコントローラ)
+│   │   │   └── home_controller.dart (ホーム画面のコントローラ)
 │   │   ├── model
-│   │   │   └── home_model.dart(ホーム画面のモデル)
+│   │   │   └── home_model.dart (ホーム画面のモデル)
 │   │   └── view
-│   │       └── home_view.dart(ホーム画面のUI)
-│   ├── login(ログイン画面)
+│   │       └── home_view.dart (ホーム画面のUI)
+│   ├── login
 │   │   ├── controller
-│   │   │   └── login_controller.dart(ログイン処理のコントローラ)
+│   │   │   └── login_controller.dart (ログイン処理のコントローラ)
 │   │   ├── model
-│   │   │   └── login_model.dart(ログイン処理のモデル)
+│   │   │   └── login_model.dart (ログイン処理のモデル)
 │   │   └── view
-│   │       └── login_view.dart(ログイン画面のUI)
-│   ├── register(ユーザー登録画面)
+│   │       └── login_view.dart (ログイン画面のUI)
+│   ├── register
 │   │   ├── controller
-│   │   │   └── register_controller.dart(ユーザー登録のコントローラ)
+│   │   │   └── register_controller.dart (ユーザー登録のコントローラ)
 │   │   ├── model
-│   │   │   └── register_model.dart(ユーザー登録のモデル)
+│   │   │   └── register_model.dart (ユーザー登録のモデル)
 │   │   └── view
-│   │       └── register_view.dart(ユーザー登録画面のUI)
-│   └── profile(プロフィール画面)
+│   │       └── register_view.dart (ユーザー登録画面のUI)
+│   └── profile
 │       ├── controller
-│       │   └── profile_controller.dart(プロフィール画面のコントローラ)
+│       │   └── profile_controller.dart (プロフィール画面のコントローラ)
 │       ├── model
-│       │   └── profile_model.dart(プロフィール情報モデル)
+│       │   └── profile_model.dart (プロフィール情報モデル)
 │       └── view
-│           └── profile_view.dart(プロフィール画面のUI)
-└── util(ユーティリティ)
+│           └── profile_view.dart (プロフィール画面のUI)
+└── util
     ├── base_page
-    │   ├── base_page.dart(基底ページクラス)
-    │   └── base_page_helper.dart(基底ページ関連のヘルパー)
+    │   ├── base_page.dart (基底ページクラス)
+    │   └── base_page_helper.dart (基底ページ関連のヘルパー)
     ├── component
-    │   ├── accordion.dart(アコーディオンUI)
-    │   ├── alert.dart(アラートUI)
-    │   ├── app_bar.dart(アプリバーUI)
-    │   ├── avatar.dart(アバターUI)
-    │   ├── badge.dart(バッジUI)
-    │   ├── bottom_navigation_bar.dart(ボトムナビゲーション)
-    │   ├── breadcrumb.dart(パンくずリスト)
-    │   ├── button.dart(ボタンUI)
-    │   ├── card.dart(カードUI)
-    │   ├── carousel.dart(カルーセルUI)
-    │   ├── chip.dart(チップUI)
-    │   ├── divider.dart(区切り線UI)
-    │   ├── drawer.dart(ドロワーUI)
-    │   ├── dropdown.dart(ドロップダウンUI)
-    │   ├── expansion_panel.dart(展開パネルUI)
-    │   ├── floating_action_button.dart(FAB)
-    │   ├── glassmorphism_container.dart(グラスモーフィズム)
-    │   ├── grid.dart(グリッドUI)
-    │   ├── grid_view.dart(グリッド表示)
-    │   ├── label.dart(ラベルUI)
-    │   ├── list.dart(リストUI)
-    │   ├── list_view.dart(リスト表示)
-    │   ├── modal.dart(モーダルUI)
-    │   ├── navigation_rail.dart(ナビゲーションレール)
-    │   ├── pagination.dart(ページネーション)
-    │   ├── progress_bar.dart(プログレスバーUI)
-    │   ├── progress_indicator.dart(読み込みインジケータ)
-    │   ├── rating.dart(評価UI)
-    │   ├── rating_bar.dart(評価バーUI)
-    │   ├── refresh_indicator.dart(更新インジケータ)
-    │   ├── scaffold.dart(ページ骨組みUI)
-    │   ├── search_bar.dart(検索バーUI)
-    │   ├── slider.dart(スライダーUI)
-    │   ├── snackbar.dart(スナックバーUI)
-    │   ├── spinner.dart(スピナーUI)
-    │   ├── stepper.dart(ステッパーUI)
-    │   ├── switch.dart(スイッチUI)
-    │   ├── tab_bar.dart(タブバーUI)
-    │   ├── tab_view.dart(タブ表示)
-    │   ├── table.dart(テーブルUI)
-    │   ├── tabs.dart(タブ切り替え)
-    │   ├── textbox.dart(テキストボックスUI)
-    │   ├── timeline.dart(タイムラインUI)
-    │   ├── toast.dart(トースト通知)
-    │   ├── tooltip.dart(ツールチップUI)
-    │   ├── tree.dart(ツリーUI)
-    │   ├── tree_view.dart(ツリービュー)
-    │   ├── wizard.dart(ウィザードUI)
-    │   └── wizard_view.dart(ウィザード画面)
+    │   ├── accordion.dart (アコーディオンUI)
+    │   ├── alert.dart (アラートUI)
+    │   ├── app_bar.dart (アプリバーUI)
+    │   ├── avatar.dart (アバターUI)
+    │   ├── badge.dart (バッジUI)
+    │   ├── bottom_navigation_bar.dart (ボトムナビゲーション)
+    │   ├── breadcrumb.dart (パンくずリスト)
+    │   ├── button.dart (ボタンUI)
+    │   ├── card.dart (カードUI)
+    │   ├── carousel.dart (カルーセルUI)
+    │   ├── chip.dart (チップUI)
+    │   ├── divider.dart (区切り線UI)
+    │   ├── drawer.dart (ドロワーUI)
+    │   ├── dropdown.dart (ドロップダウンUI)
+    │   ├── expansion_panel.dart (展開パネルUI)
+    │   ├── floating_action_button.dart (FAB)
+    │   ├── glassmorphism_container.dart (グラスモーフィズム)
+    │   ├── grid.dart (グリッドUI)
+    │   ├── grid_view.dart (グリッド表示)
+    │   ├── label.dart (ラベルUI)
+    │   ├── list.dart (リストUI)
+    │   ├── list_view.dart (リスト表示)
+    │   ├── modal.dart (モーダルUI)
+    │   ├── navigation_rail.dart (ナビゲーションレール)
+    │   ├── pagination.dart (ページネーション)
+    │   ├── progress_bar.dart (プログレスバーUI)
+    │   ├── progress_indicator.dart (読み込みインジケータ)
+    │   ├── rating.dart (評価UI)
+    │   ├── rating_bar.dart (評価バーUI)
+    │   ├── refresh_indicator.dart (更新インジケータ)
+    │   ├── scaffold.dart (ページ骨組みUI)
+    │   ├── search_bar.dart (検索バーUI)
+    │   ├── slider.dart (スライダーUI)
+    │   ├── snackbar.dart (スナックバーUI)
+    │   ├── spinner.dart (スピナーUI)
+    │   ├── stepper.dart (ステッパーUI)
+    │   ├── switch.dart (スイッチUI)
+    │   ├── tab_bar.dart (タブバーUI)
+    │   ├── tab_view.dart (タブ表示)
+    │   ├── table.dart (テーブルUI)
+    │   ├── tabs.dart (タブ切り替え)
+    │   ├── textbox.dart (テキストボックスUI)
+    │   ├── timeline.dart (タイムラインUI)
+    │   ├── toast.dart (トースト通知)
+    │   ├── tooltip.dart (ツールチップUI)
+    │   ├── tree.dart (ツリーUI)
+    │   ├── tree_view.dart (ツリービュー)
+    │   ├── wizard.dart (ウィザードUI)
+    │   └── wizard_view.dart (ウィザード画面)
     ├── encryption
-    │   └── encryption_helper.dart(暗号化機能)
+    │   └── encryption_helper.dart (暗号化機能)
     ├── error_handling
-    │   └── error_handler.dart(エラーハンドリング)
+    │   └── error_handler.dart (エラーハンドリング)
     ├── form
-    │   └── form_helper.dart(フォーム関連処理)
+    │   └── form_helper.dart (フォーム関連処理)
     ├── http
-    │   └── http_client.dart(HTTPクライアント)
+    │   └── http_client.dart (HTTPクライアント)
     ├── json
-    │   └── json_helper.dart(JSON処理)
+    │   └── json_helper.dart (JSON処理)
     ├── logging
-    │   └── logging_helper.dart(ログ機能)
+    │   └── logging_helper.dart (ログ機能)
     ├── math
-    │   └── math_helper.dart(数値計算)
+    │   └── math_helper.dart (数値計算)
     ├── sqlite
-    │   └── sqlite_helper.dart(SQLite操作)
+    │   └── sqlite_helper.dart (SQLite操作)
     ├── string
-    │   └── string_helper.dart(文字列処理)
+    │   └── string_helper.dart (文字列処理)
     ├── validation
-    │   └── validation_helper.dart(バリデーション処理)
+    │   └── validation_helper.dart (バリデーション処理)
     └── xml
-        └── xml_helper.dart(XML処理)
+        └── xml_helper.dart (XML処理)
 ```
 
 各ディレクトリは、システム設計の原則に従い、役割分担が明確化されています。  
@@ -140,22 +144,25 @@ FluMinGo/flutter_app/lib
   API仕様、ビジネスロジック、データモデルを分離
 
 ### golang(共通機能-API)
-- 認証、DB接続、ロギングなど、システム全体で共通利用する基盤機能を管理
+システム全体で共通利用する基盤機能は、インターフェース（契約）で定義し、その実装は内部に隠蔽、またDIにより各依存先に注入されます。
 
 ```plaintext
 FluMinGo/golang/common_api
 ├── auth
-│   ├── auth_handler.go (認証ハンドラー)
-│   ├── auth_service.go (認証サービス)
-│   └── auth_repository.go (認証リポジトリ)
+│   ├── auth_interface.go    (認証API契約の定義)
+│   ├── auth_handler.go      (認証ハンドラー)
+│   ├── auth_service.go      (認証サービス実装)
+│   └── auth_repository.go   (認証リポジトリ実装)
 ├── db
-│   ├── db_connection.go (DB接続)
-│   └── db_queries.go (DBクエリ管理)
+│   ├── db_interface.go      (DB接続・クエリの契約定義)
+│   ├── db_connection.go     (DB接続実装)
+│   └── db_queries.go        (DBクエリ管理実装)
 ├── gateway
-│   ├── gateway_handler.go (APIゲートウェイハンドラー)
-│   ├── authorization.go (認可処理)
-│   ├── rate_limiter.go (レートリミッティング処理)
-│   └── protocol_conversion.go (RESTとgRPCの変換/ゲートウェイ連携)
+│   ├── gateway_interface.go (ゲートウェイ契約の定義)
+│   ├── gateway_handler.go   (APIゲートウェイハンドラー)
+│   ├── authorization.go     (認可処理)
+│   ├── rate_limiter.go      (レートリミッター実装)
+│   └── protocol_conversion.go (RESTとgRPCの変換)
 ├── middleware
 │   ├── logging.go (ログミドルウェア)
 │   └── recovery.go (リカバリミドルウェア)
@@ -252,59 +259,59 @@ FluMinGo/golang/common_api
 
 ### golang(個別API_interface and adapter)
 
-個別のAPIのインターフェースとアダプターのディレクトリ構成です。インターフェースはAPIの定義を、アダプターは具体的な実装を提供します。
+個別APIでは、インターフェースと具象実装を分離しています。利用側は、DIコンテナにより契約（インターフェース）経由で依存性が注入され、実装の変更は内部にとどまります。
 
 ```plaintext
 FluMinGo/golang/specific_api/interface_adapter
 ├── user
-│   ├── user_interface.go(ユーザーAPIのインターフェース)
-│   └── user_adapter.go(ユーザーAPIのアダプター)
+│   ├── user_interface.go   (ユーザーAPIの契約定義)
+│   └── user_adapter.go     (ユーザーAPIの実装)
 ├── product
-│   ├── product_interface.go(商品APIのインターフェース)
-│   └── product_adapter.go(商品APIのアダプター)
+│   ├── product_interface.go (商品APIの契約定義)
+│   └── product_adapter.go  (商品APIの実装)
 └── registration
-    ├── registration_interface.go (ユーザー登録APIのインターフェース)
-    └── registration_adapter.go (ユーザー登録APIのアダプター)
+    ├── registration_interface.go (ユーザー登録APIの契約定義)
+    └── registration_adapter.go   (ユーザー登録APIの実装)
 ```
 
 ### golang(個別API_use case)
 
-個別のAPIのユースケースのディレクトリ構成です。ユースケースはビジネスロジックを実装します。
+ビジネスロジックはユースケースとして実装され、内部の変更が外部契約に影響を及ぼさないように分離されています。
 
 ```plaintext
 FluMinGo/golang/specific_api/use_case
 ├── user
-│   ├── user_use_case.go(ユーザー関連ユースケース)
-│   └── user_service.go(ユーザーサービス)
+│   ├── user_use_case.go     (ユーザー関連ユースケース)
+│   └── user_service.go      (ユーザーサービス実装)
 ├── product
-│   ├── product_use_case.go(商品関連ユースケース)
-│   └── product_service.go(商品サービス)
+│   ├── product_use_case.go  (商品関連ユースケース)
+│   └── product_service.go   (商品サービス実装)
 └── registration
     ├── registration_use_case.go (ユーザー登録ユースケース)
-    └── registration_service.go (ユーザー登録サービス)
+    └── registration_service.go  (ユーザー登録サービス実装)
 ```
 
 ### golang(個別API_entities)
 
-個別のAPIのエンティティのディレクトリ構成です。エンティティはデータモデルを表現します。
+データモデルはエンティティとして管理され、リポジトリの実装もインターフェースに準拠する形で提供されます。
 
 ```plaintext
 FluMinGo/golang/specific_api/entities
 ├── user
-│   ├── user.go(ユーザーモデル)
-│   └── user_repository.go(ユーザーリポジトリ)
+│   ├── user.go              (ユーザーモデル)
+│   └── user_repository.go   (ユーザーリポジトリ実装)
 ├── product
-│   ├── product.go(商品モデル)
-│   └── product_repository.go(商品リポジトリ)
+│   ├── product.go           (商品モデル)
+│   └── product_repository.go (商品リポジトリ実装)
 └── registration
-    ├── registration.go (ユーザー登録モデル)
-    └── registration_repository.go (ユーザー登録リポジトリ)
+    ├── registration.go      (ユーザー登録モデル)
+    └── registration_repository.go (ユーザー登録リポジトリ実装)
 ```
 
 ### 補足 (高度な設計観点)
-- 各ディレクトリはシングルリスポンシビリティの原則に従って設計され、変更の影響が最小限に抑えられます。
-- ドキュメントとコードの整合性を維持し、定期的なレビューにより構造の最適化を図ることが推奨されます。
-- Flutter側はMVVMまたはBLoCパターンの実装を推奨
-- Golang側はドメイン駆動設計（DDD）の考え方を取り入れ、レイヤーごとの役割分担を明確化しています。
+- 各モジュールごとに契約（インターフェース）を定義し、実装クラスはその契約に従って作成されることで、内部実装の変更は利用側に影響を及ぼしません。
+- DI（依存性注入）により、利用側には抽象層（インターフェース）経由で依存性が注入され、各実装は柔軟に差し替え可能です。
+- Flutter側では、DIコンテナを用いてサービスやモデルの依存関係を管理し、モジュール間の疎結合を実現しています。
+- Golang側は、ドメイン駆動設計（DDD）の原則に基づき、インターフェースと実装の分離、及びDIコンテナでの依存性注入を採用しています。
 
 各ディレクトリの詳細については、各ファイルのコメントを参照してください。
