@@ -30,6 +30,19 @@ func (conn *SQLDBConnector) Connect(connectionString string) error {
 	return err
 }
 
+// 接続のリトライ機能を強化
+func (conn *SQLDBConnector) ConnectWithRetry(connectionString string, attempts int, delay time.Duration) error {
+	var err error
+	for i := 0; i < attempts; i++ {
+		err = conn.Connect(connectionString)
+		if err == nil {
+			return nil
+		}
+		time.Sleep(delay)
+	}
+	return err
+}
+
 // Query executes a query that returns rows, typically a SELECT.
 func (conn *SQLDBConnector) Query(query string, args ...interface{}) (Rows, error) {
 	rows, err := conn.DB.Query(query, args...)
