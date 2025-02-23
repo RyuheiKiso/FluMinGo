@@ -49,3 +49,9 @@ func (du *DashboardUI) GetStatus() string {
 	// 実際の実装はダッシュボードの状態を返す必要があります
 	return "OK"
 }
+
+// ダッシュボードのテーマ変更機能を追加
+func (du *DashboardUI) ChangeTheme(theme string) error {
+	// 実際の実装はテーマ変更の処理を行う必要があります
+	return nil
+}
