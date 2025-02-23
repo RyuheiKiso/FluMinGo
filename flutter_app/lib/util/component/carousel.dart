@@ -45,6 +45,7 @@ class Carousel extends StatefulWidget {
   const Carousel({super.key, required this.items, this.interval = const Duration(seconds: 3)});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CarouselState createState() => _CarouselState();
 }
 
