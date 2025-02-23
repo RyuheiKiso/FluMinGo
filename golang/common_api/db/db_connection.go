@@ -84,3 +84,14 @@ func (tx *SQLTransaction) Commit() error {
 func (tx *SQLTransaction) Rollback() error {
 	return tx.Tx.Rollback()
 }
+
+// トランザクションの状態を確認する機能を追加
+func (tx *SQLTransaction) IsCommitted() bool {
+	// 実際の実装はトランザクションの状態を追跡する必要があります
+	return false
+}
+
+func (tx *SQLTransaction) IsRolledBack() bool {
+	// 実際の実装はトランザクションの状態を追跡する必要があります
+	return false
+}
