@@ -62,3 +62,13 @@ func (q *DBQueries) ClearCache() {
 	defer q.Cache.Mutex.Unlock()
 	q.Cache.Data = make(map[string]CacheEntry)
 }
+
+// キャッシュの自動クリア機能を追加
+func (q *DBQueries) AutoClearCache(interval time.Duration) {
+	ticker := time.NewTicker(interval)
+	go func() {
+		for range ticker.C {
+			q.ClearCache()
+		}
+	}()
+}
