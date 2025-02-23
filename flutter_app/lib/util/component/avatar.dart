@@ -103,12 +103,12 @@ class AvatarComponent extends StatelessWidget {
           radius: radius,
           // 背景画像のエラー時の処理
           onBackgroundImageError: (_, __) => errorImage,
-          // プレースホルダー画像
-          child: Image(image: placeholder),
           // 背景色
           backgroundColor: backgroundColor,
           // 前景色
           foregroundColor: foregroundColor,
+          // プレースホルダー画像
+          child: Image(image: placeholder),
         ),
       ),
     );
