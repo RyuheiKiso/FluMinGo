@@ -2,6 +2,8 @@ package distributed_cache
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -30,4 +32,21 @@ func GetCache(rdb *redis.Client, key string) (string, error) {
 // キャッシュの削除機能を追加
 func DeleteCache(rdb *redis.Client, key string) error {
 	return rdb.Del(ctx, key).Err()
+}
+
+// キャッシュの有効期限設定機能を追加
+func SetCacheWithTTL(rdb *redis.Client, key string, value interface{}, ttl time.Duration) error {
+	return rdb.Set(ctx, key, value, ttl).Err()
+}
+
+// キャッシュの更新機能を追加
+func UpdateCache(rdb *redis.Client, key string, value interface{}) error {
+	exists, err := rdb.Exists(ctx, key).Result()
+	if err != nil {
+		return err
+	}
+	if exists == 1 {
+		return rdb.Set(ctx, key, value, 0).Err()
+	}
+	return fmt.Errorf("key %s does not exist", key)
 }

@@ -2,6 +2,7 @@ package distributed_transaction
 
 import (
 	"context"
+	"fmt"
 	"log"
 )
 
@@ -44,4 +45,19 @@ func (s *Saga) rollback(ctx context.Context) {
 func (s *Saga) CurrentStep() int {
 	// 現在のステップを返すロジックを実装
 	return len(s.steps)
+}
+
+// Sagaのステップを追加する機能を追加
+func (s *Saga) AddStep(step SagaStep) {
+	s.steps = append(s.steps, step)
+}
+
+// Sagaのステップのリトライ機能を追加
+func (s *Saga) ExecuteWithRetry(ctx context.Context, retries int) error {
+	for i := 0; i < retries; i++ {
+		if err := s.Execute(ctx); err == nil {
+			return nil
+		}
+	}
+	return fmt.Errorf("saga failed after %d retries", retries)
 }

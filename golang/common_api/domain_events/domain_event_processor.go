@@ -1,5 +1,7 @@
 package domain_events
 
+import "fmt"
+
 // ドメインイベントのリアルタイム処理・アクショントリガー
 
 // DomainEventProcessor はドメインイベントの処理を管理する構造体です。
@@ -35,4 +37,27 @@ func (dep *DomainEventProcessor) BatchProcessEvents(events []string) error {
 		}
 	}
 	return nil
+}
+
+// ドメインイベントのフィルタリング機能を追加
+// FilterEvents は特定の条件に基づいてイベントをフィルタリングします。
+func (dep *DomainEventProcessor) FilterEvents(events []string, condition func(string) bool) []string {
+	filteredEvents := []string{}
+	for _, event := range events {
+		if condition(event) {
+			filteredEvents = append(filteredEvents, event)
+		}
+	}
+	return filteredEvents
+}
+
+// ドメインイベントのリトライ機能を追加
+// RetryEvent は指定された回数だけイベントをリトライします。
+func (dep *DomainEventProcessor) RetryEvent(event string, retries int) error {
+	for i := 0; i < retries; i++ {
+		if err := dep.ProcessEvent(event); err == nil {
+			return nil
+		}
+	}
+	return fmt.Errorf("event %s failed after %d retries", event, retries)
 }

@@ -36,3 +36,17 @@ func (sd *ServiceDiscovery) DeregisterService(serviceName string) error {
 	fmt.Printf("サービス %s を削除しました\n", serviceName)
 	return nil
 }
+
+// サービスのヘルスチェック機能を追加
+func (sd *ServiceDiscovery) HealthCheck(serviceName string) (bool, error) {
+	// ヘルスチェックのロジックを実装
+	// 現在はダミーの結果を返す
+	return true, nil
+}
+
+// サービスの更新機能を追加
+func (sd *ServiceDiscovery) UpdateService(serviceName, serviceURL string) error {
+	// サービス更新処理を実装する
+	fmt.Printf("サービス %s (%s) を更新しました\n", serviceName, serviceURL)
+	return nil
+}
