@@ -19,7 +19,7 @@ class CustomSearchBar extends StatelessWidget {
 
   // コンストラクタにコメントを追加
   const CustomSearchBar({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.onChanged,
@@ -27,7 +27,7 @@ class CustomSearchBar extends StatelessWidget {
     this.hintStyle,
     this.textStyle,
     this.autofocus = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
