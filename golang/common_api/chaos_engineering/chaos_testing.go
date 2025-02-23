@@ -2,7 +2,8 @@ package chaos_engineering
 
 import (
 	"fmt"
-	"log"
+
+	"FluMinGo/golang/common_api/common"
 )
 
 // 障害注入や混沌テストによる耐障害性検証・強化
@@ -14,25 +15,30 @@ type ChaosTest interface {
 
 // ChaosEngineering は混沌テストを管理する構造体です。
 type ChaosEngineering struct {
-	tests []ChaosTest
+	tests        []ChaosTest
+	logger       common.Logger
+	errorHandler common.ErrorHandler
 }
 
 // NewChaosEngineering は新しいChaosEngineeringを作成します。
-func NewChaosEngineering(tests []ChaosTest) *ChaosEngineering {
+func NewChaosEngineering(tests []ChaosTest, logger common.Logger, errorHandler common.ErrorHandler) *ChaosEngineering {
 	return &ChaosEngineering{
-		tests: tests,
+		tests:        tests,
+		logger:       logger,
+		errorHandler: errorHandler,
 	}
 }
 
 // RunTests は全ての混沌テストを実行し、詳細なログを記録します。
 func (ce *ChaosEngineering) RunTests() error {
 	for _, test := range ce.tests {
-		log.Printf("テスト開始: %T", test)
+		ce.logger.Info(fmt.Sprintf("テスト開始: %T", test))
 		if err := test.InjectFault(); err != nil {
-			log.Printf("テストに失敗しました: %v", err)
+			errMsg := ce.errorHandler.HandleError(err)
+			ce.logger.Error(errMsg)
 			return err
 		}
-		log.Println("テストが成功しました")
+		ce.logger.Info("テストが成功しました")
 	}
 	return nil
 }
@@ -46,12 +52,13 @@ func (ce *ChaosEngineering) AddTest(test ChaosTest) {
 func (ce *ChaosEngineering) RunTestByName(name string) error {
 	for _, test := range ce.tests {
 		if testName, ok := test.(interface{ Name() string }); ok && testName.Name() == name {
-			log.Printf("テスト開始: %s", name)
+			ce.logger.Info(fmt.Sprintf("テスト開始: %s", name))
 			if err := test.InjectFault(); err != nil {
-				log.Printf("テストに失敗しました: %v", err)
+				errMsg := ce.errorHandler.HandleError(err)
+				ce.logger.Error(errMsg)
 				return err
 			}
-			log.Println("テストが成功しました")
+			ce.logger.Info("テストが成功しました")
 			return nil
 		}
 	}
