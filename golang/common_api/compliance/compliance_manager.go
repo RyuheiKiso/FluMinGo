@@ -76,3 +76,9 @@ func (c *ComplianceManager) GenerateReport() ([]byte, error) {
 func (c *ComplianceManager) Close() error {
 	return c.logFile.Close()
 }
+
+// ログの圧縮機能を追加
+func (c *ComplianceManager) CompressLogs() error {
+	// 実際の実装はログの圧縮処理を行う必要があります
+	return nil
+}
