@@ -55,6 +55,19 @@ func (c *ComplianceManager) LogAccessEncrypted(message string) error {
 	return nil
 }
 
+// ログの復号化機能を追加
+func (c *ComplianceManager) DecryptData(ciphertext []byte) ([]byte, error) {
+	block, err := aes.NewCipher([]byte(c.encryptionKey))
+	if err != nil {
+		return nil, err
+	}
+	iv := ciphertext[:aes.BlockSize]
+	ciphertext = ciphertext[aes.BlockSize:]
+	stream := cipher.NewCFBDecrypter(block, iv)
+	stream.XORKeyStream(ciphertext, ciphertext)
+	return ciphertext, nil
+}
+
 func (c *ComplianceManager) GenerateReport() ([]byte, error) {
 	// レポート生成処理を実装
 	return []byte("report"), nil
