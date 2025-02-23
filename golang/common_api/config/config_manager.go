@@ -12,8 +12,10 @@ import (
 
 // Config 設定ファイルの構造体。必要に応じてフィールドを追加してください。
 type Config struct {
-	AppName string `json:"app_name"`
-	Port    int    `json:"port"`
+	AppName       string `json:"app_name"`
+	Port          int    `json:"port"`
+	CacheTTL      int    `json:"cache_ttl"`      // キャッシュの有効期限を追加
+	EncryptionKey string `json:"encryption_key"` // 暗号化キーを追加
 }
 
 // Manager コンフィグ管理用のシングルトン
@@ -44,27 +46,27 @@ func GetManager(filePath string) *Manager {
 func (m *Manager) loadConfig() {
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
-	
+
 	file, err := os.Open(m.filePath)
 	if err != nil {
 		log.Printf("設定ファイルのオープンに失敗: %v", err)
 		return
 	}
 	defer file.Close()
-	
+
 	data, err := ioutil.ReadAll(file)
 	if err != nil {
 		log.Printf("設定ファイルの読み込みに失敗: %v", err)
 		return
 	}
-	
+
 	var cfg Config
 	err = json.Unmarshal(data, &cfg)
 	if err != nil {
 		log.Printf("設定ファイルのパースに失敗: %v", err)
 		return
 	}
-	
+
 	m.config = &cfg
 	log.Printf("設定が更新されました: %+v", m.config)
 }
@@ -110,4 +112,10 @@ func (m *Manager) watchConfig() {
 			}
 		}
 	}()
+}
+
+// ReloadConfig は設定ファイルを手動でリロードします。
+func (m *Manager) ReloadConfig() {
+	log.Println("設定ファイルを手動でリロードします...")
+	m.loadConfig()
 }
