@@ -143,3 +143,14 @@ func (m *Manager) BackupConfig(backupFilePath string) error {
 
 	return ioutil.WriteFile(backupFilePath, data, 0644)
 }
+
+// 設定のエクスポート機能を追加
+func (m *Manager) ExportConfig(exportFilePath string) error {
+	m.mutex.RLock()
+	defer m.mutex.RUnlock()
+	data, err := json.Marshal(m.config)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(exportFilePath, data, 0644)
+}
