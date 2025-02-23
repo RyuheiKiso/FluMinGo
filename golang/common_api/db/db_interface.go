@@ -1,6 +1,8 @@
 // Package db provides the database interface and utilities.
 package db
 
+import "time"
+
 // DBConnector defines the contract for a database connection.
 // It allows connecting, querying, and executing commands.
 
@@ -33,4 +35,10 @@ type Result interface {
 type Transaction interface {
 	Commit() error
 	Rollback() error
+}
+
+// トランザクションのリトライ機能を追加
+type RetriableTransaction interface {
+	Transaction
+	Retry(attempts int, delay time.Duration) error
 }
