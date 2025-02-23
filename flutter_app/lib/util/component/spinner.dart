@@ -9,7 +9,7 @@ class CustomSpinner extends StatelessWidget {
   // アニメーションの速度
   final Duration duration;
 
-  CustomSpinner({this.size = 50.0, this.color = Colors.blue, this.duration = const Duration(seconds: 1)});
+  const CustomSpinner({super.key, this.size = 50.0, this.color = Colors.blue, this.duration = const Duration(seconds: 1)});
 
   @override
   Widget build(BuildContext context) {
