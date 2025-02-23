@@ -48,3 +48,9 @@ type TransactionStatus interface {
 	IsCommitted() bool
 	IsRolledBack() bool
 }
+
+// トランザクションのタイムアウト機能を追加
+type TimeoutTransaction interface {
+	Transaction
+	SetTimeout(duration time.Duration) error
+}
