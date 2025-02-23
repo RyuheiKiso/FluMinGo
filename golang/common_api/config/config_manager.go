@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -118,4 +119,14 @@ func (m *Manager) watchConfig() {
 func (m *Manager) ReloadConfig() {
 	log.Println("設定ファイルを手動でリロードします...")
 	m.loadConfig()
+}
+
+// 設定のバリデーション機能を追加
+func (m *Manager) ValidateConfig() error {
+	m.mutex.RLock()
+	defer m.mutex.RUnlock()
+	if m.config.AppName == "" || m.config.Port <= 0 {
+		return fmt.Errorf("無効な設定: %+v", m.config)
+	}
+	return nil
 }
