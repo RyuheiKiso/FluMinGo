@@ -83,3 +83,11 @@ func (dep *DomainEventProcessor) ExportEvents(events []string) error {
 	}
 	return nil
 }
+
+// ドメインイベントのアーカイブ機能を追加
+// ArchiveEvent はイベントをアーカイブします。
+func (dep *DomainEventProcessor) ArchiveEvent(event string) error {
+	fmt.Printf("Archiving event: %s\n", event)
+	// アーカイブ処理の実装
+	return nil
+}

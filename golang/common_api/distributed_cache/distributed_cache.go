@@ -66,3 +66,14 @@ func ValidateCacheKey(key string) bool {
 func ExportCache(rdb *redis.Client, key string) (string, error) {
 	return rdb.Get(ctx, key).Result()
 }
+
+// キャッシュのアーカイブ機能を追加
+func ArchiveCache(rdb *redis.Client, key string) (string, error) {
+	value, err := rdb.Get(ctx, key).Result()
+	if err != nil {
+		return "", err
+	}
+	fmt.Printf("Archiving cache: %s\n", key)
+	// アーカイブ処理の実装
+	return value, nil
+}

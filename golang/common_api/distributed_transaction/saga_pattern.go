@@ -77,3 +77,8 @@ func (s *Saga) ValidateSaga() bool {
 func (s *Saga) ExportSaga() string {
 	return fmt.Sprintf("Exporting saga with %d steps", len(s.steps))
 }
+
+// Sagaのアーカイブ機能を追加
+func (s *Saga) ArchiveSaga() string {
+	return fmt.Sprintf("Archiving saga with %d steps", len(s.steps))
+}

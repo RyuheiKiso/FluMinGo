@@ -72,3 +72,10 @@ func (c *Container) ExportContainer() string {
 	defer c.mutex.Unlock()
 	return fmt.Sprintf("Exporting container with services: %v", c.ListServices())
 }
+
+// DIコンテナのアーカイブ機能を追加
+func (c *Container) ArchiveContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Archiving container with services: %v", c.ListServices())
+}

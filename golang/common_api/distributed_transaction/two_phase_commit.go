@@ -86,3 +86,8 @@ func (t *TwoPhaseCommit) ValidateTransaction() bool {
 func (t *TwoPhaseCommit) ExportTransaction() string {
 	return fmt.Sprintf("Exporting transaction with %d participants", len(t.participants))
 }
+
+// トランザクションのアーカイブ機能を追加
+func (t *TwoPhaseCommit) ArchiveTransaction() string {
+	return fmt.Sprintf("Archiving transaction with %d participants", len(t.participants))
+}

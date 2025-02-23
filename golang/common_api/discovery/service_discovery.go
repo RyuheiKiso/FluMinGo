@@ -70,3 +70,10 @@ func (sd *ServiceDiscovery) ExportService(serviceName string) (string, error) {
 	}
 	return fmt.Sprintf("Service %s has endpoints: %v", serviceName, endpoints), nil
 }
+
+// サービスのアーカイブ機能を追加
+func (sd *ServiceDiscovery) ArchiveService(serviceName string) error {
+	fmt.Printf("Archiving service: %s\n", serviceName)
+	// アーカイブ処理の実装
+	return nil
+}
