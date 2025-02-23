@@ -142,3 +142,10 @@ func (c *CacheService) ExportStatistics(filePath string) error {
 	c.logger.Info("キャッシュの統計情報をエクスポートしました: " + filePath)
 	return nil
 }
+
+// キャッシュの統計情報をリセットするメソッドを追加
+func (c *CacheService) ResetStatistics() {
+	c.hitCount = 0
+	c.missCount = 0
+	c.logger.Info("キャッシュの統計情報をリセットしました")
+}

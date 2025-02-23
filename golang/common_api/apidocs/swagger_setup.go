@@ -1,6 +1,7 @@
 package apidocs
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -29,4 +30,14 @@ func GenerateSwaggerDocs(config map[string]string) {
 	}
 
 	log.Printf("Swaggerドキュメントが生成されました: %s", string(output))
+}
+
+// Swagger ドキュメントのバージョンを取得するメソッドを追加
+func GetSwaggerVersion() (string, error) {
+	cmd := exec.Command("swag", "--version")
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return "", fmt.Errorf("failed to get swag version: %w", err)
+	}
+	return string(output), nil
 }

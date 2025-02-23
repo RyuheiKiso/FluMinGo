@@ -87,5 +87,25 @@ func (h *AuthHandler) HandleLogout(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Logged out"))
 }
 
+// ユーザーのトークンをすべて削除するハンドラを追加
+func (h *AuthHandler) HandleDeleteAllTokens(w http.ResponseWriter, r *http.Request) {
+	var req struct {
+		Username string `json:"username"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		h.logger.Error("Invalid request")
+		http.Error(w, "Invalid request", http.StatusBadRequest)
+		return
+	}
+	if err := h.Service.DeleteAllTokens(req.Username); err != nil {
+		h.logger.Error("Failed to delete all tokens")
+		http.Error(w, "Failed to delete all tokens", http.StatusInternalServerError)
+		return
+	}
+	h.logger.Info("Deleted all tokens for user: " + req.Username)
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Deleted all tokens"))
+}
+
 // Exported LoginHandler to be used by main.go for handling login requests.
 var LoginHandler = NewAuthHandler(NewAuthService(NewDummyAuthRepository(), time.Hour, common.NewLogger(), common.NewErrorHandler()), common.NewLogger()).HandleAuthentication

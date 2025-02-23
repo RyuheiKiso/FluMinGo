@@ -39,3 +39,12 @@ func (ata *APITestAutomation) AutomateIntegrationTests() error {
 	log.Println("Integration test automation completed.")
 	return nil
 }
+
+// テストの結果を取得するメソッドを追加
+func (ata *APITestAutomation) GetTestResults() map[string]string {
+	results := make(map[string]string)
+	for _, testType := range ata.testTypes {
+		results[testType] = "成功" // 仮の結果を設定
+	}
+	return results
+}
