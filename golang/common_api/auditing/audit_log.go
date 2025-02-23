@@ -1,22 +1,29 @@
 package auditing
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"FluMinGo/golang/common_api/common"
+)
 
 // AuditLog は監査ログとイベントトラッキング機能を提供する
 // 必要に応じてフィールドを定義する
+
 type AuditLog struct {
-	// ...existing code...
+	logger       common.Logger
+	errorHandler common.ErrorHandler
 }
 
 // NewAuditLog は AuditLog の新しいインスタンスを返す
-func NewAuditLog() *AuditLog {
-	return &AuditLog{}
+func NewAuditLog(logger common.Logger, errorHandler common.ErrorHandler) *AuditLog {
+	return &AuditLog{logger: logger, errorHandler: errorHandler}
 }
 
 // LogEvent は指定されたイベントを監査ログに記録する
 func (al *AuditLog) LogEvent(event string) error {
 	// ここで実際の監査ログ記録処理を実装する
-	fmt.Printf("イベント '%s' を監査ログに記録しました\n", event)
+	al.logger.Info(fmt.Sprintf("イベント '%s' を監査ログに記録しました", event))
 	return nil
 }
 
@@ -29,7 +36,7 @@ func (al *AuditLog) GetLogs() []string {
 // DeleteLog は指定されたイベントの監査ログを削除するメソッドです。
 func (al *AuditLog) DeleteLog(event string) error {
 	// ここで実際の監査ログ削除処理を実装する
-	fmt.Printf("イベント '%s' の監査ログを削除しました\n", event)
+	al.logger.Info(fmt.Sprintf("イベント '%s' の監査ログを削除しました", event))
 	return nil
 }
 
@@ -43,4 +50,23 @@ func (al *AuditLog) FilterLogs(condition func(string) bool) []string {
 		}
 	}
 	return filteredLogs
+}
+
+// ExportLogs は監査ログをファイルにエクスポートするメソッドです。
+func (al *AuditLog) ExportLogs(filePath string) error {
+	logs := al.GetLogs()
+	file, err := os.Create(filePath)
+	if err != nil {
+		al.logger.Error(al.errorHandler.HandleError(err))
+		return err
+	}
+	defer file.Close()
+	for _, log := range logs {
+		if _, err := file.WriteString(log + "\n"); err != nil {
+			al.logger.Error(al.errorHandler.HandleError(err))
+			return err
+		}
+	}
+	al.logger.Info("監査ログをエクスポートしました: " + filePath)
+	return nil
 }
