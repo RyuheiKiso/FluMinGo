@@ -50,3 +50,8 @@ func UpdateCache(rdb *redis.Client, key string, value interface{}) error {
 	}
 	return fmt.Errorf("key %s does not exist", key)
 }
+
+// キャッシュのロギング機能を追加
+func LogCacheOperation(operation, key string) {
+	fmt.Printf("Cache operation: %s, Key: %s\n", operation, key)
+}

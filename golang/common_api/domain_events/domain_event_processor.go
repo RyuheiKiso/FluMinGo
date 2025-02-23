@@ -61,3 +61,9 @@ func (dep *DomainEventProcessor) RetryEvent(event string, retries int) error {
 	}
 	return fmt.Errorf("event %s failed after %d retries", event, retries)
 }
+
+// ドメインイベントのロギング機能を追加
+// LogEvent はイベントをログに記録します。
+func (dep *DomainEventProcessor) LogEvent(event string) {
+	fmt.Printf("Event logged: %s\n", event)
+}

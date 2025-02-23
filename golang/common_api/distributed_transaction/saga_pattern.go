@@ -61,3 +61,8 @@ func (s *Saga) ExecuteWithRetry(ctx context.Context, retries int) error {
 	}
 	return fmt.Errorf("saga failed after %d retries", retries)
 }
+
+// Sagaのロギング機能を追加
+func (s *Saga) LogSaga(status string) {
+	log.Printf("Saga status: %s", status)
+}

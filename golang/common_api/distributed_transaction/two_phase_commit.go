@@ -70,3 +70,8 @@ func (t *TwoPhaseCommit) ExecuteWithRetry(ctx context.Context, retries int) erro
 	}
 	return fmt.Errorf("transaction failed after %d retries", retries)
 }
+
+// トランザクションのロギング機能を追加
+func (t *TwoPhaseCommit) LogTransaction(status string) {
+	log.Printf("Transaction status: %s", status)
+}

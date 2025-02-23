@@ -1,6 +1,7 @@
 package di
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -52,4 +53,9 @@ func (c *Container) UpdateService(name string, service interface{}) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	c.services[name] = service
+}
+
+// DIコンテナのロギング機能を追加
+func (c *Container) LogContainerOperation(operation, serviceName string) {
+	fmt.Printf("Container operation: %s, Service: %s\n", operation, serviceName)
 }
