@@ -51,6 +51,42 @@ func (c *Cache) GetHitRate(totalQueries int) float64 {
 	return float64(len(c.Data)) / float64(totalQueries)
 }
 
+// キャッシュのエントリの有効期限を確認する機能を追加
+func (c *Cache) IsEntryExpired(key string) bool {
+	c.Mutex.RLock()
+	defer c.Mutex.RUnlock()
+	entry, found := c.Data[key]
+	if !found {
+		return true
+	}
+	return time.Since(entry.Timestamp) > c.TTL
+}
+
+// キャッシュのエントリを手動で削除する機能を追加
+func (c *Cache) DeleteEntry(key string) {
+	c.Mutex.Lock()
+	defer c.Mutex.Unlock()
+	delete(c.Data, key)
+}
+
+// キャッシュのエントリの有効期限を一括で更新する機能を追加
+func (c *Cache) UpdateTTL(newTTL time.Duration) {
+	c.Mutex.Lock()
+	defer c.Mutex.Unlock()
+	c.TTL = newTTL
+	for k, v := range c.Data {
+		v.Timestamp = time.Now()
+		c.Data[k] = v
+	}
+}
+
+// キャッシュのエントリをすべて取得する機能を追加
+func (c *Cache) GetAllEntries() map[string]CacheEntry {
+	c.Mutex.RLock()
+	defer c.Mutex.RUnlock()
+	return c.Data
+}
+
 // DBQueries provides common database query management functions.
 type DBQueries struct {
 	Cache Cache
@@ -102,4 +138,9 @@ func (q *DBQueries) AutoClearCache(interval time.Duration) {
 			q.ClearCache()
 		}
 	}()
+}
+
+// キャッシュのエントリをすべて取得する機能を追加
+func (q *DBQueries) GetAllCacheEntries() map[string]CacheEntry {
+	return q.Cache.GetAllEntries()
 }
