@@ -2,20 +2,22 @@
 package auth
 
 import (
+	"FluMinGo/golang/common_api/common"
 	"fmt"
-	"log"
 	"time"
 )
 
 // AuthService implements the authentication logic using a repository.
 type AuthService struct {
-	repo        AuthRepository
-	tokenExpiry time.Duration
+	repo         AuthRepository
+	tokenExpiry  time.Duration
+	logger       common.Logger
+	errorHandler common.ErrorHandler
 }
 
 // NewAuthService creates a new AuthService.
-func NewAuthService(repo AuthRepository, tokenExpiry time.Duration) *AuthService {
-	return &AuthService{repo: repo, tokenExpiry: tokenExpiry}
+func NewAuthService(repo AuthRepository, tokenExpiry time.Duration, logger common.Logger, errorHandler common.ErrorHandler) *AuthService {
+	return &AuthService{repo: repo, tokenExpiry: tokenExpiry, logger: logger, errorHandler: errorHandler}
 }
 
 // Authenticate implements the Authenticator interface.
@@ -23,10 +25,11 @@ func (s *AuthService) Authenticate(username, password string) (bool, error) {
 	// For demonstration, delegate to repository validation
 	ok, err := s.repo.ValidateCredentials(username, password)
 	if err != nil || !ok {
-		log.Printf("認証に失敗しました: %v", err)
+		errMsg := s.errorHandler.HandleError(err)
+		s.logger.Error(errMsg)
 		return false, err
 	}
-	log.Println("認証に成功しました")
+	s.logger.Info("認証に成功しました")
 	return true, nil
 }
 
@@ -70,6 +73,6 @@ func (s *AuthService) ChangePassword(username, oldPassword, newPassword string) 
 		return fmt.Errorf("現在のパスワードが正しくありません")
 	}
 	// 実際のパスワード変更ロジックをここに追加
-	log.Println("パスワードが正常に変更されました")
+	s.logger.Info("パスワードが正常に変更されました")
 	return nil
 }
