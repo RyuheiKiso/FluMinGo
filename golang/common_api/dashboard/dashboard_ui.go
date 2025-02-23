@@ -37,3 +37,9 @@ func (du *DashboardUI) ManageErrorAlerts() error {
 	// ...エラーアラート管理の実装...
 	return nil
 }
+
+// リアルタイム通知機能を追加
+func (du *DashboardUI) NotifyRealTime(message string) error {
+	// ...リアルタイム通知の実装...
+	return nil
+}
