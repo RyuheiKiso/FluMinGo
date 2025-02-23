@@ -2,6 +2,7 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -102,4 +103,16 @@ func (tx *SQLTransaction) IsCommitted() bool {
 func (tx *SQLTransaction) IsRolledBack() bool {
 	// 実際の実装はトランザクションの状態を追跡する必要があります
 	return false
+}
+
+// トランザクションのリトライ機能を追加
+func (tx *SQLTransaction) Retry(attempts int, delay time.Duration) error {
+	for i := 0; i < attempts; i++ {
+		err := tx.Commit()
+		if err == nil {
+			return nil
+		}
+		time.Sleep(delay)
+	}
+	return fmt.Errorf("トランザクションのリトライに失敗しました")
 }
