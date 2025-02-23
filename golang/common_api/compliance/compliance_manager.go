@@ -45,6 +45,16 @@ func (c *ComplianceManager) EncryptData(data []byte) ([]byte, error) {
 	return ciphertext, nil
 }
 
+// ログの暗号化機能を追加
+func (c *ComplianceManager) LogAccessEncrypted(message string) error {
+	encryptedMessage, err := c.EncryptData([]byte(message))
+	if err != nil {
+		return err
+	}
+	c.LogAccess(string(encryptedMessage))
+	return nil
+}
+
 func (c *ComplianceManager) GenerateReport() ([]byte, error) {
 	// レポート生成処理を実装
 	return []byte("report"), nil
