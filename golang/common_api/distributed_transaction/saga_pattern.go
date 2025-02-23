@@ -72,3 +72,8 @@ func (s *Saga) ValidateSaga() bool {
 	// バリデーションロジックを実装
 	return len(s.steps) > 0
 }
+
+// Sagaのエクスポート機能を追加
+func (s *Saga) ExportSaga() string {
+	return fmt.Sprintf("Exporting saga with %d steps", len(s.steps))
+}

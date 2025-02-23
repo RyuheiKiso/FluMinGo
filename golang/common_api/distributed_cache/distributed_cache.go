@@ -61,3 +61,8 @@ func ValidateCacheKey(key string) bool {
 	// バリデーションロジックを実装
 	return key != ""
 }
+
+// キャッシュのエクスポート機能を追加
+func ExportCache(rdb *redis.Client, key string) (string, error) {
+	return rdb.Get(ctx, key).Result()
+}

@@ -81,3 +81,8 @@ func (t *TwoPhaseCommit) ValidateTransaction() bool {
 	// バリデーションロジックを実装
 	return len(t.participants) > 0
 }
+
+// トランザクションのエクスポート機能を追加
+func (t *TwoPhaseCommit) ExportTransaction() string {
+	return fmt.Sprintf("Exporting transaction with %d participants", len(t.participants))
+}

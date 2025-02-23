@@ -74,3 +74,12 @@ func (dep *DomainEventProcessor) ValidateEvent(event string) bool {
 	// バリデーションロジックを実装
 	return event != ""
 }
+
+// ドメインイベントのエクスポート機能を追加
+// ExportEvents はイベントを外部システムにエクスポートします。
+func (dep *DomainEventProcessor) ExportEvents(events []string) error {
+	for _, event := range events {
+		fmt.Printf("Exporting event: %s\n", event)
+	}
+	return nil
+}

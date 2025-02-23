@@ -65,3 +65,10 @@ func ValidateServiceName(serviceName string) bool {
 	// バリデーションロジックを実装
 	return serviceName != ""
 }
+
+// DIコンテナのエクスポート機能を追加
+func (c *Container) ExportContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Exporting container with services: %v", c.ListServices())
+}

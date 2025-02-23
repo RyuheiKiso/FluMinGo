@@ -61,3 +61,12 @@ func ValidateServiceName(serviceName string) bool {
 	// バリデーションロジックを実装
 	return serviceName != ""
 }
+
+// サービスのエクスポート機能を追加
+func (sd *ServiceDiscovery) ExportService(serviceName string) (string, error) {
+	endpoints, err := sd.DiscoverService(serviceName)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("Service %s has endpoints: %v", serviceName, endpoints), nil
+}
