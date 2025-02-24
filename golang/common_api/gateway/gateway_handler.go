@@ -44,3 +44,8 @@ func (h *APIHandler) GetErrorLogs() []string {
 func (h *APIHandler) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"requests": 15000, "errors": 300}
 }
+
+// 新しいメソッドを追加して、APIハンドラーの設定を取得します。
+func (h *APIHandler) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
