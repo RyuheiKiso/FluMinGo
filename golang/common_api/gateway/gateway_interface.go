@@ -33,3 +33,8 @@ func (g *GatewayImpl) GetErrorLogs() []string {
 func (g *GatewayImpl) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"requests": 10000, "errors": 200}
 }
+
+// 新しいメソッドを追加して、ゲートウェイの設定を取得します。
+func (g *GatewayImpl) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
