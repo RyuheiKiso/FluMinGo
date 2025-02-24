@@ -39,3 +39,8 @@ func (h *APIHandler) HandleRequestWithMetrics(w http.ResponseWriter, r *http.Req
 func (h *APIHandler) GetErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、APIハンドラーのメトリクスを取得します。
+func (h *APIHandler) GetMetrics() map[string]interface{} {
+	return map[string]interface{}{"requests": 15000, "errors": 300}
+}
