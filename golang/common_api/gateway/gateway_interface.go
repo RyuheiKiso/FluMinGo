@@ -28,3 +28,8 @@ func (g *GatewayImpl) UnregisterRoute(path string) {
 func (g *GatewayImpl) GetErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、ゲートウェイのメトリクスを取得します。
+func (g *GatewayImpl) GetMetrics() map[string]interface{} {
+	return map[string]interface{}{"requests": 10000, "errors": 200}
+}
