@@ -23,3 +23,8 @@ func (g *GatewayImpl) RegisterRoute(path string, handler http.Handler) {
 func (g *GatewayImpl) UnregisterRoute(path string) {
 	// ルート解除ロジックをここに追加します。
 }
+
+// 新しいメソッドを追加して、ゲートウェイのエラーログを取得します。
+func (g *GatewayImpl) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
