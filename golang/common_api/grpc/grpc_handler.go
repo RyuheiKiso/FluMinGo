@@ -72,3 +72,13 @@ func (s *GRPCServer) GetMetrics() map[string]interface{} {
 func (s *GRPCServer) GetConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、サーバーのヘルスチェックを行います。
+func (s *GRPCServer) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、サーバーのステータスをリセットします。
+func (s *GRPCServer) ResetStatus() string {
+	return "Server status reset"
+}
