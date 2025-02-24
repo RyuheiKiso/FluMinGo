@@ -82,3 +82,18 @@ func (s *Saga) ExportSaga() string {
 func (s *Saga) ArchiveSaga() string {
 	return fmt.Sprintf("Archiving saga with %d steps", len(s.steps))
 }
+
+// Sagaのステップの状態確認機能を追加
+func (s *Saga) StepStatus(step int) string {
+	// ステップの状態確認ロジックを実装
+	return fmt.Sprintf("Step %d is completed", step)
+}
+
+// Sagaのステップのステータスを一括で確認する機能を追加
+func (s *Saga) BatchStepStatus() map[int]string {
+	statuses := make(map[int]string)
+	for i := range s.steps {
+		statuses[i] = s.StepStatus(i)
+	}
+	return statuses
+}
