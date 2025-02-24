@@ -53,6 +53,42 @@ func ConvertRESTToGRPC(r *http.Request) (*GRPCRequest, error) {
 	return grpcReq, nil
 }
 
+// ConvertRESTToGRPCWithHeaders はHTTPリクエストをGRPCRequestに変換し、ヘッダーも含めます。
+func ConvertRESTToGRPCWithHeaders(r *http.Request) (*GRPCRequest, map[string]string, error) {
+	if r == nil {
+		return nil, nil, errors.New("nil http request")
+	}
+
+	// リクエストボディを読み取る
+	bodyBytes, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer r.Body.Close()
+
+	var bodyMap map[string]interface{}
+	if len(bodyBytes) > 0 {
+		if err := json.Unmarshal(bodyBytes, &bodyMap); err != nil {
+			return nil, nil, err
+		}
+	} else {
+		bodyMap = make(map[string]interface{})
+	}
+
+	headers := make(map[string]string)
+	for name, values := range r.Header {
+		headers[name] = values[0]
+	}
+
+	grpcReq := &GRPCRequest{
+		Method: r.Method,
+		Path:   r.URL.Path,
+		Body:   bodyMap,
+	}
+
+	return grpcReq, headers, nil
+}
+
 // ConvertGRPCToREST converts a GRPCResponse into HTTP response components.
 func ConvertGRPCToREST(grpcResp *GRPCResponse) (int, []byte, error) {
 	if grpcResp == nil {
@@ -65,4 +101,18 @@ func ConvertGRPCToREST(grpcResp *GRPCResponse) (int, []byte, error) {
 	}
 
 	return grpcResp.StatusCode, respBytes, nil
+}
+
+// ConvertGRPCToRESTWithHeaders はGRPCResponseをHTTPレスポンスに変換し、ヘッダーも含めます。
+func ConvertGRPCToRESTWithHeaders(grpcResp *GRPCResponse, headers map[string]string) (int, []byte, map[string]string, error) {
+	if grpcResp == nil {
+		return 0, nil, nil, errors.New("nil grpc response")
+	}
+
+	respBytes, err := json.Marshal(grpcResp.Body)
+	if err != nil {
+		return 0, nil, nil, err
+	}
+
+	return grpcResp.StatusCode, respBytes, headers, nil
 }
