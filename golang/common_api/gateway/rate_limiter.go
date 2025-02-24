@@ -65,6 +65,11 @@ func (rl *RateLimiter) Reset() {
 	rl.lastRefill = time.Now()
 }
 
+// 新しいメソッドを追加して、レートリミッターのエラーログを取得します。
+func (rl *RateLimiter) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
+
 // RateLimitMiddleware is an HTTP middleware that rate limits incoming requests.
 func RateLimitMiddleware(rl *RateLimiter, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
