@@ -50,3 +50,25 @@ func (am *AuthManager) ResetPassword(username, newPassword string) error {
 	am.users[username] = newPassword
 	return nil
 }
+
+// DeleteUser はユーザーを削除するメソッドです。
+func (am *AuthManager) DeleteUser(username string) error {
+	am.mutex.Lock()
+	defer am.mutex.Unlock()
+	if _, exists := am.users[username]; !exists {
+		return errors.New("ユーザーが存在しません")
+	}
+	delete(am.users, username)
+	return nil
+}
+
+// GetUsernames はすべてのユーザー名を取得するメソッドです。
+func (am *AuthManager) GetUsernames() []string {
+	am.mutex.RLock()
+	defer am.mutex.RUnlock()
+	usernames := make([]string, 0, len(am.users))
+	for username := range am.users {
+		usernames = append(usernames, username)
+	}
+	return usernames
+}
