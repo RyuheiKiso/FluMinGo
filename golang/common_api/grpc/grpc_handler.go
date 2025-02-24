@@ -67,3 +67,8 @@ func (s *GRPCServer) GetErrorLogs() []string {
 func (s *GRPCServer) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"requests": 1000, "errors": 50}
 }
+
+// 新しいメソッドを追加して、サーバーの設定を取得します。
+func (s *GRPCServer) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
