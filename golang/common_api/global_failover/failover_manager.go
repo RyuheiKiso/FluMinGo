@@ -61,3 +61,8 @@ func (f *FailoverManager) GetFailoverSuccessCount() int {
 func (f *FailoverManager) GetErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、フェイルオーバーのメトリクスを取得します。
+func (f *FailoverManager) GetMetrics() map[string]interface{} {
+	return map[string]interface{}{"failovers": 3, "errors": 1}
+}
