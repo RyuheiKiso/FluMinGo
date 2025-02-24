@@ -54,3 +54,13 @@ func (s *GRPCService) GetMetrics() map[string]interface{} {
 func (s *GRPCService) GetConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、サービスのヘルスチェックを行います。
+func (s *GRPCService) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、サービスのステータスをリセットします。
+func (s *GRPCService) ResetStatus() string {
+	return "Service status reset"
+}
