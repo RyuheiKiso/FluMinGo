@@ -3,6 +3,7 @@ package grpc
 import (
 	"context"
 	"log"
+	"time"
 )
 
 // GRPCService は gRPCサービスの基底となる構造体です。
@@ -22,4 +23,19 @@ func (s *GRPCService) DoSomething(ctx context.Context, request interface{}) (int
 	log.Println("DoSomething メソッドが呼び出されました")
 	// ビジネスロジックをここに実装
 	return nil, nil
+}
+
+// 新しいメソッドを追加して、サービスのステータスを取得します。
+func (s *GRPCService) GetStatus() string {
+	return "Service is running"
+}
+
+// 新しいメソッドを追加して、サービスのバージョンを取得します。
+func (s *GRPCService) GetVersion() string {
+	return "1.0.0"
+}
+
+// 新しいメソッドを追加して、サービスの稼働時間を取得します。
+func (s *GRPCService) GetUptime(startTime time.Time) time.Duration {
+	return time.Since(startTime)
 }
