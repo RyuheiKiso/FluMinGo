@@ -131,3 +131,63 @@ func GetProtocolConversionMetrics() map[string]interface{} {
 func GetProtocolConversionConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、プロトコル変換のヘルスチェックを行います。
+func HealthCheckProtocolConversion() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、プロトコル変換のステータスをリセットします。
+func ResetProtocolConversionStatus() string {
+	return "Protocol conversion status reset"
+}
+
+// 新しいメソッドを追加して、プロトコル変換のリクエスト数を取得します。
+func GetProtocolConversionRequestCount() int {
+	return 1000 // ダミーのリクエスト数を返します。
+}
+
+// 新しいメソッドを追加して、プロトコル変換のレスポンス時間を取得します。
+func GetProtocolConversionResponseTime() float64 {
+	return 0.123 // ダミーのレスポンス時間を返します。
+}
+
+// 新しいメソッドを追加して、プロトコル変換のリクエストボディサイズを取得します。
+func GetProtocolConversionRequestBodySize(r *http.Request) (int, error) {
+	bodyBytes, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		return 0, err
+	}
+	return len(bodyBytes), nil
+}
+
+// 新しいメソッドを追加して、プロトコル変換のレスポンスボディサイズを取得します。
+func GetProtocolConversionResponseBodySize(grpcResp *GRPCResponse) (int, error) {
+	respBytes, err := json.Marshal(grpcResp.Body)
+	if err != nil {
+		return 0, err
+	}
+	return len(respBytes), nil
+}
+
+// 新しいメソッドを追加して、プロトコル変換のリクエストメソッドを取得します。
+func GetProtocolConversionRequestMethod(r *http.Request) string {
+	return r.Method
+}
+
+// 新しいメソッドを追加して、プロトコル変換のリクエストパスを取得します。
+func GetProtocolConversionRequestPath(r *http.Request) string {
+	return r.URL.Path
+}
+
+// 新しいメソッドを追加して、プロトコル変換のリクエストボディを検証します。
+func ValidateProtocolConversionRequestBody(body map[string]interface{}) bool {
+	// リクエストボディの検証ロジックをここに追加します。
+	return true
+}
+
+// 新しいメソッドを追加して、プロトコル変換のレスポンスボディを検証します。
+func ValidateProtocolConversionResponseBody(body map[string]interface{}) bool {
+	// レスポンスボディの検証ロジックをここに追加します。
+	return true
+}
