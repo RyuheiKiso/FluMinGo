@@ -52,3 +52,13 @@ func (ge *GatewayExtension) ApplyCustomRules(data interface{}) error {
 	}
 	return nil
 }
+
+// 新しいメソッドを追加して、カスタムルールの数を取得します。
+func (ge *GatewayExtension) GetCustomRuleCount() int {
+	return len(ge.customRules)
+}
+
+// 新しいメソッドを追加して、カスタムルールのリストを取得します。
+func (ge *GatewayExtension) GetCustomRules() []CustomRule {
+	return ge.customRules
+}
