@@ -20,4 +20,6 @@ type Authenticator interface {
 	Logout(token string) error
 	DeleteAllTokens(username string) error                 // 追加
 	GetTokensByUsername(username string) ([]string, error) // ユーザーのトークンをすべて削除するメソッドを追加
+	ResetPassword(username, newPassword string) error      // 追加
+	RefreshToken(token string) (string, error)             // トークンをリフレッシュするメソッドを追加
 }
