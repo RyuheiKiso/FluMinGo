@@ -40,6 +40,9 @@ func GraphQLEndpoint(w http.ResponseWriter, r *http.Request) {
 	// 新しいフィールドを追加して、GraphQLスキーマにメトリクスを追加します。
 	addMetricsField(&schema)
 
+	// 新しいフィールドを追加して、GraphQLスキーマに設定情報を追加します。
+	addConfigField(&schema)
+
 	// クエリのパース
 	result := graphql.Do(graphql.Params{
 		Schema:        schema,
@@ -110,4 +113,21 @@ func addMetricsField(schema *graphql.Schema) {
 		},
 	}
 	schema.QueryType().AddFieldConfig("metrics", metricsField)
+}
+
+// 新しいフィールドを追加して、GraphQLスキーマに設定情報を追加します。
+func addConfigField(schema *graphql.Schema) {
+	configField := &graphql.Field{
+		Type: graphql.NewObject(graphql.ObjectConfig{
+			Name: "Config",
+			Fields: graphql.Fields{
+				"setting1": &graphql.Field{Type: graphql.String},
+				"setting2": &graphql.Field{Type: graphql.String},
+			},
+		}),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return map[string]interface{}{"setting1": "value1", "setting2": "value2"}, nil
+		},
+	}
+	schema.QueryType().AddFieldConfig("config", configField)
 }
