@@ -43,6 +43,12 @@ func GraphQLEndpoint(w http.ResponseWriter, r *http.Request) {
 	// 新しいフィールドを追加して、GraphQLスキーマに設定情報を追加します。
 	addConfigField(&schema)
 
+	// 新しいフィールドを追加して、GraphQLスキーマにヘルスチェックを追加します。
+	addHealthCheckField(&schema)
+
+	// 新しいフィールドを追加して、GraphQLスキーマにリセット情報を追加します。
+	addResetField(&schema)
+
 	// クエリのパース
 	result := graphql.Do(graphql.Params{
 		Schema:        schema,
@@ -130,4 +136,26 @@ func addConfigField(schema *graphql.Schema) {
 		},
 	}
 	schema.QueryType().AddFieldConfig("config", configField)
+}
+
+// 新しいフィールドを追加して、GraphQLスキーマにヘルスチェックを追加します。
+func addHealthCheckField(schema *graphql.Schema) {
+	healthCheckField := &graphql.Field{
+		Type: graphql.Boolean,
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return true, nil
+		},
+	}
+	schema.QueryType().AddFieldConfig("healthCheck", healthCheckField)
+}
+
+// 新しいフィールドを追加して、GraphQLスキーマにリセット情報を追加します。
+func addResetField(schema *graphql.Schema) {
+	resetField := &graphql.Field{
+		Type: graphql.String,
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return "Reset successful", nil
+		},
+	}
+	schema.QueryType().AddFieldConfig("reset", resetField)
 }
