@@ -126,3 +126,8 @@ func GetProtocolConversionErrorLogs() []string {
 func GetProtocolConversionMetrics() map[string]interface{} {
 	return map[string]interface{}{"conversions": 300, "errors": 10}
 }
+
+// 新しいメソッドを追加して、プロトコル変換の設定を取得します。
+func GetProtocolConversionConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
