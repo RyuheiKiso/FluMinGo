@@ -121,3 +121,8 @@ func ConvertGRPCToRESTWithHeaders(grpcResp *GRPCResponse, headers map[string]str
 func GetProtocolConversionErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、プロトコル変換のメトリクスを取得します。
+func GetProtocolConversionMetrics() map[string]interface{} {
+	return map[string]interface{}{"conversions": 300, "errors": 10}
+}
