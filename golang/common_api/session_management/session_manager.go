@@ -71,3 +71,14 @@ func (sm *SessionManager) GetValue(id string, key string) (interface{}, bool) {
 	value, exists := session.Values[key]
 	return value, exists
 }
+
+// ListSessions はすべてのセッションをリストするメソッドです。
+func (sm *SessionManager) ListSessions() []Session {
+	sm.mutex.RLock()
+	defer sm.mutex.RUnlock()
+	sessions := make([]Session, 0, len(sm.sessions))
+	for _, session := range sm.sessions {
+		sessions = append(sessions, session)
+	}
+	return sessions
+}
