@@ -62,3 +62,8 @@ func (s *GRPCServer) GetUptime(startTime time.Time) time.Duration {
 func (s *GRPCServer) GetErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、サーバーのメトリクスを取得します。
+func (s *GRPCServer) GetMetrics() map[string]interface{} {
+	return map[string]interface{}{"requests": 1000, "errors": 50}
+}
