@@ -34,6 +34,9 @@ func GraphQLEndpoint(w http.ResponseWriter, r *http.Request) {
 	// 新しいフィールドを追加して、GraphQLスキーマにサーバーの稼働時間を追加します。
 	addUptimeField(&schema, time.Now())
 
+	// 新しいフィールドを追加して、GraphQLスキーマにエラーログを追加します。
+	addErrorLogsField(&schema)
+
 	// クエリのパース
 	result := graphql.Do(graphql.Params{
 		Schema:        schema,
@@ -76,4 +79,15 @@ func addUptimeField(schema *graphql.Schema, startTime time.Time) {
 		},
 	}
 	schema.QueryType().AddFieldConfig("uptime", uptimeField)
+}
+
+// 新しいフィールドを追加して、GraphQLスキーマにエラーログを追加します。
+func addErrorLogsField(schema *graphql.Schema) {
+	errorLogsField := &graphql.Field{
+		Type: graphql.NewList(graphql.String),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return []string{"Error log 1", "Error log 2"}, nil
+		},
+	}
+	schema.QueryType().AddFieldConfig("errorLogs", errorLogsField)
 }
