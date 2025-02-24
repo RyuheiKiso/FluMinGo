@@ -116,3 +116,8 @@ func ConvertGRPCToRESTWithHeaders(grpcResp *GRPCResponse, headers map[string]str
 
 	return grpcResp.StatusCode, respBytes, headers, nil
 }
+
+// 新しいメソッドを追加して、プロトコル変換のエラーログを取得します。
+func GetProtocolConversionErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
