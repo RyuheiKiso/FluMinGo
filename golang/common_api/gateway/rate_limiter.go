@@ -50,6 +50,21 @@ func (rl *RateLimiter) Allow() bool {
 	return false
 }
 
+// SetRate はレートリミッターのレートを動的に設定します。
+func (rl *RateLimiter) SetRate(rate float64) {
+	rl.mu.Lock()
+	defer rl.mu.Unlock()
+	rl.rate = rate
+}
+
+// Reset はレートリミッターのトークンをリセットします。
+func (rl *RateLimiter) Reset() {
+	rl.mu.Lock()
+	defer rl.mu.Unlock()
+	rl.tokens = rl.capacity
+	rl.lastRefill = time.Now()
+}
+
 // RateLimitMiddleware is an HTTP middleware that rate limits incoming requests.
 func RateLimitMiddleware(rl *RateLimiter, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
