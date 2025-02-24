@@ -56,3 +56,8 @@ func (f *FailoverManager) GetFailoverHistory() []string {
 func (f *FailoverManager) GetFailoverSuccessCount() int {
 	return len(f.regions) - 1
 }
+
+// 新しいメソッドを追加して、フェイルオーバーのエラーログを取得します。
+func (f *FailoverManager) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
