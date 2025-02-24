@@ -50,3 +50,10 @@ func (cm *CacheManager) ClearCache() {
 	defer cm.mutex.Unlock()
 	cm.cache = make(map[string]interface{})
 }
+
+// キャッシュのサイズを取得するメソッドを追加
+func (cm *CacheManager) Size() int {
+	cm.mutex.RLock()
+	defer cm.mutex.RUnlock()
+	return len(cm.cache)
+}
