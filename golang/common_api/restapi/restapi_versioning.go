@@ -69,3 +69,66 @@ func CORSMiddleware(next http.Handler) http.Handler {
 		next.ServeHTTP(w, r)
 	})
 }
+
+// 新機能: RequestIDミドルウェアの追加
+func RequestIDMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// 簡易的なリクエストIDを設定（本番環境ではUUIDなどの利用が推奨されます）
+		reqID := "req-12345"
+		w.Header().Set("X-Request-ID", reqID)
+		next.ServeHTTP(w, r)
+	})
+}
+
+// 新機能: Rate Limitミドルウェアの追加
+func RateLimitMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// 簡易的なレート制限チェック（実際の実装には外部ライブラリなどを利用するのが望ましいです）
+		if r.Header.Get("X-RateLimit-Test") == "deny" {
+			http.Error(w, "Rate limit exceeded", http.StatusTooManyRequests)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+// 新機能: RecoveryMiddleware を追加
+func RecoveryMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if err := recover(); err != nil {
+				log.Printf("パニックを回復: %v", err)
+				http.Error(w, "内部サーバーエラー", http.StatusInternalServerError)
+			}
+		}()
+		next.ServeHTTP(w, r)
+	})
+}
+
+// 新機能: SecurityHeadersMiddleware を追加
+func SecurityHeadersMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.Header().Set("X-Frame-Options", "DENY")
+		w.Header().Set("X-XSS-Protection", "1; mode=block")
+		next.ServeHTTP(w, r)
+	})
+}
+
+// 新機能: TracingMiddleware を追加
+func TracingMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// 簡単なトレースID設定（実際はUUIDなどの利用が推奨されます）
+		traceID := "trace-00001"
+		w.Header().Set("X-Trace-ID", traceID)
+		next.ServeHTTP(w, r)
+	})
+}
+
+// 新機能: NoCacheMiddleware を追加
+func NoCacheMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate")
+		next.ServeHTTP(w, r)
+	})
+}

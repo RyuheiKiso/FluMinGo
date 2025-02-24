@@ -77,3 +77,51 @@ func (h *Handler) ServerTimeHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
 }
+
+// 新機能: HealthCheckHandler はサービスからヘルスチェック情報を取得してJSONで返すエンドポイントです
+func (h *Handler) HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	health, err := h.Service.GetHealthCheck()
+	if err != nil {
+		http.Error(w, "ヘルスチェックの取得に失敗しました", http.StatusInternalServerError)
+		return
+	}
+	response := map[string]string{"health": health}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// 新機能: UptimeHandler はサービスから稼働時間を取得してJSONで返すエンドポイントです
+func (h *Handler) UptimeHandler(w http.ResponseWriter, r *http.Request) {
+	uptime, err := h.Service.GetUptime()
+	if err != nil {
+		http.Error(w, "稼働時間の取得に失敗しました", http.StatusInternalServerError)
+		return
+	}
+	response := map[string]string{"uptime": uptime}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// 新機能: SystemInfoHandler はサービスからシステム情報を取得してJSONで返すエンドポイントです
+func (h *Handler) SystemInfoHandler(w http.ResponseWriter, r *http.Request) {
+	info, err := h.Service.GetSystemInfo()
+	if err != nil {
+		http.Error(w, "システム情報の取得に失敗しました", http.StatusInternalServerError)
+		return
+	}
+	response := map[string]string{"system_info": info}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+// 新機能: PingHandler はサービスからポング応答を取得してJSONで返すエンドポイントです
+func (h *Handler) PingHandler(w http.ResponseWriter, r *http.Request) {
+	pong, err := h.Service.Ping()
+	if err != nil {
+		http.Error(w, "ポング応答の取得に失敗しました", http.StatusInternalServerError)
+		return
+	}
+	response := map[string]string{"pong": pong}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
