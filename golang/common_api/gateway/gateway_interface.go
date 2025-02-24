@@ -38,3 +38,63 @@ func (g *GatewayImpl) GetMetrics() map[string]interface{} {
 func (g *GatewayImpl) GetConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、ゲートウェイのヘルスチェックを行います。
+func (g *GatewayImpl) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、ゲートウェイのステータスをリセットします。
+func (g *GatewayImpl) ResetStatus() string {
+	return "Gateway status reset"
+}
+
+// 新しいメソッドを追加して、ゲートウェイのリクエスト数を取得します。
+func (g *GatewayImpl) GetRequestCount() int {
+	return 10000 // ダミーのリクエスト数を返します。
+}
+
+// 新しいメソッドを追加して、ゲートウェイのレスポンス時間を取得します。
+func (g *GatewayImpl) GetResponseTime() float64 {
+	return 0.456 // ダミーのレスポンス時間を返します。
+}
+
+// 新しいメソッドを追加して、ゲートウェイのリクエストパスを取得します。
+func (g *GatewayImpl) GetRequestPath(r *http.Request) string {
+	return r.URL.Path
+}
+
+// 新しいメソッドを追加して、ゲートウェイのリクエストメソッドを取得します。
+func (g *GatewayImpl) GetRequestMethod(r *http.Request) string {
+	return r.Method
+}
+
+// 新しいメソッドを追加して、ゲートウェイのリクエストヘッダーを取得します。
+func (g *GatewayImpl) GetRequestHeaders(r *http.Request) map[string]string {
+	headers := make(map[string]string)
+	for name, values := range r.Header {
+		headers[name] = values[0]
+	}
+	return headers
+}
+
+// 新しいメソッドを追加して、ゲートウェイのクエリパラメータを取得します。
+func (g *GatewayImpl) GetQueryParams(r *http.Request) map[string]string {
+	params := make(map[string]string)
+	for name, values := range r.URL.Query() {
+		params[name] = values[0]
+	}
+	return params
+}
+
+// 新しいメソッドを追加して、ゲートウェイのリクエストボディを検証します。
+func (g *GatewayImpl) ValidateRequestBody(r *http.Request) bool {
+	// リクエストボディの検証ロジックをここに追加します。
+	return true
+}
+
+// 新しいメソッドを追加して、ゲートウェイのレスポンスボディを検証します。
+func (g *GatewayImpl) ValidateResponseBody(body map[string]interface{}) bool {
+	// レスポンスボディの検証ロジックをここに追加します。
+	return true
+}
