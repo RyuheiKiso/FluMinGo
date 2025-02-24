@@ -50,3 +50,8 @@ func (c *Config) Save(filePath string) error {
 	encoder := json.NewEncoder(file)
 	return encoder.Encode(c.settings)
 }
+
+// 設定の削除機能を追加
+func (c *Config) Delete(key string) {
+	delete(c.settings, key)
+}

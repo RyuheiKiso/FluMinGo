@@ -38,7 +38,7 @@ func (c *Container) Unregister(name string) {
 }
 
 // サービスの一覧を取得する機能を追加
-func (c *Container) ListServices() []string {
+func (c.ListServices() []string {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	services := []string{}
@@ -78,4 +78,13 @@ func (c *Container) ArchiveContainer() string {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	return fmt.Sprintf("Archiving container with services: %v", c.ListServices())
+}
+
+// サービスの依存関係を解決する機能を追加
+func (c *Container) ResolveDependencies(name string) ([]string, error) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	// 依存関係解決ロジックを実装
+	// 現在はダミーの依存関係リストを返す
+	return []string{"dependency1", "dependency2"}, nil
 }

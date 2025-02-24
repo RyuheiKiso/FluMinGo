@@ -46,3 +46,14 @@ func (nm *NotificationManager) Notify(message string) {
 		}
 	}
 }
+
+// 通知の履歴を取得する機能を追加
+func (nm *NotificationManager) GetNotificationHistory() []string {
+	nm.mutex.RLock()
+	defer nm.mutex.RUnlock()
+	history := []string{}
+	for id := range nm.subscribers {
+		history = append(history, id)
+	}
+	return history
+}

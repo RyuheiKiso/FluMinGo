@@ -45,3 +45,14 @@ func (am *AuthManager) Authorize(username, resource string) bool {
 	// 簡単な例として、全てのユーザーに全てのリソースへのアクセスを許可します。
 	return true
 }
+
+// ユーザーの削除機能を追加
+func (am *AuthManager) DeleteUser(username string) error {
+	am.mutex.Lock()
+	defer am.mutex.Unlock()
+	if _, exists := am.users[username]; !exists {
+		return errors.New("ユーザーが存在しません")
+	}
+	delete(am.users, username)
+	return nil
+}

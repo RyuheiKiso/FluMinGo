@@ -154,3 +154,11 @@ func (m *Manager) ExportConfig(exportFilePath string) error {
 	}
 	return ioutil.WriteFile(exportFilePath, data, 0644)
 }
+
+// 設定のリセット機能を追加
+func (m *Manager) ResetConfig() {
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+	m.config = &Config{}
+	log.Println("設定がリセットされました")
+}

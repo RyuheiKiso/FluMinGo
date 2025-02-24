@@ -77,3 +77,10 @@ func (sd *ServiceDiscovery) ArchiveService(serviceName string) error {
 	// アーカイブ処理の実装
 	return nil
 }
+
+// サービスのリスト機能を追加
+func (sd *ServiceDiscovery) ListServices() ([]string, error) {
+	// サービスリスト取得処理を実装する
+	// 現在はダミーのサービスリストを返す
+	return []string{"service1", "service2"}, nil
+}

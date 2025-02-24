@@ -43,3 +43,10 @@ func (cm *CacheManager) expireKey(key string) {
 	defer cm.mutex.Unlock()
 	delete(cm.cache, key)
 }
+
+// キャッシュのクリア機能を追加
+func (cm *CacheManager) ClearCache() {
+	cm.mutex.Lock()
+	defer cm.mutex.Unlock()
+	cm.cache = make(map[string]interface{})
+}

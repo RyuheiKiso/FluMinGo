@@ -77,3 +77,8 @@ func ArchiveCache(rdb *redis.Client, key string) (string, error) {
 	// アーカイブ処理の実装
 	return value, nil
 }
+
+// キャッシュのクリア機能を追加
+func ClearCache(rdb *redis.Client) error {
+	return rdb.FlushAll(ctx).Err()
+}
