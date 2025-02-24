@@ -72,3 +72,8 @@ func (ge *GatewayExtension) GetTrafficAnalysisErrorLogs() []string {
 func (ge *GatewayExtension) GetTrafficMetrics() map[string]interface{} {
 	return map[string]interface{}{"requests": 5000, "errors": 100}
 }
+
+// 新しいメソッドを追加して、ゲートウェイ拡張の設定を取得します。
+func (ge *GatewayExtension) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
