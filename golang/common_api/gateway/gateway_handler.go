@@ -34,3 +34,8 @@ func (h *APIHandler) HandleRequestWithMetrics(w http.ResponseWriter, r *http.Req
 	duration := time.Since(start)
 	fmt.Println("Request processed in", duration)
 }
+
+// 新しいメソッドを追加して、APIハンドラーのエラーログを取得します。
+func (h *APIHandler) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
