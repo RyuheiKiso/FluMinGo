@@ -49,3 +49,8 @@ func (s *GRPCService) GetErrorLogs() []string {
 func (s *GRPCService) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"requests": 100, "errors": 5}
 }
+
+// 新しいメソッドを追加して、サービスの設定を取得します。
+func (s *GRPCService) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
