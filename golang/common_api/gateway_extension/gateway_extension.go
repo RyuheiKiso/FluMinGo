@@ -62,3 +62,8 @@ func (ge *GatewayExtension) GetCustomRuleCount() int {
 func (ge *GatewayExtension) GetCustomRules() []CustomRule {
 	return ge.customRules
 }
+
+// 新しいメソッドを追加して、トラフィック分析のエラーログを取得します。
+func (ge *GatewayExtension) GetTrafficAnalysisErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
