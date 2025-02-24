@@ -37,6 +37,9 @@ func GraphQLEndpoint(w http.ResponseWriter, r *http.Request) {
 	// 新しいフィールドを追加して、GraphQLスキーマにエラーログを追加します。
 	addErrorLogsField(&schema)
 
+	// 新しいフィールドを追加して、GraphQLスキーマにメトリクスを追加します。
+	addMetricsField(&schema)
+
 	// クエリのパース
 	result := graphql.Do(graphql.Params{
 		Schema:        schema,
@@ -90,4 +93,21 @@ func addErrorLogsField(schema *graphql.Schema) {
 		},
 	}
 	schema.QueryType().AddFieldConfig("errorLogs", errorLogsField)
+}
+
+// 新しいフィールドを追加して、GraphQLスキーマにメトリクスを追加します。
+func addMetricsField(schema *graphql.Schema) {
+	metricsField := &graphql.Field{
+		Type: graphql.NewObject(graphql.ObjectConfig{
+			Name: "Metrics",
+			Fields: graphql.Fields{
+				"requests": &graphql.Field{Type: graphql.Int},
+				"errors":   &graphql.Field{Type: graphql.Int},
+			},
+		}),
+		Resolve: func(p graphql.ResolveParams) (interface{}, error) {
+			return map[string]interface{}{"requests": 1000, "errors": 50}, nil
+		},
+	}
+	schema.QueryType().AddFieldConfig("metrics", metricsField)
 }
