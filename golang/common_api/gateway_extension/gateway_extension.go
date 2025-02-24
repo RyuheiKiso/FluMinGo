@@ -67,3 +67,8 @@ func (ge *GatewayExtension) GetCustomRules() []CustomRule {
 func (ge *GatewayExtension) GetTrafficAnalysisErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、トラフィック分析のメトリクスを取得します。
+func (ge *GatewayExtension) GetTrafficMetrics() map[string]interface{} {
+	return map[string]interface{}{"requests": 5000, "errors": 100}
+}
