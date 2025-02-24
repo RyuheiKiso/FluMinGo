@@ -26,3 +26,24 @@ func (t *Tracer) StartSpan(ctx context.Context, name string) (context.Context, f
 		fmt.Printf("[Tracer] %s スパン終了: %s (所要時間: %v)\n", name, endTime.Format(time.RFC3339), endTime.Sub(startTime))
 	}
 }
+
+// StopSpan はスパンを手動で停止する関数
+func (t *Tracer) StopSpan(name string) {
+	endTime := time.Now()
+	fmt.Printf("[Tracer] %s スパン手動停止: %s\n", name, endTime.Format(time.RFC3339))
+}
+
+// AddAnnotation はスパンに注釈を追加する関数
+func (t *Tracer) AddAnnotation(name string, annotation string) {
+	fmt.Printf("[Tracer] %s スパン注釈: %s\n", name, annotation)
+}
+
+// AddTag はスパンにタグを追加する関数
+func (t *Tracer) AddTag(name string, key string, value string) {
+	fmt.Printf("[Tracer] %s スパンタグ追加: %s=%s\n", name, key, value)
+}
+
+// SetStatus はスパンのステータスを設定する関数
+func (t *Tracer) SetStatus(name string, status string) {
+	fmt.Printf("[Tracer] %s スパンステータス設定: %s\n", name, status)
+}
