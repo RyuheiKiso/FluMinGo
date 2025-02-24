@@ -40,3 +40,8 @@ func GetAuthorizationErrorLogs() []string {
 func GetAuthorizationMetrics() map[string]interface{} {
 	return map[string]interface{}{"checks": 5000, "errors": 100}
 }
+
+// 新しいメソッドを追加して、認証の設定を取得します。
+func GetAuthorizationConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
