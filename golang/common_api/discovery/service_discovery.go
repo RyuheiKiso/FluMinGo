@@ -84,3 +84,20 @@ func (sd *ServiceDiscovery) ListServices() ([]string, error) {
 	// 現在はダミーのサービスリストを返す
 	return []string{"service1", "service2"}, nil
 }
+
+// サービスのバックアップ機能を追加
+func (sd *ServiceDiscovery) BackupService(serviceName string) error {
+	fmt.Printf("Backing up service: %s\n", serviceName)
+	// バックアップ処理の実装
+	return nil
+}
+
+// サービスのステータスを一括で確認する機能を追加
+func (sd *ServiceDiscovery) BatchServiceStatus(serviceNames []string) map[string]bool {
+	statuses := make(map[string]bool)
+	for _, serviceName := range serviceNames {
+		status, _ := sd.HealthCheck(serviceName)
+		statuses[serviceName] = status
+	}
+	return statuses
+}
