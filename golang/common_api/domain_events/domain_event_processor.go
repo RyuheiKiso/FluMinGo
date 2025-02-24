@@ -91,3 +91,18 @@ func (dep *DomainEventProcessor) ArchiveEvent(event string) error {
 	// アーカイブ処理の実装
 	return nil
 }
+
+// ドメインイベントのステータス確認機能を追加
+func (dep *DomainEventProcessor) EventStatus(event string) string {
+	// ステータス確認ロジックを実装
+	return fmt.Sprintf("Event %s is processed", event)
+}
+
+// ドメインイベントのステータスを一括で確認する機能を追加
+func (dep *DomainEventProcessor) BatchEventStatus(events []string) map[string]string {
+	statuses := make(map[string]string)
+	for _, event := range events {
+		statuses[event] = dep.EventStatus(event)
+	}
+	return statuses
+}
