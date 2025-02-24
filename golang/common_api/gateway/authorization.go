@@ -35,3 +35,8 @@ func CheckAuthorizationWithLogging(r *http.Request) error {
 func GetAuthorizationErrorLogs() []string {
 	return []string{"Error log 1", "Error log 2"}
 }
+
+// 新しいメソッドを追加して、認証のメトリクスを取得します。
+func GetAuthorizationMetrics() map[string]interface{} {
+	return map[string]interface{}{"checks": 5000, "errors": 100}
+}
