@@ -12,3 +12,8 @@ func InitEFKLogging() {
 	logrus.SetOutput(os.Stdout)
 	logrus.SetLevel(logrus.InfoLevel)
 }
+
+// LogStructuredData は構造化データをログに記録するメソッドです。
+func LogStructuredData(data map[string]interface{}) {
+	// 実際のロギング処理をここに追加します。
+}

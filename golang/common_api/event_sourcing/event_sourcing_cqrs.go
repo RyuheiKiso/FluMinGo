@@ -25,6 +25,28 @@ type CommandHandler interface {
 	Handle(command Command) error
 }
 
+// Aggregate は集約のインターフェースを定義します。
+type Aggregate interface {
+	AggregateID() string
+	Apply(event Event) error
+}
+
+// AggregateRoot は集約の基本構造体です。
+type AggregateRoot struct {
+	ID string
+}
+
+// AggregateID は集約のIDを返します。
+func (ar *AggregateRoot) AggregateID() string {
+	return ar.ID
+}
+
+// Apply はイベントを適用します。
+func (ar *AggregateRoot) Apply(event Event) error {
+	// イベント適用ロジックをここに追加します。
+	return nil
+}
+
 // EventSourcingCQRS はイベントソーシングとCQRSのメイン構造体です。
 type EventSourcingCQRS struct {
 	eventStore     EventStore

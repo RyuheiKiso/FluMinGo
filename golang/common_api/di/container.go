@@ -79,3 +79,26 @@ func (c *Container) ArchiveContainer() string {
 	defer c.mutex.Unlock()
 	return fmt.Sprintf("Archiving container with services: %v", c.ListServices())
 }
+
+// サービスの依存関係を解決する機能を追加
+func (c *Container) ResolveDependencies(name string) ([]string, error) {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	// 依存関係解決ロジックを実装
+	// 現在はダミーの依存関係リストを返す
+	return []string{"dependency1", "dependency2"}, nil
+}
+
+// DIコンテナのバックアップ機能を追加
+func (c *Container) BackupContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Backing up container with services: %v", c.ListServices())
+}
+
+// DIコンテナのインスタンス数を取得する機能を追加
+func (c *Container) InstanceCount() int {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return len(c.services)
+}

@@ -87,6 +87,13 @@ func (c *Cache) GetAllEntries() map[string]CacheEntry {
 	return c.Data
 }
 
+// キャッシュのエントリを更新する機能を追加
+func (c *Cache) UpdateEntry(key string, value CacheEntry) {
+	c.Mutex.Lock()
+	defer c.Mutex.Unlock()
+	c.Data[key] = value
+}
+
 // DBQueries provides common database query management functions.
 type DBQueries struct {
 	Cache Cache

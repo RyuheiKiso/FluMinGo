@@ -54,3 +54,9 @@ type TimeoutTransaction interface {
 	Transaction
 	SetTimeout(duration time.Duration) error
 }
+
+// トランザクションの状態を取得する機能を追加
+func (tx *SQLTransaction) GetStatus() string {
+	// 実際の実装はトランザクションの状態を返す必要があります
+	return "unknown"
+}

@@ -55,3 +55,9 @@ func (du *DashboardUI) ChangeTheme(theme string) error {
 	// 実際の実装はテーマ変更の処理を行う必要があります
 	return nil
 }
+
+// ダッシュボードのリフレッシュ機能を追加
+func (du *DashboardUI) RefreshDashboard() error {
+	// 実際の実装はダッシュボードのリフレッシュ処理を行う必要があります
+	return nil
+}

@@ -23,6 +23,11 @@ func (l SimpleLogger) Error(msg string) {
 	log.Println("ERROR: " + msg)
 }
 
+// ログレベルを設定する機能を追加
+func (l SimpleLogger) SetLogLevel(level string) {
+	log.Printf("ログレベルが %s に設定されました", level)
+}
+
 // NewLogger は新しい SimpleLogger インスタンスを返します。
 func NewLogger() Logger {
 	return &SimpleLogger{}

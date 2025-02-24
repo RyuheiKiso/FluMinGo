@@ -54,6 +54,15 @@ func (t *TwoPhaseCommit) Status() string {
 	return "All participants are ready"
 }
 
+// トランザクションのステータスを一括で確認する機能を追加
+func (t *TwoPhaseCommit) BatchStatus() map[string]string {
+	statuses := make(map[string]string)
+	for _, p := range t.participants {
+		statuses[fmt.Sprintf("%T", p)] = t.Status()
+	}
+	return statuses
+}
+
 // トランザクションのタイムアウト機能を追加
 func (t *TwoPhaseCommit) ExecuteWithTimeout(ctx context.Context, timeout time.Duration) error {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
@@ -90,4 +99,10 @@ func (t *TwoPhaseCommit) ExportTransaction() string {
 // トランザクションのアーカイブ機能を追加
 func (t *TwoPhaseCommit) ArchiveTransaction() string {
 	return fmt.Sprintf("Archiving transaction with %d participants", len(t.participants))
+}
+
+// トランザクションのキャンセル機能を追加
+func (t *TwoPhaseCommit) CancelTransaction(ctx context.Context) error {
+	t.rollback(ctx)
+	return fmt.Errorf("transaction cancelled")
 }

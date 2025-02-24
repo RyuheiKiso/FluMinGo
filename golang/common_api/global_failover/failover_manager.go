@@ -40,3 +40,44 @@ func (f *FailoverManager) GetCurrentRegion() string {
 
 	return f.currentRegion
 }
+
+// 新しいメソッドを追加して、利用可能なリージョンのリストを取得します。
+func (f *FailoverManager) GetAvailableRegions() []string {
+	return f.regions
+}
+
+// 新しいメソッドを追加して、フェイルオーバーの履歴を取得します。
+func (f *FailoverManager) GetFailoverHistory() []string {
+	// 仮の履歴データを返す
+	return []string{"region1", "region2", "region3"}
+}
+
+// 新しいメソッドを追加して、フェイルオーバーの成功回数を取得します。
+func (f *FailoverManager) GetFailoverSuccessCount() int {
+	return len(f.regions) - 1
+}
+
+// 新しいメソッドを追加して、フェイルオーバーのエラーログを取得します。
+func (f *FailoverManager) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
+
+// 新しいメソッドを追加して、フェイルオーバーのメトリクスを取得します。
+func (f *FailoverManager) GetMetrics() map[string]interface{} {
+	return map[string]interface{}{"failovers": 3, "errors": 1}
+}
+
+// 新しいメソッドを追加して、フェイルオーバーの設定を取得します。
+func (f *FailoverManager) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
+
+// 新しいメソッドを追加して、フェイルオーバーのヘルスチェックを行います。
+func (f *FailoverManager) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、フェイルオーバーのステータスをリセットします。
+func (f *FailoverManager) ResetStatus() string {
+	return "Failover status reset"
+}

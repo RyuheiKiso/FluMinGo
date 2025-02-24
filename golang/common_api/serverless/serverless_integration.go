@@ -31,3 +31,9 @@ func (si *ServerlessIntegration) IntegrateAzureFunctions() error {
 	// ...Azure Functions統合の実装...
 	return nil
 }
+
+// GetServerlessStatus はサーバーレス連携のステータスを取得するメソッドです。
+func (si *ServerlessIntegration) GetServerlessStatus() string {
+	// 実際のステータス取得処理をここに追加します。
+	return "Serverless integration is active"
+}

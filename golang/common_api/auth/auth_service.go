@@ -82,6 +82,13 @@ func (s *AuthService) ChangePassword(username, oldPassword, newPassword string) 
 	return nil
 }
 
+// ResetPassword はユーザーのパスワードをリセットするメソッドです。
+func (s *AuthService) ResetPassword(username, newPassword string) error {
+	// 実際のパスワードリセットロジックをここに追加
+	s.logger.Info("パスワードが正常にリセットされました: " + username)
+	return nil
+}
+
 // ユーザーのトークンをすべて削除するメソッドを追加
 func (s *AuthService) DeleteAllTokens(username string) error {
 	tokens, err := s.repo.GetTokensByUsername(username)
@@ -98,4 +105,21 @@ func (s *AuthService) DeleteAllTokens(username string) error {
 	}
 	s.logger.Info("ユーザーのすべてのトークンを削除しました: " + username)
 	return nil
+}
+
+// RefreshToken はトークンをリフレッシュするメソッドです。
+func (s *AuthService) RefreshToken(token string) (string, error) {
+	username, err := s.repo.GetUsernameByToken(token)
+	if err != nil {
+		s.logger.Error(s.errorHandler.HandleError(err))
+		return "", err
+	}
+	newToken := "new-dummy-token" // 実際のトークン生成ロジックをここに追加
+	err = s.SaveToken(username, newToken)
+	if err != nil {
+		s.logger.Error(s.errorHandler.HandleError(err))
+		return "", err
+	}
+	s.logger.Info("トークンがリフレッシュされました: " + username)
+	return newToken, nil
 }

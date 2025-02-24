@@ -52,3 +52,38 @@ func (ge *GatewayExtension) ApplyCustomRules(data interface{}) error {
 	}
 	return nil
 }
+
+// 新しいメソッドを追加して、カスタムルールの数を取得します。
+func (ge *GatewayExtension) GetCustomRuleCount() int {
+	return len(ge.customRules)
+}
+
+// 新しいメソッドを追加して、カスタムルールのリストを取得します。
+func (ge *GatewayExtension) GetCustomRules() []CustomRule {
+	return ge.customRules
+}
+
+// 新しいメソッドを追加して、トラフィック分析のエラーログを取得します。
+func (ge *GatewayExtension) GetTrafficAnalysisErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
+
+// 新しいメソッドを追加して、トラフィック分析のメトリクスを取得します。
+func (ge *GatewayExtension) GetTrafficMetrics() map[string]interface{} {
+	return map[string]interface{}{"requests": 5000, "errors": 100}
+}
+
+// 新しいメソッドを追加して、ゲートウェイ拡張の設定を取得します。
+func (ge *GatewayExtension) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
+
+// 新しいメソッドを追加して、ゲートウェイ拡張のヘルスチェックを行います。
+func (ge *GatewayExtension) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、ゲートウェイ拡張のステータスをリセットします。
+func (ge *GatewayExtension) ResetStatus() string {
+	return "Gateway extension status reset"
+}

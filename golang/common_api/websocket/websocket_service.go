@@ -4,7 +4,7 @@ import "log"
 
 // WebSocketService はWebSocketを通じたサービス処理を担当する構造体です。
 // 必要に応じてフィールドを追加してください。
-type WebSocketService struct {}
+type WebSocketService struct{}
 
 // NewWebSocketService は新しいWebSocketServiceのインスタンスを生成します。
 func NewWebSocketService() *WebSocketService {
@@ -17,4 +17,10 @@ func (s *WebSocketService) ProcessMessage(message []byte) ([]byte, error) {
 	log.Println("ProcessMessage メソッドが呼び出されました")
 	// ビジネスロジックをここに実装
 	return message, nil
+}
+
+// CloseConnection はWebSocket接続を閉じるメソッドです。
+func (ws *WebSocketService) CloseConnection() error {
+	// 実際の接続を閉じる処理をここに追加します。
+	return nil
 }

@@ -82,3 +82,9 @@ func (c *ComplianceManager) CompressLogs() error {
 	// 実際の実装はログの圧縮処理を行う必要があります
 	return nil
 }
+
+// ログのローテーション機能を追加
+func (c *ComplianceManager) RotateLogs() error {
+	// 実際の実装はログのローテーション処理を行う必要があります
+	return nil
+}
