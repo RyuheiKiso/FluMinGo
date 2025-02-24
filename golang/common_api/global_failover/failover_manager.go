@@ -66,3 +66,8 @@ func (f *FailoverManager) GetErrorLogs() []string {
 func (f *FailoverManager) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"failovers": 3, "errors": 1}
 }
+
+// 新しいメソッドを追加して、フェイルオーバーの設定を取得します。
+func (f *FailoverManager) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
