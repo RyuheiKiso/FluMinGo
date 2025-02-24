@@ -82,3 +82,23 @@ func ArchiveCache(rdb *redis.Client, key string) (string, error) {
 func ClearCache(rdb *redis.Client) error {
 	return rdb.FlushAll(ctx).Err()
 }
+
+// キャッシュのバックアップ機能を追加
+func BackupCache(rdb *redis.Client, key string) (string, error) {
+	value, err := rdb.Get(ctx, key).Result()
+	if err != nil {
+		return "", err
+	}
+	fmt.Printf("Backing up cache: %s\n", key)
+	// バックアップ処理の実装
+	return value, nil
+}
+
+// キャッシュの存在確認機能を追加
+func CacheExists(rdb *redis.Client, key string) (bool, error) {
+	exists, err := rdb.Exists(ctx, key).Result()
+	if err != nil {
+		return false, err
+	}
+	return exists == 1, nil
+}
