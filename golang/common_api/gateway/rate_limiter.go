@@ -75,6 +75,11 @@ func (rl *RateLimiter) GetMetrics() map[string]interface{} {
 	return map[string]interface{}{"allowed": 200, "denied": 50}
 }
 
+// 新しいメソッドを追加して、レートリミッターの設定を取得します。
+func (rl *RateLimiter) GetConfig() map[string]interface{} {
+	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
+}
+
 // RateLimitMiddleware is an HTTP middleware that rate limits incoming requests.
 func RateLimitMiddleware(rl *RateLimiter, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
