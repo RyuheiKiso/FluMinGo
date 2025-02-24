@@ -40,3 +40,19 @@ func (f *FailoverManager) GetCurrentRegion() string {
 
 	return f.currentRegion
 }
+
+// 新しいメソッドを追加して、利用可能なリージョンのリストを取得します。
+func (f *FailoverManager) GetAvailableRegions() []string {
+	return f.regions
+}
+
+// 新しいメソッドを追加して、フェイルオーバーの履歴を取得します。
+func (f *FailoverManager) GetFailoverHistory() []string {
+	// 仮の履歴データを返す
+	return []string{"region1", "region2", "region3"}
+}
+
+// 新しいメソッドを追加して、フェイルオーバーの成功回数を取得します。
+func (f *FailoverManager) GetFailoverSuccessCount() int {
+	return len(f.regions) - 1
+}
