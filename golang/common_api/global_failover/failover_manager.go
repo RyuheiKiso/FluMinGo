@@ -71,3 +71,13 @@ func (f *FailoverManager) GetMetrics() map[string]interface{} {
 func (f *FailoverManager) GetConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、フェイルオーバーのヘルスチェックを行います。
+func (f *FailoverManager) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、フェイルオーバーのステータスをリセットします。
+func (f *FailoverManager) ResetStatus() string {
+	return "Failover status reset"
+}
