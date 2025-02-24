@@ -38,7 +38,7 @@ func (c *Container) Unregister(name string) {
 }
 
 // サービスの一覧を取得する機能を追加
-func (c.ListServices() []string {
+func (c *Container) ListServices() []string {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
 	services := []string{}
@@ -87,4 +87,18 @@ func (c *Container) ResolveDependencies(name string) ([]string, error) {
 	// 依存関係解決ロジックを実装
 	// 現在はダミーの依存関係リストを返す
 	return []string{"dependency1", "dependency2"}, nil
+}
+
+// DIコンテナのバックアップ機能を追加
+func (c *Container) BackupContainer() string {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return fmt.Sprintf("Backing up container with services: %v", c.ListServices())
+}
+
+// DIコンテナのインスタンス数を取得する機能を追加
+func (c *Container) InstanceCount() int {
+	c.mutex.Lock()
+	defer c.mutex.Unlock()
+	return len(c.services)
 }
