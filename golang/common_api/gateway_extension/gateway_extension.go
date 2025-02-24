@@ -77,3 +77,13 @@ func (ge *GatewayExtension) GetTrafficMetrics() map[string]interface{} {
 func (ge *GatewayExtension) GetConfig() map[string]interface{} {
 	return map[string]interface{}{"setting1": "value1", "setting2": "value2"}
 }
+
+// 新しいメソッドを追加して、ゲートウェイ拡張のヘルスチェックを行います。
+func (ge *GatewayExtension) HealthCheck() bool {
+	return true
+}
+
+// 新しいメソッドを追加して、ゲートウェイ拡張のステータスをリセットします。
+func (ge *GatewayExtension) ResetStatus() string {
+	return "Gateway extension status reset"
+}
