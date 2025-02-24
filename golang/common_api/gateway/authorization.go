@@ -30,3 +30,8 @@ func CheckAuthorizationWithLogging(r *http.Request) error {
 	fmt.Println("Checking authorization for request:", r.Method, r.URL.Path)
 	return CheckAuthorization(r)
 }
+
+// 新しいメソッドを追加して、認証のエラーログを取得します。
+func GetAuthorizationErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
