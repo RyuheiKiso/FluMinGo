@@ -40,3 +40,8 @@ func (ffm *FeatureFlagManager) SetFlag(name string, enabled bool) {
 		ffm.flags[name] = FeatureFlag{Name: name, Enabled: enabled}
 	}
 }
+
+// RemoveFlag はフィーチャーフラグを削除します。
+func (ffm *FeatureFlagManager) RemoveFlag(name string) {
+	delete(ffm.flags, name)
+}
