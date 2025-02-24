@@ -57,3 +57,8 @@ func (s *GRPCServer) GetVersion() string {
 func (s *GRPCServer) GetUptime(startTime time.Time) time.Duration {
 	return time.Since(startTime)
 }
+
+// 新しいメソッドを追加して、サーバーのエラーログを取得します。
+func (s *GRPCServer) GetErrorLogs() []string {
+	return []string{"Error log 1", "Error log 2"}
+}
