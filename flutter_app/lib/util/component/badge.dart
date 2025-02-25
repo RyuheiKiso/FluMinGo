@@ -24,6 +24,9 @@ class BadgeComponent extends StatelessWidget {
   final double? borderRadius;
   // バッジに表示するアイコン
   final Widget? icon; // 新しいプロパティ
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
 
   /// コンストラクタ
   /// 
@@ -41,6 +44,8 @@ class BadgeComponent extends StatelessWidget {
     this.padding,
     this.borderRadius,
     this.icon,
+    this.iconSize,
+    this.labelFontSize,
   });
 
   @override
