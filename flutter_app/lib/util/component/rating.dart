@@ -16,6 +16,12 @@ class Rating extends StatefulWidget {
   final Color unfilledColor;
   // レーティング変更コールバック
   final ValueChanged<double>? onRatingChanged;
+  // アイコンのサイズ
+  final double iconSize;
+  // ハーフレーティングを許可するかどうか
+  final bool allowHalfRating;
+  // ジェスチャーを無視するかどうか
+  final bool ignoreGestures;
 
   const Rating({
     super.key,
@@ -26,6 +32,9 @@ class Rating extends StatefulWidget {
     this.filledColor = Colors.amber,
     this.unfilledColor = Colors.grey,
     this.onRatingChanged,
+    this.iconSize = 24.0,
+    this.allowHalfRating = false,
+    this.ignoreGestures = false,
   });
 
   @override
@@ -50,9 +59,9 @@ class _RatingState extends State<Rating> {
       children: List.generate(widget.maxRating, (index) {
         return GestureDetector(
           // アイコンがタップされたときの処理
-          onTap: () {
+          onTap: widget.ignoreGestures ? null : () {
             setState(() {
-              _currentRating = index + 1.0;
+              _currentRating = widget.allowHalfRating ? index + 0.5 : index + 1.0;
             });
             if (widget.onRatingChanged != null) {
               widget.onRatingChanged!(_currentRating);
@@ -62,6 +71,7 @@ class _RatingState extends State<Rating> {
           child: Icon(
             index < _currentRating ? widget.filledIcon : widget.unfilledIcon,
             color: index < _currentRating ? widget.filledColor : widget.unfilledColor,
+            size: widget.iconSize,
           ),
         );
       }),
