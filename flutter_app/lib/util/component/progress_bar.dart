@@ -21,6 +21,12 @@ class ProgressBarComponent extends StatelessWidget {
   final double? minHeight;
   // セマンティクスラベル
   final String? semanticsLabel;
+  // プログレスバーの形状
+  final ShapeBorder? shape;
+  // プログレスバーのアニメーションの持続時間
+  final Duration? animationDuration;
+  // プログレスバーのトリガー距離
+  final double triggerDistance;
 
   /// コンストラクタ
   /// 
@@ -33,6 +39,9 @@ class ProgressBarComponent extends StatelessWidget {
     this.backgroundColor,
     this.minHeight,
     this.semanticsLabel,
+    this.shape,
+    this.animationDuration,
+    this.triggerDistance = 100.0,
   });
 
   @override

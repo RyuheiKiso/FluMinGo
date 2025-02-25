@@ -24,6 +24,12 @@ class CustomRefreshIndicator extends StatelessWidget {
   final ScrollNotificationPredicate? notificationPredicate;
   // エッジオフセット
   final double edgeOffset;
+  // インジケーターの形状
+  final ShapeBorder? shape;
+  // インジケーターのアニメーションの持続時間
+  final Duration? animationDuration;
+  // インジケーターのトリガー距離
+  final double triggerDistance;
 
   // コンストラクタにコメントを追加
   const CustomRefreshIndicator({
@@ -39,6 +45,9 @@ class CustomRefreshIndicator extends StatelessWidget {
     this.backgroundColor,
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.edgeOffset = 0.0,
+    this.shape,
+    this.animationDuration,
+    this.triggerDistance = 100.0,
   });
 
   @override

@@ -20,6 +20,12 @@ class ProgressIndicatorComponent extends StatelessWidget {
   final Animation<Color?>? valueColor;
   // セマンティクスラベル
   final String? semanticsLabel;
+  // プログレスインジケーターの形状
+  final ShapeBorder? shape;
+  // プログレスインジケーターのアニメーションの持続時間
+  final Duration? animationDuration;
+  // プログレスインジケーターのトリガー距離
+  final double triggerDistance;
 
   const ProgressIndicatorComponent({
     super.key,
@@ -32,6 +38,9 @@ class ProgressIndicatorComponent extends StatelessWidget {
     this.backgroundColor,
     this.valueColor,
     this.semanticsLabel,
+    this.shape,
+    this.animationDuration,
+    this.triggerDistance = 100.0,
   });
 
   @override

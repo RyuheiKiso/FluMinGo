@@ -14,6 +14,12 @@ class PaginationComponent extends StatelessWidget {
   final IconData firstPageIcon;
   // 最後のページアイコン
   final IconData lastPageIcon;
+  // ページ番号の表示スタイル
+  final TextStyle? pageNumberStyle;
+  // ページボタンのアイコンサイズ
+  final double iconSize;
+  // ページボタンの色
+  final Color? buttonColor;
 
   // コンストラクタ
   const PaginationComponent({
@@ -24,6 +30,9 @@ class PaginationComponent extends StatelessWidget {
     this.showFirstLastButtons = false,
     this.firstPageIcon = Icons.first_page,
     this.lastPageIcon = Icons.last_page,
+    this.pageNumberStyle,
+    this.iconSize = 24.0,
+    this.buttonColor,
   });
 
   @override
@@ -33,24 +42,24 @@ class PaginationComponent extends StatelessWidget {
       children: [
         if (showFirstLastButtons)
           IconButton(
-            icon: Icon(firstPageIcon),
+            icon: Icon(firstPageIcon, size: iconSize, color: buttonColor),
             onPressed: currentPage > 1 ? () => onPageChanged(1) : null,
           ),
         // 前のページボタン
         IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, size: iconSize, color: buttonColor),
           onPressed: currentPage > 1 ? () => onPageChanged(currentPage - 1) : null,
         ),
         // ページ番号表示
-        Text('$currentPage / $totalPages'),
+        Text('$currentPage / $totalPages', style: pageNumberStyle),
         // 次のページボタン
         IconButton(
-          icon: Icon(Icons.arrow_forward),
+          icon: Icon(Icons.arrow_forward, size: iconSize, color: buttonColor),
           onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
         ),
         if (showFirstLastButtons)
           IconButton(
-            icon: Icon(lastPageIcon),
+            icon: Icon(lastPageIcon, size: iconSize, color: buttonColor),
             onPressed: currentPage < totalPages ? () => onPageChanged(totalPages) : null,
           ),
       ],
