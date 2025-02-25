@@ -18,6 +18,12 @@ class CustomRefreshIndicator extends StatelessWidget {
   final String? semanticsValue;
   // エッジパディング
   final EdgeInsetsGeometry? edgePadding;
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // 通知プリディケート
+  final ScrollNotificationPredicate? notificationPredicate;
+  // エッジオフセット
+  final double edgeOffset;
 
   // コンストラクタにコメントを追加
   const CustomRefreshIndicator({
@@ -30,6 +36,9 @@ class CustomRefreshIndicator extends StatelessWidget {
     this.semanticsLabel,
     this.semanticsValue,
     this.edgePadding,
+    this.backgroundColor,
+    this.notificationPredicate = defaultScrollNotificationPredicate,
+    this.edgeOffset = 0.0,
   });
 
   @override
@@ -41,6 +50,9 @@ class CustomRefreshIndicator extends StatelessWidget {
       strokeWidth: strokeWidth,
       semanticsLabel: semanticsLabel,
       semanticsValue: semanticsValue,
+      backgroundColor: backgroundColor,
+      notificationPredicate: notificationPredicate ?? defaultScrollNotificationPredicate,
+      edgeOffset: edgeOffset,
       child: child,
     );
   }
