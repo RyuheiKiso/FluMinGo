@@ -8,6 +8,12 @@ class NavigationRailComponent extends StatelessWidget {
   final ValueChanged<int> onDestinationSelected;
   // ナビゲーションレールが拡張されるかどうか
   final bool extended;
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // ラベルタイプ
+  final NavigationRailLabelType? labelType;
+  // グループアライメント
+  final double? groupAlignment;
 
   // コンストラクタ
   const NavigationRailComponent({
@@ -15,6 +21,9 @@ class NavigationRailComponent extends StatelessWidget {
     required this.selectedIndex,
     required this.onDestinationSelected,
     this.extended = false,
+    this.backgroundColor,
+    this.labelType,
+    this.groupAlignment,
   });
 
   @override
@@ -23,6 +32,9 @@ class NavigationRailComponent extends StatelessWidget {
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
       extended: extended,
+      backgroundColor: backgroundColor,
+      labelType: labelType,
+      groupAlignment: groupAlignment,
       destinations: const <NavigationRailDestination>[
         // ホームの目的地
         NavigationRailDestination(
