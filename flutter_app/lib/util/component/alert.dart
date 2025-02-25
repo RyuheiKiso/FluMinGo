@@ -90,11 +90,11 @@ class CustomAlert extends StatelessWidget {
             if (customIcon != null) customIcon!,
             SizedBox(width: 8.0),
             // タイトルの表示
-            Text(title, style: titleStyle),
+            Text(title, style: titleStyle?.copyWith(fontSize: labelFontSize)),
           ],
         ),
         // コンテンツの表示
-        content: Text(content, style: contentStyle),
+        content: Text(content, style: contentStyle?.copyWith(fontSize: labelFontSize)),
         // アクションボタンの表示
         actions: actions,
       ),
