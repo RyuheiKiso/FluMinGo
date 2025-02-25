@@ -16,18 +16,21 @@ func NewServerlessIntegration() *ServerlessIntegration {
 
 // IntegrateAWSLambda は AWS Lambda を統合します。
 func (si *ServerlessIntegration) IntegrateAWSLambda() error {
+	// サーバーレス統合の実装
 	// ...AWS Lambda統合の実装...
 	return nil
 }
 
 // IntegrateGCPFunctions は GCP Functions を統合します。
 func (si *ServerlessIntegration) IntegrateGCPFunctions() error {
+	// サーバーレス統合の実装
 	// ...GCP Functions統合の実装...
 	return nil
 }
 
 // IntegrateAzureFunctions は Azure Functions を統合します。
 func (si *ServerlessIntegration) IntegrateAzureFunctions() error {
+	// サーバーレス統合の実装
 	// ...Azure Functions統合の実装...
 	return nil
 }

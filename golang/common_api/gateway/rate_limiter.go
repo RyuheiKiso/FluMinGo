@@ -9,6 +9,7 @@ import (
 // RateLimiter implements a simple token bucket rate limiter.
 // It refills tokens at a fixed rate and limits the number of requests allowed.
 
+// レートリミッターの実装
 type RateLimiter struct {
 	mu         sync.Mutex
 	tokens     int

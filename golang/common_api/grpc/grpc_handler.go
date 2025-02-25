@@ -32,6 +32,7 @@ func (s *GRPCServer) Start(address string) error {
 	log.Printf("gRPCサーバーを %s で起動中...", address)
 
 	// サービスの登録はここで実施
+	// gRPCハンドラーの実装
 	// ...existing code...
 
 	return s.server.Serve(lis)

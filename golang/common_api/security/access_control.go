@@ -1,5 +1,7 @@
 package security
 
+// アクセス制御の実装
+
 // CheckRBACAccess RBAC（ロールベース）アクセス制御のサンプル関数
 // userRole: ユーザーのロール, requiredRole: 必要なロール
 // 単純な比較により、アクセス可否を判定する

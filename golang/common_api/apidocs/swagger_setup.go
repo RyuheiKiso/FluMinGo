@@ -1,3 +1,6 @@
+// このファイルにはSwagger APIドキュメント設定の初期化が含まれています。
+// Developers: This file configures Swagger API documentation setup.
+
 package apidocs
 
 import (

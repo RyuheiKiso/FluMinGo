@@ -95,6 +95,7 @@ func (c *Cache) UpdateEntry(key string, value CacheEntry) {
 }
 
 // DBQueries provides common database query management functions.
+// データベースクエリの実装
 type DBQueries struct {
 	Cache Cache
 }

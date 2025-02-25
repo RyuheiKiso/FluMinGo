@@ -8,6 +8,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// データベース接続の実装
+
 // SQLDBConnector is a concrete implementation of DBConnector using a SQL database.
 type SQLDBConnector struct {
 	DB *sql.DB

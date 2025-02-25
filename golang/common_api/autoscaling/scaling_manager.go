@@ -1,3 +1,6 @@
+// このファイルには、スケーリング管理機能が実装されています。
+// Developers: This file manages autoscaling functionalities.
+
 package autoscaling
 
 import (
@@ -7,6 +10,7 @@ import (
 	"FluMinGo/golang/common_api/common"
 )
 
+// スケーリングマネージャーの実装
 // ScalingManager は自動スケーリングとオートメーション連携機能を提供する
 // 必要に応じた内部状態を保持する
 

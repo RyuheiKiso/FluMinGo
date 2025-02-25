@@ -1,3 +1,6 @@
+// このファイルには、異常検知機能の実装が含まれています。
+// Developers: This file handles anomaly detection functionalities.
+
 package advanced_monitoring
 
 import (
@@ -9,18 +12,18 @@ import (
 func InitAnomalyDetection() {
 	// 異常検知の初期化処理をここに記述
 	log.Println("Anomaly detection initialized")
-	// Simulate anomaly detection process
+	// 異常検知プロセスをシミュレート
 	go func() {
 		for {
-			// Simulate data collection and anomaly detection
+			// データ収集と異常検知をシミュレート
 			log.Println("Collecting data and detecting anomalies...")
-			// Simulate anomaly detection logic
-			anomalyDetected := false // Replace with actual detection logic
+			// 異常検知ロジックをシミュレート
+			anomalyDetected := false // 実際の検知ロジックに置き換える
 			if anomalyDetected {
 				log.Println("Anomaly detected!")
-				// Add alerting logic here
+				// アラートロジックをここに追加
 			}
-			time.Sleep(10 * time.Second) // Simulate interval between checks
+			time.Sleep(10 * time.Second) // チェック間隔をシミュレート
 		}
 	}()
 }

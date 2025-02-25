@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+// リカバリーミドルウェアの実装
 // リカバリミドルウェア：パニック発生時にリカバリしてエラーログを出力する
 func RecoveryMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

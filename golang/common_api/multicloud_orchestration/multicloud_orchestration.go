@@ -2,6 +2,8 @@ package multicloud_orchestration
 
 // 複数クラウド環境間の統合管理と自動フェイルオーバー機能の拡充
 
+// マルチクラウドオーケストレーションの実装
+
 // MulticloudOrchestration は複数クラウド環境の統合管理を行う構造体です。
 type MulticloudOrchestration struct {
 	// ...必要なフィールド...

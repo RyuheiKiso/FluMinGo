@@ -1,3 +1,6 @@
+// このファイルには、メッセージキューを利用した非同期処理機能が実装されています。
+// Developers: This file implements asynchronous processing using a message queue.
+
 package async
 
 import (

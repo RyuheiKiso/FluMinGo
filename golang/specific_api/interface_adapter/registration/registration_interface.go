@@ -2,6 +2,7 @@
 // ユーザー登録APIのインターフェース定義を提供するパッケージです
 package registration
 
+// 登録インターフェースの定義
 // RegistrationAPIはユーザー登録に関する操作を定義したインターフェースです
 //
 // RegisterUserは新規ユーザー登録を行います

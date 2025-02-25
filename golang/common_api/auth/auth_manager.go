@@ -1,3 +1,6 @@
+// auth_manager.go ファイル
+// このファイルは、認証管理を行う構造体を提供します。
+
 package auth
 
 import (
@@ -5,20 +8,23 @@ import (
 	"sync"
 )
 
-// AuthManager は認証管理を行う構造体です。
+// AuthManager 構造体
+// 認証管理を行う構造体です。
 type AuthManager struct {
 	users map[string]string
 	mutex sync.RWMutex
 }
 
-// NewAuthManager は新しい AuthManager インスタンスを作成します。
+// NewAuthManager 関数
+// 新しい AuthManager インスタンスを作成します。
 func NewAuthManager() *AuthManager {
 	return &AuthManager{
 		users: make(map[string]string),
 	}
 }
 
-// Register は新しいユーザーを登録します。
+// Register 関数
+// 新しいユーザーを登録します。
 func (am *AuthManager) Register(username, password string) error {
 	am.mutex.Lock()
 	defer am.mutex.Unlock()
@@ -29,7 +35,8 @@ func (am *AuthManager) Register(username, password string) error {
 	return nil
 }
 
-// Authenticate はユーザーの認証を行います。
+// Authenticate 関数
+// ユーザーの認証を行います。
 func (am *AuthManager) Authenticate(username, password string) bool {
 	am.mutex.RLock()
 	defer am.mutex.RUnlock()
@@ -40,6 +47,7 @@ func (am *AuthManager) Authenticate(username, password string) bool {
 	return storedPassword == password
 }
 
+// ResetPassword 関数
 // ユーザーのパスワードをリセットするメソッドを追加
 func (am *AuthManager) ResetPassword(username, newPassword string) error {
 	am.mutex.Lock()
@@ -51,7 +59,8 @@ func (am *AuthManager) ResetPassword(username, newPassword string) error {
 	return nil
 }
 
-// DeleteUser はユーザーを削除するメソッドです。
+// DeleteUser 関数
+// ユーザーを削除するメソッドです。
 func (am *AuthManager) DeleteUser(username string) error {
 	am.mutex.Lock()
 	defer am.mutex.Unlock()
@@ -62,7 +71,8 @@ func (am *AuthManager) DeleteUser(username string) error {
 	return nil
 }
 
-// GetUsernames はすべてのユーザー名を取得するメソッドです。
+// GetUsernames 関数
+// すべてのユーザー名を取得するメソッドです。
 func (am *AuthManager) GetUsernames() []string {
 	am.mutex.RLock()
 	defer am.mutex.RUnlock()

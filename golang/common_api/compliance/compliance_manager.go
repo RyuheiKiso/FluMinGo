@@ -11,6 +11,7 @@ import (
 
 // 監査・コンプライアンス対応強化: アクセスログ収集、暗号化、レポート生成
 
+// コンプライアンスマネージャーの実装
 type ComplianceManager struct {
 	logFile       *os.File
 	encryptionKey string

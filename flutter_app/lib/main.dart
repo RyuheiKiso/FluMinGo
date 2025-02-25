@@ -1,11 +1,18 @@
-import 'dart:ui'; // Add this import for BackdropFilter
+// main.dart ファイル
+// このファイルは、Flutterアプリケーションのエントリーポイントを提供します。
+
+import 'dart:ui'; // BackdropFilterのためにこのインポートを追加
 import 'package:flutter/material.dart';
 import 'screens/login/view/login_view.dart';
 
+// main 関数
+// アプリケーションのエントリーポイントです。
 void main() {
   runApp(const MyApp());
 }
 
+// MyApp クラス
+// アプリケーションのルートウィジェットを定義します。
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -29,20 +36,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// GlassmorphismContainer クラス
+// ガラスモーフィズム効果を持つコンテナを定義します。
 class GlassmorphismContainer extends StatelessWidget {
   final Widget child;
-
   const GlassmorphismContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        // ignore: deprecated_member_use
         color: Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          // ignore: deprecated_member_use
           color: Colors.white.withOpacity(0.2),
         ),
       ),
@@ -54,18 +60,23 @@ class GlassmorphismContainer extends StatelessWidget {
   }
 }
 
+// MyHomePage クラス
+// ホームページのステートフルウィジェットを定義します。
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// _MyHomePageState クラス
+// MyHomePageの状態を管理します。
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  // _incrementCounter 関数
+  // カウンターをインクリメントします。
   void _incrementCounter() {
     setState(() {
       _counter++;

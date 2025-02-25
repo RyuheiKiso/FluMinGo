@@ -10,6 +10,7 @@ import (
 
 var ctx = context.Background()
 
+// 分散キャッシュの実装
 // メモリキャッシュとRedis/Memcachedを利用した分散キャッシュ戦略
 func InitRedisCache() *redis.Client {
 	rdb := redis.NewClient(&redis.Options{

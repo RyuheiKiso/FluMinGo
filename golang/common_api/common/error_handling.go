@@ -18,6 +18,7 @@ func (e SimpleErrorHandler) HandleError(err error) string {
 	return fmt.Sprintf("エラーが発生しました: %v", err)
 }
 
+// エラーハンドリングの実装
 // エラーログをファイルに保存する機能を追加
 func (e SimpleErrorHandler) LogErrorToFile(err error, filePath string) error {
 	file, fileErr := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)

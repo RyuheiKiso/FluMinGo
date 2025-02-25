@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// キャッシュマネージャーの実装
 // CacheManager はキャッシュ管理を行う構造体です。
 type CacheManager struct {
 	cache      map[string]interface{}

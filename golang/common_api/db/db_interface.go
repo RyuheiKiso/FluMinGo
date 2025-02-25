@@ -3,6 +3,8 @@ package db
 
 import "time"
 
+// データベースインターフェースの定義
+
 // DBConnector defines the contract for a database connection.
 // It allows connecting, querying, and executing commands.
 

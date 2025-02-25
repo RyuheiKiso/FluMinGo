@@ -7,6 +7,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
+// OAuthセキュリティの実装
 // jwtSecret はJWT署名用のシークレットキー。実際の運用では環境変数等で管理することを推奨。
 var jwtSecret = []byte("your_secret_key_here")
 

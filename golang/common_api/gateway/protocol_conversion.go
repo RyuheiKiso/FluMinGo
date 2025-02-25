@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+// プロトコル変換の実装
+
 // GRPCRequest is a simplified representation of a gRPC request.
 // In a real-world scenario, this would be replaced with an actual gRPC message type.
 type GRPCRequest struct {

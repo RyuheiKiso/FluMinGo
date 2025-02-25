@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// ロギングミドルウェアの実装
 // ログミドルウェア：各リクエストの情報をログ出力する
 func LoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

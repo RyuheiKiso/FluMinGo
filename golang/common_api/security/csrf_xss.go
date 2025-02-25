@@ -2,6 +2,8 @@ package security
 
 import "html"
 
+// CSRF/XSSセキュリティの実装
+
 // SanitizeInput 入力をエスケープしてXSS対策を行う関数
 func SanitizeInput(input string) string {
 	return html.EscapeString(input)

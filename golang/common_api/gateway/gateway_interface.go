@@ -98,3 +98,5 @@ func (g *GatewayImpl) ValidateResponseBody(body map[string]interface{}) bool {
 	// レスポンスボディの検証ロジックをここに追加します。
 	return true
 }
+
+// ゲートウェイインターフェースの実装

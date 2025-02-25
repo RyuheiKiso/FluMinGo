@@ -32,3 +32,5 @@ func (l SimpleLogger) SetLogLevel(level string) {
 func NewLogger() Logger {
 	return &SimpleLogger{}
 }
+
+// ロギングの実装

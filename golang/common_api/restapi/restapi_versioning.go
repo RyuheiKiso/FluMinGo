@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// REST APIバージョニングの実装
 // VersioningMiddleware は API バージョンに基づいたルーティングを行うミドルウェアです。
 // リクエスト URL にバージョン情報が含まれていない場合、デフォルトのバージョン (v1) を適用します。
 func VersioningMiddleware(next http.Handler) http.Handler {
