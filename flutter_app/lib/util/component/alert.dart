@@ -39,6 +39,9 @@ class CustomAlert extends StatelessWidget {
   final Widget? customIcon;
   // ダイアログがタップで閉じるかどうか
   final bool dismissible; // 新しいプロパティ
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
 
   /// コンストラクタ
   /// 
@@ -52,6 +55,8 @@ class CustomAlert extends StatelessWidget {
   /// [backgroundColor] アラートダイアログの背景色
   /// [customIcon]はカスタムアイコンを指定します。
   /// [dismissible]はダイアログがタップで閉じるかどうかを指定します。
+  /// [iconSize]はアイコンのサイズを指定します。
+  /// [labelFontSize]はラベルのフォントサイズを指定します。
   const CustomAlert({
     super.key,
     required this.title,
@@ -64,6 +69,8 @@ class CustomAlert extends StatelessWidget {
     this.backgroundColor,
     this.customIcon,
     this.dismissible = true, // 新しいプロパティ
+    this.iconSize,
+    this.labelFontSize,
   });
 
   @override
