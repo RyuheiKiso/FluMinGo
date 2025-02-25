@@ -117,7 +117,7 @@ class AvatarComponent extends StatelessWidget {
           // 前景色
           foregroundColor: foregroundColor,
           // プレースホルダー画像
-          child: Image(image: placeholder),
+          child: Image(image: placeholder, width: iconSize, height: iconSize),
         ),
       ),
     );
