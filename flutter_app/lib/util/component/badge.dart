@@ -74,6 +74,7 @@ class BadgeComponent extends StatelessWidget {
             label,
             style: labelStyle ?? TextStyle(
               color: Colors.white,
+              fontSize: labelFontSize,
             ),
           ),
         ],
