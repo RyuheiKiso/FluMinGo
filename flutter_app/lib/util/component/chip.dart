@@ -20,6 +20,10 @@ class CustomChip extends StatelessWidget {
   final Color textColor;
   // 削除アイコンが押されたときのコールバック
   final VoidCallback? onDeleted;
+  // 枠線の色
+  final Color? borderColor;
+  // 枠線の幅
+  final double? borderWidth;
 
   /// コンストラクタ
   /// 
@@ -27,12 +31,16 @@ class CustomChip extends StatelessWidget {
   /// [color] チップの背景色
   /// [textColor] チップのテキストの色
   /// [onDeleted] チップの削除アイコンが押されたときに呼び出されるコールバック
+  /// [borderColor] チップの枠線の色
+  /// [borderWidth] チップの枠線の幅
   const CustomChip({
     super.key,
     required this.label,
     this.color = Colors.blue,
     this.textColor = Colors.white,
     this.onDeleted,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -49,6 +57,12 @@ class CustomChip extends StatelessWidget {
       backgroundColor: color,
       // onDeletedがnullでない場合に削除アイコンを表示
       onDeleted: onDeleted,
+      shape: StadiumBorder(
+        side: BorderSide(
+          color: borderColor ?? Colors.transparent,
+          width: borderWidth ?? 0.0,
+        ),
+      ),
     );
   }
 }
