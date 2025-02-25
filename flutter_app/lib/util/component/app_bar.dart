@@ -70,6 +70,10 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final bool automaticallyImplyLeading;
   // ステータスバーの明るさ
   final Brightness? brightness;
+  // アイコンのサイズ
+  final double? iconSize;
+  // ラベルのフォントサイズ
+  final double? labelFontSize;
 
   /// コンストラクタ
   /// 
@@ -88,6 +92,8 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   /// [flexibleSpace] アプリバーの背景に表示するカスタムウィジェット
   /// [automaticallyImplyLeading] leadingウィジェットが指定されていない場合に自動的に戻るボタンを表示するかどうか
   /// [brightness] ステータスバーの明るさ
+  /// [iconSize] アイコンのサイズ
+  /// [labelFontSize] ラベルのフォントサイズ
   const AppBarComponent({
     super.key,
     required this.title,
@@ -105,6 +111,8 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
     this.flexibleSpace,
     this.automaticallyImplyLeading = true,
     this.brightness,
+    this.iconSize,
+    this.labelFontSize,
   });
 
   @override
@@ -113,12 +121,12 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       // タイトル
       title: Text(
         title,
-        style: titleStyle,
+        style: titleStyle?.copyWith(fontSize: labelFontSize),
       ),
       // 背景色
       backgroundColor: backgroundColor,
       // アイコンのテーマ
-      iconTheme: iconTheme,
+      iconTheme: iconTheme?.copyWith(size: iconSize),
       // アクションボタン
       actions: actions,
       // タイトルを中央に配置するかどうか
