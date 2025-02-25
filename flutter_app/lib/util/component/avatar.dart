@@ -19,6 +19,8 @@ import 'package:flutter/material.dart';
 ///   foregroundColor: Colors.black,
 ///   borderRadius: BorderRadius.circular(10.0),
 ///   boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.0)],
+///   iconSize: 24.0,
+///   labelFontSize: 14.0,
 /// )
 /// ```
 class AvatarComponent extends StatelessWidget {
@@ -44,6 +46,9 @@ class AvatarComponent extends StatelessWidget {
   final BorderRadius? borderRadius;
   // アバターに追加する影
   final List<BoxShadow>? boxShadow;
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
 
   /// コンストラクタ
   /// 
@@ -58,6 +63,8 @@ class AvatarComponent extends StatelessWidget {
   /// [foregroundColor] アバターの前景色
   /// [borderRadius] アバターの角の丸み
   /// [boxShadow] アバターに追加する影
+  /// [iconSize] アイコンのサイズ
+  /// [labelFontSize] ラベルのフォントサイズ
   const AvatarComponent({
     super.key,
     required this.imageUrl,
@@ -71,6 +78,8 @@ class AvatarComponent extends StatelessWidget {
     this.foregroundColor,
     this.borderRadius,
     this.boxShadow,
+    this.iconSize,
+    this.labelFontSize,
   });
 
   @override
