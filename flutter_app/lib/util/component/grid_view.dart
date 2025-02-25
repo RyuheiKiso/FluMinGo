@@ -16,6 +16,12 @@ class GridViewComponent extends StatelessWidget {
   final bool reverse;
   // スクロールコントローラー
   final ScrollController? controller;
+  // メインアクシスのスペーシング
+  final double mainAxisSpacing;
+  // クロスアクシスのスペーシング
+  final double crossAxisSpacing;
+  // スクロールの収縮
+  final bool shrinkWrap;
 
   // コンストラクタにpaddingとspacingを追加
   const GridViewComponent({
@@ -27,6 +33,9 @@ class GridViewComponent extends StatelessWidget {
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
     this.controller,
+    this.mainAxisSpacing = 8.0,
+    this.crossAxisSpacing = 8.0,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -36,13 +45,14 @@ class GridViewComponent extends StatelessWidget {
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
-          crossAxisSpacing: spacing,
-          mainAxisSpacing: spacing,
+          crossAxisSpacing: crossAxisSpacing,
+          mainAxisSpacing: mainAxisSpacing,
         ),
         itemCount: items.length,
         scrollDirection: scrollDirection,
         reverse: reverse,
         controller: controller,
+        shrinkWrap: shrinkWrap,
         itemBuilder: (context, index) {
           return items[index];
         },
