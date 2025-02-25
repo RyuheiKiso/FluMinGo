@@ -12,6 +12,12 @@ class LabelComponent extends StatelessWidget {
   final int? maxLines;
   // オーバーフローの処理
   final TextOverflow? overflow;
+  // テキストの背景色
+  final Color? backgroundColor;
+  // テキストの装飾
+  final TextDecoration? decoration;
+  // テキストの影
+  final List<Shadow>? shadows;
 
   const LabelComponent({
     super.key,
@@ -20,16 +26,25 @@ class LabelComponent extends StatelessWidget {
     this.alignment,
     this.maxLines,
     this.overflow,
+    this.backgroundColor,
+    this.decoration,
+    this.shadows,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: style,
-      textAlign: alignment,
-      maxLines: maxLines,
-      overflow: overflow,
+    return Container(
+      color: backgroundColor,
+      child: Text(
+        text,
+        style: style?.copyWith(
+          decoration: decoration,
+          shadows: shadows,
+        ),
+        textAlign: alignment,
+        maxLines: maxLines,
+        overflow: overflow,
+      ),
     );
   }
 }
