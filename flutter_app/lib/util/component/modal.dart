@@ -6,8 +6,21 @@ class ModalComponent extends StatelessWidget {
   final Widget content;
   // モーダルのタイトル
   final String title;
+  // アクションボタン
+  final List<Widget>? actions;
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // シェイプ
+  final ShapeBorder? shape;
 
-  const ModalComponent({super.key, required this.content, required this.title});
+  const ModalComponent({
+    super.key,
+    required this.content,
+    required this.title,
+    this.actions,
+    this.backgroundColor,
+    this.shape,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +29,7 @@ class ModalComponent extends StatelessWidget {
       title: Text(title),
       // コンテンツの表示
       content: content,
-      actions: <Widget>[
+      actions: actions ?? <Widget>[
         // 閉じるボタン
         TextButton(
           child: Text('閉じる'),
@@ -25,6 +38,8 @@ class ModalComponent extends StatelessWidget {
           },
         ),
       ],
+      backgroundColor: backgroundColor,
+      shape: shape,
     );
   }
 }
