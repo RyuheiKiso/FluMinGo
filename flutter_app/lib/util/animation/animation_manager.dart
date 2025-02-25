@@ -26,4 +26,7 @@ class AnimationManager {
     stopAnimation();
     startAnimation();
   }
+
+  // タイマーのゲッター
+  Timer? get timer => _timer;
 }
