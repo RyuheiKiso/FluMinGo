@@ -18,6 +18,8 @@ import 'package:flutter/material.dart';
 ///   borderRadius: BorderRadius.circular(8.0),
 ///   padding: EdgeInsets.all(16.0),
 ///   isLoading: true,
+///   borderColor: Colors.red,
+///   borderWidth: 2.0,
 /// );
 /// ```
 class Button extends StatelessWidget {
@@ -41,6 +43,10 @@ class Button extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   // ボタンが押されたときにローディングインジケータを表示するかどうか
   final bool isLoading;
+  // ボタンの枠線色
+  final Color? borderColor;
+  // ボタンの枠線幅
+  final double? borderWidth;
 
   /// コンストラクタ
   /// 
@@ -54,6 +60,8 @@ class Button extends StatelessWidget {
   /// [borderRadius] ボタンの角丸
   /// [padding] ボタンの内側余白
   /// [isLoading] ボタンが押されたときにローディングインジケータを表示するかどうか
+  /// [borderColor] ボタンの枠線色
+  /// [borderWidth] ボタンの枠線幅
   const Button({super.key, 
     required this.label, 
     required this.onPressed, 
@@ -65,6 +73,8 @@ class Button extends StatelessWidget {
     this.borderRadius,
     this.padding,
     this.isLoading = false,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -85,6 +95,10 @@ class Button extends StatelessWidget {
           // 角丸を設定
           shape: RoundedRectangleBorder(
             borderRadius: borderRadius ?? BorderRadius.zero,
+            side: BorderSide(
+              color: borderColor ?? Colors.transparent,
+              width: borderWidth ?? 0.0,
+            ),
           ),
           // 内側余白を設定
           padding: padding,
