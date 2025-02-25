@@ -10,6 +10,10 @@ class TimelineComponent extends StatelessWidget {
   final bool reverse;
   // スクロールコントローラー
   final ScrollController? controller;
+  // イベント間のスペーシング
+  final double spacing; // 新機能②
+  // イベントタップ時のコールバック
+  final ValueChanged<int>? onEventTap; // 新機能①（index渡し）
 
   const TimelineComponent({
     super.key,
@@ -17,15 +21,22 @@ class TimelineComponent extends StatelessWidget {
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
     this.controller,
+    this.spacing = 8.0, // 新機能②
+    this.onEventTap, // 新機能①
   });
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return ListView.separated(
       scrollDirection: scrollDirection,
       reverse: reverse,
       controller: controller,
-      children: events,
+      itemCount: events.length,
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () => onEventTap?.call(index), // 新機能①
+        child: events[index],
+      ),
+      separatorBuilder: (context, index) => SizedBox(height: spacing), // 新機能②
     );
   }
 }
