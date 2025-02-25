@@ -10,6 +10,12 @@ class GridViewComponent extends StatelessWidget {
   final double padding;
   // スペーシング
   final double spacing;
+  // スクロール方向
+  final Axis scrollDirection;
+  // スクロールの反転
+  final bool reverse;
+  // スクロールコントローラー
+  final ScrollController? controller;
 
   // コンストラクタにpaddingとspacingを追加
   const GridViewComponent({
@@ -18,6 +24,9 @@ class GridViewComponent extends StatelessWidget {
     required this.crossAxisCount,
     this.padding = 8.0,
     this.spacing = 8.0,
+    this.scrollDirection = Axis.vertical,
+    this.reverse = false,
+    this.controller,
   });
 
   @override
@@ -31,6 +40,9 @@ class GridViewComponent extends StatelessWidget {
           mainAxisSpacing: spacing,
         ),
         itemCount: items.length,
+        scrollDirection: scrollDirection,
+        reverse: reverse,
+        controller: controller,
         itemBuilder: (context, index) {
           return items[index];
         },
