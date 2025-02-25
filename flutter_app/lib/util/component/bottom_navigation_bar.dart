@@ -46,10 +46,8 @@ class BottomNavigationBarComponent extends StatelessWidget {
   final bool showLabels; // 新しいプロパティ
   // アイコンサイズ
   final double? iconSize; // 新しいプロパティ
-  // 選択されたフォントサイズ
-  final double? selectedFontSize; // 新しいプロパティ
-  // 選択されていないフォントサイズ
-  final double? unselectedFontSize; // 新しいプロパティ
+  // ラベルフォントサイズ
+  final double? labelFontSize; // 新しいプロパティ
 
   /// コンストラクタ
   /// 
@@ -61,8 +59,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
   /// [unselectedItemColor] 選択されていないアイテムの色
   /// [showLabels] ラベルの表示
   /// [iconSize] アイコンサイズ
-  /// [selectedFontSize] 選択されたフォントサイズ
-  /// [unselectedFontSize] 選択されていないフォントサイズ
+  /// [labelFontSize] ラベルフォントサイズ
   const BottomNavigationBarComponent({
     super.key,
     required this.currentIndex,
@@ -73,8 +70,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
     this.unselectedItemColor,
     this.showLabels = true,
     this.iconSize,
-    this.selectedFontSize,
-    this.unselectedFontSize,
+    this.labelFontSize,
   });
 
   @override
@@ -99,9 +95,9 @@ class BottomNavigationBarComponent extends StatelessWidget {
       // アイコンサイズ
       iconSize: iconSize ?? 24.0,
       // 選択されたフォントサイズ
-      selectedFontSize: selectedFontSize ?? 14.0,
+      selectedFontSize: labelFontSize ?? 14.0,
       // 選択されていないフォントサイズ
-      unselectedFontSize: unselectedFontSize ?? 12.0,
+      unselectedFontSize: labelFontSize ?? 12.0,
     );
   }
 }
