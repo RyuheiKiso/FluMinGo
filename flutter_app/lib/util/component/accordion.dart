@@ -27,6 +27,9 @@ class Accordion extends StatefulWidget {
   final Curve animationCurve;
   // 初期状態で展開されているかどうか
   final bool initiallyExpanded; // 新しいプロパティ
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
 
   /// コンストラクタ
   /// 
@@ -38,6 +41,8 @@ class Accordion extends StatefulWidget {
   /// [animationDuration]はアコーディオンの展開/折りたたみのアニメーションの時間を指定します。
   /// [animationCurve]はアニメーションのカーブを指定します。
   /// [initiallyExpanded]は初期状態で展開されているかどうかを指定します。
+  /// [iconSize]はアイコンのサイズを指定します。
+  /// [labelFontSize]はラベルのフォントサイズを指定します。
   const Accordion({
     required this.title,
     required this.content,
@@ -47,6 +52,8 @@ class Accordion extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 200),
     this.animationCurve = Curves.easeInOut,
     this.initiallyExpanded = false, // 新しいプロパティ
+    this.iconSize,
+    this.labelFontSize,
     super.key,
   });
 
@@ -113,8 +120,16 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
       children: [
         // タイトル部分
         ListTile(
-          leading: widget.leadingIcon,
-          title: Text(widget.title, style: widget.titleStyle),
+          leading: widget.leadingIcon != null
+              ? Icon(
+                  widget.leadingIcon!.icon,
+                  size: widget.iconSize,
+                )
+              : null,
+          title: Text(
+            widget.title,
+            style: widget.titleStyle?.copyWith(fontSize: widget.labelFontSize),
+          ),
           onTap: _handleTap,
         ),
         // コンテンツ部分
