@@ -4,8 +4,15 @@ import 'package:flutter/material.dart';
 class Wizard extends StatefulWidget {
   // ステップのリスト
   final List<WizardStep> steps;
+  final VoidCallback? onFinished; // 新機能①
+  final ValueChanged<int>? onStepJump; // 新機能②
 
-  const Wizard({super.key, required this.steps});
+  const Wizard({
+    super.key,
+    required this.steps,
+    this.onFinished, // 新機能①
+    this.onStepJump, // 新機能②
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -47,8 +54,16 @@ class _WizardState extends State<Wizard> {
                   setState(() {
                     _currentStep++;
                   });
+                  widget.onStepJump?.call(_currentStep); // 新機能②
                 },
                 child: Text('Next'),
+              )
+            else
+              ElevatedButton( // 新機能①：最終ステップで完了ボタンを表示
+                onPressed: () {
+                  widget.onFinished?.call();
+                },
+                child: Text('Finish'),
               ),
           ],
         ),
