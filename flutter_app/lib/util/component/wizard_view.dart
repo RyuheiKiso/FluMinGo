@@ -4,8 +4,15 @@ import 'package:flutter/material.dart';
 class WizardView extends StatefulWidget {
   // ステップのリスト
   final List<WizardStep> steps;
+  final VoidCallback? onCompleted; // 新機能①
+  final Widget? customStepIndicator; // 新機能②
 
-  const WizardView({super.key, required this.steps});
+  const WizardView({
+    super.key,
+    required this.steps,
+    this.onCompleted, // 新機能①
+    this.customStepIndicator, // 新機能②
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -20,6 +27,7 @@ class _WizardViewState extends State<WizardView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        if (widget.customStepIndicator != null) widget.customStepIndicator!, // 新機能②
         // プログレスインジケーター
         LinearProgressIndicator(
           value: (_currentStep + 1) / widget.steps.length,
@@ -49,6 +57,11 @@ class _WizardViewState extends State<WizardView> {
                   });
                 },
                 child: Text('Next'),
+              )
+            else
+              ElevatedButton( // 新機能①：完了ボタン
+                onPressed: () { widget.onCompleted?.call(); },
+                child: Text('Complete'),
               ),
           ],
         ),
