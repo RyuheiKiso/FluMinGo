@@ -30,6 +30,7 @@ class Accordion extends StatefulWidget {
   // 新しいプロパティ
   final double? iconSize;
   final double? labelFontSize;
+  final ValueChanged<bool>? onExpansionChanged; // 新機能②
 
   /// コンストラクタ
   /// 
@@ -54,6 +55,7 @@ class Accordion extends StatefulWidget {
     this.initiallyExpanded = false, // 新しいプロパティ
     this.iconSize,
     this.labelFontSize,
+    this.onExpansionChanged, // 新機能②
     super.key,
   });
 
@@ -110,40 +112,44 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
         // 折りたたみアニメーション
         _controller.reverse();
       }
+      widget.onExpansionChanged?.call(_isExpanded); // 新機能②
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // タイトル部分
-        ListTile(
-          leading: widget.leadingIcon != null
-              ? Icon(
-                  widget.leadingIcon!.icon,
-                  size: widget.iconSize,
-                )
-              : null,
-          title: Text(
-            widget.title,
-            style: widget.titleStyle?.copyWith(fontSize: widget.labelFontSize),
+    return GestureDetector( // 新機能①：Wrap全体にスワイプ検知
+      onHorizontalDragEnd: (_) => _handleTap(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // タイトル部分
+          ListTile(
+            leading: widget.leadingIcon != null
+                ? Icon(
+                    widget.leadingIcon!.icon,
+                    size: widget.iconSize,
+                  )
+                : null,
+            title: Text(
+              widget.title,
+              style: widget.titleStyle?.copyWith(fontSize: widget.labelFontSize),
+            ),
+            onTap: _handleTap,
           ),
-          onTap: _handleTap,
-        ),
-        // コンテンツ部分
-        SizeTransition(
-          sizeFactor: _animation,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: DefaultTextStyle(
-              style: widget.contentStyle ?? TextStyle(),
-              child: widget.content,
+          // コンテンツ部分
+          SizeTransition(
+            sizeFactor: _animation,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: DefaultTextStyle(
+                style: widget.contentStyle ?? TextStyle(),
+                child: widget.content,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
