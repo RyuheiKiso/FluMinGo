@@ -8,6 +8,12 @@ class PaginationComponent extends StatelessWidget {
   final int totalPages;
   // ページ変更コールバック
   final ValueChanged<int> onPageChanged;
+  // 最初と最後のボタンを表示するかどうか
+  final bool showFirstLastButtons;
+  // 最初のページアイコン
+  final IconData firstPageIcon;
+  // 最後のページアイコン
+  final IconData lastPageIcon;
 
   // コンストラクタ
   const PaginationComponent({
@@ -15,6 +21,9 @@ class PaginationComponent extends StatelessWidget {
     required this.currentPage,
     required this.totalPages,
     required this.onPageChanged,
+    this.showFirstLastButtons = false,
+    this.firstPageIcon = Icons.first_page,
+    this.lastPageIcon = Icons.last_page,
   });
 
   @override
@@ -22,6 +31,11 @@ class PaginationComponent extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        if (showFirstLastButtons)
+          IconButton(
+            icon: Icon(firstPageIcon),
+            onPressed: currentPage > 1 ? () => onPageChanged(1) : null,
+          ),
         // 前のページボタン
         IconButton(
           icon: Icon(Icons.arrow_back),
@@ -34,6 +48,11 @@ class PaginationComponent extends StatelessWidget {
           icon: Icon(Icons.arrow_forward),
           onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
         ),
+        if (showFirstLastButtons)
+          IconButton(
+            icon: Icon(lastPageIcon),
+            onPressed: currentPage < totalPages ? () => onPageChanged(totalPages) : null,
+          ),
       ],
     );
   }
