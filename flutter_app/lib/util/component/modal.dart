@@ -36,7 +36,7 @@ class ModalComponent extends StatelessWidget {
     return Dialog(
       shape: shape,
       backgroundColor: backgroundColor,
-      child: Container(
+      child: SizedBox(
         height: height,
         width: width,
         child: Column(

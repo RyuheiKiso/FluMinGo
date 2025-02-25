@@ -44,7 +44,7 @@ class Toast {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
             decoration: BoxDecoration(
-              color: backgroundColor.withOpacity(0.7),
+              color: backgroundColor.withAlpha(179), // Replace deprecated 'withOpacity' with 'withAlpha'
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Text(message, style: TextStyle(color: textColor)),

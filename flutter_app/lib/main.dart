@@ -1,37 +1,30 @@
 // main.dart ファイル
 // このファイルは、Flutterアプリケーションのエントリーポイントを提供します。
 
-import 'dart:ui'; // BackdropFilterのためにこのインポートを追加
 import 'package:flutter/material.dart';
-import 'screens/login/view/login_view.dart';
+import 'util/theme/theme_manager.dart';
+import 'util/user_preferences/user_preferences_manager.dart';
+import 'dart:ui';
 
 // main 関数
 // アプリケーションのエントリーポイントです。
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 // MyApp クラス
 // アプリケーションのルートウィジェットを定義します。
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ThemeManager _themeManager = ThemeManager();
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.black,
-        textTheme: TextTheme(
-          headlineLarge: TextStyle(color: Colors.white),
-          headlineMedium: TextStyle(color: Colors.white),
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white),
-        ),
-      ),
-      home: LoginView(),
+      theme: _themeManager.getThemeData('light'),
+      home: const MyHomePage(title: 'Home Page'),
     );
   }
 }
@@ -46,10 +39,10 @@ class GlassmorphismContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withAlpha(25),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withAlpha(25),
         ),
       ),
       child: BackdropFilter(
@@ -73,6 +66,7 @@ class MyHomePage extends StatefulWidget {
 // _MyHomePageState クラス
 // MyHomePageの状態を管理します。
 class _MyHomePageState extends State<MyHomePage> {
+  final UserPreferencesManager _preferencesManager = UserPreferencesManager();
   int _counter = 0;
 
   // _incrementCounter 関数
@@ -87,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary.withAlpha(25),
         title: Text(widget.title),
       ),
       body: Center(
@@ -98,6 +92,26 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await _preferencesManager.savePreference('key', 'value');
+              },
+              child: const Text('Save Preference'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                String? value = await _preferencesManager.getPreference('key');
+                // Use a logging framework instead of print
+                debugPrint('Retrieved value: $value');
+              },
+              child: const Text('Get Preference'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await _preferencesManager.removePreference('key');
+              },
+              child: const Text('Remove Preference'),
             ),
           ],
         ),

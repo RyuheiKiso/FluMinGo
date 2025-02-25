@@ -35,10 +35,10 @@ class GridComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget gridView = GridView.count(
       crossAxisCount: crossAxisCount,
-      children: items,
       crossAxisSpacing: spacing,
       mainAxisSpacing: spacing,
       shrinkWrap: shrinkWrap,
+      children: items,
     );
 
     if (showDividers) {

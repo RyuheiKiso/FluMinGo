@@ -15,7 +15,7 @@ class GlassmorphismContainer extends StatelessWidget {
     this.borderRadius = 15.0,
     this.blurSigma = 10.0,
     List<Color>? gradientColors,
-  }) : gradientColors = gradientColors ?? [Colors.white.withOpacity(0.2), Colors.white.withOpacity(0.05)];
+  }) : gradientColors = gradientColors ?? [Colors.white.withAlpha(51), Colors.white.withAlpha(13)];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class GlassmorphismContainer extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
         border: Border.all(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withAlpha(26),
         ),
       ),
       child: ClipRRect(
