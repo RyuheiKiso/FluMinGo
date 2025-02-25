@@ -22,6 +22,12 @@ class GridViewComponent extends StatelessWidget {
   final double crossAxisSpacing;
   // スクロールの収縮
   final bool shrinkWrap;
+  // グリッドの背景色
+  final Color? backgroundColor;
+  // グリッドのスクロールバーの表示
+  final bool showScrollbar;
+  // グリッドの分割線
+  final bool showDividers;
 
   // コンストラクタにpaddingとspacingを追加
   const GridViewComponent({
@@ -36,27 +42,48 @@ class GridViewComponent extends StatelessWidget {
     this.mainAxisSpacing = 8.0,
     this.crossAxisSpacing = 8.0,
     this.shrinkWrap = false,
+    this.backgroundColor,
+    this.showScrollbar = false,
+    this.showDividers = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(padding),
-      child: GridView.builder(
+    Widget gridView = GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: crossAxisSpacing,
+        mainAxisSpacing: mainAxisSpacing,
+      ),
+      itemCount: items.length,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      shrinkWrap: shrinkWrap,
+      itemBuilder: (context, index) {
+        return items[index];
+      },
+    );
+
+    if (showDividers) {
+      gridView = GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxisCount,
           crossAxisSpacing: crossAxisSpacing,
           mainAxisSpacing: mainAxisSpacing,
         ),
         itemCount: items.length,
-        scrollDirection: scrollDirection,
-        reverse: reverse,
-        controller: controller,
-        shrinkWrap: shrinkWrap,
-        itemBuilder: (context, index) {
-          return items[index];
-        },
-      ),
+        itemBuilder: (context, index) => items[index],
+      );
+    }
+
+    if (showScrollbar) {
+      gridView = Scrollbar(child: gridView);
+    }
+
+    return Container(
+      color: backgroundColor,
+      child: gridView,
     );
   }
 }
