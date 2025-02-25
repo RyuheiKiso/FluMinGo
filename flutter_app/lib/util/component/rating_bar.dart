@@ -16,6 +16,12 @@ class RatingBar extends StatefulWidget {
   final Color unfilledColor;
   // レーティング変更コールバック
   final ValueChanged<int>? onRatingChanged;
+  // アイコンのサイズ
+  final double iconSize;
+  // ハーフレーティングを許可するかどうか
+  final bool allowHalfRating;
+  // ジェスチャーを無視するかどうか
+  final bool ignoreGestures;
 
   const RatingBar({
     super.key,
@@ -26,6 +32,9 @@ class RatingBar extends StatefulWidget {
     this.filledColor = Colors.amber,
     this.unfilledColor = Colors.grey,
     this.onRatingChanged,
+    this.iconSize = 24.0,
+    this.allowHalfRating = false,
+    this.ignoreGestures = false,
   });
 
   @override
@@ -50,9 +59,9 @@ class _RatingBarState extends State<RatingBar> {
       children: List.generate(widget.maxRating, (index) {
         return GestureDetector(
           // アイコンがタップされたときの処理
-          onTap: () {
+          onTap: widget.ignoreGestures ? null : () {
             setState(() {
-              _currentRating = index + 1;
+              _currentRating = widget.allowHalfRating ? (index + 0.5).toInt() : index + 1;
             });
             if (widget.onRatingChanged != null) {
               widget.onRatingChanged!(_currentRating);
@@ -62,6 +71,7 @@ class _RatingBarState extends State<RatingBar> {
           child: Icon(
             index < _currentRating ? widget.filledIcon : widget.unfilledIcon,
             color: index < _currentRating ? widget.filledColor : widget.unfilledColor,
+            size: widget.iconSize,
           ),
         );
       }),
