@@ -5,9 +5,20 @@ class DropdownComponent<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T? value;
   final ValueChanged<T?> onChanged;
+  final Widget? hint;
+  final bool isExpanded;
+  final double iconSize;
 
   // コンストラクタ
-  const DropdownComponent({super.key, required this.items, this.value, required this.onChanged});
+  const DropdownComponent({
+    super.key,
+    required this.items,
+    this.value,
+    required this.onChanged,
+    this.hint,
+    this.isExpanded = false,
+    this.iconSize = 24.0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +26,9 @@ class DropdownComponent<T> extends StatelessWidget {
       value: value,
       items: items,
       onChanged: onChanged,
+      hint: hint,
+      isExpanded: isExpanded,
+      iconSize: iconSize,
     );
   }
 }
