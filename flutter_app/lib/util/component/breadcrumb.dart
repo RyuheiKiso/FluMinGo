@@ -38,6 +38,10 @@ class Breadcrumb extends StatelessWidget {
   final IconData? separatorIcon;
   // アイテム間の間隔
   final double spacing;
+  // フォントサイズ
+  final double? fontSize;
+  // フォントの太さ
+  final FontWeight? fontWeight;
 
   /// コンストラクタ
   /// 
@@ -52,6 +56,8 @@ class Breadcrumb extends StatelessWidget {
     this.inactiveColor = Colors.grey,
     this.separatorIcon = Icons.chevron_right,
     this.spacing = 8.0,
+    this.fontSize,
+    this.fontWeight,
   });
 
   @override
@@ -80,6 +86,8 @@ class Breadcrumb extends StatelessWidget {
                     item.label,
                     style: TextStyle(
                       color: item.isActive ? activeColor : inactiveColor,
+                      fontSize: fontSize,
+                      fontWeight: fontWeight,
                     ),
                   ),
                 )
@@ -88,6 +96,8 @@ class Breadcrumb extends StatelessWidget {
                   item.label,
                   style: TextStyle(
                     color: item.isActive ? activeColor : inactiveColor,
+                    fontSize: fontSize,
+                    fontWeight: fontWeight,
                   ),
                 ),
             ],
