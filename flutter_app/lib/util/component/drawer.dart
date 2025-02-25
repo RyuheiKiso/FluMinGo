@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 // ドロワーコンポーネント
 class DrawerComponent extends StatelessWidget {
-  const DrawerComponent({super.key});
+  final Color headerBackgroundColor;
+  final TextStyle headerTextStyle;
+  final IconData headerIcon;
+
+  const DrawerComponent({
+    super.key,
+    this.headerBackgroundColor = Colors.blue,
+    this.headerTextStyle = const TextStyle(color: Colors.white, fontSize: 24),
+    this.headerIcon = Icons.menu,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +23,17 @@ class DrawerComponent extends StatelessWidget {
           DrawerHeader(
             // ヘッダーのデコレーション
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: headerBackgroundColor,
             ),
-            child: Text(
-              'メニュー',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+            child: Row(
+              children: [
+                Icon(headerIcon, color: headerTextStyle.color, size: 30),
+                SizedBox(width: 10),
+                Text(
+                  'メニュー',
+                  style: headerTextStyle,
+                ),
+              ],
             ),
           ),
           ListTile(
