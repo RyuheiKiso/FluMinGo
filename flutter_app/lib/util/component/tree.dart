@@ -4,7 +4,15 @@ import 'package:flutter/material.dart';
 class Tree extends StatefulWidget {
   // ノードのリスト
   final List<TreeNode> nodes;
-  const Tree({super.key, required this.nodes});
+  final ValueChanged<TreeNode>? onNodeTap; // 新機能①
+  final ValueChanged<TreeNode>? onNodeLongPress; // 新機能②
+
+  const Tree({
+    this.onNodeTap, // 新機能①
+    this.onNodeLongPress, // 新機能②
+    super.key,
+    required this.nodes,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -36,6 +44,10 @@ class _TreeState extends State<Tree> {
             _selectedNodes.add(node);
           }
         });
+        widget.onNodeTap?.call(node); // 新機能①
+      },
+      onLongPress: () {
+        widget.onNodeLongPress?.call(node); // 新機能②
       },
     );
   }
