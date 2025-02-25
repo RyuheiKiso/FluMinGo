@@ -14,6 +14,12 @@ class ProgressIndicatorComponent extends StatelessWidget {
   final double strokeWidth; 
   // ツールチップ
   final String? tooltip; 
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // プログレスインジケーターの色
+  final Animation<Color?>? valueColor;
+  // セマンティクスラベル
+  final String? semanticsLabel;
 
   const ProgressIndicatorComponent({
     super.key,
@@ -23,6 +29,9 @@ class ProgressIndicatorComponent extends StatelessWidget {
     this.isAnimated = true, 
     this.strokeWidth = 4.0, 
     this.tooltip,
+    this.backgroundColor,
+    this.valueColor,
+    this.semanticsLabel,
   });
 
   @override
@@ -36,6 +45,9 @@ class ProgressIndicatorComponent extends StatelessWidget {
           value: value,
           color: color,
           strokeWidth: isAnimated ? strokeWidth : 0.0, 
+          backgroundColor: backgroundColor,
+          valueColor: valueColor,
+          semanticsLabel: semanticsLabel,
         ),
       ),
     );
