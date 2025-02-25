@@ -12,6 +12,12 @@ class ModalComponent extends StatelessWidget {
   final Color? backgroundColor;
   // シェイプ
   final ShapeBorder? shape;
+  // モーダルの高さ
+  final double? height;
+  // モーダルの幅
+  final double? width;
+  // モーダルのアニメーションの有効/無効
+  final bool enableAnimation;
 
   const ModalComponent({
     super.key,
@@ -20,26 +26,41 @@ class ModalComponent extends StatelessWidget {
     this.actions,
     this.backgroundColor,
     this.shape,
+    this.height,
+    this.width,
+    this.enableAnimation = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      // タイトルの表示
-      title: Text(title),
-      // コンテンツの表示
-      content: content,
-      actions: actions ?? <Widget>[
-        // 閉じるボタン
-        TextButton(
-          child: Text('閉じる'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ],
-      backgroundColor: backgroundColor,
+    return Dialog(
       shape: shape,
+      backgroundColor: backgroundColor,
+      child: Container(
+        height: height,
+        width: width,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // タイトルの表示
+            Text(title),
+            // コンテンツの表示
+            content,
+            // アクションボタンの表示
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: actions ?? [
+                TextButton(
+                  child: Text('閉じる'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
