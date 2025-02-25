@@ -23,6 +23,7 @@ import 'package:flutter/material.dart';
 ///   backgroundColor: Colors.blue, // 背景色を追加
 ///   selectedItemColor: Colors.white, // 選択されたアイテムの色を追加
 ///   unselectedItemColor: Colors.grey, // 選択されていないアイテムの色を追加
+///   showLabels: true, // ラベルの表示を追加
 /// );
 /// ```
 class BottomNavigationBarComponent extends StatelessWidget {
@@ -38,6 +39,8 @@ class BottomNavigationBarComponent extends StatelessWidget {
   final Color? selectedItemColor; // 新しいプロパティ
   // 選択されていないアイテムの色
   final Color? unselectedItemColor; // 新しいプロパティ
+  // ラベルの表示
+  final bool showLabels; // 新しいプロパティ
 
   /// コンストラクタ
   /// 
@@ -47,6 +50,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
   /// [backgroundColor] ナビゲーションバーの背景色
   /// [selectedItemColor] 選択されたアイテムの色
   /// [unselectedItemColor] 選択されていないアイテムの色
+  /// [showLabels] ラベルの表示
   const BottomNavigationBarComponent({
     super.key,
     required this.currentIndex,
@@ -55,6 +59,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
     this.backgroundColor,
     this.selectedItemColor,
     this.unselectedItemColor,
+    this.showLabels = true,
   });
 
   @override
@@ -73,6 +78,9 @@ class BottomNavigationBarComponent extends StatelessWidget {
       selectedItemColor: selectedItemColor,
       // 選択されていないアイテムの色
       unselectedItemColor: unselectedItemColor,
+      // ラベルの表示
+      showUnselectedLabels: showLabels,
+      showSelectedLabels: showLabels,
     );
   }
 }
