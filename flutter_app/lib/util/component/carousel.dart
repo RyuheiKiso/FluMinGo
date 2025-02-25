@@ -37,12 +37,14 @@ class Carousel extends StatefulWidget {
   final List<Widget> items;
   // ページが自動的に切り替わる間隔
   final Duration interval;
+  final bool autoPlay;
+  final Duration autoPlayInterval;
 
   /// コンストラクタ
   /// 
   /// [items] カルーセル内に表示するウィジェットのリスト
   /// [interval] ページが自動的に切り替わる間隔
-  const Carousel({super.key, required this.items, this.interval = const Duration(seconds: 3)});
+  const Carousel({super.key, required this.items, this.interval = const Duration(seconds: 3), this.autoPlay = true, this.autoPlayInterval = const Duration(seconds: 3)});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -61,19 +63,21 @@ class _CarouselState extends State<Carousel> {
     // 初期ページを設定
     _pageController = PageController(initialPage: _currentIndex);
     // タイマーを使って自動的にページを切り替える
-    Timer.periodic(widget.interval, (Timer timer) {
-      if (_currentIndex < widget.items.length - 1) {
-        _currentIndex++;
-      } else {
-        _currentIndex = 0;
-      }
-      // ページをアニメーションで切り替える
-      _pageController.animateToPage(
-        _currentIndex,
-        duration: Duration(milliseconds: 300),
-        curve: Curves.easeIn,
-      );
-    });
+    if (widget.autoPlay) {
+      Timer.periodic(widget.autoPlayInterval, (Timer timer) {
+        if (_currentIndex < widget.items.length - 1) {
+          _currentIndex++;
+        } else {
+          _currentIndex = 0;
+        }
+        // ページをアニメーションで切り替える
+        _pageController.animateToPage(
+          _currentIndex,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
+      });
+    }
   }
 
   @override
