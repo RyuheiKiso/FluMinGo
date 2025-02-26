@@ -1,3 +1,8 @@
+/// 概要：base_manager.dart の機能を提供するユーティリティです。
+/// 目的：共通のマネージャ機能を実装し、コードの再利用性を高めることを目的としています。
+/// 使用方法：必要なクラスや関数をインポートして利用してください。
+library;
+
 import 'package:logging/logging.dart';
 
 /// BaseManager class provides basic logging and error handling functionalities.

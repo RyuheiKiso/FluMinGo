@@ -1,19 +1,16 @@
-// main.dart ファイル
-// このファイルは、Flutterアプリケーションのエントリーポイントを提供します。
+// 概要: Flutterアプリケーションのエントリーポイント
+// 目的: アプリケーションのルートウィジェットを提供する
+// 使用方法: main() 関数を呼び出してアプリケーションを起動する
 
 import 'package:flutter/material.dart';
 import 'util/theme/theme_manager.dart';
 import 'util/user_preferences/user_preferences_manager.dart';
 import 'dart:ui';
 
-// main 関数
-// アプリケーションのエントリーポイントです。
 void main() {
   runApp(MyApp());
 }
 
-// MyApp クラス
-// アプリケーションのルートウィジェットを定義します。
 class MyApp extends StatelessWidget {
   final ThemeManager _themeManager = ThemeManager();
 
@@ -29,8 +26,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// GlassmorphismContainer クラス
-// ガラスモーフィズム効果を持つコンテナを定義します。
 class GlassmorphismContainer extends StatelessWidget {
   final Widget child;
   const GlassmorphismContainer({super.key, required this.child});
@@ -53,8 +48,6 @@ class GlassmorphismContainer extends StatelessWidget {
   }
 }
 
-// MyHomePage クラス
-// ホームページのステートフルウィジェットを定義します。
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -63,14 +56,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// _MyHomePageState クラス
-// MyHomePageの状態を管理します。
 class _MyHomePageState extends State<MyHomePage> {
   final UserPreferencesManager _preferencesManager = UserPreferencesManager();
   int _counter = 0;
 
-  // _incrementCounter 関数
-  // カウンターをインクリメントします。
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -102,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () async {
                 String? value = await _preferencesManager.getPreference('key');
-                // Use a logging framework instead of print
                 debugPrint('Retrieved value: $value');
               },
               child: const Text('Get Preference'),

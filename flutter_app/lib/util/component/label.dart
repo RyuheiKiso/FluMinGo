@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: ラベルコンポーネント
+// 目的: テキストラベルを簡単に表示するためのコンポーネント
+// 使用方法: LabelComponent(text: 'ラベルテキスト')
+
 // ラベルコンポーネント
 class LabelComponent extends StatelessWidget {
   // ラベルのテキスト

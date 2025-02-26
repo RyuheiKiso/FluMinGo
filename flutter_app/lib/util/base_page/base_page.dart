@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: ベースページの抽象クラス
+// 目的: 各ページの共通レイアウトを提供する
+// 使用方法: class MyPage extends BasePage { ... }
+
 // Updated BasePage to be more abstract
 abstract class BasePage extends StatelessWidget {
   const BasePage({super.key});

@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 ///
 /// [BottomNavigationBarComponent]は、現在のインデックスとタップ時のコールバックを受け取るシンプルなボトムナビゲーションバーウィジェットです。
 ///
+/// ### 概要
+/// シンプルなボトムナビゲーションバーウィジェットを提供します。
+///
+/// ### 目的
+/// ボトムナビゲーションバーのデザインを統一し、再利用可能なコンポーネントとして提供します。
+///
+/// ### 使用方法
 /// ```dart
 /// BottomNavigationBarComponent(
 ///   currentIndex: 0,

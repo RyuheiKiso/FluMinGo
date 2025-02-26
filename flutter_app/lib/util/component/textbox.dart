@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: テキストボックスコンポーネント
+// 目的: テキスト入力フィールドを提供する
+// 使用方法: TextboxComponent(controller: TextEditingController(), hintText: 'ヒントテキスト')
+
 // テキストボックスコンポーネント
 class TextboxComponent extends StatelessWidget {
   // テキスト編集コントローラー

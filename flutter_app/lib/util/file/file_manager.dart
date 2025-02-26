@@ -1,3 +1,7 @@
+// 概要: ファイルマネージャー
+// 目的: ファイルの読み書きを支援する
+// 使用方法: FileManager().readFile(path) または writeFile(path, content) を使用
+
 import 'dart:io';
 import 'package:logging/logging.dart';
 

@@ -1,8 +1,10 @@
+// 概要: 位置情報管理クラス
+// 目的: 現在の位置情報を取得し、位置情報の変化を監視する
+// 使用方法: LocationManager().getCurrentLocation()
+
 import 'package:geolocator/geolocator.dart';
 
 class LocationManager {
-  // 位置情報の基本機能を実装
-
   Future<Position> getCurrentLocation() async {
     try {
       return await Geolocator.getCurrentPosition(

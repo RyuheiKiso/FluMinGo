@@ -1,14 +1,15 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:yaml/yaml.dart';
-
-// エラーハンドラーヘルパー
-
-// 使用方法:
+// 概要: エラーハンドラーヘルパー
+// 目的: アプリケーションのエラーハンドリングを支援する
+// 使用方法: 
 // 1. アプリケーションの初期化時に ErrorHandler.initialize() を呼び出します。
 //    await ErrorHandler.initialize();
 // 2. エラーが発生した場合に ErrorHandler.showError('エラーメッセージ') を呼び出します。
 //    ErrorHandler.showError('エラーメッセージ');
+
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:yaml/yaml.dart';
+
 Map<String, dynamic> _convertYamlMapToMap(YamlMap yamlMap) {
   final map = <String, dynamic>{};
   yamlMap.forEach((key, value) {

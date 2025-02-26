@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: バッジコンポーネント
+// 目的: ラベルを表示するカスタムバッジウィジェット
+// 使用方法: BadgeComponent(label: 'New', backgroundColor: Colors.red, icon: Icon(Icons.star))
+
 /// バッジコンポーネント
 ///
 /// [BadgeComponent]はラベルを表示するカスタムバッジウィジェットです。

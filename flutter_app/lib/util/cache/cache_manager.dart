@@ -1,3 +1,7 @@
+// 概要: キャッシュ管理を行うクラス
+// 目的: キャッシュの保存、取得、削除、クリアを行う
+// 使用方法: CacheManager().saveCache('key', 'value');
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheManager {

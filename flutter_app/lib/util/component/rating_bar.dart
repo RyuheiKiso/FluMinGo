@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムレーティングバーコンポーネント
+// 目的: ユーザーがレーティングを設定できるようにする
+// 使用方法: RatingBar(
+//   rating: 3,
+//   onRatingChanged: (newRating) => setState(() => _rating = newRating),
+// )
+
 // レーティングバーコンポーネント
 class RatingBar extends StatefulWidget {
   // レーティングの値

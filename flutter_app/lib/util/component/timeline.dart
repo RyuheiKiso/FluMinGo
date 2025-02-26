@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: タイムラインコンポーネント
+// 目的: イベントを時系列で表示する
+// 使用方法: TimelineComponent(events: [Text('イベント1'), Text('イベント2')])
+
 // タイムラインコンポーネント
 class TimelineComponent extends StatelessWidget {
   // イベントのリスト

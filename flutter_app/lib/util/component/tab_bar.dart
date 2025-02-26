@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムタブバーコンポーネント
+// 目的: カスタムタブバーを提供する
+// 使用方法: CustomTabBar(tabs: [Tab(text: 'タブ1')], controller: TabController(length: 1, vsync: this))
+
 // カスタムタブバーコンポーネント
 class CustomTabBar extends StatelessWidget {
   // タブのリスト

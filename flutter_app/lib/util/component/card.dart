@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 ///
 /// [CardComponent]は子ウィジェットを受け取るカスタムカードウィジェットです。
 ///
+/// ### 概要
+/// カスタムカードウィジェットを提供します。
+///
+/// ### 目的
+/// カードのデザインを統一し、再利用可能なコンポーネントとして提供します。
+///
+/// ### 使用方法
 /// ```dart
 /// CardComponent(
 ///   child: Text('This is a card'),

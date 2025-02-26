@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: アラートダイアログコンポーネント
+// 目的: タイトル、コンテンツ、およびアクションを受け取るカスタムアラートダイアログウィジェット
+// 使用方法: CustomAlert(title: 'Alert', content: 'This is an alert message.', actions: [TextButton(onPressed: () { Navigator.of(context).pop(); }, child: Text('OK'))]);
+
 /// アラートダイアログコンポーネント
 ///
 /// [CustomAlert]は、タイトル、コンテンツ、およびアクションを受け取るカスタムアラートダイアログウィジェットです。

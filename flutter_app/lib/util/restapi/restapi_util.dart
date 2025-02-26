@@ -1,3 +1,7 @@
+// 概要: REST APIのユーティリティ
+// 目的: REST APIへのリクエストを簡単に行う
+// 使用方法: RestApiUtil(baseUrl: 'https://api.example.com').get('/endpoint')
+
 // This file contains common functionalities for REST API
 
 import 'package:http/http.dart' as http;

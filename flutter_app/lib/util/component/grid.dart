@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: グリッドコンポーネント
+// 目的: グリッド表示を簡単にするためのコンポーネント
+// 使用方法: GridComponent(items: [Widget1, Widget2, ...], crossAxisCount: 2)
+
 // グリッドコンポーネント
 class GridComponent extends StatelessWidget {
   // グリッドのアイテム

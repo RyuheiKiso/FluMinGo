@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: フローティングアクションボタンコンポーネント
+// 目的: フローティングアクションボタンを簡単に作成するためのコンポーネント
+// 使用方法: CustomFloatingActionButton(icon: Icons.add)
+
 // フローティングアクションボタンコンポーネント
 class CustomFloatingActionButton extends StatelessWidget {
   final IconData icon;

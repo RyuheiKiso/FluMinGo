@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: ウィザードコンポーネント
+// 目的: ステップごとに進行するウィザードを表示する
+// 使用方法: Wizard(steps: [WizardStep(content: Text('ステップ1')), WizardStep(content: Text('ステップ2'))])
+
 // ウィザードコンポーネント
 class Wizard extends StatefulWidget {
   // ステップのリスト

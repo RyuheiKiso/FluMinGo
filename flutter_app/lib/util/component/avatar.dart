@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: アバターコンポーネント
+// 目的: ユーザーのアバター画像を表示するカスタムウィジェット
+// 使用方法: AvatarComponent(imageUrl: 'https://example.com/avatar.png', radius: 20.0, borderColor: Colors.blue, borderWidth: 2.0, placeholder: AssetImage('assets/placeholder.png'), errorImage: AssetImage('assets/error.png'), onTap: () { print('Avatar tapped!'); }, backgroundColor: Colors.white, foregroundColor: Colors.black, borderRadius: BorderRadius.circular(10.0), boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.0)], iconSize: 24.0, labelFontSize: 14.0);
+
 /// アバターコンポーネント
 ///
 /// [AvatarComponent]はユーザーのアバター画像を表示するカスタムウィジェットです。

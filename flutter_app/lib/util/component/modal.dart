@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムモーダルコンポーネント
+// 目的: モーダルダイアログを表示する
+// 使用方法: ModalComponent(
+//   title: 'タイトル',
+//   content: Text('コンテンツ'),
+//   actions: [TextButton(onPressed: () {}, child: Text('閉じる'))],
+// )
+
 // モーダルコンポーネント
 class ModalComponent extends StatelessWidget {
   // モーダルのコンテンツ

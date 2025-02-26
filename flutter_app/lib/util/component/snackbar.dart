@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-// カスタムスナックバーコンポーネント
+// 概要: カスタムスナックバーコンポーネント
+// 目的: メッセージをスナックバーとして表示する
+// 使用方法: CustomSnackbar(message: 'メッセージ').show(context)
+
 class CustomSnackbar {
   // スナックバーのメッセージ
   final String message;

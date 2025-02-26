@@ -1,3 +1,7 @@
+// 概要: デバイス情報マネージャー
+// 目的: デバイスのモデル名、OSバージョン、バッテリー残量などの情報を取得する
+// 使用方法: DeviceInfoManager().getDeviceModel() または getOSVersion() を使用
+
 import 'package:device_info_plus/device_info_plus.dart';
 
 class DeviceInfoManager {

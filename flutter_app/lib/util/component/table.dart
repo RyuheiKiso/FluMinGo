@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: テーブルコンポーネント
+// 目的: テーブル形式でデータを表示する
+// 使用方法: TableComponent(rows: [TableRow(children: [Text('セル1'), Text('セル2')])])
+
 // テーブルコンポーネント
 class TableComponent extends StatelessWidget {
   // テーブル行のリスト

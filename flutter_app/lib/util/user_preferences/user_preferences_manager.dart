@@ -1,3 +1,7 @@
+// 概要: ユーザー設定の管理
+// 目的: ユーザーの設定を保存、取得、削除する
+// 使用方法: UserPreferencesManager().savePreference('key', 'value')
+
 import 'package:shared_preferences/shared_preferences.dart';
 import '../base_manager.dart';
 

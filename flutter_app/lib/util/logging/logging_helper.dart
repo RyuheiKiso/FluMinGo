@@ -1,15 +1,16 @@
+// 概要: ロギングヘルパークラス
+// 目的: ログの出力を管理する
+// 使用方法: LoggingHelper.logInfo('情報メッセージ')
+
 import 'package:logger/logger.dart';
 
-// ロギングヘルパー
 class LoggingHelper {
   static final Logger _logger = Logger();
 
-  // 情報ログを出力するメソッド
   static void logInfo(String message) {
     _logger.i(message);
   }
 
-  // エラーログを出力するメソッド
   static void logError(String message) {
     _logger.e(message);
   }

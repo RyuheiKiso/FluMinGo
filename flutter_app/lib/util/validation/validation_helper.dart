@@ -1,3 +1,7 @@
+// 概要: バリデーションヘルパー
+// 目的: メールアドレスとパスワードのバリデーションを行う
+// 使用方法: ValidationHelper.isValidEmail(email)
+
 // バリデーションヘルパー
 class ValidationHelper {
   // メールアドレスのバリデーションメソッド

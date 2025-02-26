@@ -1,3 +1,7 @@
+// 概要: データ変換マネージャー
+// 目的: JSON文字列とMapの相互変換、日付文字列とDateTimeオブジェクトの相互変換を行う
+// 使用方法: DataConversionManager().jsonToMap(jsonString) または mapToJson(map) を使用
+
 import 'dart:convert';
 
 class DataConversionManager {

@@ -1,10 +1,12 @@
+// 概要: 通知管理クラス
+// 目的: ローカル通知の表示とスケジュールを管理する
+// 使用方法: NotificationManager().showNotification('タイトル', '内容')
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationManager {
-  // 通知管理の基本機能を実装
-
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 

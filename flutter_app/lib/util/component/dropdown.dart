@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 // ドロップダウンコンポーネント
+// 概要: ジェネリック型のドロップダウンメニューを提供するコンポーネント
+// 目的: ユーザーが選択肢から値を選ぶためのUIを提供
+// 使用方法: DropdownComponent(
+//   items: [DropdownMenuItem(value: 'value1', child: Text('Value 1'))],
+//   value: 'value1',
+//   onChanged: (newValue) { ... },
+// )
 class DropdownComponent<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T? value;
@@ -33,7 +40,10 @@ class DropdownComponent<T> extends StatelessWidget {
   }
 }
 
-// ドロップダウンコンポーネント
+// カスタムドロップダウン
+// 概要: 固定の選択肢を持つドロップダウンメニューを提供するコンポーネント
+// 目的: ユーザーが選択肢から値を選ぶためのUIを提供
+// 使用方法: CustomDropdown();
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown({super.key});
 

@@ -1,11 +1,12 @@
-// 文字列ヘルパー
+// 概要: 文字列操作のヘルパー
+// 目的: 文字列の操作を簡単にする
+// 使用方法: StringHelper.isEmpty('文字列')
+
 class StringHelper {
-  // 文字列が空かどうかを確認するメソッド
   static bool isEmpty(String? str) {
     return str == null || str.isEmpty;
   }
 
-  // 文字列を大文字に変換するメソッド
   static String toUpperCase(String str) {
     return str.toUpperCase();
   }

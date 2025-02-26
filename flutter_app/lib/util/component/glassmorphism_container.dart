@@ -1,6 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+// 概要: グラスモーフィズムコンテナコンポーネント
+// 目的: グラスモーフィズム効果を持つコンテナを簡単に作成するためのコンポーネント
+// 使用方法: GlassmorphismContainer(child: Widget)
+
 // グラスモーフィズムコンテナコンポーネント
 class GlassmorphismContainer extends StatelessWidget {
   final Widget child;

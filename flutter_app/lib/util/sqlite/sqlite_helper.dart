@@ -1,3 +1,7 @@
+// 概要: SQLiteデータベースのヘルパー
+// 目的: SQLiteデータベースの初期化とアクセスを管理する
+// 使用方法: SQLiteHelper().database
+
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

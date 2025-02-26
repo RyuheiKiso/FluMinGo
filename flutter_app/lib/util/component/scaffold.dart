@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-// スキャフォールドコンポーネント
+// 概要: スキャフォールドコンポーネント
+// 目的: アプリの基本的なレイアウトを提供する
+// 使用方法: ScaffoldComponent(title: 'タイトル', body: Text('コンテンツ'))
+
 class ScaffoldComponent extends StatelessWidget {
   // タイトル
   final String title;

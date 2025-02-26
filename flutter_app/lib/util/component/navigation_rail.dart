@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムナビゲーションレールコンポーネント
+// 目的: ナビゲーションレールを実装する
+// 使用方法: NavigationRailComponent(
+//   selectedIndex: 0,
+//   onDestinationSelected: (index) => setState(() => _selectedIndex = index),
+// )
+
 // ナビゲーションレールコンポーネント
 class NavigationRailComponent extends StatelessWidget {
   // 現在選択されているインデックス

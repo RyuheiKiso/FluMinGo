@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: グリッドビューコンポーネント
+// 目的: グリッドビュー表示を簡単にするためのコンポーネント
+// 使用方法: GridViewComponent(items: [Widget1, Widget2, ...], crossAxisCount: 2)
+
 // グリッドビューコンポーネント
 class GridViewComponent extends StatelessWidget {
   // グリッドのアイテム

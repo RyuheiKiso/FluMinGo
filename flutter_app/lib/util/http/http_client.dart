@@ -1,3 +1,7 @@
+// 概要: HTTPクライアントヘルパー
+// 目的: HTTPリクエストの送信を簡素化する
+// 使用方法: HttpClient(baseUrl: 'https://example.com').get('/endpoint') または post('/endpoint', body: {...}) を使用
+
 import 'package:http/http.dart' as http;
 
 // HTTPクライアントヘルパー

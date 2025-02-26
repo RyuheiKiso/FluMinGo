@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: エクスパンションパネルコンポーネント
+// 目的: エクスパンションパネルを簡単に作成するためのコンポーネント
+// 使用方法: CustomExpansionPanel(initialItemCount: 5)
+
 // エクスパンションパネルコンポーネント
 class CustomExpansionPanel extends StatefulWidget {
   final int initialItemCount;

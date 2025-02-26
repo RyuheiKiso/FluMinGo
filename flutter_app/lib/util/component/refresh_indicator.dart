@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムリフレッシュインジケーター
+// 目的: ユーザーが画面を引っ張ってリフレッシュする際に表示されるインジケーターをカスタマイズする
+// 使用方法: CustomRefreshIndicator(
+//   child: ListView(...),
+//   onRefresh: _handleRefresh,
+//   color: Colors.blue,
+// )
+
 // リフレッシュインジケーターコンポーネント
 class CustomRefreshIndicator extends StatelessWidget {
   // 子ウィジェット

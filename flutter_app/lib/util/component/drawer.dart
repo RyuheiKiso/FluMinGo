@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 // ドロワーコンポーネント
+// 概要: ナビゲーションメニューを提供するドロワーコンポーネント
+// 目的: ユーザーがアプリ内の異なる画面に移動できるようにする
+// 使用方法: DrawerComponent();
 class DrawerComponent extends StatelessWidget {
   final Color headerBackgroundColor;
   final TextStyle headerTextStyle;

@@ -1,3 +1,7 @@
+// 概要: GraphQLサービス
+// 目的: GraphQLクエリとミューテーションを実行する
+// 使用方法: GraphQLService(graphQLClient: client).query(options)
+
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQLService {

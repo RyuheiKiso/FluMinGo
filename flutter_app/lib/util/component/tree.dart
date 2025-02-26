@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: ツリーコンポーネント
+// 目的: 階層構造のノードを表示する
+// 使用方法: Tree(nodes: [TreeNode(label: 'ノード1'), TreeNode(label: 'ノード2')])
+
 // ツリーコンポーネント
 class Tree extends StatefulWidget {
   // ノードのリスト

@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムレーティングコンポーネント
+// 目的: ユーザーがレーティングを設定できるようにする
+// 使用方法: Rating(
+//   rating: 3.5,
+//   onRatingChanged: (newRating) => setState(() => _rating = newRating),
+// )
+
 // レーティングコンポーネント
 class Rating extends StatefulWidget {
   // レーティングの値

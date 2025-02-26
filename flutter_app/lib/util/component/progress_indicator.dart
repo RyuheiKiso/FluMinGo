@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムプログレスインジケーター
+// 目的: プログレスの進行状況を表示する
+// 使用方法: ProgressIndicatorComponent(
+//   value: 0.7,
+//   color: Colors.green,
+// )
+
 // プログレスインジケーターコンポーネント
 class ProgressIndicatorComponent extends StatelessWidget {
   // プログレスの値

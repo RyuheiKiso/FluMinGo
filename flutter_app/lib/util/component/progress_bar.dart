@@ -10,6 +10,12 @@ import 'package:flutter/material.dart';
 ///   color: Colors.red,
 /// )
 /// ```
+// 概要: カスタムプログレスバーコンポーネント
+// 目的: プログレスの進行状況を表示する
+// 使用方法: ProgressBarComponent(
+//   progress: 0.5,
+//   color: Colors.red,
+// )
 class ProgressBarComponent extends StatelessWidget {
   // 進捗率 (0.0 - 1.0)
   final double progress;

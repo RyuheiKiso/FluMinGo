@@ -1,49 +1,11 @@
+// 概要: GraphQLサービス
+// 目的: GraphQLクエリとミューテーションの実行を支援する
+// 使用方法: GraphQLService.performQuery(query) または performMutation(mutation, variables: {...}) を使用
+
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:retry/retry.dart';
 import 'package:logging/logging.dart';
-
-// 各画面からの使用方法
-// 1. GraphQLServiceクラスをインポートします。
-// import 'package:your_app/util/graphql/graphql_service.dart';
-
-// 2. クエリを実行する場合：
-// String query = '''
-//   query GetItems {
-//     items {
-//       id
-//       name
-//     }
-//   }
-// ''';
-// QueryResult result = await GraphQLService.performQuery(query);
-// if (result.hasException) {
-//   GraphQLService.handleError(result);
-// } else {
-//   // 結果を処理します
-// }
-
-// 3. ミューテーションを実行する場合：
-// String mutation = '''
-//   mutation AddItem(
-//     $name: String!
-//   ) {
-//     addItem(name: $name) {
-//       id
-//       name
-//     }
-//   }
-// ''';
-// Map<String, dynamic> variables = {'name': 'NewItem'};
-// QueryResult result = await GraphQLService.performMutation(mutation, variables: variables);
-// if (result.hasException) {
-//   GraphQLService.handleError(result);
-// } else {
-//   // 結果を処理します
-// }
-
-// 4. クライアントを取得する場合：
-// ValueNotifier<GraphQLClient> client = GraphQLService.getClient();
 
 class GraphQLService {
   static final HttpLink httpLink = HttpLink(

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムツリービューコンポーネント
+// 目的: 階層構造のノードをカスタム表示する
+// 使用方法: TreeView(nodes: [TreeNode(label: 'ノード1'), TreeNode(label: 'ノード2')])
+
 // カスタムツリービューコンポーネント
 class TreeView extends StatefulWidget {
   // ノードのリスト

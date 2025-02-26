@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムウィザードビューコンポーネント
+// 目的: カスタムステップインジケーターを持つウィザードを表示する
+// 使用方法: WizardView(steps: [WizardStep(content: Text('ステップ1')), WizardStep(content: Text('ステップ2'))])
+
 // カスタムウィザードビューコンポーネント
 class WizardView extends StatefulWidget {
   // ステップのリスト

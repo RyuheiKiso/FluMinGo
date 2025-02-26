@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// 概要: アプリバーコンポーネント
+// 目的: タイトルを表示するカスタムアプリバーウィジェット
+// 使用方法: AppBarComponent(title: 'タイトル', backgroundColor: Colors.blue, titleStyle: TextStyle(color: Colors.white), iconTheme: IconThemeData(color: Colors.white), actions: [IconButton(icon: Icon(Icons.settings), onPressed: () {})], leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}), elevation: 4.0, shadowColor: Colors.grey, shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(bottom: Radius.circular(16.0))), bottom: PreferredSize(preferredSize: Size.fromHeight(50.0), child: Text('Bottom Widget')), flexibleSpace: FlexibleSpaceBar(title: Text('Flexible Space')), automaticallyImplyLeading: true, brightness: Brightness.dark);
+
 /// アプリバーコンポーネント
 ///
 /// [AppBarComponent]はタイトルを表示するカスタムアプリバーウィジェットです。

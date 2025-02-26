@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// チップコンポーネント
+/// 概要: テキスト、背景色、およびテキストの色を受け取るカスタムチップウィジェット
+/// 目的: ユーザーがタグやラベルを表示するためのUIを提供
+/// 使用方法: CustomChip(label: 'Example', backgroundColor: Colors.blue, textColor: Colors.white);
 ///
 /// [CustomChip]はテキスト、背景色、およびテキストの色を受け取るカスタムチップウィジェットです。
 ///

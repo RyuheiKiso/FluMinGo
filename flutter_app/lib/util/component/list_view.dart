@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: リストビューコンポーネント
+// 目的: リストビュー表示を簡単にするためのコンポーネント
+// 使用方法: ListViewComponent(items: [Widget1, Widget2, ...])
+
 // リストビューコンポーネント
 class ListViewComponent extends StatelessWidget {
   // リストのアイテム

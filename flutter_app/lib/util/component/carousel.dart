@@ -2,18 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// カルーセルコンポーネント
-///
-/// [CarouselComponent]はウィジェットのリストを受け取るカルーセルウィジェットです。
-///
-/// ```dart
-/// CarouselComponent(
-///   items: [
-///     Container(color: Colors.red),
-///     Container(color: Colors.green),
-///     Container(color: Colors.blue),
-///   ],
-/// )
-/// ```
+/// 概要: ウィジェットのリストを受け取るカルーセルウィジェット
+/// 目的: ユーザーが複数のコンテンツをスライド形式で表示するためのUIを提供
+/// 使用方法: CarouselComponent(items: [Container(color: Colors.red), Container(color: Colors.green), Container(color: Colors.blue)]);
 class CarouselComponent extends StatelessWidget {
   // カルーセル内に表示するウィジェットのリスト
   final List<Widget> items;
@@ -32,6 +23,10 @@ class CarouselComponent extends StatelessWidget {
   }
 }
 
+/// カルーセル
+/// 概要: 自動再生機能を持つカルーセルウィジェット
+/// 目的: ユーザーが複数のコンテンツをスライド形式で表示するためのUIを提供
+/// 使用方法: Carousel(items: [Container(color: Colors.red), Container(color: Colors.green), Container(color: Colors.blue)], autoPlay: true, autoPlayInterval: Duration(seconds: 3));
 class Carousel extends StatefulWidget {
   // カルーセル内に表示するウィジェットのリスト
   final List<Widget> items;

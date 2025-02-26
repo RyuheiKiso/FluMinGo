@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムツールチップコンポーネント
+// 目的: カスタムメッセージを表示するツールチップを提供する
+// 使用方法: CustomTooltip(message: 'ツールチップメッセージ', child: Text('ターゲットウィジェット'))
+
 // カスタムツールチップコンポーネント
 class CustomTooltip extends StatelessWidget {
   // ツールチップのメッセージ

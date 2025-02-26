@@ -1,3 +1,7 @@
+// 概要: フォームヘルパー
+// 目的: フォームフィールドのバリデーションを支援する
+// 使用方法: FormHelper.validateField(value, fieldName) などのバリデーションメソッドを使用
+
 // フォームヘルパー
 class FormHelper {
   // フォームフィールドのバリデーションメソッド

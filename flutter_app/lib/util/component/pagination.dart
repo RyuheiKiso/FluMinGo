@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムページネーションコンポーネント
+// 目的: ページネーションを実装する
+// 使用方法: PaginationComponent(
+//   currentPage: 1,
+//   totalPages: 10,
+//   onPageChanged: (page) => setState(() => _currentPage = page),
+// )
+
 // ページネーションコンポーネント
 class PaginationComponent extends StatelessWidget {
   // 現在のページ

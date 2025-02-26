@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-// カスタムサーチバーコンポーネント
+// 概要: カスタムサーチバーコンポーネント
+// 目的: テキスト入力フィールドで検索機能を提供する
+// 使用方法: CustomSearchBar(controller: TextEditingController(), hintText: '検索', onChanged: (text) {})
+
 class CustomSearchBar extends StatelessWidget {
   // テキスト編集コントローラー
   final TextEditingController controller;

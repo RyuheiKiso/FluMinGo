@@ -1,3 +1,7 @@
+// 概要: エラーノーティファー
+// 目的: エラー発生時にユーザーに通知する
+// 使用方法: ErrorNotifier.showError(context, 'エラーメッセージ')
+
 import 'package:flutter/material.dart';
 
 // Utility to notify user when an error occurs.

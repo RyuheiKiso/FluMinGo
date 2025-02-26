@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+// 概要: トーストメッセージコンポーネント
+// 目的: 短時間表示されるメッセージを提供する
+// 使用方法: CustomToast.showToast('メッセージ')
+
 // トーストメッセージコンポーネント
 class CustomToast {
   // トーストメッセージを表示するメソッド

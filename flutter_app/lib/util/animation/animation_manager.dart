@@ -1,3 +1,7 @@
+// 概要: アニメーションの管理を行うクラス
+// 目的: アニメーションの開始、停止、リセットを行う
+// 使用方法: AnimationManager().startAnimation();
+
 import 'dart:async';
 import 'package:logging/logging.dart';
 
