@@ -6,6 +6,7 @@ import (
 	"sync"
 )
 
+// フェイルオーバーマネージャーの実装
 // 複数リージョン対応のグローバルフェイルオーバー機能
 
 type FailoverManager struct {

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 
+// 概要: ウィザードコンポーネント
+// 目的: ステップごとに進行するウィザードを表示する
+// 使用方法: Wizard(steps: [WizardStep(content: Text('ステップ1')), WizardStep(content: Text('ステップ2'))])
+
 // ウィザードコンポーネント
 class Wizard extends StatefulWidget {
   // ステップのリスト
   final List<WizardStep> steps;
+  final VoidCallback? onFinished; // 新機能①
+  final ValueChanged<int>? onStepJump; // 新機能②
 
-  const Wizard({super.key, required this.steps});
+  const Wizard({
+    super.key,
+    required this.steps,
+    this.onFinished, // 新機能①
+    this.onStepJump, // 新機能②
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -25,9 +36,7 @@ class _WizardState extends State<Wizard> {
           value: (_currentStep + 1) / widget.steps.length,
         ),
         // 現在のステップのコンテンツ
-        Expanded(
-          child: widget.steps[_currentStep].content,
-        ),
+        Expanded(child: widget.steps[_currentStep].content),
         // ナビゲーションボタン
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,8 +56,17 @@ class _WizardState extends State<Wizard> {
                   setState(() {
                     _currentStep++;
                   });
+                  widget.onStepJump?.call(_currentStep); // 新機能②
                 },
                 child: Text('Next'),
+              )
+            else
+              ElevatedButton(
+                // 新機能①：最終ステップで完了ボタンを表示
+                onPressed: () {
+                  widget.onFinished?.call();
+                },
+                child: Text('Finish'),
               ),
           ],
         ),

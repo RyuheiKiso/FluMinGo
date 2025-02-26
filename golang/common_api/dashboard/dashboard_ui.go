@@ -61,3 +61,5 @@ func (du *DashboardUI) RefreshDashboard() error {
 	// 実際の実装はダッシュボードのリフレッシュ処理を行う必要があります
 	return nil
 }
+
+// ダッシュボードUIの実装

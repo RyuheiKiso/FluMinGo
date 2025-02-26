@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 
+// 概要: エクスパンションパネルコンポーネント
+// 目的: エクスパンションパネルを簡単に作成するためのコンポーネント
+// 使用方法: CustomExpansionPanel(initialItemCount: 5)
+
 // エクスパンションパネルコンポーネント
 class CustomExpansionPanel extends StatefulWidget {
-  const CustomExpansionPanel({super.key});
+  final int initialItemCount;
+  final Color headerBackgroundColor;
+  final Color bodyBackgroundColor;
+
+  const CustomExpansionPanel({
+    super.key,
+    this.initialItemCount = 5,
+    this.headerBackgroundColor = Colors.transparent,
+    this.bodyBackgroundColor = Colors.transparent,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -10,16 +23,17 @@ class CustomExpansionPanel extends StatefulWidget {
 }
 
 class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
-  // エクスパンションパネルのデータ
-  final List<Item> _data = generateItems(5);
+  late List<Item> _data;
+
+  @override
+  void initState() {
+    super.initState();
+    _data = generateItems(widget.initialItemCount);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: _buildPanel(),
-      ),
-    );
+    return SingleChildScrollView(child: Container(child: _buildPanel()));
   }
 
   // パネルを構築するウィジェット
@@ -30,28 +44,35 @@ class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
           _data[index].isExpanded = !isExpanded;
         });
       },
-      children: _data.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          // ヘッダーのビルダー
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return ListTile(
-              title: Text(item.headerValue),
+      children:
+          _data.map<ExpansionPanel>((Item item) {
+            return ExpansionPanel(
+              // ヘッダーのビルダー
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return Container(
+                  color: widget.headerBackgroundColor,
+                  child: ListTile(title: Text(item.headerValue)),
+                );
+              },
+              // ボディのビルダー
+              body: Container(
+                color: widget.bodyBackgroundColor,
+                child: ListTile(
+                  title: Text(item.expandedValue),
+                  subtitle: Text(
+                    'To delete this panel, tap the trash can icon',
+                  ),
+                  trailing: Icon(Icons.delete),
+                  onTap: () {
+                    setState(() {
+                      _data.removeWhere((currentItem) => item == currentItem);
+                    });
+                  },
+                ),
+              ),
+              isExpanded: item.isExpanded,
             );
-          },
-          // ボディのビルダー
-          body: ListTile(
-            title: Text(item.expandedValue),
-            subtitle: Text('To delete this panel, tap the trash can icon'),
-            trailing: Icon(Icons.delete),
-            onTap: () {
-              setState(() {
-                _data.removeWhere((currentItem) => item == currentItem);
-              });
-            },
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
+          }).toList(),
     );
   }
 }

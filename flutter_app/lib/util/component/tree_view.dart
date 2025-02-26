@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムツリービューコンポーネント
+// 目的: 階層構造のノードをカスタム表示する
+// 使用方法: TreeView(nodes: [TreeNode(label: 'ノード1'), TreeNode(label: 'ノード2')])
+
 // カスタムツリービューコンポーネント
 class TreeView extends StatefulWidget {
   // ノードのリスト
   final List<TreeNode> nodes;
-  const TreeView({super.key, required this.nodes});
+  final double indent; // 新機能②
+
+  const TreeView({
+    super.key,
+    required this.nodes,
+    this.indent = 16.0, // 新機能②
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -15,25 +25,57 @@ class _TreeViewState extends State<TreeView> {
   // 展開されたノードのマップ
   final Map<TreeNode, bool> _expandedNodes = {};
 
+  void _toggleAll(bool expand) {
+    // 新機能①
+    setState(() {
+      for (var node in widget.nodes) {
+        _expandedNodes[node] = expand;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: widget.nodes.map((node) => _buildNode(node)).toList(),
+    return Column(
+      children: [
+        Row(
+          // 新機能①ボタン群
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () => _toggleAll(true),
+              child: Text('Expand All'),
+            ),
+            TextButton(
+              onPressed: () => _toggleAll(false),
+              child: Text('Collapse All'),
+            ),
+          ],
+        ),
+        Expanded(
+          child: ListView(
+            children: widget.nodes.map((node) => _buildNode(node)).toList(),
+          ),
+        ),
+      ],
     );
   }
 
   // ノードを構築するメソッド
   Widget _buildNode(TreeNode node) {
     final isExpanded = _expandedNodes[node] ?? false;
-    return ExpansionTile(
-      title: Text(node.label),
-      initiallyExpanded: isExpanded,
-      onExpansionChanged: (expanded) {
-        setState(() {
-          _expandedNodes[node] = expanded;
-        });
-      },
-      children: node.children.map((child) => _buildNode(child)).toList(),
+    return Padding(
+      padding: EdgeInsets.only(left: widget.indent), // 新機能②
+      child: ExpansionTile(
+        title: Text(node.label),
+        initiallyExpanded: isExpanded,
+        onExpansionChanged: (expanded) {
+          setState(() {
+            _expandedNodes[node] = expanded;
+          });
+        },
+        children: node.children.map((child) => _buildNode(child)).toList(),
+      ),
     );
   }
 }

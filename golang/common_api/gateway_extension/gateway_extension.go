@@ -2,6 +2,8 @@ package gateway_extension
 
 // APIゲートウェイの拡張機能：トラフィック分析、セキュリティ監視、カスタムルール適用
 
+// ゲートウェイ拡張の実装
+
 // GatewayExtension はAPIゲートウェイの拡張機能を管理する構造体です。
 type GatewayExtension struct {
 	trafficAnalyzer TrafficAnalyzer

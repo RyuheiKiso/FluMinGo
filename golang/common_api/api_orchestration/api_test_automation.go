@@ -1,3 +1,6 @@
+// このファイルには、APIオーケストレーションに関連する自動テスト機能が含まれています。
+// Developers: This file includes API orchestration test automation functionalities.
+
 package api_orchestration
 
 import (

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: スライダーコンポーネント
+// 目的: 値をスライダーで調整する
+// 使用方法: CustomSlider(value: 0.5, onChanged: (value) {}, min: 0.0, max: 1.0)
+
 /// スライダーコンポーネント
-/// 
+///
 /// [CustomSlider]は値と値変更時のコールバックを受け取るカスタムスライダーウィジェットです。
-/// 
+///
 /// ```dart
 /// CustomSlider(
 ///   value: 0.5,
@@ -40,7 +44,7 @@ class CustomSlider extends StatelessWidget {
   final Color? thumbColor;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [value] スライダーの値
   /// [onChanged] 値が変更されたときに呼び出されるコールバック
   /// [min] スライダーの最小値

@@ -1,3 +1,7 @@
+// 概要: SQLiteデータベースのヘルパー
+// 目的: SQLiteデータベースの初期化とアクセスを管理する
+// 使用方法: SQLiteHelper().database
+
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -17,15 +21,20 @@ class SQLiteHelper {
   }
 
   Future<Database> _initDatabase() async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'app.db');
-
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: (db, version) {
-        // データベースの初期化処理をここに記述
-      },
-    );
+    try {
+      final dbPath = await getDatabasesPath();
+      final path = join(dbPath, 'app.db');
+      return await openDatabase(
+        path,
+        version: 1,
+        onCreate: (db, version) {
+          // データベースの初期化処理をここに記述
+        },
+      );
+    } catch (e, stackTrace) {
+      // Log error using BaseManager's logger if available, otherwise print
+      print('Error initializing database: $e\n$stackTrace');
+      rethrow;
+    }
   }
 }

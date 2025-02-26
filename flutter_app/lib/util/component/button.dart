@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 /// ボタンコンポーネント
-/// 
+///
 /// [Button]は、ラベルと押下時のコールバックを受け取るシンプルなボタンウィジェットです。
-/// 
+///
+/// ### 概要
+/// シンプルなボタンウィジェットを提供します。
+///
+/// ### 目的
+/// ボタンのデザインを統一し、再利用可能なコンポーネントとして提供します。
+///
+/// ### 使用方法
 /// ```dart
 /// Button(
 ///   label: 'Click me',
@@ -18,6 +25,8 @@ import 'package:flutter/material.dart';
 ///   borderRadius: BorderRadius.circular(8.0),
 ///   padding: EdgeInsets.all(16.0),
 ///   isLoading: true,
+///   borderColor: Colors.red,
+///   borderWidth: 2.0,
 /// );
 /// ```
 class Button extends StatelessWidget {
@@ -41,9 +50,13 @@ class Button extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   // ボタンが押されたときにローディングインジケータを表示するかどうか
   final bool isLoading;
+  // ボタンの枠線色
+  final Color? borderColor;
+  // ボタンの枠線幅
+  final double? borderWidth;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [label] ボタンに表示するテキスト
   /// [onPressed] ボタンが押されたときに呼び出されるコールバック
   /// [backgroundColor] ボタンの背景色
@@ -54,10 +67,13 @@ class Button extends StatelessWidget {
   /// [borderRadius] ボタンの角丸
   /// [padding] ボタンの内側余白
   /// [isLoading] ボタンが押されたときにローディングインジケータを表示するかどうか
-  const Button({super.key, 
-    required this.label, 
-    required this.onPressed, 
-    this.backgroundColor, 
+  /// [borderColor] ボタンの枠線色
+  /// [borderWidth] ボタンの枠線幅
+  const Button({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    this.backgroundColor,
     this.textColor,
     this.icon,
     this.width,
@@ -65,6 +81,8 @@ class Button extends StatelessWidget {
     this.borderRadius,
     this.padding,
     this.isLoading = false,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -85,12 +103,19 @@ class Button extends StatelessWidget {
           // 角丸を設定
           shape: RoundedRectangleBorder(
             borderRadius: borderRadius ?? BorderRadius.zero,
+            side: BorderSide(
+              color: borderColor ?? Colors.transparent,
+              width: borderWidth ?? 0.0,
+            ),
           ),
           // 内側余白を設定
           padding: padding,
         ),
         // ローディング中はインジケータを表示
-        icon: isLoading ? CircularProgressIndicator(color: textColor) : (icon != null ? Icon(icon) : Container()),
+        icon:
+            isLoading
+                ? CircularProgressIndicator(color: textColor)
+                : (icon != null ? Icon(icon) : Container()),
         // ローディング中はテキストを変更
         label: isLoading ? Text('Loading...') : Text(label),
       ),

@@ -4,6 +4,7 @@ import "fmt"
 
 // ドメインイベントのリアルタイム処理・アクショントリガー
 
+// ドメインイベントプロセッサの実装
 // DomainEventProcessor はドメインイベントの処理を管理する構造体です。
 type DomainEventProcessor struct {
 	// ...必要なフィールド...

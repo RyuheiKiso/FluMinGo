@@ -1,11 +1,14 @@
+// auth_interface.go ファイル
+// このファイルは、認証APIの契約を提供します。
+
 // Package auth provides the authentication API contract.
 package auth
 
-// AuthAPI defines the contract for authentication operations.
-// Implementations should provide login and logout functionalities.
-
+// AuthAPI インターフェース
+// 認証操作の契約を定義します。
+// 実装はログインとログアウトの機能を提供する必要があります。
 type AuthAPI interface {
-	Login(username, password string) (string, error) // Returns token on success
+	Login(username, password string) (string, error) // 成功時にトークンを返します
 	Logout(token string) error
 	SaveToken(username, token string) error
 	DeleteToken(token string) error
@@ -13,7 +16,8 @@ type AuthAPI interface {
 	DeleteTokensByUsername(username string) error          // 追加
 }
 
-// Authenticator defines the contract for authentication.
+// Authenticator インターフェース
+// 認証の契約を定義します。
 type Authenticator interface {
 	Authenticate(username, password string) (bool, error)
 	Login(username, password string) (string, error)

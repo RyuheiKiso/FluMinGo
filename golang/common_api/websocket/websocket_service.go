@@ -2,6 +2,7 @@ package websocket
 
 import "log"
 
+// WebSocketサービスの実装
 // WebSocketService はWebSocketを通じたサービス処理を担当する構造体です。
 // 必要に応じてフィールドを追加してください。
 type WebSocketService struct{}

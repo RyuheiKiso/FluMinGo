@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムナビゲーションレールコンポーネント
+// 目的: ナビゲーションレールを実装する
+// 使用方法: NavigationRailComponent(
+//   selectedIndex: 0,
+//   onDestinationSelected: (index) => setState(() => _selectedIndex = index),
+// )
+
 // ナビゲーションレールコンポーネント
 class NavigationRailComponent extends StatelessWidget {
   // 現在選択されているインデックス
@@ -8,6 +15,18 @@ class NavigationRailComponent extends StatelessWidget {
   final ValueChanged<int> onDestinationSelected;
   // ナビゲーションレールが拡張されるかどうか
   final bool extended;
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // ラベルタイプ
+  final NavigationRailLabelType? labelType;
+  // グループアライメント
+  final double? groupAlignment;
+  // アイコンのサイズ
+  final double iconSize;
+  // アイコンの色
+  final Color? iconColor;
+  // ラベルのスタイル
+  final TextStyle? labelStyle;
 
   // コンストラクタ
   const NavigationRailComponent({
@@ -15,6 +34,12 @@ class NavigationRailComponent extends StatelessWidget {
     required this.selectedIndex,
     required this.onDestinationSelected,
     this.extended = false,
+    this.backgroundColor,
+    this.labelType,
+    this.groupAlignment,
+    this.iconSize = 24.0,
+    this.iconColor,
+    this.labelStyle,
   });
 
   @override
@@ -23,26 +48,41 @@ class NavigationRailComponent extends StatelessWidget {
       selectedIndex: selectedIndex,
       onDestinationSelected: onDestinationSelected,
       extended: extended,
-      destinations: const <NavigationRailDestination>[
+      backgroundColor: backgroundColor,
+      labelType: labelType,
+      groupAlignment: groupAlignment,
+      destinations: [
         // ホームの目的地
         NavigationRailDestination(
-          icon: Tooltip(message: 'ホーム', child: Icon(Icons.home)),
-          label: Text('ホーム'),
+          icon: Tooltip(
+            message: 'ホーム',
+            child: Icon(Icons.home, size: iconSize, color: iconColor),
+          ),
+          label: Text('ホーム', style: labelStyle),
         ),
         // 検索の目的地
         NavigationRailDestination(
-          icon: Tooltip(message: '検索', child: Icon(Icons.search)),
-          label: Text('検索'),
+          icon: Tooltip(
+            message: '検索',
+            child: Icon(Icons.search, size: iconSize, color: iconColor),
+          ),
+          label: Text('検索', style: labelStyle),
         ),
         // プロフィールの目的地
         NavigationRailDestination(
-          icon: Tooltip(message: 'プロフィール', child: Icon(Icons.person)),
-          label: Text('プロフィール'),
+          icon: Tooltip(
+            message: 'プロフィール',
+            child: Icon(Icons.person, size: iconSize, color: iconColor),
+          ),
+          label: Text('プロフィール', style: labelStyle),
         ),
         // 設定の目的地
         NavigationRailDestination(
-          icon: Tooltip(message: '設定', child: Icon(Icons.settings)),
-          label: Text('設定'),
+          icon: Tooltip(
+            message: '設定',
+            child: Icon(Icons.settings, size: iconSize, color: iconColor),
+          ),
+          label: Text('設定', style: labelStyle),
         ),
       ],
     );

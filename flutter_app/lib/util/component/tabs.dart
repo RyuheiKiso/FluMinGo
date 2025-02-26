@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: タブコンポーネント
+// 目的: タブナビゲーションを提供する
+// 使用方法: TabsComponent(tabs: [Tab(text: 'タブ1'), Tab(text: 'タブ2')])
+
 // タブコンポーネント
 class TabsComponent extends StatelessWidget {
   // タブのリスト

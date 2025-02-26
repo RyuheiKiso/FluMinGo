@@ -5,24 +5,25 @@ import (
 	"net/http"
 )
 
+// REST APIハンドラーの実装
 // REST API ハンドラー：リクエストを受け取りサービス層へ処理を委譲する
 // サンプルとしてメッセージ取得エンドポイントを実装
 
-// Handler は REST API のエンドポイントを管理する構造体です
+// Handler manages REST API endpoints.
 type Handler struct {
 	Service *Service
 }
 
-// NewHandler は Handler のインスタンスを生成します
+// NewHandler creates a new Handler instance.
 func NewHandler(service *Service) *Handler {
 	return &Handler{Service: service}
 }
 
-// MessageHandler はサンプルのエンドポイントで、サービスからメッセージを取得してJSONで返します
+// MessageHandler handles the sample endpoint, retrieves a message from the service, and returns it as JSON.
 func (h *Handler) MessageHandler(w http.ResponseWriter, r *http.Request) {
 	msg, err := h.Service.GetMessage()
 	if err != nil {
-		http.Error(w, "エラーが発生しました", http.StatusInternalServerError)
+		http.Error(w, "Error occurred", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"message": msg}
@@ -30,11 +31,11 @@ func (h *Handler) MessageHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// VersionHandler は API のバージョンを取得してJSONで返します
+// VersionHandler retrieves the API version from the service and returns it as JSON.
 func (h *Handler) VersionHandler(w http.ResponseWriter, r *http.Request) {
 	version, err := h.Service.GetVersion()
 	if err != nil {
-		http.Error(w, "エラーが発生しました", http.StatusInternalServerError)
+		http.Error(w, "Error occurred", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"version": version}
@@ -42,11 +43,11 @@ func (h *Handler) VersionHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// StatusHandler は API のステータスを取得してJSONで返します
+// StatusHandler retrieves the API status from the service and returns it as JSON.
 func (h *Handler) StatusHandler(w http.ResponseWriter, r *http.Request) {
 	status, err := h.Service.GetStatus()
 	if err != nil {
-		http.Error(w, "エラーが発生しました", http.StatusInternalServerError)
+		http.Error(w, "Error occurred", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"status": status}
@@ -54,11 +55,11 @@ func (h *Handler) StatusHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: UserHandler はサービスからユーザー情報を取得してJSONで返すエンドポイントです
+// UserHandler retrieves user information from the service and returns it as JSON.
 func (h *Handler) UserHandler(w http.ResponseWriter, r *http.Request) {
 	user, err := h.Service.GetUser()
 	if err != nil {
-		http.Error(w, "ユーザー情報の取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve user information", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"user": user}
@@ -66,11 +67,11 @@ func (h *Handler) UserHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: ServerTimeHandler はサービスからサーバーの現在時刻を取得してJSONで返すエンドポイントです
+// ServerTimeHandler retrieves the current server time from the service and returns it as JSON.
 func (h *Handler) ServerTimeHandler(w http.ResponseWriter, r *http.Request) {
 	timeStr, err := h.Service.GetServerTime()
 	if err != nil {
-		http.Error(w, "サーバー時刻の取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve server time", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"server_time": timeStr}
@@ -78,11 +79,11 @@ func (h *Handler) ServerTimeHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: HealthCheckHandler はサービスからヘルスチェック情報を取得してJSONで返すエンドポイントです
+// HealthCheckHandler retrieves health check information from the service and returns it as JSON.
 func (h *Handler) HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	health, err := h.Service.GetHealthCheck()
 	if err != nil {
-		http.Error(w, "ヘルスチェックの取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve health check information", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"health": health}
@@ -90,11 +91,11 @@ func (h *Handler) HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: UptimeHandler はサービスから稼働時間を取得してJSONで返すエンドポイントです
+// UptimeHandler retrieves the service uptime from the service and returns it as JSON.
 func (h *Handler) UptimeHandler(w http.ResponseWriter, r *http.Request) {
 	uptime, err := h.Service.GetUptime()
 	if err != nil {
-		http.Error(w, "稼働時間の取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve uptime", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"uptime": uptime}
@@ -102,11 +103,11 @@ func (h *Handler) UptimeHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: SystemInfoHandler はサービスからシステム情報を取得してJSONで返すエンドポイントです
+// SystemInfoHandler retrieves system information from the service and returns it as JSON.
 func (h *Handler) SystemInfoHandler(w http.ResponseWriter, r *http.Request) {
 	info, err := h.Service.GetSystemInfo()
 	if err != nil {
-		http.Error(w, "システム情報の取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve system information", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"system_info": info}
@@ -114,11 +115,11 @@ func (h *Handler) SystemInfoHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// 新機能: PingHandler はサービスからポング応答を取得してJSONで返すエンドポイントです
+// PingHandler retrieves a pong response from the service and returns it as JSON.
 func (h *Handler) PingHandler(w http.ResponseWriter, r *http.Request) {
 	pong, err := h.Service.Ping()
 	if err != nil {
-		http.Error(w, "ポング応答の取得に失敗しました", http.StatusInternalServerError)
+		http.Error(w, "Failed to retrieve pong response", http.StatusInternalServerError)
 		return
 	}
 	response := map[string]string{"pong": pong}

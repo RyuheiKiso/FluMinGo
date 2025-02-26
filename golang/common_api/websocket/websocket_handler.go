@@ -15,9 +15,10 @@ var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
+// WebSocketハンドラーの実装
 // WebSocketHandler はWebSocket接続のハンドリングを行う構造体です
 // 必要なフィールドを適宜追加してください
-type WebSocketHandler struct {}
+type WebSocketHandler struct{}
 
 // NewWebSocketHandler は新しいWebSocketハンドラーのインスタンスを生成します
 func NewWebSocketHandler() *WebSocketHandler {

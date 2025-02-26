@@ -1,6 +1,7 @@
 // Package registration provides the adapter implementation for User Registration API
 package registration
 
+// 登録アダプターの実装
 // registrationAdapterはRegistrationAPIインターフェースを実装する構造体です
 //
 // RegisterUserは新規ユーザー登録を実施し、

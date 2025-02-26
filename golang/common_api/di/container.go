@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// DIコンテナの実装
 // DIコンテナの初期化と依存関係登録
 
 type Container struct {

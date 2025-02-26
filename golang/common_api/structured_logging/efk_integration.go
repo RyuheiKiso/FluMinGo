@@ -6,6 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// EFK統合の実装
 // EFKスタックを利用した構造化ロギングと可視化
 func InitEFKLogging() {
 	logrus.SetFormatter(&logrus.JSONFormatter{})

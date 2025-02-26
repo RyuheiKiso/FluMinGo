@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: アコーディオンコンポーネント
+// 目的: タイトルとコンテンツを展開可能なリストとして表示する
+// 使用方法: Accordion(title: 'タイトル', content: Text('コンテンツ'))
+
 /// アコーディオンコンポーネント
-/// 
+///
 /// [Accordion]はタイトルとコンテンツを展開可能なリストとして表示します。
-/// 
+///
 /// ```dart
 /// Accordion(
 ///   title: 'タイトル',
@@ -27,9 +31,13 @@ class Accordion extends StatefulWidget {
   final Curve animationCurve;
   // 初期状態で展開されているかどうか
   final bool initiallyExpanded; // 新しいプロパティ
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
+  final ValueChanged<bool>? onExpansionChanged; // 新機能②
 
   /// コンストラクタ
-  /// 
+  ///
   /// [title]はアコーディオンのタイトルを指定します。
   /// [content]はアコーディオンのコンテンツを指定します。
   /// [titleStyle]はタイトルのスタイルを指定します。
@@ -38,6 +46,8 @@ class Accordion extends StatefulWidget {
   /// [animationDuration]はアコーディオンの展開/折りたたみのアニメーションの時間を指定します。
   /// [animationCurve]はアニメーションのカーブを指定します。
   /// [initiallyExpanded]は初期状態で展開されているかどうかを指定します。
+  /// [iconSize]はアイコンのサイズを指定します。
+  /// [labelFontSize]はラベルのフォントサイズを指定します。
   const Accordion({
     required this.title,
     required this.content,
@@ -47,6 +57,9 @@ class Accordion extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 200),
     this.animationCurve = Curves.easeInOut,
     this.initiallyExpanded = false, // 新しいプロパティ
+    this.iconSize,
+    this.labelFontSize,
+    this.onExpansionChanged, // 新機能②
     super.key,
   });
 
@@ -55,7 +68,8 @@ class Accordion extends StatefulWidget {
   _AccordionState createState() => _AccordionState();
 }
 
-class _AccordionState extends State<Accordion> with SingleTickerProviderStateMixin {
+class _AccordionState extends State<Accordion>
+    with SingleTickerProviderStateMixin {
   // アニメーションコントローラ
   late AnimationController _controller;
   // アニメーション
@@ -77,10 +91,10 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
       curve: widget.animationCurve,
     );
     // 初期状態を設定
-    _isExpanded = widget.initiallyExpanded; 
+    _isExpanded = widget.initiallyExpanded;
     if (_isExpanded) {
       // 初期状態で展開
-      _controller.value = 1.0; 
+      _controller.value = 1.0;
     }
   }
 
@@ -103,32 +117,45 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
         // 折りたたみアニメーション
         _controller.reverse();
       }
+      widget.onExpansionChanged?.call(_isExpanded); // 新機能②
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // タイトル部分
-        ListTile(
-          leading: widget.leadingIcon,
-          title: Text(widget.title, style: widget.titleStyle),
-          onTap: _handleTap,
-        ),
-        // コンテンツ部分
-        SizeTransition(
-          sizeFactor: _animation,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: DefaultTextStyle(
-              style: widget.contentStyle ?? TextStyle(),
-              child: widget.content,
+    return GestureDetector(
+      // 新機能①：Wrap全体にスワイプ検知
+      onHorizontalDragEnd: (_) => _handleTap(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // タイトル部分
+          ListTile(
+            leading:
+                widget.leadingIcon != null
+                    ? Icon(widget.leadingIcon!.icon, size: widget.iconSize)
+                    : null,
+            title: Text(
+              widget.title,
+              style: widget.titleStyle?.copyWith(
+                fontSize: widget.labelFontSize,
+              ),
+            ),
+            onTap: _handleTap,
+          ),
+          // コンテンツ部分
+          SizeTransition(
+            sizeFactor: _animation,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: DefaultTextStyle(
+                style: widget.contentStyle ?? TextStyle(),
+                child: widget.content,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

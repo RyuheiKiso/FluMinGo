@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: アバターコンポーネント
+// 目的: ユーザーのアバター画像を表示するカスタムウィジェット
+// 使用方法: AvatarComponent(imageUrl: 'https://example.com/avatar.png', radius: 20.0, borderColor: Colors.blue, borderWidth: 2.0, placeholder: AssetImage('assets/placeholder.png'), errorImage: AssetImage('assets/error.png'), onTap: () { print('Avatar tapped!'); }, backgroundColor: Colors.white, foregroundColor: Colors.black, borderRadius: BorderRadius.circular(10.0), boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.0)], iconSize: 24.0, labelFontSize: 14.0);
+
 /// アバターコンポーネント
-/// 
+///
 /// [AvatarComponent]はユーザーのアバター画像を表示するカスタムウィジェットです。
-/// 
+///
 /// ```dart
 /// AvatarComponent(
 ///   imageUrl: 'https://example.com/avatar.png',
@@ -19,6 +23,8 @@ import 'package:flutter/material.dart';
 ///   foregroundColor: Colors.black,
 ///   borderRadius: BorderRadius.circular(10.0),
 ///   boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4.0)],
+///   iconSize: 24.0,
+///   labelFontSize: 14.0,
 /// )
 /// ```
 class AvatarComponent extends StatelessWidget {
@@ -44,9 +50,12 @@ class AvatarComponent extends StatelessWidget {
   final BorderRadius? borderRadius;
   // アバターに追加する影
   final List<BoxShadow>? boxShadow;
+  // 新しいプロパティ
+  final double? iconSize;
+  final double? labelFontSize;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [imageUrl] アバター画像のURL
   /// [radius] アバターの半径
   /// [borderColor] アバターの枠線の色
@@ -58,6 +67,8 @@ class AvatarComponent extends StatelessWidget {
   /// [foregroundColor] アバターの前景色
   /// [borderRadius] アバターの角の丸み
   /// [boxShadow] アバターに追加する影
+  /// [iconSize] アイコンのサイズ
+  /// [labelFontSize] ラベルのフォントサイズ
   const AvatarComponent({
     super.key,
     required this.imageUrl,
@@ -71,6 +82,8 @@ class AvatarComponent extends StatelessWidget {
     this.foregroundColor,
     this.borderRadius,
     this.boxShadow,
+    this.iconSize,
+    this.labelFontSize,
   });
 
   @override
@@ -87,10 +100,7 @@ class AvatarComponent extends StatelessWidget {
           // 形状を円形に設定
           shape: BoxShape.circle,
           // 枠線の設定
-          border: Border.all(
-            color: borderColor,
-            width: borderWidth,
-          ),
+          border: Border.all(color: borderColor, width: borderWidth),
           // 角の丸み
           borderRadius: borderRadius,
           // 影の設定
@@ -108,7 +118,7 @@ class AvatarComponent extends StatelessWidget {
           // 前景色
           foregroundColor: foregroundColor,
           // プレースホルダー画像
-          child: Image(image: placeholder),
+          child: Image(image: placeholder, width: iconSize, height: iconSize),
         ),
       ),
     );

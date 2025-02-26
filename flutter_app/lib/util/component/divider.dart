@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 // ディバイダーコンポーネント
+// 概要: 区切り線を表示するためのコンポーネント
+// 目的: UI要素間の視覚的な区切りを提供する
+// 使用方法: CustomDivider(color: Colors.grey, thickness: 2.0);
 class CustomDivider extends StatelessWidget {
   // ディバイダーの色
   final Color color;

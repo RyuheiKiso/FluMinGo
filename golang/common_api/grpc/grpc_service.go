@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// gRPCサービスの実装
+
 // GRPCService は gRPCサービスの基底となる構造体です。
 // 実際のサービスロジックはこの構造体を拡張して実装してください。
 type GRPCService struct {

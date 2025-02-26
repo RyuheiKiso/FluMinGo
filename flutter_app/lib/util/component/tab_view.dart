@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// 概要: タブビューコンポーネント
+// 目的: タブと対応するビューを提供する
+// 使用方法: TabViewComponent(tabs: [Tab(text: 'タブ1')], views: [Text('ビュー1')])
+
 // タブビューコンポーネント
 class TabViewComponent extends StatelessWidget {
   // タブのリスト
@@ -42,12 +46,7 @@ class TabViewComponent extends StatelessWidget {
             labelColor: labelColor,
             unselectedLabelColor: unselectedLabelColor,
           ),
-          Expanded(
-            child: TabBarView(
-              controller: controller,
-              children: views,
-            ),
-          ),
+          Expanded(child: TabBarView(controller: controller, children: views)),
         ],
       ),
     );

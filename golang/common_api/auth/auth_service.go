@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// 認証サービスの実装
 // AuthService implements the authentication logic using a repository.
 type AuthService struct {
 	repo         AuthRepository

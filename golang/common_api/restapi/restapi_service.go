@@ -2,6 +2,7 @@ package restapi
 
 import "time"
 
+// REST APIサービスの実装
 // Service は REST API のビジネスロジックを実装する構造体です。
 // 以下はサンプル実装です。
 

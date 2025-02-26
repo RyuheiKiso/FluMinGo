@@ -6,6 +6,7 @@ package user
 // GetUserはユーザーIDに基づいてユーザー情報を取得します
 // CreateUserは指定されたユーザー名から新規ユーザーを作成します
 
+// ユーザーアダプターの実装
 type userAdapter struct {
 	// ...内部状態があれば定義...
 }

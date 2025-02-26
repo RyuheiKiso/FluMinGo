@@ -8,6 +8,7 @@ import (
 	"github.com/graphql-go/graphql"
 )
 
+// GraphQLエンドポイントの実装
 // GraphQLエンドポイントによる柔軟なデータ取得
 func GraphQLEndpoint(w http.ResponseWriter, r *http.Request) {
 	// スキーマの定義

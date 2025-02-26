@@ -7,6 +7,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+// メトリクスマネージャーの実装
 // Prometheus/Grafana連携によるカスタムメトリクス収集とアラート機能強化
 func InitMetrics() {
 	http.Handle("/metrics", promhttp.Handler())

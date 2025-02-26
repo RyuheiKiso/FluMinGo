@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// 概要: カスタムリフレッシュインジケーター
+// 目的: ユーザーが画面を引っ張ってリフレッシュする際に表示されるインジケーターをカスタマイズする
+// 使用方法: CustomRefreshIndicator(
+//   child: ListView(...),
+//   onRefresh: _handleRefresh,
+//   color: Colors.blue,
+// )
+
 // リフレッシュインジケーターコンポーネント
 class CustomRefreshIndicator extends StatelessWidget {
   // 子ウィジェット
@@ -18,6 +26,18 @@ class CustomRefreshIndicator extends StatelessWidget {
   final String? semanticsValue;
   // エッジパディング
   final EdgeInsetsGeometry? edgePadding;
+  // バックグラウンドカラー
+  final Color? backgroundColor;
+  // 通知プリディケート
+  final ScrollNotificationPredicate? notificationPredicate;
+  // エッジオフセット
+  final double edgeOffset;
+  // インジケーターの形状
+  final ShapeBorder? shape;
+  // インジケーターのアニメーションの持続時間
+  final Duration? animationDuration;
+  // インジケーターのトリガー距離
+  final double triggerDistance;
 
   // コンストラクタにコメントを追加
   const CustomRefreshIndicator({
@@ -30,6 +50,12 @@ class CustomRefreshIndicator extends StatelessWidget {
     this.semanticsLabel,
     this.semanticsValue,
     this.edgePadding,
+    this.backgroundColor,
+    this.notificationPredicate = defaultScrollNotificationPredicate,
+    this.edgeOffset = 0.0,
+    this.shape,
+    this.animationDuration,
+    this.triggerDistance = 100.0,
   });
 
   @override
@@ -41,6 +67,10 @@ class CustomRefreshIndicator extends StatelessWidget {
       strokeWidth: strokeWidth,
       semanticsLabel: semanticsLabel,
       semanticsValue: semanticsValue,
+      backgroundColor: backgroundColor,
+      notificationPredicate:
+          notificationPredicate ?? defaultScrollNotificationPredicate,
+      edgeOffset: edgeOffset,
       child: child,
     );
   }

@@ -1,3 +1,7 @@
+// 概要: XMLヘルパー
+// 目的: XML文字列の解析とXMLドキュメントの文字列変換を行う
+// 使用方法: XmlHelper.parse(xmlString)
+
 import 'package:xml/xml.dart';
 
 // XMLヘルパー

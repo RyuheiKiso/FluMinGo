@@ -1,6 +1,7 @@
 // Package product provides the adapter implementation for Product API
 package product
 
+// 商品アダプターの実装
 // productAdapterはProductAPIインターフェースを実装する構造体です
 //
 // GetProductは指定された商品IDに基づいて商品情報を取得します

@@ -64,3 +64,5 @@ func (ce *ChaosEngineering) RunTestByName(name string) error {
 	}
 	return fmt.Errorf("テストが見つかりません: %s", name)
 }
+
+// 混沌テストの実装

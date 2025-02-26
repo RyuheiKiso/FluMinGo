@@ -2,6 +2,7 @@ package error_handling
 
 import "fmt"
 
+// 標準化されたエラーハンドリングの実装
 // StandardError エラー情報を標準化するための構造体
 // Code: エラーコード、Message: エラーメッセージ
 // 必要に応じて詳細な情報のフィールドを追加可能

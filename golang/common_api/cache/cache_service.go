@@ -6,21 +6,24 @@ import (
 	"fmt"
 	"os"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
+// キャッシュサービスの実装
 // キャッシュサービス構造体
 // sync.Map を利用して並行性に対応
 
+// CacheService represents a cache service with thread-safe operations.
 type CacheService struct {
 	data         sync.Map
-	hitCount     int
-	missCount    int
+	hitCount     int64
+	missCount    int64
 	logger       common.Logger
 	errorHandler common.ErrorHandler
 }
 
-// NewCacheService キャッシュサービスを初期化する関数
+// NewCacheService initializes a new CacheService instance.
 func NewCacheService(logger common.Logger, errorHandler common.ErrorHandler) *CacheService {
 	return &CacheService{
 		logger:       logger,
@@ -28,41 +31,42 @@ func NewCacheService(logger common.Logger, errorHandler common.ErrorHandler) *Ca
 	}
 }
 
-// Set キャッシュに値を設定するメソッド
+// Set stores a value in the cache.
 func (c *CacheService) Set(key string, value interface{}) {
 	c.data.Store(key, value)
-	c.logger.Info("キャッシュに値を設定しました: " + key)
+	c.logger.Info("Cache set: " + key)
 }
 
-// Get キャッシュからキーに対応する値を取得するメソッド
+// Get retrieves a value from the cache.
 func (c *CacheService) Get(key string) (interface{}, bool) {
 	value, ok := c.data.Load(key)
 	if ok {
-		c.hitCount++
-		c.logger.Info("キャッシュヒット: " + key)
+		atomic.AddInt64(&c.hitCount, 1)
+		c.logger.Info("Cache hit: " + key)
 	} else {
-		c.missCount++
-		errMsg := c.errorHandler.HandleError(fmt.Errorf("キャッシュミス: %s", key))
+		atomic.AddInt64(&c.missCount, 1)
+		errMsg := c.errorHandler.HandleError(fmt.Errorf("cache miss: %s", key))
 		c.logger.Error(errMsg)
 	}
 	return value, ok
 }
 
-// Delete キャッシュからキーを削除するメソッド
+// Delete removes a key from the cache.
 func (c *CacheService) Delete(key string) {
 	c.data.Delete(key)
-	c.logger.Info("キャッシュからキーを削除しました: " + key)
+	c.logger.Info("Cache delete: " + key)
 }
 
-// Clear 全てのキャッシュをクリアするメソッド
+// Clear removes all entries from the cache.
 func (c *CacheService) Clear() {
 	c.data.Range(func(key, value interface{}) bool {
 		c.data.Delete(key)
 		return true
 	})
+	c.logger.Info("Cache cleared")
 }
 
-// SetWithExpiration キャッシュに期限付きで値を設定するメソッド
+// SetWithExpiration stores a value in the cache with an expiration duration.
 func (c *CacheService) SetWithExpiration(key string, value interface{}, duration time.Duration) {
 	c.Set(key, value)
 	go func() {
@@ -71,7 +75,7 @@ func (c *CacheService) SetWithExpiration(key string, value interface{}, duration
 	}()
 }
 
-// RefreshWithExpiration キャッシュの自動更新機能を追加するメソッド
+// RefreshWithExpiration periodically updates a cache entry with a new value.
 func (c *CacheService) RefreshWithExpiration(key string, valueFunc func() (interface{}, error), duration time.Duration) {
 	go func() {
 		for {
@@ -86,16 +90,16 @@ func (c *CacheService) RefreshWithExpiration(key string, valueFunc func() (inter
 	}()
 }
 
-// GetHitRate キャッシュヒット率を取得するメソッド
+// GetHitRate returns the cache hit rate.
 func (c *CacheService) GetHitRate() float64 {
-	total := c.hitCount + c.missCount
+	total := atomic.LoadInt64(&c.hitCount) + atomic.LoadInt64(&c.missCount)
 	if total == 0 {
 		return 0
 	}
-	return float64(c.hitCount) / float64(total)
+	return float64(atomic.LoadInt64(&c.hitCount)) / float64(total)
 }
 
-// Size はキャッシュのサイズを取得するメソッドです。
+// Size returns the number of items in the cache.
 func (c *CacheService) Size() int {
 	size := 0
 	c.data.Range(func(key, value interface{}) bool {
@@ -105,7 +109,7 @@ func (c *CacheService) Size() int {
 	return size
 }
 
-// GetKeys はキャッシュ内の全てのキーを取得するメソッドです。
+// GetKeys returns all keys in the cache.
 func (c *CacheService) GetKeys() []string {
 	keys := []string{}
 	c.data.Range(func(key, value interface{}) bool {
@@ -115,17 +119,17 @@ func (c *CacheService) GetKeys() []string {
 	return keys
 }
 
-// GetStatistics はキャッシュの統計情報を取得するメソッドです。
+// GetStatistics returns cache statistics.
 func (c *CacheService) GetStatistics() map[string]interface{} {
 	stats := make(map[string]interface{})
-	stats["hitCount"] = c.hitCount
-	stats["missCount"] = c.missCount
+	stats["hitCount"] = atomic.LoadInt64(&c.hitCount)
+	stats["missCount"] = atomic.LoadInt64(&c.missCount)
 	stats["hitRate"] = c.GetHitRate()
 	stats["size"] = c.Size()
 	return stats
 }
 
-// ExportStatistics はキャッシュの統計情報をファイルにエクスポートするメソッドです。
+// ExportStatistics exports cache statistics to a file.
 func (c *CacheService) ExportStatistics(filePath string) error {
 	stats := c.GetStatistics()
 	file, err := os.Create(filePath)
@@ -139,13 +143,13 @@ func (c *CacheService) ExportStatistics(filePath string) error {
 		c.logger.Error(c.errorHandler.HandleError(err))
 		return err
 	}
-	c.logger.Info("キャッシュの統計情報をエクスポートしました: " + filePath)
+	c.logger.Info("Cache statistics exported: " + filePath)
 	return nil
 }
 
-// キャッシュの統計情報をリセットするメソッドを追加
+// ResetStatistics resets cache statistics.
 func (c *CacheService) ResetStatistics() {
-	c.hitCount = 0
-	c.missCount = 0
-	c.logger.Info("キャッシュの統計情報をリセットしました")
+	atomic.StoreInt64(&c.hitCount, 0)
+	atomic.StoreInt64(&c.missCount, 0)
+	c.logger.Info("Cache statistics reset")
 }

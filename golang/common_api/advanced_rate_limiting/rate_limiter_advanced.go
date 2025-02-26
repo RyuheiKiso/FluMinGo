@@ -1,3 +1,6 @@
+// このファイルには、高度なレート制限ロジックが実装されています。
+// Developers: This file implements advanced rate limiting logic.
+
 package advanced_rate_limiting
 
 import (

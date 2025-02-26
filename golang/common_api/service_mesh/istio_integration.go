@@ -4,6 +4,7 @@ import (
 	"net/http"
 )
 
+// Istio統合の実装
 // Istio等と連携したサービスメッシュ統合
 func InitIstioIntegration() {
 	// Istioの初期化処理をここに記述

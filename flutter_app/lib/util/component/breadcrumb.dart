@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 /// パンクズリストコンポーネント
-/// 
+///
 /// [Breadcrumb]は、パンクズリストのアイテムを受け取るウィジェットです。
-/// 
+///
+/// ### 概要
+/// パンクズリストのウィジェットを提供します。
+///
+/// ### 目的
+/// パンクズリストのデザインを統一し、再利用可能なコンポーネントとして提供します。
+///
+/// ### 使用方法
 /// ```dart
 /// Breadcrumb(
 ///   items: [
@@ -38,20 +45,27 @@ class Breadcrumb extends StatelessWidget {
   final IconData? separatorIcon;
   // アイテム間の間隔
   final double spacing;
+  // フォントサイズ
+  final double? fontSize;
+  // フォントの太さ
+  final FontWeight? fontWeight;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [items] パンクズリストのアイテム
   /// [activeColor] アクティブなアイテムの色
   /// [inactiveColor] 非アクティブなアイテムの色
   /// [separatorIcon] アイテム間のセパレーターアイコン
   /// [spacing] アイテム間の間隔
-  const Breadcrumb({super.key, 
+  const Breadcrumb({
+    super.key,
     required this.items,
     this.activeColor = Colors.blue,
     this.inactiveColor = Colors.grey,
     this.separatorIcon = Icons.chevron_right,
     this.spacing = 8.0,
+    this.fontSize,
+    this.fontWeight,
   });
 
   @override
@@ -71,7 +85,11 @@ class Breadcrumb extends StatelessWidget {
           child: Row(
             children: [
               // アイコンがある場合は表示
-              if (item.icon != null) Icon(item.icon, color: item.isActive ? activeColor : inactiveColor),
+              if (item.icon != null)
+                Icon(
+                  item.icon,
+                  color: item.isActive ? activeColor : inactiveColor,
+                ),
               // ツールチップがある場合は表示
               if (item.tooltip != null)
                 Tooltip(
@@ -80,6 +98,8 @@ class Breadcrumb extends StatelessWidget {
                     item.label,
                     style: TextStyle(
                       color: item.isActive ? activeColor : inactiveColor,
+                      fontSize: fontSize,
+                      fontWeight: fontWeight,
                     ),
                   ),
                 )
@@ -88,6 +108,8 @@ class Breadcrumb extends StatelessWidget {
                   item.label,
                   style: TextStyle(
                     color: item.isActive ? activeColor : inactiveColor,
+                    fontSize: fontSize,
+                    fontWeight: fontWeight,
                   ),
                 ),
             ],
@@ -116,7 +138,7 @@ class BreadcrumbItem {
   final String? tooltip;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [label] アイテムのラベル
   /// [isActive] アイテムがアクティブかどうか
   /// [onTap] アイテムがタップされたときに呼び出されるコールバック

@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 
 // ドロップダウンコンポーネント
+// 概要: ジェネリック型のドロップダウンメニューを提供するコンポーネント
+// 目的: ユーザーが選択肢から値を選ぶためのUIを提供
+// 使用方法: DropdownComponent(
+//   items: [DropdownMenuItem(value: 'value1', child: Text('Value 1'))],
+//   value: 'value1',
+//   onChanged: (newValue) { ... },
+// )
 class DropdownComponent<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T? value;
   final ValueChanged<T?> onChanged;
+  final Widget? hint;
+  final bool isExpanded;
+  final double iconSize;
 
   // コンストラクタ
-  const DropdownComponent({super.key, required this.items, this.value, required this.onChanged});
+  const DropdownComponent({
+    super.key,
+    required this.items,
+    this.value,
+    required this.onChanged,
+    this.hint,
+    this.isExpanded = false,
+    this.iconSize = 24.0,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +33,17 @@ class DropdownComponent<T> extends StatelessWidget {
       value: value,
       items: items,
       onChanged: onChanged,
+      hint: hint,
+      isExpanded: isExpanded,
+      iconSize: iconSize,
     );
   }
 }
 
-// ドロップダウンコンポーネント
+// カスタムドロップダウン
+// 概要: 固定の選択肢を持つドロップダウンメニューを提供するコンポーネント
+// 目的: ユーザーが選択肢から値を選ぶためのUIを提供
+// 使用方法: CustomDropdown();
 class CustomDropdown extends StatefulWidget {
   const CustomDropdown({super.key});
 
@@ -40,23 +64,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
       iconSize: 24,
       elevation: 16,
       style: TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
+      underline: Container(height: 2, color: Colors.deepPurpleAccent),
       // 値が変更されたときの処理
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['One', 'Two', 'Three', 'Four']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+      items:
+          <String>['One', 'Two', 'Three', 'Four'].map<DropdownMenuItem<String>>(
+            (String value) {
+              return DropdownMenuItem<String>(value: value, child: Text(value));
+            },
+          ).toList(),
     );
   }
 }

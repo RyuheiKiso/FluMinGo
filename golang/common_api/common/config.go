@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+// 設定管理の実装
+
 // Config は設定管理のための構造体です。
 type Config struct {
 	settings map[string]interface{}

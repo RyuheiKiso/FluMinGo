@@ -1,3 +1,6 @@
+// このファイルには、使用状況レポート作成の機能が含まれています。
+// Developers: This file handles the usage report functionalities.
+
 package analytics
 
 import (

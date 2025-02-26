@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// ゲートウェイハンドラーの実装
 // APIHandler implements the Gateway interface defined in gateway_interface.go
 // It handles incoming HTTP requests.
 

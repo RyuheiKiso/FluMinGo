@@ -8,16 +8,15 @@ import (
 	"time"
 )
 
+// ロギングミドルウェアの実装
 // ログミドルウェア：各リクエストの情報をログ出力する
 func LoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		startTime := time.Now()
-		log.Printf("開始: %s %s", r.Method, r.RequestURI)
-
-		// 後続のハンドラーを実行
+		log.Printf("Start: %s %s", r.Method, r.RequestURI)
+		// Execute the next handler
 		next.ServeHTTP(w, r)
-
-		log.Printf("完了: %s %s, 処理時間: %v", r.Method, r.RequestURI, time.Since(startTime))
+		log.Printf("Completed: %s %s, Duration: %v", r.Method, r.RequestURI, time.Since(startTime))
 	})
 }
 
@@ -33,7 +32,7 @@ func JSONResponseMiddleware(next http.Handler) http.Handler {
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Authorization") == "" {
-			http.Error(w, "認証情報が必要です", http.StatusUnauthorized)
+			http.Error(w, "Authorization required", http.StatusUnauthorized)
 			return
 		}
 		next.ServeHTTP(w, r)
@@ -43,8 +42,7 @@ func AuthMiddleware(next http.Handler) http.Handler {
 // リクエストのIPアドレスをログ出力するミドルウェア
 func IPLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		ip := r.RemoteAddr
-		log.Printf("IPアドレス: %s", ip)
+		log.Printf("IP Address: %s", r.RemoteAddr)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -52,8 +50,7 @@ func IPLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのユーザーエージェントをログ出力するミドルウェア
 func UserAgentLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		userAgent := r.UserAgent()
-		log.Printf("ユーザーエージェント: %s", userAgent)
+		log.Printf("User Agent: %s", r.UserAgent())
 		next.ServeHTTP(w, r)
 	})
 }
@@ -61,8 +58,7 @@ func UserAgentLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのサイズをログ出力するミドルウェア
 func RequestSizeLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		size := r.ContentLength
-		log.Printf("リクエストサイズ: %d bytes", size)
+		log.Printf("Request Size: %d bytes", r.ContentLength)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -70,8 +66,7 @@ func RequestSizeLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのメソッドをログ出力するミドルウェア
 func RequestMethodLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		method := r.Method
-		log.Printf("リクエストメソッド: %s", method)
+		log.Printf("Request Method: %s", r.Method)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -79,8 +74,7 @@ func RequestMethodLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストの言語をログ出力するミドルウェア
 func LanguageLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		language := r.Header.Get("Accept-Language")
-		log.Printf("リクエスト言語: %s", language)
+		log.Printf("Request Language: %s", r.Header.Get("Accept-Language"))
 		next.ServeHTTP(w, r)
 	})
 }
@@ -88,8 +82,7 @@ func LanguageLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのリファラーをログ出力するミドルウェア
 func ReferrerLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		referrer := r.Referer()
-		log.Printf("リクエストリファラー: %s", referrer)
+		log.Printf("Request Referrer: %s", r.Referer())
 		next.ServeHTTP(w, r)
 	})
 }
@@ -97,8 +90,7 @@ func ReferrerLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのプロトコルをログ出力するミドルウェア
 func ProtocolLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		protocol := r.Proto
-		log.Printf("リクエストプロトコル: %s", protocol)
+		log.Printf("Request Protocol: %s", r.Proto)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -106,8 +98,7 @@ func ProtocolLoggingMiddleware(next http.Handler) http.Handler {
 // リクエストのホストをログ出力するミドルウェア
 func HostLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		host := r.Host
-		log.Printf("リクエストホスト: %s", host)
+		log.Printf("Request Host: %s", r.Host)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -116,7 +107,7 @@ func HostLoggingMiddleware(next http.Handler) http.Handler {
 func ValidateHeadersMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("X-Custom-Header") == "" {
-			http.Error(w, "X-Custom-Headerが必要です", http.StatusBadRequest)
+			http.Error(w, "X-Custom-Header required", http.StatusBadRequest)
 			return
 		}
 		next.ServeHTTP(w, r)
@@ -128,10 +119,9 @@ func RequestBodySizeLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
-			log.Printf("リクエストボディの読み取りエラー: %v", err)
+			log.Printf("Error reading request body: %v", err)
 		} else {
-			size := len(body)
-			log.Printf("リクエストボディサイズ: %d bytes", size)
+			log.Printf("Request Body Size: %d bytes", len(body))
 			r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 		}
 		next.ServeHTTP(w, r)
@@ -143,7 +133,7 @@ func ValidateRequestBodyMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil || len(body) == 0 {
-			http.Error(w, "リクエストボディが無効です", http.StatusBadRequest)
+			http.Error(w, "Invalid request body", http.StatusBadRequest)
 			return
 		}
 		r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
@@ -155,7 +145,7 @@ func ValidateRequestBodyMiddleware(next http.Handler) http.Handler {
 func ValidateRequestHeadersMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("X-Request-ID") == "" {
-			http.Error(w, "X-Request-IDヘッダーが必要です", http.StatusBadRequest)
+			http.Error(w, "X-Request-ID header required", http.StatusBadRequest)
 			return
 		}
 		next.ServeHTTP(w, r)
@@ -165,8 +155,7 @@ func ValidateRequestHeadersMiddleware(next http.Handler) http.Handler {
 // リクエストのパスをログ出力するミドルウェア
 func RequestPathLoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		path := r.URL.Path
-		log.Printf("リクエストパス: %s", path)
+		log.Printf("Request Path: %s", r.URL.Path)
 		next.ServeHTTP(w, r)
 	})
 }
@@ -175,7 +164,7 @@ func RequestPathLoggingMiddleware(next http.Handler) http.Handler {
 func ValidateQueryParamsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Query().Get("required_param") == "" {
-			http.Error(w, "required_paramが必要です", http.StatusBadRequest)
+			http.Error(w, "required_param required", http.StatusBadRequest)
 			return
 		}
 		next.ServeHTTP(w, r)

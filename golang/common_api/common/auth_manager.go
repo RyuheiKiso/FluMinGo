@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// 認証マネージャーの実装
 // AuthManager は認証・認可を管理する構造体です。
 type AuthManager struct {
 	users map[string]string // ユーザー名とパスワードのマップ

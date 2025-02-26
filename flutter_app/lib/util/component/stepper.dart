@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-// カスタムステッパーコンポーネント
+// 概要: カスタムステッパーコンポーネント
+// 目的: ステップ形式でプロセスを表示する
+// 使用方法: CustomStepper(steps: [Step(title: Text('ステップ1'), content: Text('内容1'))], currentStep: 0, onStepTapped: (step) {}, onStepContinue: () {}, onStepCancel: () {})
+
 class CustomStepper extends StatelessWidget {
   // ステップのリスト
   final List<Step> steps;
@@ -17,7 +20,8 @@ class CustomStepper extends StatelessWidget {
   // カスタムの「キャンセル」ボタン
   final Widget? customCancelButton;
 
-  const CustomStepper({super.key, 
+  const CustomStepper({
+    super.key,
     required this.steps,
     required this.currentStep,
     required this.onStepTapped,
@@ -39,15 +43,17 @@ class CustomStepper extends StatelessWidget {
         return Row(
           children: <Widget>[
             // カスタムの「続行」ボタンが設定されていない場合、デフォルトのボタンを表示
-            customContinueButton ?? TextButton(
-              onPressed: details.onStepContinue,
-              child: const Text('CONTINUE'),
-            ),
+            customContinueButton ??
+                TextButton(
+                  onPressed: details.onStepContinue,
+                  child: const Text('CONTINUE'),
+                ),
             // カスタムの「キャンセル」ボタンが設定されていない場合、デフォルトのボタンを表示
-            customCancelButton ?? TextButton(
-              onPressed: details.onStepCancel,
-              child: const Text('CANCEL'),
-            ),
+            customCancelButton ??
+                TextButton(
+                  onPressed: details.onStepCancel,
+                  child: const Text('CANCEL'),
+                ),
           ],
         );
       },

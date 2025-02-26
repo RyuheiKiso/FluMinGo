@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// 認可の実装
 // CheckAuthorization verifies if the incoming HTTP request contains valid authorization credentials.
 // For demonstration, it simply checks for the presence of the "Authorization" header.
 func CheckAuthorization(r *http.Request) error {
