@@ -21,15 +21,26 @@ void main() {
 
     test('showError logs error to file', () async {
       final mockFile = MockFile();
-      when(mockFile.writeAsString(any, mode: anyNamed('mode'))).thenAnswer((_) async => File('test_log.txt'));
+      when(mockFile.writeAsString(any, mode: anyNamed('mode')))
+          .thenAnswer((_) async => File('test_log.txt'));
       ErrorHandler.showError(MockBuildContext(), 'Test Error');
       verify(mockFile.writeAsString(contains('Test Error') as String?, mode: FileMode.append)).called(1);
     });
 
-    test('showError displays error dialog', () async {
-      final mockContext = MockBuildContext();
-      ErrorHandler.showError(mockContext, 'Test Error');
-      verify(mockContext.showDialog(any)).called(1);
+    testWidgets('showError displays error dialog', (WidgetTester tester) async {
+      await tester.pumpWidget(MaterialApp(
+        home: Builder(builder: (context) {
+          // Trigger the error dialog
+          ErrorHandler.showError(context, 'Test Error');
+          return Container();
+        }),
+      ));
+
+      // Allow the dialog to show
+      await tester.pumpAndSettle();
+
+      expect(find.byType(AlertDialog), findsOneWidget);
+      expect(find.text('エラー'), findsOneWidget);
     });
   });
 }
