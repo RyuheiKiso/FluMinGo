@@ -6,7 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_app/util/error_handling/error_handler.dart';
 import 'error_handler_test.mocks.dart';
 
-@GenerateMocks([BuildContext, File])
+@GenerateMocks([BuildContext, File], customMocks: [
+  MockSpec<BuildContext>(as: #MockBuildContext1),
+  MockSpec<BuildContext>(as: #MockBuildContext2)
+])
 void main() {
   group('ErrorHandler Tests', () {
     setUp(() async {
@@ -23,7 +26,7 @@ void main() {
       final mockFile = MockFile();
       when(mockFile.writeAsString(any, mode: anyNamed('mode')))
           .thenAnswer((_) async => File('test_log.txt'));
-      ErrorHandler.showError(MockBuildContext(), 'Test Error');
+      ErrorHandler.showError(MockBuildContext1(), 'Test Error');
       verify(mockFile.writeAsString(contains('Test Error') as String?, mode: FileMode.append)).called(1);
     });
 
