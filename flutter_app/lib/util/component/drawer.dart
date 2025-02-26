@@ -22,17 +22,12 @@ class DrawerComponent extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             // ヘッダーのデコレーション
-            decoration: BoxDecoration(
-              color: headerBackgroundColor,
-            ),
+            decoration: BoxDecoration(color: headerBackgroundColor),
             child: Row(
               children: [
                 Icon(headerIcon, color: headerTextStyle.color, size: 30),
                 SizedBox(width: 10),
-                Text(
-                  'メニュー',
-                  style: headerTextStyle,
-                ),
+                Text('メニュー', style: headerTextStyle),
               ],
             ),
           ),

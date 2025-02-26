@@ -1,11 +1,6 @@
-// --------------------
-// ファイルの説明
-// --------------------
-// このファイルは、他のユーティリティファイルを一括してエクスポートするためのインデックスファイルです。
-// これにより、各ユーティリティを個別にインポートする必要がなくなり、コードの可読性と保守性が向上します。
-// 使用方法：
-// import 'package:flutter_app/util/index.dart';
-// これで、インデックスファイルにエクスポートされているすべてのユーティリティを使用できます。
+// This file exports various utility files for easier imports
+// Usage: import 'package:flutter_app/util/index.dart';
+
 export 'animation/animation_manager.dart'; // アニメーション管理ユーティリティ
 export 'base_page/base_page.dart'; // ベースページユーティリティ
 export 'cache/cache_manager.dart'; // キャッシュ管理ユーティリティ

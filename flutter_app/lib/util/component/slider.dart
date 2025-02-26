@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// スライダーコンポーネント
-/// 
+///
 /// [CustomSlider]は値と値変更時のコールバックを受け取るカスタムスライダーウィジェットです。
-/// 
+///
 /// ```dart
 /// CustomSlider(
 ///   value: 0.5,
@@ -40,7 +40,7 @@ class CustomSlider extends StatelessWidget {
   final Color? thumbColor;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [value] スライダーの値
   /// [onChanged] 値が変更されたときに呼び出されるコールバック
   /// [min] スライダーの最小値

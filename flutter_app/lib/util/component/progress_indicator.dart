@@ -5,15 +5,15 @@ class ProgressIndicatorComponent extends StatelessWidget {
   // プログレスの値
   final double value;
   // カスタムカラー
-  final Color color; 
+  final Color color;
   // カスタムサイズ
-  final double size; 
+  final double size;
   // アニメーションの有効/無効
-  final bool isAnimated; 
+  final bool isAnimated;
   // カスタムストローク幅
-  final double strokeWidth; 
+  final double strokeWidth;
   // ツールチップ
-  final String? tooltip; 
+  final String? tooltip;
   // バックグラウンドカラー
   final Color? backgroundColor;
   // プログレスインジケーターの色
@@ -30,10 +30,10 @@ class ProgressIndicatorComponent extends StatelessWidget {
   const ProgressIndicatorComponent({
     super.key,
     required this.value,
-    this.color = Colors.blue, 
-    this.size = 50.0, 
-    this.isAnimated = true, 
-    this.strokeWidth = 4.0, 
+    this.color = Colors.blue,
+    this.size = 50.0,
+    this.isAnimated = true,
+    this.strokeWidth = 4.0,
     this.tooltip,
     this.backgroundColor,
     this.valueColor,
@@ -53,7 +53,7 @@ class ProgressIndicatorComponent extends StatelessWidget {
         child: CircularProgressIndicator(
           value: value,
           color: color,
-          strokeWidth: isAnimated ? strokeWidth : 0.0, 
+          strokeWidth: isAnimated ? strokeWidth : 0.0,
           backgroundColor: backgroundColor,
           valueColor: valueColor,
           semanticsLabel: semanticsLabel,

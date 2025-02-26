@@ -60,7 +60,8 @@ class CustomRefreshIndicator extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       semanticsValue: semanticsValue,
       backgroundColor: backgroundColor,
-      notificationPredicate: notificationPredicate ?? defaultScrollNotificationPredicate,
+      notificationPredicate:
+          notificationPredicate ?? defaultScrollNotificationPredicate,
       edgeOffset: edgeOffset,
       child: child,
     );

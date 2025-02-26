@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Updated BasePage to be more abstract
 abstract class BasePage extends StatelessWidget {
-  const BasePage({Key? key}) : super(key: key);
+  const BasePage({super.key});
 
   // Abstract getter for title
   String get title;
@@ -13,9 +13,7 @@ abstract class BasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
+      appBar: AppBar(title: Text(title)),
       body: buildBody(context),
     );
   }

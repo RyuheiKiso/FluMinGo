@@ -57,15 +57,15 @@ class GraphQLService {
   static final Link link = authLink.concat(httpLink);
 
   static ValueNotifier<GraphQLClient> client = ValueNotifier(
-    GraphQLClient(
-      cache: GraphQLCache(store: InMemoryStore()),
-      link: link,
-    ),
+    GraphQLClient(cache: GraphQLCache(store: InMemoryStore()), link: link),
   );
 
   static final Logger _logger = Logger('GraphQLService');
 
-  static Future<QueryResult> performQuery(String query, {Map<String, dynamic>? variables}) async {
+  static Future<QueryResult> performQuery(
+    String query, {
+    Map<String, dynamic>? variables,
+  }) async {
     final QueryOptions options = QueryOptions(
       document: gql(query),
       variables: variables ?? {},
@@ -74,7 +74,10 @@ class GraphQLService {
     return await _retry(() => client.value.query(options));
   }
 
-  static Future<QueryResult> performMutation(String mutation, {Map<String, dynamic>? variables}) async {
+  static Future<QueryResult> performMutation(
+    String mutation, {
+    Map<String, dynamic>? variables,
+  }) async {
     final MutationOptions options = MutationOptions(
       document: gql(mutation),
       variables: variables ?? {},
@@ -83,11 +86,10 @@ class GraphQLService {
     return await _retry(() => client.value.mutate(options));
   }
 
-  static Future<QueryResult> _retry(Future<QueryResult> Function() operation) async {
-    return await retry(
-      operation,
-      retryIf: (e) => e is NetworkException,
-    );
+  static Future<QueryResult> _retry(
+    Future<QueryResult> Function() operation,
+  ) async {
+    return await retry(operation, retryIf: (e) => e is NetworkException);
   }
 
   static void handleError(QueryResult result) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// ボタンコンポーネント
-/// 
+///
 /// [Button]は、ラベルと押下時のコールバックを受け取るシンプルなボタンウィジェットです。
-/// 
+///
 /// ```dart
 /// Button(
 ///   label: 'Click me',
@@ -49,7 +49,7 @@ class Button extends StatelessWidget {
   final double? borderWidth;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [label] ボタンに表示するテキスト
   /// [onPressed] ボタンが押されたときに呼び出されるコールバック
   /// [backgroundColor] ボタンの背景色
@@ -62,10 +62,11 @@ class Button extends StatelessWidget {
   /// [isLoading] ボタンが押されたときにローディングインジケータを表示するかどうか
   /// [borderColor] ボタンの枠線色
   /// [borderWidth] ボタンの枠線幅
-  const Button({super.key, 
-    required this.label, 
-    required this.onPressed, 
-    this.backgroundColor, 
+  const Button({
+    super.key,
+    required this.label,
+    required this.onPressed,
+    this.backgroundColor,
     this.textColor,
     this.icon,
     this.width,
@@ -104,7 +105,10 @@ class Button extends StatelessWidget {
           padding: padding,
         ),
         // ローディング中はインジケータを表示
-        icon: isLoading ? CircularProgressIndicator(color: textColor) : (icon != null ? Icon(icon) : Container()),
+        icon:
+            isLoading
+                ? CircularProgressIndicator(color: textColor)
+                : (icon != null ? Icon(icon) : Container()),
         // ローディング中はテキストを変更
         label: isLoading ? Text('Loading...') : Text(label),
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// バッジコンポーネント
-/// 
+///
 /// [BadgeComponent]はラベルを表示するカスタムバッジウィジェットです。
-/// 
+///
 /// ```dart
 /// BadgeComponent(
 ///   label: 'New',
@@ -29,7 +29,7 @@ class BadgeComponent extends StatelessWidget {
   final double? labelFontSize;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [label] バッジに表示するラベル
   /// [backgroundColor] バッジの背景色
   /// [labelStyle] ラベルのスタイル
@@ -65,17 +65,13 @@ class BadgeComponent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           // アイコンが存在する場合
-          if (icon != null) ...[
-            icon!,
-            SizedBox(width: 4.0),
-          ],
+          if (icon != null) ...[icon!, SizedBox(width: 4.0)],
           // ラベルのテキスト
           Text(
             label,
-            style: labelStyle ?? TextStyle(
-              color: Colors.white,
-              fontSize: labelFontSize,
-            ),
+            style:
+                labelStyle ??
+                TextStyle(color: Colors.white, fontSize: labelFontSize),
           ),
         ],
       ),

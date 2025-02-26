@@ -29,11 +29,7 @@ class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: _buildPanel(),
-      ),
-    );
+    return SingleChildScrollView(child: Container(child: _buildPanel()));
   }
 
   // パネルを構築するウィジェット
@@ -44,34 +40,35 @@ class _CustomExpansionPanelState extends State<CustomExpansionPanel> {
           _data[index].isExpanded = !isExpanded;
         });
       },
-      children: _data.map<ExpansionPanel>((Item item) {
-        return ExpansionPanel(
-          // ヘッダーのビルダー
-          headerBuilder: (BuildContext context, bool isExpanded) {
-            return Container(
-              color: widget.headerBackgroundColor,
-              child: ListTile(
-                title: Text(item.headerValue),
-              ),
-            );
-          },
-          // ボディのビルダー
-          body: Container(
-            color: widget.bodyBackgroundColor,
-            child: ListTile(
-              title: Text(item.expandedValue),
-              subtitle: Text('To delete this panel, tap the trash can icon'),
-              trailing: Icon(Icons.delete),
-              onTap: () {
-                setState(() {
-                  _data.removeWhere((currentItem) => item == currentItem);
-                });
+      children:
+          _data.map<ExpansionPanel>((Item item) {
+            return ExpansionPanel(
+              // ヘッダーのビルダー
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return Container(
+                  color: widget.headerBackgroundColor,
+                  child: ListTile(title: Text(item.headerValue)),
+                );
               },
-            ),
-          ),
-          isExpanded: item.isExpanded,
-        );
-      }).toList(),
+              // ボディのビルダー
+              body: Container(
+                color: widget.bodyBackgroundColor,
+                child: ListTile(
+                  title: Text(item.expandedValue),
+                  subtitle: Text(
+                    'To delete this panel, tap the trash can icon',
+                  ),
+                  trailing: Icon(Icons.delete),
+                  onTap: () {
+                    setState(() {
+                      _data.removeWhere((currentItem) => item == currentItem);
+                    });
+                  },
+                ),
+              ),
+              isExpanded: item.isExpanded,
+            );
+          }).toList(),
     );
   }
 }

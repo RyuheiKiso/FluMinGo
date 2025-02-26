@@ -13,12 +13,15 @@ class CustomSnackbar {
   }
 
   // カスタムスタイルを適用するメソッド
-  static void showCustomSnackbar(BuildContext context, String message, {Color backgroundColor = Colors.black, Color textColor = Colors.white, Duration duration = const Duration(seconds: 3)}) {
+  static void showCustomSnackbar(
+    BuildContext context,
+    String message, {
+    Color backgroundColor = Colors.black,
+    Color textColor = Colors.white,
+    Duration duration = const Duration(seconds: 3),
+  }) {
     final snackBar = SnackBar(
-      content: Text(
-        message,
-        style: TextStyle(color: textColor),
-      ),
+      content: Text(message, style: TextStyle(color: textColor)),
       backgroundColor: backgroundColor,
       duration: duration,
     );

@@ -32,9 +32,7 @@ class _WizardState extends State<Wizard> {
           value: (_currentStep + 1) / widget.steps.length,
         ),
         // 現在のステップのコンテンツ
-        Expanded(
-          child: widget.steps[_currentStep].content,
-        ),
+        Expanded(child: widget.steps[_currentStep].content),
         // ナビゲーションボタン
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +57,8 @@ class _WizardState extends State<Wizard> {
                 child: Text('Next'),
               )
             else
-              ElevatedButton( // 新機能①：最終ステップで完了ボタンを表示
+              ElevatedButton(
+                // 新機能①：最終ステップで完了ボタンを表示
                 onPressed: () {
                   widget.onFinished?.call();
                 },

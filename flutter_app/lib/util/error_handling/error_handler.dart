@@ -15,7 +15,8 @@ Map<String, dynamic> _convertYamlMapToMap(YamlMap yamlMap) {
     if (value is YamlMap) {
       map[key] = _convertYamlMapToMap(value);
     } else if (value is YamlList) {
-      map[key] = value.map((e) => e is YamlMap ? _convertYamlMapToMap(e) : e).toList();
+      map[key] =
+          value.map((e) => e is YamlMap ? _convertYamlMapToMap(e) : e).toList();
     } else {
       map[key] = value;
     }

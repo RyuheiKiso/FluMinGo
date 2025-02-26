@@ -54,23 +54,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
       iconSize: 24,
       elevation: 16,
       style: TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
+      underline: Container(height: 2, color: Colors.deepPurpleAccent),
       // 値が変更されたときの処理
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['One', 'Two', 'Three', 'Four']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+      items:
+          <String>['One', 'Two', 'Three', 'Four'].map<DropdownMenuItem<String>>(
+            (String value) {
+              return DropdownMenuItem<String>(value: value, child: Text(value));
+            },
+          ).toList(),
     );
   }
 }

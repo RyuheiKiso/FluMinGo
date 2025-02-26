@@ -1,27 +1,35 @@
 import 'package:logging/logging.dart';
 
+/// BaseManager class provides basic logging and error handling functionalities.
 class BaseManager {
-  final Logger _logger = Logger('BaseManager');
+  // Logger instance for logging messages
+  Logger _logger = Logger('BaseManager');
 
-  // 共通機能を実装
+  /// Logs a message at the info level.
+  ///
+  /// [message] The message to log.
   void log(String message) {
-    // ログ出力処理
     _logger.info(message);
   }
 
+  /// Handles errors by logging them at the severe level.
+  ///
+  /// [e] The exception to handle.
   void handleError(Exception e) {
-    // エラーハンドリング処理
     _logger.severe(e.toString());
   }
 
+  /// Performs a network request to the given URL.
+  ///
+  /// [url] The URL to request.
   Future<void> performNetworkRequest(String url) async {
-    // ネットワークリクエスト処理
     try {
-      // ダミーのネットワークリクエスト
       await Future.delayed(Duration(seconds: 2));
       _logger.info("Request to $url successful");
-    } catch (e) {
-      handleError(e as Exception);
+    } on Exception catch (e) {
+      handleError(e);
     }
   }
+
+  set logger(Logger logger) => _logger = logger;
 }

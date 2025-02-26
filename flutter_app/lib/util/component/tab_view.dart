@@ -42,12 +42,7 @@ class TabViewComponent extends StatelessWidget {
             labelColor: labelColor,
             unselectedLabelColor: unselectedLabelColor,
           ),
-          Expanded(
-            child: TabBarView(
-              controller: controller,
-              children: views,
-            ),
-          ),
+          Expanded(child: TabBarView(controller: controller, children: views)),
         ],
       ),
     );

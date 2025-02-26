@@ -15,7 +15,9 @@ class GlassmorphismContainer extends StatelessWidget {
     this.borderRadius = 15.0,
     this.blurSigma = 10.0,
     List<Color>? gradientColors,
-  }) : gradientColors = gradientColors ?? [Colors.white.withAlpha(51), Colors.white.withAlpha(13)];
+  }) : gradientColors =
+           gradientColors ??
+           [Colors.white.withAlpha(51), Colors.white.withAlpha(13)];
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,7 @@ class GlassmorphismContainer extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        border: Border.all(
-          color: Colors.white.withAlpha(26),
-        ),
+        border: Border.all(color: Colors.white.withAlpha(26)),
       ),
       child: ClipRRect(
         // 角を丸める
@@ -38,10 +38,7 @@ class GlassmorphismContainer extends StatelessWidget {
         child: BackdropFilter(
           // 背景をぼかす
           filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
-          child: Container(
-            alignment: Alignment.center,
-            child: child,
-          ),
+          child: Container(alignment: Alignment.center, child: child),
         ),
       ),
     );

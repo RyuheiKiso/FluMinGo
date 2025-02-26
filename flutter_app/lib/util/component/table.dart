@@ -40,7 +40,8 @@ class TableComponent extends StatelessWidget {
         child: Table(
           children: rows,
           border: border,
-          defaultColumnWidth: defaultColumnWidth ?? const FixedColumnWidth(100.0),
+          defaultColumnWidth:
+              defaultColumnWidth ?? const FixedColumnWidth(100.0),
           textDirection: textDirection,
           textBaseline: textBaseline,
           defaultVerticalAlignment: defaultVerticalAlignment,

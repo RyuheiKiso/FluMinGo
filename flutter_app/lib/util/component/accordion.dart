@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// アコーディオンコンポーネント
-/// 
+///
 /// [Accordion]はタイトルとコンテンツを展開可能なリストとして表示します。
-/// 
+///
 /// ```dart
 /// Accordion(
 ///   title: 'タイトル',
@@ -33,7 +33,7 @@ class Accordion extends StatefulWidget {
   final ValueChanged<bool>? onExpansionChanged; // 新機能②
 
   /// コンストラクタ
-  /// 
+  ///
   /// [title]はアコーディオンのタイトルを指定します。
   /// [content]はアコーディオンのコンテンツを指定します。
   /// [titleStyle]はタイトルのスタイルを指定します。
@@ -64,7 +64,8 @@ class Accordion extends StatefulWidget {
   _AccordionState createState() => _AccordionState();
 }
 
-class _AccordionState extends State<Accordion> with SingleTickerProviderStateMixin {
+class _AccordionState extends State<Accordion>
+    with SingleTickerProviderStateMixin {
   // アニメーションコントローラ
   late AnimationController _controller;
   // アニメーション
@@ -86,10 +87,10 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
       curve: widget.animationCurve,
     );
     // 初期状態を設定
-    _isExpanded = widget.initiallyExpanded; 
+    _isExpanded = widget.initiallyExpanded;
     if (_isExpanded) {
       // 初期状態で展開
-      _controller.value = 1.0; 
+      _controller.value = 1.0;
     }
   }
 
@@ -118,22 +119,23 @@ class _AccordionState extends State<Accordion> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( // 新機能①：Wrap全体にスワイプ検知
+    return GestureDetector(
+      // 新機能①：Wrap全体にスワイプ検知
       onHorizontalDragEnd: (_) => _handleTap(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // タイトル部分
           ListTile(
-            leading: widget.leadingIcon != null
-                ? Icon(
-                    widget.leadingIcon!.icon,
-                    size: widget.iconSize,
-                  )
-                : null,
+            leading:
+                widget.leadingIcon != null
+                    ? Icon(widget.leadingIcon!.icon, size: widget.iconSize)
+                    : null,
             title: Text(
               widget.title,
-              style: widget.titleStyle?.copyWith(fontSize: widget.labelFontSize),
+              style: widget.titleStyle?.copyWith(
+                fontSize: widget.labelFontSize,
+              ),
             ),
             onTap: _handleTap,
           ),

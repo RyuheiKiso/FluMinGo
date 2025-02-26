@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// プログレスバーコンポーネント
-/// 
+///
 /// [ProgressBarComponent]は進行状況を示すためのカスタムプログレスバーウィジェットです。
-/// 
+///
 /// ```dart
 /// ProgressBarComponent(
 ///   progress: 0.5,
@@ -29,7 +29,7 @@ class ProgressBarComponent extends StatelessWidget {
   final double triggerDistance;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [progress] プログレスバーの進行状況（0.0から1.0の範囲）
   /// [color] プログレスバーの色（デフォルトは青）
   const ProgressBarComponent({

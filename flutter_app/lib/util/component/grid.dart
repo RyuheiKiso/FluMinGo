@@ -57,9 +57,6 @@ class GridComponent extends StatelessWidget {
       gridView = Scrollbar(child: gridView);
     }
 
-    return Container(
-      color: backgroundColor,
-      child: gridView,
-    );
+    return Container(color: backgroundColor, child: gridView);
   }
 }

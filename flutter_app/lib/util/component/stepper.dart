@@ -17,7 +17,8 @@ class CustomStepper extends StatelessWidget {
   // カスタムの「キャンセル」ボタン
   final Widget? customCancelButton;
 
-  const CustomStepper({super.key, 
+  const CustomStepper({
+    super.key,
     required this.steps,
     required this.currentStep,
     required this.onStepTapped,
@@ -39,15 +40,17 @@ class CustomStepper extends StatelessWidget {
         return Row(
           children: <Widget>[
             // カスタムの「続行」ボタンが設定されていない場合、デフォルトのボタンを表示
-            customContinueButton ?? TextButton(
-              onPressed: details.onStepContinue,
-              child: const Text('CONTINUE'),
-            ),
+            customContinueButton ??
+                TextButton(
+                  onPressed: details.onStepContinue,
+                  child: const Text('CONTINUE'),
+                ),
             // カスタムの「キャンセル」ボタンが設定されていない場合、デフォルトのボタンを表示
-            customCancelButton ?? TextButton(
-              onPressed: details.onStepCancel,
-              child: const Text('CANCEL'),
-            ),
+            customCancelButton ??
+                TextButton(
+                  onPressed: details.onStepCancel,
+                  child: const Text('CANCEL'),
+                ),
           ],
         );
       },

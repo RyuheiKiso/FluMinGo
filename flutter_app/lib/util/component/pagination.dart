@@ -48,19 +48,26 @@ class PaginationComponent extends StatelessWidget {
         // 前のページボタン
         IconButton(
           icon: Icon(Icons.arrow_back, size: iconSize, color: buttonColor),
-          onPressed: currentPage > 1 ? () => onPageChanged(currentPage - 1) : null,
+          onPressed:
+              currentPage > 1 ? () => onPageChanged(currentPage - 1) : null,
         ),
         // ページ番号表示
         Text('$currentPage / $totalPages', style: pageNumberStyle),
         // 次のページボタン
         IconButton(
           icon: Icon(Icons.arrow_forward, size: iconSize, color: buttonColor),
-          onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
+          onPressed:
+              currentPage < totalPages
+                  ? () => onPageChanged(currentPage + 1)
+                  : null,
         ),
         if (showFirstLastButtons)
           IconButton(
             icon: Icon(lastPageIcon, size: iconSize, color: buttonColor),
-            onPressed: currentPage < totalPages ? () => onPageChanged(totalPages) : null,
+            onPressed:
+                currentPage < totalPages
+                    ? () => onPageChanged(totalPages)
+                    : null,
           ),
       ],
     );

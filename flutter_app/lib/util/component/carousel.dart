@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 /// カルーセルコンポーネント
-/// 
+///
 /// [CarouselComponent]はウィジェットのリストを受け取るカルーセルウィジェットです。
-/// 
+///
 /// ```dart
 /// CarouselComponent(
 ///   items: [
@@ -19,7 +19,7 @@ class CarouselComponent extends StatelessWidget {
   final List<Widget> items;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [items] カルーセル内に表示するウィジェットのリスト
   const CarouselComponent({super.key, required this.items});
 
@@ -41,10 +41,16 @@ class Carousel extends StatefulWidget {
   final Duration autoPlayInterval;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [items] カルーセル内に表示するウィジェットのリスト
   /// [interval] ページが自動的に切り替わる間隔
-  const Carousel({super.key, required this.items, this.interval = const Duration(seconds: 3), this.autoPlay = true, this.autoPlayInterval = const Duration(seconds: 3)});
+  const Carousel({
+    super.key,
+    required this.items,
+    this.interval = const Duration(seconds: 3),
+    this.autoPlay = true,
+    this.autoPlayInterval = const Duration(seconds: 3),
+  });
 
   @override
   // ignore: library_private_types_in_public_api

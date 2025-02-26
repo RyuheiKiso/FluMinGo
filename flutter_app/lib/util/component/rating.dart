@@ -71,20 +71,33 @@ class _RatingState extends State<Rating> {
           children: List.generate(widget.maxRating, (index) {
             return GestureDetector(
               // アイコンがタップされたときの処理
-              onTap: widget.ignoreGestures ? null : () {
-                setState(() {
-                  _currentRating = widget.allowHalfRating ? index + 0.5 : index + 1.0;
-                });
-                if (widget.onRatingChanged != null) {
-                  widget.onRatingChanged!(_currentRating);
-                }
-              },
+              onTap:
+                  widget.ignoreGestures
+                      ? null
+                      : () {
+                        setState(() {
+                          _currentRating =
+                              widget.allowHalfRating
+                                  ? index + 0.5
+                                  : index + 1.0;
+                        });
+                        if (widget.onRatingChanged != null) {
+                          widget.onRatingChanged!(_currentRating);
+                        }
+                      },
               // アイコンの表示
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: widget.iconSpacing / 2),
+                padding: EdgeInsets.symmetric(
+                  horizontal: widget.iconSpacing / 2,
+                ),
                 child: Icon(
-                  index < _currentRating ? widget.filledIcon : widget.unfilledIcon,
-                  color: index < _currentRating ? widget.filledColor : widget.unfilledColor,
+                  index < _currentRating
+                      ? widget.filledIcon
+                      : widget.unfilledIcon,
+                  color:
+                      index < _currentRating
+                          ? widget.filledColor
+                          : widget.unfilledColor,
                   size: widget.iconSize,
                 ),
               ),

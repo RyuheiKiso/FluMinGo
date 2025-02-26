@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// アラートダイアログコンポーネント
-/// 
+///
 /// [CustomAlert]は、タイトル、コンテンツ、およびアクションを受け取るカスタムアラートダイアログウィジェットです。
-/// 
+///
 /// ```dart
 /// CustomAlert(
 ///   title: 'Alert',
@@ -44,7 +44,7 @@ class CustomAlert extends StatelessWidget {
   final double? labelFontSize;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [title] アラートダイアログのタイトル
   /// [content] アラートダイアログのコンテンツ
   /// [actions] アラートダイアログのアクションボタン
@@ -78,7 +78,7 @@ class CustomAlert extends StatelessWidget {
     // ignore: deprecated_member_use
     return WillPopScope(
       // dismissibleプロパティを使用
-      onWillPop: () async => dismissible, 
+      onWillPop: () async => dismissible,
       child: AlertDialog(
         shape: shape,
         backgroundColor: backgroundColor,
@@ -94,7 +94,10 @@ class CustomAlert extends StatelessWidget {
           ],
         ),
         // コンテンツの表示
-        content: Text(content, style: contentStyle?.copyWith(fontSize: labelFontSize)),
+        content: Text(
+          content,
+          style: contentStyle?.copyWith(fontSize: labelFontSize),
+        ),
         // アクションボタンの表示
         actions: actions,
       ),

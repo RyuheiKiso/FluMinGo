@@ -4,7 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 // トーストメッセージコンポーネント
 class CustomToast {
   // トーストメッセージを表示するメソッド
-  static void showToast(String message, {
+  static void showToast(
+    String message, {
     ToastGravity gravity = ToastGravity.BOTTOM,
     Color backgroundColor = Colors.black,
     Color textColor = Colors.white,
@@ -26,7 +27,9 @@ class CustomToast {
 
 class Toast {
   // トーストメッセージを表示するメソッド
-  static void show(BuildContext context, String message, {
+  static void show(
+    BuildContext context,
+    String message, {
     Duration duration = const Duration(seconds: 2),
     double bottomOffset = 50.0,
     Color backgroundColor = Colors.black,
@@ -35,22 +38,25 @@ class Toast {
   }) {
     final overlay = Overlay.of(context);
     final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        bottom: bottomOffset, // 新機能①（既存 bottomOffset 使用）
-        left: MediaQuery.of(context).size.width * 0.1,
-        width: MediaQuery.of(context).size.width * 0.8,
-        child: Material(
-          color: Colors.transparent,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            decoration: BoxDecoration(
-              color: backgroundColor.withAlpha(179), // Replace deprecated 'withOpacity' with 'withAlpha'
-              borderRadius: BorderRadius.circular(8.0),
+      builder:
+          (context) => Positioned(
+            bottom: bottomOffset, // 新機能①（既存 bottomOffset 使用）
+            left: MediaQuery.of(context).size.width * 0.1,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Material(
+              color: Colors.transparent,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                decoration: BoxDecoration(
+                  color: backgroundColor.withAlpha(
+                    179,
+                  ), // Replace deprecated 'withOpacity' with 'withAlpha'
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Text(message, style: TextStyle(color: textColor)),
+              ),
             ),
-            child: Text(message, style: TextStyle(color: textColor)),
           ),
-        ),
-      ),
     );
     overlay.insert(overlayEntry);
     Future.delayed(duration, () {

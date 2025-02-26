@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// カードコンポーネント
-/// 
+///
 /// [CardComponent]は子ウィジェットを受け取るカスタムカードウィジェットです。
-/// 
+///
 /// ```dart
 /// CardComponent(
 ///   child: Text('This is a card'),
@@ -38,7 +38,7 @@ class CardComponent extends StatelessWidget {
   final double? borderWidth;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [child] カード内に表示するウィジェット
   /// [color] カードの背景色
   /// [elevation] カードの影の高さ
@@ -48,9 +48,10 @@ class CardComponent extends StatelessWidget {
   /// [shadowColor] カードの影の色
   /// [borderColor] カードの枠線の色
   /// [borderWidth] カードの枠線の幅
-  const CardComponent({super.key, 
-    required this.child, 
-    this.color, 
+  const CardComponent({
+    super.key,
+    required this.child,
+    this.color,
     this.elevation,
     this.borderRadius,
     this.padding,

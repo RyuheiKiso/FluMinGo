@@ -49,14 +49,16 @@ class ModalComponent extends StatelessWidget {
             // アクションボタンの表示
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: actions ?? [
-                TextButton(
-                  child: Text('閉じる'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
+              children:
+                  actions ??
+                  [
+                    TextButton(
+                      child: Text('閉じる'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
             ),
           ],
         ),

@@ -32,10 +32,11 @@ class TimelineComponent extends StatelessWidget {
       reverse: reverse,
       controller: controller,
       itemCount: events.length,
-      itemBuilder: (context, index) => GestureDetector(
-        onTap: () => onEventTap?.call(index), // 新機能①
-        child: events[index],
-      ),
+      itemBuilder:
+          (context, index) => GestureDetector(
+            onTap: () => onEventTap?.call(index), // 新機能①
+            child: events[index],
+          ),
       separatorBuilder: (context, index) => SizedBox(height: spacing), // 新機能②
     );
   }

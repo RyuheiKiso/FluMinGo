@@ -27,15 +27,14 @@ class _WizardViewState extends State<WizardView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (widget.customStepIndicator != null) widget.customStepIndicator!, // 新機能②
+        if (widget.customStepIndicator != null)
+          widget.customStepIndicator!, // 新機能②
         // プログレスインジケーター
         LinearProgressIndicator(
           value: (_currentStep + 1) / widget.steps.length,
         ),
         // 現在のステップのコンテンツ
-        Expanded(
-          child: widget.steps[_currentStep].content,
-        ),
+        Expanded(child: widget.steps[_currentStep].content),
         // ナビゲーションボタン
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,8 +58,11 @@ class _WizardViewState extends State<WizardView> {
                 child: Text('Next'),
               )
             else
-              ElevatedButton( // 新機能①：完了ボタン
-                onPressed: () { widget.onCompleted?.call(); },
+              ElevatedButton(
+                // 新機能①：完了ボタン
+                onPressed: () {
+                  widget.onCompleted?.call();
+                },
                 child: Text('Complete'),
               ),
           ],

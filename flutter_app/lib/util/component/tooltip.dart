@@ -42,7 +42,4 @@ class CustomTooltip extends StatelessWidget {
 }
 
 // ツールチップの表示位置を指定するための列挙型
-enum TooltipPosition {
-  above,
-  below,
-}
+enum TooltipPosition { above, below }

@@ -84,7 +84,12 @@ class FormHelper {
   }
 
   // 特定の長さのバリデーションメソッド
-  static String? validateLength(String? value, String fieldName, int minLength, int maxLength) {
+  static String? validateLength(
+    String? value,
+    String fieldName,
+    int minLength,
+    int maxLength,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -95,7 +100,12 @@ class FormHelper {
   }
 
   // 特定の範囲内の数値のバリデーションメソッド
-  static String? validateNumberRange(String? value, String fieldName, num min, num max) {
+  static String? validateNumberRange(
+    String? value,
+    String fieldName,
+    num min,
+    num max,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -110,7 +120,12 @@ class FormHelper {
   }
 
   // 特定のパターンのバリデーションメソッド
-  static String? validatePattern(String? value, String fieldName, RegExp pattern, String errorMessage) {
+  static String? validatePattern(
+    String? value,
+    String fieldName,
+    RegExp pattern,
+    String errorMessage,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -121,7 +136,12 @@ class FormHelper {
   }
 
   // 特定の範囲内の日付のバリデーションメソッド
-  static String? validateDateRange(String? value, String fieldName, DateTime minDate, DateTime maxDate) {
+  static String? validateDateRange(
+    String? value,
+    String fieldName,
+    DateTime minDate,
+    DateTime maxDate,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -137,7 +157,12 @@ class FormHelper {
   }
 
   // 特定の文字セットのバリデーションメソッド
-  static String? validateCharacterSet(String? value, String fieldName, String allowedChars, String errorMessage) {
+  static String? validateCharacterSet(
+    String? value,
+    String fieldName,
+    String allowedChars,
+    String errorMessage,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -149,7 +174,12 @@ class FormHelper {
   }
 
   // 特定の形式のバリデーションメソッド
-  static String? validateFormat(String? value, String fieldName, String format, String errorMessage) {
+  static String? validateFormat(
+    String? value,
+    String fieldName,
+    String format,
+    String errorMessage,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -161,7 +191,11 @@ class FormHelper {
   }
 
   // 特定の文字数のバリデーションメソッド
-  static String? validateExactLength(String? value, String fieldName, int exactLength) {
+  static String? validateExactLength(
+    String? value,
+    String fieldName,
+    int exactLength,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }
@@ -172,7 +206,12 @@ class FormHelper {
   }
 
   // 特定の文字列が含まれているかのバリデーションメソッド
-  static String? validateContains(String? value, String fieldName, String substring, String errorMessage) {
+  static String? validateContains(
+    String? value,
+    String fieldName,
+    String substring,
+    String errorMessage,
+  ) {
     if (value == null || value.isEmpty) {
       return '$fieldNameを入力してください';
     }

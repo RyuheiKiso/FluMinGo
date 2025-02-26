@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// アバターコンポーネント
-/// 
+///
 /// [AvatarComponent]はユーザーのアバター画像を表示するカスタムウィジェットです。
-/// 
+///
 /// ```dart
 /// AvatarComponent(
 ///   imageUrl: 'https://example.com/avatar.png',
@@ -51,7 +51,7 @@ class AvatarComponent extends StatelessWidget {
   final double? labelFontSize;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [imageUrl] アバター画像のURL
   /// [radius] アバターの半径
   /// [borderColor] アバターの枠線の色
@@ -96,10 +96,7 @@ class AvatarComponent extends StatelessWidget {
           // 形状を円形に設定
           shape: BoxShape.circle,
           // 枠線の設定
-          border: Border.all(
-            color: borderColor,
-            width: borderWidth,
-          ),
+          border: Border.all(color: borderColor, width: borderWidth),
           // 角の丸み
           borderRadius: borderRadius,
           // 影の設定

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// パンクズリストコンポーネント
-/// 
+///
 /// [Breadcrumb]は、パンクズリストのアイテムを受け取るウィジェットです。
-/// 
+///
 /// ```dart
 /// Breadcrumb(
 ///   items: [
@@ -44,13 +44,14 @@ class Breadcrumb extends StatelessWidget {
   final FontWeight? fontWeight;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [items] パンクズリストのアイテム
   /// [activeColor] アクティブなアイテムの色
   /// [inactiveColor] 非アクティブなアイテムの色
   /// [separatorIcon] アイテム間のセパレーターアイコン
   /// [spacing] アイテム間の間隔
-  const Breadcrumb({super.key, 
+  const Breadcrumb({
+    super.key,
     required this.items,
     this.activeColor = Colors.blue,
     this.inactiveColor = Colors.grey,
@@ -77,7 +78,11 @@ class Breadcrumb extends StatelessWidget {
           child: Row(
             children: [
               // アイコンがある場合は表示
-              if (item.icon != null) Icon(item.icon, color: item.isActive ? activeColor : inactiveColor),
+              if (item.icon != null)
+                Icon(
+                  item.icon,
+                  color: item.isActive ? activeColor : inactiveColor,
+                ),
               // ツールチップがある場合は表示
               if (item.tooltip != null)
                 Tooltip(
@@ -126,7 +131,7 @@ class BreadcrumbItem {
   final String? tooltip;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [label] アイテムのラベル
   /// [isActive] アイテムがアクティブかどうか
   /// [onTap] アイテムがタップされたときに呼び出されるコールバック

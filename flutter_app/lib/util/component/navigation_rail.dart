@@ -47,22 +47,34 @@ class NavigationRailComponent extends StatelessWidget {
       destinations: [
         // ホームの目的地
         NavigationRailDestination(
-          icon: Tooltip(message: 'ホーム', child: Icon(Icons.home, size: iconSize, color: iconColor)),
+          icon: Tooltip(
+            message: 'ホーム',
+            child: Icon(Icons.home, size: iconSize, color: iconColor),
+          ),
           label: Text('ホーム', style: labelStyle),
         ),
         // 検索の目的地
         NavigationRailDestination(
-          icon: Tooltip(message: '検索', child: Icon(Icons.search, size: iconSize, color: iconColor)),
+          icon: Tooltip(
+            message: '検索',
+            child: Icon(Icons.search, size: iconSize, color: iconColor),
+          ),
           label: Text('検索', style: labelStyle),
         ),
         // プロフィールの目的地
         NavigationRailDestination(
-          icon: Tooltip(message: 'プロフィール', child: Icon(Icons.person, size: iconSize, color: iconColor)),
+          icon: Tooltip(
+            message: 'プロフィール',
+            child: Icon(Icons.person, size: iconSize, color: iconColor),
+          ),
           label: Text('プロフィール', style: labelStyle),
         ),
         // 設定の目的地
         NavigationRailDestination(
-          icon: Tooltip(message: '設定', child: Icon(Icons.settings, size: iconSize, color: iconColor)),
+          icon: Tooltip(
+            message: '設定',
+            child: Icon(Icons.settings, size: iconSize, color: iconColor),
+          ),
           label: Text('設定', style: labelStyle),
         ),
       ],

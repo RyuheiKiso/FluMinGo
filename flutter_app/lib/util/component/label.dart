@@ -37,10 +37,7 @@ class LabelComponent extends StatelessWidget {
       color: backgroundColor,
       child: Text(
         text,
-        style: style?.copyWith(
-          decoration: decoration,
-          shadows: shadows,
-        ),
+        style: style?.copyWith(decoration: decoration, shadows: shadows),
         textAlign: alignment,
         maxLines: maxLines,
         overflow: overflow,

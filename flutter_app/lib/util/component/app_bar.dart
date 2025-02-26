@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// アプリバーコンポーネント
-/// 
+///
 /// [AppBarComponent]はタイトルを表示するカスタムアプリバーウィジェットです。
-/// 
+///
 /// ```dart
 /// AppBarComponent(
 ///   title: 'タイトル',
@@ -76,7 +76,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final double? labelFontSize;
 
   /// コンストラクタ
-  /// 
+  ///
   /// [title] アプリバーのタイトル
   /// [backgroundColor] アプリバーの背景色
   /// [titleStyle] タイトルのスタイル
@@ -119,10 +119,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       // タイトル
-      title: Text(
-        title,
-        style: titleStyle?.copyWith(fontSize: labelFontSize),
-      ),
+      title: Text(title, style: titleStyle?.copyWith(fontSize: labelFontSize)),
       // 背景色
       backgroundColor: backgroundColor,
       // アイコンのテーマ
@@ -146,10 +143,15 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       // leadingウィジェットが指定されていない場合に自動的に戻るボタンを表示するかどうか
       automaticallyImplyLeading: automaticallyImplyLeading,
       // ステータスバーのスタイル
-      systemOverlayStyle: systemOverlayStyle ?? (brightness == Brightness.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark),
+      systemOverlayStyle:
+          systemOverlayStyle ??
+          (brightness == Brightness.dark
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0.0));
 }

@@ -41,7 +41,10 @@ class RestApiUtil {
   }
 
   // PATCHリクエストを送信するメソッド
-  Future<http.Response> patch(String endpoint, Map<String, dynamic> data) async {
+  Future<http.Response> patch(
+    String endpoint,
+    Map<String, dynamic> data,
+  ) async {
     final response = await http.patch(
       Uri.parse('$baseUrl$endpoint'),
       headers: {'Content-Type': 'application/json'},
@@ -52,7 +55,10 @@ class RestApiUtil {
 
   // ヘッダーを追加するメソッド（デフォルトヘッダーを強化）
   Map<String, String> _addHeaders(Map<String, String>? headers) {
-    final defaultHeaders = {'Content-Type': 'application/json', 'Accept': 'application/json'};
+    final defaultHeaders = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
     if (headers != null) {
       defaultHeaders.addAll(headers);
     }
@@ -60,7 +66,10 @@ class RestApiUtil {
   }
 
   // GETリクエストを送信するメソッド（ヘッダー付き）
-  Future<http.Response> getWithHeaders(String endpoint, {Map<String, String>? headers}) async {
+  Future<http.Response> getWithHeaders(
+    String endpoint, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.get(
       Uri.parse('$baseUrl$endpoint'),
       headers: _addHeaders(headers),
@@ -69,7 +78,11 @@ class RestApiUtil {
   }
 
   // POSTリクエストを送信するメソッド（ヘッダー付き）
-  Future<http.Response> postWithHeaders(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers}) async {
+  Future<http.Response> postWithHeaders(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.post(
       Uri.parse('$baseUrl$endpoint'),
       headers: _addHeaders(headers),
@@ -79,7 +92,11 @@ class RestApiUtil {
   }
 
   // PUTリクエストを送信するメソッド（ヘッダー付き）
-  Future<http.Response> putWithHeaders(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers}) async {
+  Future<http.Response> putWithHeaders(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.put(
       Uri.parse('$baseUrl$endpoint'),
       headers: _addHeaders(headers),
@@ -89,7 +106,10 @@ class RestApiUtil {
   }
 
   // DELETEリクエストを送信するメソッド（ヘッダー付き）
-  Future<http.Response> deleteWithHeaders(String endpoint, {Map<String, String>? headers}) async {
+  Future<http.Response> deleteWithHeaders(
+    String endpoint, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.delete(
       Uri.parse('$baseUrl$endpoint'),
       headers: _addHeaders(headers),
@@ -98,7 +118,11 @@ class RestApiUtil {
   }
 
   // PATCHリクエストを送信するメソッド（ヘッダー付き）
-  Future<http.Response> patchWithHeaders(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers}) async {
+  Future<http.Response> patchWithHeaders(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.patch(
       Uri.parse('$baseUrl$endpoint'),
       headers: _addHeaders(headers),
@@ -108,50 +132,77 @@ class RestApiUtil {
   }
 
   // GETリクエストを送信するメソッド（ヘッダー付き、タイムアウト付き）
-  Future<http.Response> getWithHeadersAndTimeout(String endpoint, {Map<String, String>? headers, Duration timeout = const Duration(seconds: 10)}) async {
-    final response = await http.get(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: _addHeaders(headers),
-    ).timeout(timeout);
+  Future<http.Response> getWithHeadersAndTimeout(
+    String endpoint, {
+    Map<String, String>? headers,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final response = await http
+        .get(Uri.parse('$baseUrl$endpoint'), headers: _addHeaders(headers))
+        .timeout(timeout);
     return response;
   }
 
   // POSTリクエストを送信するメソッド（ヘッダー付き、タイムアウト付き）
-  Future<http.Response> postWithHeadersAndTimeout(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers, Duration timeout = const Duration(seconds: 10)}) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: _addHeaders(headers),
-      body: jsonEncode(data),
-    ).timeout(timeout);
+  Future<http.Response> postWithHeadersAndTimeout(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final response = await http
+        .post(
+          Uri.parse('$baseUrl$endpoint'),
+          headers: _addHeaders(headers),
+          body: jsonEncode(data),
+        )
+        .timeout(timeout);
     return response;
   }
 
   // PUTリクエストを送信するメソッド（ヘッダー付き、タイムアウト付き）
-  Future<http.Response> putWithHeadersAndTimeout(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers, Duration timeout = const Duration(seconds: 10)}) async {
-    final response = await http.put(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: _addHeaders(headers),
-      body: jsonEncode(data),
-    ).timeout(timeout);
+  Future<http.Response> putWithHeadersAndTimeout(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final response = await http
+        .put(
+          Uri.parse('$baseUrl$endpoint'),
+          headers: _addHeaders(headers),
+          body: jsonEncode(data),
+        )
+        .timeout(timeout);
     return response;
   }
 
   // DELETEリクエストを送信するメソッド（ヘッダー付き、タイムアウト付き）
-  Future<http.Response> deleteWithHeadersAndTimeout(String endpoint, {Map<String, String>? headers, Duration timeout = const Duration(seconds: 10)}) async {
-    final response = await http.delete(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: _addHeaders(headers),
-    ).timeout(timeout);
+  Future<http.Response> deleteWithHeadersAndTimeout(
+    String endpoint, {
+    Map<String, String>? headers,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final response = await http
+        .delete(Uri.parse('$baseUrl$endpoint'), headers: _addHeaders(headers))
+        .timeout(timeout);
     return response;
   }
 
   // PATCHリクエストを送信するメソッド（ヘッダー付き、タイムアウト付き）
-  Future<http.Response> patchWithHeadersAndTimeout(String endpoint, Map<String, dynamic> data, {Map<String, String>? headers, Duration timeout = const Duration(seconds: 10)}) async {
-    final response = await http.patch(
-      Uri.parse('$baseUrl$endpoint'),
-      headers: _addHeaders(headers),
-      body: jsonEncode(data),
-    ).timeout(timeout);
+  Future<http.Response> patchWithHeadersAndTimeout(
+    String endpoint,
+    Map<String, dynamic> data, {
+    Map<String, String>? headers,
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    final response = await http
+        .patch(
+          Uri.parse('$baseUrl$endpoint'),
+          headers: _addHeaders(headers),
+          body: jsonEncode(data),
+        )
+        .timeout(timeout);
     return response;
   }
 }

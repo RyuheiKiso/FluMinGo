@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// ボトムナビゲーションバーコンポーネント
-/// 
+///
 /// [BottomNavigationBarComponent]は、現在のインデックスとタップ時のコールバックを受け取るシンプルなボトムナビゲーションバーウィジェットです。
-/// 
+///
 /// ```dart
 /// BottomNavigationBarComponent(
 ///   currentIndex: 0,
@@ -50,7 +50,7 @@ class BottomNavigationBarComponent extends StatelessWidget {
   final double? labelFontSize; // 新しいプロパティ
 
   /// コンストラクタ
-  /// 
+  ///
   /// [currentIndex] 現在選択されているインデックス
   /// [onTap] インデックスがタップされたときに呼び出されるコールバック
   /// [items] ナビゲーションバーのアイテムリスト

@@ -21,7 +21,8 @@ class _TreeViewState extends State<TreeView> {
   // 展開されたノードのマップ
   final Map<TreeNode, bool> _expandedNodes = {};
 
-  void _toggleAll(bool expand) { // 新機能①
+  void _toggleAll(bool expand) {
+    // 新機能①
     setState(() {
       for (var node in widget.nodes) {
         _expandedNodes[node] = expand;
@@ -33,11 +34,18 @@ class _TreeViewState extends State<TreeView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row( // 新機能①ボタン群
+        Row(
+          // 新機能①ボタン群
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            TextButton(onPressed: () => _toggleAll(true), child: Text('Expand All')),
-            TextButton(onPressed: () => _toggleAll(false), child: Text('Collapse All')),
+            TextButton(
+              onPressed: () => _toggleAll(true),
+              child: Text('Expand All'),
+            ),
+            TextButton(
+              onPressed: () => _toggleAll(false),
+              child: Text('Collapse All'),
+            ),
           ],
         ),
         Expanded(

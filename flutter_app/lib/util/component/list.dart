@@ -49,9 +49,6 @@ class ListComponent extends StatelessWidget {
       listView = Scrollbar(child: listView);
     }
 
-    return Container(
-      color: backgroundColor,
-      child: listView,
-    );
+    return Container(color: backgroundColor, child: listView);
   }
 }
