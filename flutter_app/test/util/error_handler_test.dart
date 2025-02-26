@@ -33,7 +33,7 @@ void main() {
 
     testWidgets('showError displays error dialog', (WidgetTester tester) async {
       final mockContext = MockBuildContext1();
-      when(mockContext.dependOnInheritedWidgetOfExactType(any)).thenReturn(null);
+      when(mockContext.dependOnInheritedWidgetOfExactType(aspect: any)).thenReturn(null);
 
       await tester.pumpWidget(MaterialApp(
         home: Builder(builder: (context) {
