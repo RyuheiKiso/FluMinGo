@@ -15,6 +15,7 @@ void main() {
     setUp(() async {
       final mockFile = MockFile();
       when(mockFile.readAsString()).thenAnswer((_) async => 'log_file_path: test_log.txt');
+      when(mockFile.writeAsString(any, mode: anyNamed('mode'))).thenAnswer((_) async => File('test_log.txt'));
       await ErrorHandler.initialize();
     });
 
@@ -27,10 +28,13 @@ void main() {
       when(mockFile.writeAsString(any, mode: anyNamed('mode')))
           .thenAnswer((_) async => File('test_log.txt'));
       ErrorHandler.showError(MockBuildContext1(), 'Test Error');
-      verify(mockFile.writeAsString(contains('Test Error') as String?, mode: FileMode.append)).called(1);
+      verify(mockFile.writeAsString(argThat(contains('Test Error')), mode: FileMode.append)).called(1);
     });
 
     testWidgets('showError displays error dialog', (WidgetTester tester) async {
+      final mockContext = MockBuildContext1();
+      when(mockContext.dependOnInheritedWidgetOfExactType(any)).thenReturn(null);
+
       await tester.pumpWidget(MaterialApp(
         home: Builder(builder: (context) {
           // Trigger the error dialog

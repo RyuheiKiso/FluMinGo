@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../error_handling/error_handler.dart';
+import 'package:flutter_app/util/error_handling/error_handler.dart';
 import '../form/form_helper.dart'; // フォームヘルパーをインポート
 
 // ベースページクラス

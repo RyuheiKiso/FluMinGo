@@ -15,6 +15,7 @@ class HttpClient {
   // POSTリクエストを送信するメソッド
   Future<http.Response> post(String endpoint, {required Map<String, dynamic> body}) async {
     final url = Uri.parse('$baseUrl$endpoint');
-    return await http.post(url, body: body);
+    final bodyString = body.map((key, value) => MapEntry(key, value.toString()));
+    return await http.post(url, body: bodyString);
   }
 }
