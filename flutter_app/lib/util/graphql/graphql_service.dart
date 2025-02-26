@@ -66,24 +66,34 @@ class GraphQLService {
     String query, {
     Map<String, dynamic>? variables,
   }) async {
-    final QueryOptions options = QueryOptions(
-      document: gql(query),
-      variables: variables ?? {},
-    );
-    _logger.info('Performing query: $query');
-    return await _retry(() => client.value.query(options));
+    try {
+      final QueryOptions options = QueryOptions(
+        document: gql(query),
+        variables: variables ?? {},
+      );
+      _logger.info('Performing query: $query');
+      return await _retry(() => client.value.query(options));
+    } catch (e, stackTrace) {
+      _logger.severe('Error performing query: $e\n$stackTrace');
+      rethrow;
+    }
   }
 
   static Future<QueryResult> performMutation(
     String mutation, {
     Map<String, dynamic>? variables,
   }) async {
-    final MutationOptions options = MutationOptions(
-      document: gql(mutation),
-      variables: variables ?? {},
-    );
-    _logger.info('Performing mutation: $mutation');
-    return await _retry(() => client.value.mutate(options));
+    try {
+      final MutationOptions options = MutationOptions(
+        document: gql(mutation),
+        variables: variables ?? {},
+      );
+      _logger.info('Performing mutation: $mutation');
+      return await _retry(() => client.value.mutate(options));
+    } catch (e, stackTrace) {
+      _logger.severe('Error performing mutation: $e\n$stackTrace');
+      rethrow;
+    }
   }
 
   static Future<QueryResult> _retry(

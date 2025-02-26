@@ -37,10 +37,15 @@ class ErrorHandler {
 
   // 設定ファイルを読み込むメソッド
   static Future<Map<String, dynamic>> _loadConfig() async {
-    final file = File('config.yml'); // 相対パスに変更
-    final content = await file.readAsString();
-    final yamlMap = loadYaml(content) as YamlMap;
-    return _convertYamlMapToMap(yamlMap);
+    try {
+      final file = File('config.yml'); // 相対パスに変更
+      final content = await file.readAsString();
+      final yamlMap = loadYaml(content) as YamlMap;
+      return _convertYamlMapToMap(yamlMap);
+    } catch (e, stackTrace) {
+      print('Error loading config: $e\n$stackTrace');
+      return {};
+    }
   }
 
   // エラーメッセージを表示するメソッド

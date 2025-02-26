@@ -4,18 +4,27 @@ class LocationManager {
   // 位置情報の基本機能を実装
 
   Future<Position> getCurrentLocation() async {
-    // 現在の位置情報を取得する処理
-    return await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
+    try {
+      return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+    } catch (e, stackTrace) {
+      print('Error retrieving current location: $e\n$stackTrace');
+      rethrow;
+    }
   }
 
   void listenLocationChanges(Function(Position) onChange) {
-    // 位置情報の変化を監視する処理
     Geolocator.getPositionStream(
       locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
     ).listen((Position position) {
-      onChange(position);
+      try {
+        onChange(position);
+      } catch (e, stackTrace) {
+        print('Error in location update callback: $e\n$stackTrace');
+      }
+    }, onError: (error, stackTrace) {
+      print('Error in location stream: $error\n$stackTrace');
     });
   }
 }
