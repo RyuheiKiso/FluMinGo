@@ -20,5 +20,6 @@ FluMinGoは、Flutterを使用したフロントエンドとGolangを使用し�
 9. [依存関係](docs/tutorial/dependencies.md)
 10. [テスト方法](docs/tutorial/testing.md)
 11. [デプロイ手順](docs/tutorial/deployment.md)
+12. [共通機能アップデート時の各APIの対応](docs/tutorial/common_api_update_documentation.md)
 
 ---
