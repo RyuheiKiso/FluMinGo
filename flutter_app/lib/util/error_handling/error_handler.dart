@@ -9,6 +9,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:yaml/yaml.dart';
+import 'package:logger/logger.dart';
 
 Map<String, dynamic> _convertYamlMapToMap(YamlMap yamlMap) {
   final map = <String, dynamic>{};
@@ -28,6 +29,7 @@ Map<String, dynamic> _convertYamlMapToMap(YamlMap yamlMap) {
 class ErrorHandler {
   static late String logFilePath;
   static late File logFile;
+  static final Logger _logger = Logger();
 
   // 初期化メソッド
   static Future<void> initialize({File? file}) async {
@@ -44,7 +46,7 @@ class ErrorHandler {
       final yamlMap = loadYaml(content) as YamlMap;
       return _convertYamlMapToMap(yamlMap);
     } catch (e, stackTrace) {
-      print('Error loading config: $e\n$stackTrace');
+      _logger.e('Error loading config', e, stackTrace);
       return {};
     }
   }
