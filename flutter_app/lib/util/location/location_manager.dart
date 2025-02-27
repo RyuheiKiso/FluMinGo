@@ -3,15 +3,18 @@
 // 使用方法: LocationManager().getCurrentLocation()
 
 import 'package:geolocator/geolocator.dart';
+import 'package:logger/logger.dart';
 
 class LocationManager {
+  final Logger _logger = Logger();
+
   Future<Position> getCurrentLocation() async {
     try {
       return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
     } catch (e, stackTrace) {
-      print('Error retrieving current location: $e\n$stackTrace');
+      _logger.e('Error retrieving current location', e, stackTrace);
       rethrow;
     }
   }
@@ -23,10 +26,10 @@ class LocationManager {
       try {
         onChange(position);
       } catch (e, stackTrace) {
-        print('Error in location update callback: $e\n$stackTrace');
+        _logger.e('Error in location update callback', e, stackTrace);
       }
     }, onError: (error, stackTrace) {
-      print('Error in location stream: $error\n$stackTrace');
+      _logger.e('Error in location stream', error, stackTrace);
     });
   }
 }
