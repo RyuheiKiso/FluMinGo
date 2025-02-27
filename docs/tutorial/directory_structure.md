@@ -142,6 +142,8 @@ FluMinGo/flutter_app/lib
   認証、DB接続、ロギングなど基盤機能を管理
 - **個別API (interface_adapter / use_case / entities)**  
   API仕様、ビジネスロジック、データモデルを分離
+- **ユニットテスト (unit_tests)**  
+  各モジュールのユニットテストを管理
 
 ### golang(共通機能-API)
 システム全体で共通利用する基盤機能は、インターフェース（契約）で定義し、その実装は内部に隠蔽、またDIにより各依存先に注入されます。
@@ -257,8 +259,26 @@ FluMinGo/golang/common_api
     └── api_test_automation.go (APIオーケストレーションと統合テスト自動化プラットフォーム)
 ```
 
-### golang(個別API_interface and adapter)
+### golang(ユニットテスト)
+各モジュールのユニットテストは、以下のディレクトリに配置されています。
 
+```plaintext
+FluMinGo/golang/unit_tests
+├── auth
+│   ├── auth_handler_test.go      (認証ハンドラーのテスト)
+│   ├── auth_service_test.go      (認証サービスのテスト)
+│   └── auth_repository_test.go   (認証リポジトリのテスト)
+├── db
+│   ├── db_connection_test.go     (DB接続のテスト)
+│   └── db_queries_test.go        (DBクエリ管理のテスト)
+├── gateway
+│   ├── gateway_handler_test.go   (APIゲートウェイハンドラーのテスト)
+│   ├── authorization_test.go     (認可処理のテスト)
+│   └── rate_limiter_test.go      (レートリミッターのテスト)
+...existing code...
+```
+
+### golang(個別API_interface and adapter)
 個別APIでは、インターフェースと具象実装を分離しています。利用側は、DIコンテナにより契約（インターフェース）経由で依存性が注入され、実装の変更は内部にとどまります。
 
 ```plaintext
@@ -275,7 +295,6 @@ FluMinGo/golang/specific_api/interface_adapter
 ```
 
 ### golang(個別API_use case)
-
 ビジネスロジックはユースケースとして実装され、内部の変更が外部契約に影響を及ぼさないように分離されています。
 
 ```plaintext
@@ -292,7 +311,6 @@ FluMinGo/golang/specific_api/use_case
 ```
 
 ### golang(個別API_entities)
-
 データモデルはエンティティとして管理され、リポジトリの実装もインターフェースに準拠する形で提供されます。
 
 ```plaintext
