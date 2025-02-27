@@ -4,6 +4,7 @@
 
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:logger/logger.dart';
 
 // SQLiteヘルパー
 class SQLiteHelper {
@@ -13,6 +14,7 @@ class SQLiteHelper {
   SQLiteHelper._internal();
 
   Database? _database;
+  final Logger _logger = Logger();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
@@ -32,8 +34,7 @@ class SQLiteHelper {
         },
       );
     } catch (e, stackTrace) {
-      // Log error using BaseManager's logger if available, otherwise print
-      print('Error initializing database: $e\n$stackTrace');
+      _logger.e('Error initializing database', e, stackTrace);
       rethrow;
     }
   }
