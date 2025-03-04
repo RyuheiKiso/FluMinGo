@@ -22,5 +22,13 @@
 | created_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                      |
 | updated_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時    |
 
+## サンプルデータ
+
+| id | build_number    | branch       | status  | triggered_by | started_at           | finished_at          | log           | created_at           | updated_at           |
+|----|-----------------|--------------|---------|--------------|----------------------|----------------------|---------------|----------------------|----------------------|
+| 1  | build_20231001  | main         | success | user1        | 2023-10-01 00:00:00  | 2023-10-01 01:00:00  | Build success | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | build_20231105  | feature-xyz  | failed  | user2        | 2023-11-05 00:00:00  | 2023-11-05 01:00:00  | Build failed  | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | build_20231201  | main         | running | user3        | 2023-12-01 00:00:00  | NULL                 | NULL          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+
 ## 備考
 - ビルドログはビルドの成功率や障害原因の特定に利用できます.
