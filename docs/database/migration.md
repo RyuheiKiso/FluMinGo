@@ -15,6 +15,17 @@
 | migration_name | VARCHAR(255)  | NOT NULL, UNIQUE                          | マイグレーションの名称またはファイル名    |
 | applied_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | マイグレーション適用日時               |
 
+## サンプルデータ
+
+| id | migration_name  | applied_at           |
+|----|-----------------|----------------------|
+| 1  | init_schema.sql | 2023-10-01 00:00:00  |
+| 2  | add_index.sql   | 2023-11-05 00:00:00  |
+| 3  | update_users.sql| 2023-12-01 00:00:00  |
+| 4  | add_new_feature.sql | 2023-12-15 00:00:00  |
+| 5  | add_feature_flag.sql| 2023-12-20 00:00:00  |
+| 6  | update_index.sql    | 2023-12-25 00:00:00  |
+
 ## 備考
 - マイグレーションの管理は、実行済みのスクリプトの記録や再実行防止に利用します.
 - スクリプトのバージョン管理および、必要に応じたロールバック戦略の策定を推奨します.

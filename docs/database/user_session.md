@@ -18,6 +18,17 @@
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                       |
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時   |
 
+## サンプルデータ
+
+| id | user_id | session_token               | expires_at           | created_at           | updated_at           |
+|----|---------|-----------------------------|----------------------|----------------------|----------------------|
+| 1  | 10      | sessiontoken_example_1234  | 2023-10-10 23:59:59  | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | 10      | sessiontoken_example_5678  | 2023-12-31 23:59:59  | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | 11      | sessiontoken_example_9999  | 2024-01-15 23:59:59  | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | 12      | sessiontoken_example_aaaa  | 2024-02-15 23:59:59  | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | 13      | sessiontoken_example_bbbb  | 2024-03-01 23:59:59  | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | 14      | sessiontoken_example_cccc  | 2024-03-15 23:59:59  | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+
 ## 備考
 - `user_id`は`user`テーブルの主キーへの外部キーとして設定してください。
 - セッショントークンは十分なランダム性を持たせ、セキュリティ強化を行ってください。

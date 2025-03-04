@@ -19,6 +19,17 @@
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                       |
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時   |
 
+## サンプルデータ
+
+| id | user_id | token             | description         | expires_at           | created_at           | updated_at           |
+|----|---------|-------------------|---------------------|----------------------|----------------------|----------------------|
+| 1  | 10      | token_example_123 | 初回APIトークン     | 2023-12-31 23:59:59  | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | 11      | token_example_456 | Secondary API token | 2024-01-31 23:59:59  | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | 12      | token_example_789 | Tertiary API token  | 2024-02-28 23:59:59  | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | 13      | token_example_999 | Quaternary API token| 2024-03-31 23:59:59  | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | 14      | token_example_cccc| Fifth API token     | 2024-04-30 23:59:59  | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | 15      | token_example_dddd| Sixth API token     | 2024-05-31 23:59:59  | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+
 ## 備考
 - トークンは必要に応じてローテーションおよび失効管理を実装してください.
 - トークン利用状況の監視、失効時のアクセス制限の強化などセキュリティ対策も合わせて検討してください.

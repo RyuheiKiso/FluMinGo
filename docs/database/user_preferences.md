@@ -18,6 +18,17 @@
 | created_at   | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP | レコード作成日時             |
 | updated_at   | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時 |
 
+## サンプルデータ
+
+| id | user_id | preference_key | preference_value | created_at           | updated_at           |
+|----|---------|----------------|------------------|----------------------|----------------------|
+| 1  | 10      | theme          | dark             | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | 10      | language       | en               | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | 11      | notification   | enabled          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | 12      | timezone       | JST              | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | 13      | font_size      | medium           | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | 14      | layout         | compact          | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+
 ## 備考
 - `user_id`は`user`テーブルへの外部キーとして設定してください.
 - ユーザーごとに複数の設定を持たせる設計としています.

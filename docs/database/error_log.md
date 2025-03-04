@@ -18,6 +18,17 @@
 | occurred_at   | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | エラー発生日時                       |
 | created_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                     |
 
+## サンプルデータ
+
+| id | error_code | error_message         | stack_trace         | occurred_at           | created_at           | updated_at           |
+|----|------------|-----------------------|---------------------|-----------------------|----------------------|----------------------|
+| 1  | E1001      | NullPointer Exception | ...                 | 2023-10-01 00:00:00   | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | E2002      | Index out of range    | sample_stack_trace  | 2023-11-05 00:00:00   | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | E3003      | Database timeout      | timeout_trace       | 2023-12-01 00:00:00   | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | E4004      | Service unavailable   | trace_info          | 2023-12-15 00:00:00   | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | E5005      | Service timeout       | timeout_details     | 2023-12-20 00:00:00   | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | E6006      | Connection refused    | conn_refused_trace  | 2023-12-25 00:00:00   | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+
 ## 備考
 - エラーの重要度や発生箇所に応じたログ解析に利用できます.
 - エラーコード体系の標準化、及びアラート通知システムとの連携を検討してください.

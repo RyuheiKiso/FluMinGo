@@ -18,6 +18,17 @@
 | created_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                            |
 | updated_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時    |
 
+## サンプルデータ
+
+| id | feature_name    | is_enabled | description         | created_at           | updated_at           |
+|----|-----------------|------------|---------------------|----------------------|----------------------|
+| 1  | new_dashboard   | TRUE       | 新ダッシュボード    | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | beta_feature    | FALSE      | Beta機能テスト用    | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | experimental    | TRUE       | 実験的機能          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | dark_mode       | TRUE       | ダークモード機能    | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | experimental_feature | FALSE  | 実験的な新機能      | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | beta_dashboard       | TRUE   | β版ダッシュボード機能 | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+
 ## 備考
 - フラグ管理により、リリース前や段階的な機能提供が容易になります.
 - フラグ変更時のキャッシュ無効化や即時反映を実現する仕組みの検討を推奨します.

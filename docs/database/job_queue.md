@@ -33,3 +33,14 @@
 ## 固定値一覧
 - status: pending, processing, completed, failed
 - job_type: 例）email_dispatch
+
+## サンプルデータ
+
+| id | job_type         | payload               | status     | attempt_count | error_message | created_at           | updated_at           |
+|----|------------------|-----------------------|------------|---------------|---------------|----------------------|----------------------|
+| 1  | email_dispatch   | {"to": "test@ex.com"} | pending    | 0             | NULL          | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | data_backup      | {"path": "/backup"}   | processing | 1             | NULL          | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
+| 3  | report_generate  | {"report": "monthly"} | pending    | 0             | NULL          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | data_export      | {"export": "yearly"}  | pending    | 0             | NULL          | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
+| 5  | data_migration   | {"migration": "user_data"} | pending | 0    | NULL          | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
+| 6  | cleanup_task     | {"task": "old_logs"}       | pending | 0 | NULL | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
