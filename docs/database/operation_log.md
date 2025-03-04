@@ -21,5 +21,7 @@
 ## 備考
 
 - `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください。
+-- ALTER TABLE operation_log ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
+-- CREATE INDEX idx_operation_user ON operation_log(user_id);
 - 適切なデータ整合性チェックを実装してください。
 - ログは監査・トラブルシュート目的で利用します。保管期間やアーカイブポリシーの策定を検討してください。
