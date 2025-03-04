@@ -19,7 +19,7 @@
 
 ## 備考
 - 姓と名の組み合わせでの一意性を確認する場合は、複合ユニーク制約を設定してください。
-- パスワードは必ずハッシュ化して保存します。
+-- ALTER TABLE user ADD CONSTRAINT unique_full_name UNIQUE (last_name, first_name);
 
 ## サンプルデータ
 ```sql
