@@ -43,6 +43,12 @@ go mod tidy
 psql -U postgres -c "CREATE DATABASE flumingo;"
 ```
 
+#### データの初期化
+- 初期データをデータベースに挿入するためのSQLスクリプトを実行します。
+```bash
+psql -U postgres -d flumingo -f path/to/initial_data.sql
+```
+
 ### 4. Docker環境でのセットアップ
 - Docker Composeを使用して、開発環境を迅速に構築します。
 - 各サービス（フロントエンド、バックエンド、データベース）をコンテナ化し、依存関係を管理します。
@@ -75,6 +81,8 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+    volumes:
+      - ./path/to/initial_data.sql:/docker-entrypoint-initdb.d/initial_data.sql
 ```
 
 ### 5. 環境変数の設定
