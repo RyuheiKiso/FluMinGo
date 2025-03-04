@@ -25,5 +25,6 @@
 ## 備考
 
 - `user_id` は `user` テーブルの主キーへの外部キーとして設定してください。
+-- ALTER TABLE audit_log ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
 - 変更前後の状態はアプリケーションの要件に応じて JSON 形式などで保存することも検討してください。
 - 監査ログはセキュリティやコンプライアンスの観点から重要なデータとなるため、適切なアクセス制御と保管方針を制定してください。
