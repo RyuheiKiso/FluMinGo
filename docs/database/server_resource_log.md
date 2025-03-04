@@ -23,6 +23,11 @@
 | created_at       | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                             |
 | updated_at       | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時                |
 
+## サンプルデータ
+| id | cpu_usage | memory_usage | logged_at            | created_at           |
+|----|-----------|--------------|----------------------|----------------------|
+| 1  | 75.3      | 65.5         | 2023-10-01 10:00:00  | 2023-10-01 10:00:00  |
+
 ## 備考
 - 定期バッチや監視システムと連携し、定期的なデータ取得・登録を行ってください.
 - 長期間の保存時は、パーティション管理や集計テーブルとの連携を検討してください.

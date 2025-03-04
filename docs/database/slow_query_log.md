@@ -20,5 +20,10 @@
 | query_date     | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | クエリ実行日時                            |
 | created_at     | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                          |
 
+## サンプルデータ
+| id | query_text           | execution_time_ms | executed_at          | created_at           |
+|----|----------------------|-------------------|----------------------|----------------------|
+| 1  | SELECT * FROM orders | 1200              | 2023-10-01 12:00:00  | 2023-10-01 12:00:00  |
+
 ## 備考
 - 定期的に集計・分析を実施し、パフォーマンスのボトルネック特定にご活用ください。

@@ -21,5 +21,10 @@
 | created_at    | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | ログ記録日時                                |
 | updated_at    | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | ログ更新日時            |
 
+## サンプルデータ
+| id | user_id | action | page  | created_at           |
+|----|---------|--------|-------|----------------------|
+| 1  | 1       | click  | /home | 2023-10-01 10:00:00  |
+
 ## 備考
 - 定期的な集計・分析により、UI改善やユーザー行動分析の基盤として活用してください.

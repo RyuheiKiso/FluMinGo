@@ -21,5 +21,11 @@
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP     | 投稿日時                                        |
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時          |
 
+## サンプルデータ
+| id | user_id | feedback_text           | rating | created_at           |
+|----|---------|-------------------------|--------|----------------------|
+| 1  | 1       | UIが使いやすいです。    | 5      | 2023-01-15 00:00:00  |
+| 1  | 1       | "Great app!"            | 5      | 2023-10-01 00:00:00  |
+
 ## 備考
 - 集計結果により改善ポイントの傾向分析が可能です.

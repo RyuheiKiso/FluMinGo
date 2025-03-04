@@ -21,5 +21,10 @@
 | created_at  | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP                    | レコード作成日時                              |
 | updated_at  | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
+## サンプルデータ
+| id | alert_type | message                     | occurred_at          | created_at           |
+|----|------------|-----------------------------|----------------------|----------------------|
+| 1  | intrusion  | 不審なログイン試行検出       | 2023-10-01 11:00:00  | 2023-10-01 11:00:00  |
+
 ## 備考
 - 迅速なセキュリティ対応のため、リアルタイムモニタリングや他システムとの連携を検討してください.

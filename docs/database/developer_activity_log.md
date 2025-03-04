@@ -22,6 +22,11 @@
 | created_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                        |
 | updated_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
+## サンプルデータ
+| id | developer_id | activity_type   | target_resource | occurred_at          | created_at           |
+|----|--------------|-----------------|-----------------|----------------------|----------------------|
+| 1  | 10           | CONFIG_UPDATE   | system_setting  | 2023-10-01 12:00:00  | 2023-10-01 12:00:00  |
+
 ## 備考
 - `developer_id`は`user`テーブルの主キーへの外部キーとして設定してください。
 - 緊急対応やデバッグ作業など、運用時の重要イベントの記録により、後から原因を追跡可能にします.

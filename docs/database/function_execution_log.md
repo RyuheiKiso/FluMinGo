@@ -23,5 +23,10 @@
 | created_at        | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                           |
 | updated_at        | DATETIME       | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時           |
 
+## サンプルデータ
+| id | function_name  | execution_time_ms | occurred_at          | created_at           | updated_at           |
+|----|----------------|-------------------|----------------------|----------------------|----------------------|
+| 1  | calcSum        | 15.123            | 2023-10-01 10:00:00  | 2023-10-01 10:00:00  | 2023-10-01 10:00:00  |
+
 ## 備考
 - 定期的な集計や分析により、最適化の必要な関数を特定してください.

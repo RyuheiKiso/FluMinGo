@@ -21,6 +21,11 @@
 | created_at  | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP   | レコード作成日時                        |
 | updated_at  | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
+## サンプルデータ
+| id | term | definition                                     | created_at           |
+|----|------|------------------------------------------------|----------------------|
+| 1  | API  | Application Programming Interface              | 2023-10-01 00:00:00  |
+
 ## 備考
 - dict_type と dict_key の組み合わせで一意性を検討してください。
 - 固定参照値を管理し、システム間での統一的なデータ利用を促進します.

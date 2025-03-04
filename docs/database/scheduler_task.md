@@ -20,5 +20,10 @@
 | created_at   | DATETIME          | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                       |
 | updated_at   | DATETIME          | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時         |
 
+## サンプルデータ
+| id | task_name     | schedule      | last_run_at          | next_run_at          | status    | created_at           | updated_at           |
+|----|---------------|---------------|----------------------|----------------------|-----------|----------------------|----------------------|
+| 1  | daily_backup  | 0 2 * * *     | 2023-10-01 02:00:00  | 2023-10-02 02:00:00  | pending   | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+
 ## 備考
 - Cron形式のスケジュール設定を採用する場合、対応する解析ロジックの実装を検討してください.

@@ -34,11 +34,6 @@
 
 ## サンプルデータ
 
-| id | last_name | first_name | display_name | email               | password_hash  | created_at           | updated_at           |
+| id | last_name | first_name | display_name | email               | password_hash | created_at           | updated_at           |
 |----|-----------|------------|--------------|---------------------|----------------|----------------------|----------------------|
-| 1  | 山田      | 太郎       | Taro         | taro@example.com    | hashed_pwd1    | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
-| 2  | 佐藤      | 次郎       | Jiro         | jiro@example.com    | hashed_pwd2    | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
-| 3  | 鈴木      | 三郎       | Saburo       | suzuki@example.com  | hashed_pwd3    | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
-| 4  | 高橋      | 四郎       | Shiro        | takahashi@example.com | hashed_pwd4  | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
-| 5  | 伊藤      | 五郎       | Goro         | goro@example.com      | hashed_pwd5 | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
-| 6  | 佐々木    | 六郎       | Rokuro       | rokuro@example.com    | hashed_pwd6 | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+| 1  | 山田      | 太郎       | yamataro     | yamataro@example.com| hash1          | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |

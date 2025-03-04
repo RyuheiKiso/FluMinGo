@@ -21,6 +21,11 @@
 | created_at  | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                         |
 | updated_at  | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時         |
 
+## サンプルデータ
+| id | enum_type | enum_key | enum_value | created_at           | updated_at           |
+|----|-----------|----------|------------|----------------------|----------------------|
+| 1  | status    | active   | Active     | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+
 ## 備考
 - enum_type と enum_key の組み合わせで一意性を検討してください（必要に応じた複合ユニーク制約の導入を推奨）。
 - フロントエンド・バックエンドで共通の選択肢管理や固定値の参照にご活用ください.

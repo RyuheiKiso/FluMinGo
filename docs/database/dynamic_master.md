@@ -21,6 +21,11 @@
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP              | レコード作成日時                                  |
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時              |
 
+## サンプルデータ
+| id | domain      | attribute_key | attribute_value       | created_at           | updated_at           |
+|----|-------------|---------------|-----------------------|----------------------|----------------------|
+| 1  | ui_setting  | theme_color   | blue                  | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+
 ## 備考
 - `domain` と `attribute_key` の組み合わせで一意性を検討してください。
 - 各種動的設定やカスタム属性を柔軟に管理するための基盤としてご利用ください.

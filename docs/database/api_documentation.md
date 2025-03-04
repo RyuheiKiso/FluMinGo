@@ -21,5 +21,10 @@
 | created_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                              |
 | updated_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時      |
 
+## サンプルデータ
+| id | endpoint      | method | summary          | parameters               | request_example   | response_example   | created_at           |
+|----|---------------|--------|------------------|--------------------------|-------------------|--------------------|----------------------|
+| 1  | /api/v1/items | GET    | アイテム一覧取得 | {"limit": "number"}      | {"limit": 10}     | {"items": []}      | 2023-10-01 00:00:00  |
+
 ## 備考
 - API仕様変更時には本テーブルの内容も更新し、最新の状態を保ってください.
