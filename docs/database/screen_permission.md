@@ -20,4 +20,5 @@
 
 ## 備考
 - `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください。
-- `screen_id`は各画面に割り振られた識別子です。
+-- ALTER TABLE screen_permission ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
+-- ALTER TABLE screen_permission ADD CONSTRAINT fk_screen FOREIGN KEY (screen_id) REFERENCES screen(id);
