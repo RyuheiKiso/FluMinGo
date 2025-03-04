@@ -22,9 +22,9 @@
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時              |
 
 ## サンプルデータ
-| id | domain      | attribute_key | attribute_value       | created_at           | updated_at           |
-|----|-------------|---------------|-----------------------|----------------------|----------------------|
-| 1  | ui_setting  | theme_color   | blue                  | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| id | domain      | attribute_key | attribute_value       | is_active | created_at           | updated_at           |
+|----|-------------|---------------|-----------------------|-----------|----------------------|----------------------|
+| 1  | ui_setting  | theme_color   | blue                  | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
 
 ## 備考
 - `domain` と `attribute_key` の組み合わせで一意性を検討してください。

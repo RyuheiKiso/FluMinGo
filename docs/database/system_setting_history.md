@@ -25,6 +25,6 @@
 - `changed_by` は `user` テーブルの主キーへの外部キーとして設定してください.
 
 ## サンプルデータ
-| id | setting_key | old_value | new_value | changed_at           | created_at           |
-|----|-------------|-----------|-----------|----------------------|----------------------|
-| 1  | site_name   | OldSite   | FluMinGo  | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| id | setting_key | old_value | new_value | changed_by | change_reason | changed_at           | created_at           |
+|----|-------------|-----------|-----------|------------|---------------|----------------------|----------------------|
+| 1  | site_name   | OldSite   | FluMinGo  | 1          | Initial setup | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |

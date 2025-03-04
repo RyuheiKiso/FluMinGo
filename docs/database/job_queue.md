@@ -19,6 +19,7 @@
 | error_message  | TEXT          | DEFAULT NULL                              | エラー発生時のメッセージ                      |
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | ジョブ登録日時                              |
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | ジョブ更新日時    |
+| priority       | INT           | NOT NULL, DEFAULT 0                       | ジョブの優先度（0が最も低い）               |
 
 ## 備考
 - 失敗したジョブの再試行などの運用ルールに応じた拡張を検討してください.
@@ -36,11 +37,11 @@
 
 ## サンプルデータ
 
-| id | job_type         | payload               | status     | attempt_count | error_message | created_at           | updated_at           |
-|----|------------------|-----------------------|------------|---------------|---------------|----------------------|----------------------|
-| 1  | email_dispatch   | {"to": "test@ex.com"} | pending    | 0             | NULL          | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
-| 2  | data_backup      | {"path": "/backup"}   | processing | 1             | NULL          | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  |
-| 3  | report_generate  | {"report": "monthly"} | pending    | 0             | NULL          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
-| 4  | data_export      | {"export": "yearly"}  | pending    | 0             | NULL          | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
-| 5  | data_migration   | {"migration": "user_data"} | pending | 0    | NULL          | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
-| 6  | cleanup_task     | {"task": "old_logs"}       | pending | 0 | NULL | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+| id | job_type         | payload               | status     | attempt_count | error_message | created_at           | updated_at           | priority |
+|----|------------------|-----------------------|------------|---------------|---------------|----------------------|----------------------|----------|
+| 1  | email_dispatch   | {"to": "test@ex.com"} | pending    | 0             | NULL          | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  | 0        |
+| 2  | data_backup      | {"path": "/backup"}   | processing | 1             | NULL          | 2023-11-05 00:00:00  | 2023-11-05 00:00:00  | 1        |
+| 3  | report_generate  | {"report": "monthly"} | pending    | 0             | NULL          | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  | 0        |
+| 4  | data_export      | {"export": "yearly"}  | pending    | 0             | NULL          | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  | 0        |
+| 5  | data_migration   | {"migration": "user_data"} | pending | 0    | NULL          | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  | 0        |
+| 6  | cleanup_task     | {"task": "old_logs"}       | pending | 0 | NULL | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  | 0        |

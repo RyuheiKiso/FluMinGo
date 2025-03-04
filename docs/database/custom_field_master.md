@@ -27,3 +27,9 @@
 ## 備考
 - `entity_name` と `field_key` の組み合わせで一意性を検討してください。
 - 各種エンティティに対してカスタム項目による拡張が柔軟に行える基盤として活用してください.
+
+## サンプルデータ
+| id | entity_name | field_key | field_label | field_type | default_value | validation_rules | is_active | created_at           | updated_at           |
+|----|-------------|-----------|-------------|------------|---------------|------------------|-----------|----------------------|----------------------|
+| 1  | user        | age       | 年齢        | number     | NULL          | {"min": 0}       | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | product     | color     | 色          | text       | "red"         | {"required": true}| TRUE      | 2023-11-01 00:00:00  | 2023-11-01 00:00:00  |

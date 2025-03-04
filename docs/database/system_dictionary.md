@@ -22,9 +22,9 @@
 | updated_at  | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
 ## サンプルデータ
-| id | term | definition                                     | created_at           |
-|----|------|------------------------------------------------|----------------------|
-| 1  | API  | Application Programming Interface              | 2023-10-01 00:00:00  |
+| id | dict_type | dict_key | dict_value | is_active | created_at           | updated_at           |
+|----|-----------|----------|------------|-----------|----------------------|----------------------|
+| 1  | API       | API      | Application Programming Interface | TRUE | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
 
 ## 備考
 - dict_type と dict_key の組み合わせで一意性を検討してください。

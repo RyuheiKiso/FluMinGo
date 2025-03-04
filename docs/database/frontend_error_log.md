@@ -25,9 +25,9 @@
 | updated_at       | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時            |
 
 ## サンプルデータ
-| id | page_url              | browser  | error_message            | occurred_at          | created_at           |
-|----|-----------------------|----------|--------------------------|----------------------|----------------------|
-| 1  | https://example.com   | Chrome   | Uncaught ReferenceError  | 2023-10-01 09:30:00  | 2023-10-01 09:30:00  |
+| id | page_url              | browser  | os   | error_message            | stack_trace | additional_data | occurred_at          | created_at           | updated_at           |
+|----|-----------------------|----------|------|--------------------------|-------------|-----------------|----------------------|----------------------|----------------------|
+| 1  | https://example.com   | Chrome   | NULL | Uncaught ReferenceError  | NULL        | NULL            | 2023-10-01 09:30:00  | 2023-10-01 09:30:00  | 2023-10-01 09:30:00  |
 
 ## 備考
 - ユーザー環境の情報を元に、フロントエンドの改善ポイントを把握してください。

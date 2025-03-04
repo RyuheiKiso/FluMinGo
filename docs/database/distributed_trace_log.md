@@ -27,9 +27,9 @@
 | updated_at      | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時           |
 
 ## サンプルデータ
-| id | trace_id         | span_id  | service_name   | operation   | start_time           | created_at           |
-|----|------------------|----------|----------------|-------------|----------------------|----------------------|
-| 1  | trace_abc123     | span_1   | OrderService | processOrder | 2023-10-01 11:00:00  | 2023-10-01 11:00:00  |
+| id | trace_id         | span_id  | service_name   | operation   | start_time           | end_time             | created_at           |
+|----|------------------|----------|----------------|-------------|----------------------|----------------------|----------------------|
+| 1  | trace_abc123     | span_1   | OrderService   | processOrder| 2023-10-01 11:00:00  | 2023-10-01 11:05:00  | 2023-10-01 11:00:00  |
 
 ## 備考
 - 分散トレーシングシステム（例: OpenTelemetry など）と連携し、自動でデータを記録する仕組みを検討してください.
