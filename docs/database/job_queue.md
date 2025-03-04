@@ -26,3 +26,7 @@
 - ジョブキューに優先度カラムを追加し、処理順序を最適化する。
 - 失敗時の再試行回数や間隔を設定し、適切なエラー処理を実装する。
 - 並列処理のためのロック機構やキュー管理サーバーの利用を検討する。
+
+## 固定値一覧
+- status: pending, processing, completed, failed
+- job_type: 例）email_dispatch

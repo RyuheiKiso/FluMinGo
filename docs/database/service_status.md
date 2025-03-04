@@ -23,3 +23,7 @@
 ## 解決策
 - 定期的なチェック処理により、`last_checked` および `status` を更新する仕組みを実装してください。
 - 状態異常時には、詳細情報 (`details`) にエラー情報等を記録し、通知処理を連携することを推奨します.
+
+## 固定値一覧
+- status: UP, DOWN, UNKNOWN
+- service_name: payment_gateway など
