@@ -19,6 +19,12 @@
 | updated_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時                   |
 
 ## 備考
-- `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください。
+- `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください.
+- ユーザー権限のデフォルト設定や、グループ権限との併用に留意した設計を検討してください.
+- user_idおよびscreen_idに対する外部キー制約の有効化と、初期権限設定の明示的初期化を検討すること.
 -- ALTER TABLE screen_permission ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
 -- ALTER TABLE screen_permission ADD CONSTRAINT fk_screen FOREIGN KEY (screen_id) REFERENCES screen(id);
+
+## 解決策
+- データベース側で外部キー制約を定義し、データ整合性を確保する。
+- 初期権限値を定義し、必要に応じたデフォルト設定をアプリケーションで管理する。

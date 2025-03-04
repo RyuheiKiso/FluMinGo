@@ -20,8 +20,14 @@
 
 ## 備考
 
-- `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください。
+- `user_id`は`user`テーブルの主キーを参照する外部キーとして設定してください.
+- 操作ログについて、IPアドレスの正規化や監査ログとの連携、及びエラー時の詳細な記録を推奨します.
 -- ALTER TABLE operation_log ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
 -- CREATE INDEX idx_operation_user ON operation_log(user_id);
-- 適切なデータ整合性チェックを実装してください。
-- ログは監査・トラブルシュート目的で利用します。保管期間やアーカイブポリシーの策定を検討してください。
+- 適切なデータ整合性チェックを実装してください.
+- ログは監査・トラブルシュート目的で利用します。保管期間やアーカイブポリシーの策定を検討してください.
+- 外部キー制約とインデックス（例: CREATE INDEX idx_operation_user ON operation_log(user_id);）を有効にすることを推奨します.
+
+## 解決策
+- 外部キーおよびインデックスの導入により、ログデータの整合性と検索効率を向上させる。
+- 定期的なログのローテーションとアーカイブポリシーを策定する。

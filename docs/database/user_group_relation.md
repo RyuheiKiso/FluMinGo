@@ -17,6 +17,10 @@
 
 ## 備考
 - 1人のユーザーが複数のグループに所属可能です。
-- ユーザーに直接付与する権限設定と併用し、柔軟なアクセス制御を実現します。
--- ALTER TABLE user_group_relation ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
--- ALTER TABLE user_group_relation ADD CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES permission_group(id);
+- ユーザーに直接付与する権限設定と併用し、柔軟なアクセス制御を実現します.
+- グループ内での役割(role)の定義について、統一性や変更履歴の管理を検討してください.
+- 外部キー制約（fk_user, fk_group）の適用や、実装時の一貫性チェックを必ず行うこと.
+
+## 解決策
+- ユーザーおよびグループへの外部キー制約を有効化する（必要に応じたインデックスも追加）。
+- 役割情報は別テーブルや履歴管理の仕組みを利用して変更履歴を追跡する。

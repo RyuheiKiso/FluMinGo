@@ -19,7 +19,15 @@
 
 ## 備考
 - 姓と名の組み合わせでの一意性を確認する場合は、複合ユニーク制約を設定してください。
--- ALTER TABLE user ADD CONSTRAINT unique_full_name UNIQUE (last_name, first_name);
+- パスワードのセキュリティ向上のため、bcryptやargon2などのハッシュアルゴリズムの利用を推奨します。
+- emailやdisplay_nameへのインデックス追加も検討し、検索パフォーマンス向上を図ってください。
+- 姓と名の組み合わせの一意性確保例:
+  ALTER TABLE user ADD UNIQUE (last_name, first_name);
+- email, display_nameへのインデックス追加も検討すること（例: CREATE INDEX idx_email ON user(email);）
+
+## 解決策
+- 複合ユニーク制約およびインデックス（例：idx_email）を設計と実装に反映する。
+- セキュリティ強化のため、パスワードハッシュアルゴリズムのアップデートを検討する。
 
 ## サンプルデータ
 ```sql
