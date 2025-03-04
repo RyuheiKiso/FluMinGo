@@ -18,3 +18,5 @@
 ## 備考
 - 1人のユーザーが複数のグループに所属可能です。
 - ユーザーに直接付与する権限設定と併用し、柔軟なアクセス制御を実現します。
+-- ALTER TABLE user_group_relation ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id);
+-- ALTER TABLE user_group_relation ADD CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES permission_group(id);
