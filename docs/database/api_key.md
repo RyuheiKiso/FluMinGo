@@ -41,3 +41,7 @@
 | 4  | 13      | asdfgh123456  | Quaternary API key  | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
 | 5  | 14      | new_key_777777| New API key sample  | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
 | 6  | 15      | another_key_888888| Another API key sample | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+| 7  | 16      | key_example_999999| Seventh API key sample | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  |
+| 8  | 17      | key_example_aaaaaa| Eighth API key sample | 2024-01-05 00:00:00  | 2024-01-05 00:00:00  |
+| 9  | 18      | key_example_bbbbbb| Ninth API key sample | 2024-01-10 00:00:00  | 2024-01-10 00:00:00  |
+| 10 | 19      | key_example_cccccc| Tenth API key sample | 2024-01-15 00:00:00  | 2024-01-15 00:00:00  |

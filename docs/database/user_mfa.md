@@ -25,6 +25,8 @@
 | id | user_id | provider | mfa_secret       | recovery_codes | is_enabled | created_at           | updated_at           |
 |----|---------|----------|------------------|----------------|------------|----------------------|----------------------|
 | 1  | 1       | TOTP     | secret_example_1 | ["code1", "code2"] | TRUE       | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | 2       | SMS      | secret_example_2 | ["code3", "code4"] | FALSE      | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 3  | 3       | TOTP     | secret_example_3 | ["code5", "code6"] | TRUE       | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
 
 ## 備考
 - `user_id` は `user` テーブルの主キーへの外部キーとして設定してください。

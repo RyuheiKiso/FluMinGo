@@ -48,3 +48,5 @@
 | 4  | data_export      | {"export": "yearly"}  | pending    | 0             | NULL          | 2023-12-15 00:00:00  | 2023-12-15 00:00:00  | 0        |
 | 5  | data_migration   | {"migration": "user_data"} | pending | 0    | NULL          | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  | 0        |
 | 6  | cleanup_task     | {"task": "old_logs"}       | pending | 0 | NULL | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  | 0        |
+| 7  | data_cleanup    | {"task": "cleanup"}       | pending    | 0             | NULL          | 2023-12-30 00:00:00  | 2023-12-30 00:00:00  | 0        |
+| 8  | user_sync       | {"sync": "users"}         | pending    | 0             | NULL          | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  | 0        |

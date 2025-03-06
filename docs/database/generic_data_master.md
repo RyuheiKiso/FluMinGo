@@ -33,3 +33,8 @@
 | id | category | data_key  | data_value        | metadata | description | is_active | created_at           | updated_at           |
 |----|----------|-----------|-------------------|----------|-------------|-----------|----------------------|----------------------|
 | 1  | option   | currency  | USD               | NULL     | 通貨設定     | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | config   | timezone  | UTC+9             | NULL     | タイムゾーン設定 | TRUE      | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 3  | default  | language  | Japanese          | NULL     | デフォルト言語設定 | TRUE      | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
+| 4  | option   | theme     | Light             | NULL     | テーマ設定     | TRUE      | 2023-10-04 00:00:00  | 2023-10-04 00:00:00  |
+| 5  | config   | retry     | 3                 | NULL     | リトライ回数設定 | TRUE      | 2023-10-05 00:00:00  | 2023-10-05 00:00:00  |
+| 6  | default  | currency  | JPY               | NULL     | デフォルト通貨設定 | TRUE      | 2023-10-06 00:00:00  | 2023-10-06 00:00:00  |

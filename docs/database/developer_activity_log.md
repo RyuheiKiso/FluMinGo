@@ -26,6 +26,10 @@
 | id | developer_id | activity_type   | target_resource | description | occurred_at          | created_at           |
 |----|--------------|-----------------|-----------------|-------------|----------------------|----------------------|
 | 1  | 10           | CONFIG_UPDATE   | system_setting  | NULL        | 2023-10-01 12:00:00  | 2023-10-01 12:00:00  |
+| 2  | 11           | DEBUG_START     | api_key         | NULL        | 2023-10-02 13:00:00  | 2023-10-02 13:00:00  |
+| 3  | 12           | DEBUG_END       | api_key         | NULL        | 2023-10-03 14:00:00  | 2023-10-03 14:00:00  |
+| 4  | 13           | EMERGENCY_FIX   | database        | NULL        | 2023-10-04 15:00:00  | 2023-10-04 15:00:00  |
+| 5  | 14           | CONFIG_UPDATE   | feature_toggle  | NULL        | 2023-10-05 16:00:00  | 2023-10-05 16:00:00  |
 
 ## 備考
 - `developer_id`は`user`テーブルの主キーへの外部キーとして設定してください。

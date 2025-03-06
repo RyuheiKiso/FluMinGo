@@ -45,3 +45,6 @@
 | id | last_name | first_name | display_name | email               | password_hash | created_at           | updated_at           |
 |----|-----------|------------|--------------|---------------------|----------------|----------------------|----------------------|
 | 1  | 山田      | 太郎       | yamataro     | yamataro@example.com| hash1          | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | 佐藤      | 次郎       | satojiro     | satojiro@example.com| hash2          | 2023-11-01 00:00:00  | 2023-11-01 00:00:00  |
+| 3  | 鈴木      | 三郎       | suzukisaburo | suzukisaburo@example.com| hash3      | 2023-12-01 00:00:00  | 2023-12-01 00:00:00  |
+| 4  | 高橋      | 四郎       | takahashishiro | takahashishiro@example.com| hash4  | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  |

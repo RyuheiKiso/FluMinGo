@@ -28,6 +28,10 @@
 | 4  | add_new_feature.sql | 2023-12-15 00:00:00  |
 | 5  | add_feature_flag.sql| 2023-12-20 00:00:00  |
 | 6  | update_index.sql    | 2023-12-25 00:00:00  |
+| 7  | remove_column.sql   | 2024-01-05 00:00:00  |
+| 8  | add_constraint.sql  | 2024-01-10 00:00:00  |
+| 9  | modify_table.sql    | 2024-01-15 00:00:00  |
+| 10 | drop_table.sql      | 2024-01-20 00:00:00  |
 
 ## 備考
 - マイグレーションの管理は、実行済みのスクリプトの記録や再実行防止に利用します.

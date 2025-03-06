@@ -34,3 +34,6 @@
 | id | lookup_category | lookup_key   | lookup_value | is_active | created_at           | updated_at           |
 |----|-----------------|--------------|--------------|-----------|----------------------|----------------------|
 | 1  | country         | country_code | Japan        | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | currency        | currency_code| JPY          | TRUE      | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 3  | status          | active       | Active       | TRUE      | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
+| 4  | status          | inactive     | Inactive     | TRUE      | 2023-10-04 00:00:00  | 2023-10-04 00:00:00  |

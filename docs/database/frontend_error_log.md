@@ -28,6 +28,11 @@
 | id | page_url              | browser  | os   | error_message            | stack_trace | additional_data | occurred_at          | created_at           | updated_at           |
 |----|-----------------------|----------|------|--------------------------|-------------|-----------------|----------------------|----------------------|----------------------|
 | 1  | https://example.com   | Chrome   | NULL | Uncaught ReferenceError  | NULL        | NULL            | 2023-10-01 09:30:00  | 2023-10-01 09:30:00  | 2023-10-01 09:30:00  |
+| 2  | https://example.com   | Firefox  | NULL | TypeError: undefined is not a function | NULL | NULL | 2023-10-02 10:00:00  | 2023-10-02 10:00:00  | 2023-10-02 10:00:00  |
+| 3  | https://example.com   | Safari   | NULL | SyntaxError: Unexpected token | NULL | NULL | 2023-10-03 11:00:00  | 2023-10-03 11:00:00  | 2023-10-03 11:00:00  |
+| 4  | https://example.com   | Edge     | NULL | RangeError: Maximum call stack size exceeded | NULL | NULL | 2023-10-04 12:00:00  | 2023-10-04 12:00:00  | 2023-10-04 12:00:00  |
+| 5  | https://example.com   | Chrome   | NULL | ReferenceError: event is not defined | NULL | NULL | 2023-10-05 13:00:00  | 2023-10-05 13:00:00  | 2023-10-05 13:00:00  |
+| 6  | https://example.com   | Firefox  | NULL | TypeError: Cannot read property 'length' of undefined | NULL | NULL | 2023-10-06 14:00:00  | 2023-10-06 14:00:00  | 2023-10-06 14:00:00  |
 
 ## 備考
 - ユーザー環境の情報を元に、フロントエンドの改善ポイントを把握してください。

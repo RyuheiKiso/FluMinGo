@@ -32,3 +32,6 @@
 | id | user_id | url                                  | event_type    | secret | is_active | created_at           | updated_at           |
 |----|---------|--------------------------------------|---------------|--------|-----------|----------------------|----------------------|
 | 1  | 101     | https://example.com/webhook          | order.created | abc123 | TRUE      | 2023-10-01 12:00:00  | 2023-10-01 12:00:00  |
+| 2  | 102     | https://example.com/webhook2         | user.updated  | def456 | TRUE      | 2023-11-01 12:00:00  | 2023-11-01 12:00:00  |
+| 3  | 103     | https://example.com/webhook3         | order.cancelled | ghi789 | FALSE     | 2023-12-01 12:00:00  | 2023-12-01 12:00:00  |
+| 4  | 104     | https://example.com/webhook4         | user.deleted  | jkl012 | TRUE      | 2024-01-01 12:00:00  | 2024-01-01 12:00:00  |
