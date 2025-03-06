@@ -28,6 +28,10 @@
 | 2  | /api/v1/users | POST   | ユーザー作成     | {"name": "string"}       | {"name": "John"}  | {"id": 1, "name": "John"} | 2023-10-05 00:00:00  |
 | 3  | /api/v1/orders| PUT    | 注文更新         | {"order_id": "number"}   | {"order_id": 123} | {"status": "updated"} | 2023-10-10 00:00:00  |
 | 4  | /api/v1/products| DELETE| 商品削除         | {"product_id": "number"} | {"product_id": 456}| {"status": "deleted"} | 2023-10-15 00:00:00  |
+| 5  | /api/v1/reviews | GET    | レビュー一覧取得 | {"limit": "number"}      | {"limit": 10}     | {"reviews": []}      | 2023-10-20 00:00:00  |
+| 6  | /api/v1/comments| POST   | コメント作成     | {"text": "string"}       | {"text": "Nice!"} | {"id": 1, "text": "Nice!"} | 2023-10-25 00:00:00  |
+| 7  | /api/v1/likes   | PUT    | いいね更新       | {"like_id": "number"}    | {"like_id": 123}  | {"status": "updated"} | 2023-10-30 00:00:00  |
+| 8  | /api/v1/shares  | DELETE | シェア削除       | {"share_id": "number"}   | {"share_id": 456} | {"status": "deleted"} | 2023-11-05 00:00:00  |
 
 ## 備考
 - API仕様変更時には本テーブルの内容も更新し、最新の状態を保ってください.
