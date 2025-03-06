@@ -30,6 +30,9 @@
 - environment: production, staging
 - version: 例）v1.2.3
 
+## 関係テーブル
+- `ci_pipeline`: デプロイメントの実行元パイプライン情報を参照する場合があります。
+
 ## サンプルデータ
 
 | id | version | environment  | deployed_at          | description         | created_at           | updated_at           |
@@ -40,3 +43,5 @@
 | 4  | v1.2.6  | staging      | 2023-12-15 00:00:00  | Staging minor update| 2023-12-15 00:00:00  | 2023-12-15 00:00:00  |
 | 5  | v1.2.7  | production   | 2023-12-20 00:00:00  | Critical bug fix    | 2023-12-20 00:00:00  | 2023-12-20 00:00:00  |
 | 6  | v1.2.8  | staging      | 2023-12-25 00:00:00  | Minor update        | 2023-12-25 00:00:00  | 2023-12-25 00:00:00  |
+| 7  | v1.2.9  | production   | 2024-01-01 00:00:00  | New Year release    | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  |
+| 8  | v1.3.0  | staging      | 2024-01-05 00:00:00  | Feature update      | 2024-01-05 00:00:00  | 2024-01-05 00:00:00  |

@@ -25,7 +25,14 @@
 | id | domain      | attribute_key | attribute_value       | is_active | created_at           | updated_at           |
 |----|-------------|---------------|-----------------------|-----------|----------------------|----------------------|
 | 1  | ui_setting  | theme_color   | blue                  | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | feature_option | enable_feature_x | true             | TRUE      | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 3  | custom      | custom_attr_1 | custom_value_1        | TRUE      | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
+| 4  | ui_setting  | font_size     | 14px                  | TRUE      | 2023-10-04 00:00:00  | 2023-10-04 00:00:00  |
+| 5  | feature_option | enable_feature_y | false            | TRUE      | 2023-10-05 00:00:00  | 2023-10-05 00:00:00  |
 
 ## 備考
 - `domain` と `attribute_key` の組み合わせで一意性を検討してください。
 - 各種動的設定やカスタム属性を柔軟に管理するための基盤としてご利用ください.
+
+## 関係テーブル
+- `user_preferences`: ユーザー設定の参照データとして利用される場合があります。

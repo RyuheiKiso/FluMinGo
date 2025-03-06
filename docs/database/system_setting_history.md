@@ -24,7 +24,13 @@
 ## 備考
 - `changed_by` は `user` テーブルの主キーへの外部キーとして設定してください.
 
+## 関係テーブル
+- `user`: 設定変更を実施したユーザー情報を参照します。
+- `system_setting`: 設定変更対象の情報を参照します。
+
 ## サンプルデータ
 | id | setting_key | old_value | new_value | changed_by | change_reason | changed_at           | created_at           |
 |----|-------------|-----------|-----------|------------|---------------|----------------------|----------------------|
 | 1  | site_name   | OldSite   | FluMinGo  | 1          | Initial setup | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 2  | maintenance_mode | off  | on        | 2          | Maintenance   | 2023-11-06 00:00:00  | 2023-11-06 00:00:00  |
+| 3  | support_email | support@x.com | support@y.com | 3 | Email update | 2023-12-02 00:00:00  | 2023-12-02 00:00:00  |

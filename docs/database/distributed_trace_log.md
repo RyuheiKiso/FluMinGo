@@ -30,6 +30,13 @@
 | id | trace_id         | span_id  | service_name   | operation   | start_time           | end_time             | created_at           |
 |----|------------------|----------|----------------|-------------|----------------------|----------------------|----------------------|
 | 1  | trace_abc123     | span_1   | OrderService   | processOrder| 2023-10-01 11:00:00  | 2023-10-01 11:05:00  | 2023-10-01 11:00:00  |
+| 2  | trace_def456     | span_2   | PaymentService | processPayment | 2023-10-02 12:00:00 | 2023-10-02 12:03:00 | 2023-10-02 12:00:00 |
+| 3  | trace_ghi789     | span_3   | InventoryService | checkStock | 2023-10-03 13:00:00 | 2023-10-03 13:02:00 | 2023-10-03 13:00:00 |
+| 4  | trace_jkl012     | span_4   | ShippingService | shipOrder  | 2023-10-04 14:00:00 | 2023-10-04 14:04:00 | 2023-10-04 14:00:00 |
+| 5  | trace_mno345     | span_5   | NotificationService | sendEmail | 2023-10-05 15:00:00 | 2023-10-05 15:01:00 | 2023-10-05 15:00:00 |
 
 ## 備考
 - 分散トレーシングシステム（例: OpenTelemetry など）と連携し、自動でデータを記録する仕組みを検討してください.
+
+## 関係テーブル
+- `user`: トレース情報の実行者情報を参照する場合があります。

@@ -12,8 +12,8 @@
 | カラム名   | データ型     | 制約                                                            | 説明                                          |
 |------------|--------------|-----------------------------------------------------------------|-----------------------------------------------|
 | id         | INT          | PRIMARY KEY, AUTO_INCREMENT                                     | リレーションの一意な識別子                      |
-| user_id    | INT          | NOT NULL                                                        | 対象ユーザーの識別子 (`user` テーブルの `id`)     |
-| group_id   | INT          | NOT NULL                                                        | 対象グループの識別子 (`permission_group` テーブルの `id`) |
+| user_id    | INT          | NOT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)       | 対象ユーザーの識別子 (`user` テーブルの `id`)     |
+| group_id   | INT          | NOT NULL, FOREIGN KEY (`group_id`) REFERENCES `permission_group`(`id`) | 対象グループの識別子 (`permission_group` テーブルの `id`) |
 | role       | VARCHAR(50)  | DEFAULT NULL                                                    | グループ内での役割（例: 管理者、メンバー）         |
 | created_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP                             | リレーション作成日時                           |
 | updated_at | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | リレーション更新日時                           |
@@ -23,6 +23,10 @@
 - ユーザーに直接付与する権限設定と併用し、柔軟なアクセス制御を実現します.
 - グループ内での役割(role)の定義について、統一性や変更履歴の管理を検討してください.
 - 外部キー制約（fk_user, fk_group）の適用や、実装時の一貫性チェックを必ず行うこと.
+
+## 関係テーブル
+- `user`: ユーザー情報を参照します。
+- `permission_group`: グループ情報を参照します。
 
 ## 解決策
 - ユーザーおよびグループへの外部キー制約を有効化する（必要に応じたインデックスも追加）。
@@ -38,3 +42,5 @@
 | 1  | 1       | 100      | 管理者 | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
 | 2  | 2       | 100      | メンバー | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
 | 3  | 3       | 101      | 管理者 | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
+| 4  | 4       | 101      | メンバー | 2023-10-04 00:00:00  | 2023-10-04 00:00:00  |
+| 5  | 5       | 102      | 管理者 | 2023-10-05 00:00:00  | 2023-10-05 00:00:00  |

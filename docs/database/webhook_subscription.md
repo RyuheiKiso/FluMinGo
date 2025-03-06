@@ -12,7 +12,7 @@
 | カラム名      | データ型      | 制約                                     | 説明                                           |
 |---------------|---------------|------------------------------------------|------------------------------------------------|
 | id            | INT           | PRIMARY KEY, AUTO_INCREMENT              | サブスクリプションの一意な識別子                     |
-| user_id       | INT           | DEFAULT NULL                             | 登録ユーザーの識別子（`user` テーブル参照、任意）       |
+| user_id       | INT           | DEFAULT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) | 登録ユーザーの識別子（`user` テーブル参照、任意）       |
 | url           | VARCHAR(255)  | NOT NULL, UNIQUE                         | WebhookエンドポイントURL                          |
 | event_type    | VARCHAR(100)  | NOT NULL                                 | 対象イベント（例: order.created, user.updated 等）    |
 | secret        | VARCHAR(255)  | DEFAULT NULL                             | 通知用認証シークレット（必要に応じて設定）            |
@@ -24,7 +24,14 @@
 - サブスクリプション登録後、イベント発生時にWebhook通知を実施する仕組みと連携してください。
 - 有効状態や重複登録防止のため、適切なバリデーションを実装することを推奨します.
 
+## 関係テーブル
+- `user`: Webhookサブスクリプションの所有者情報を参照します。
+- `webhook_event_log`: Webhookイベントのログ情報を管理します。
+
 ## サンプルデータ
 | id | user_id | url                                  | event_type    | secret | is_active | created_at           | updated_at           |
 |----|---------|--------------------------------------|---------------|--------|-----------|----------------------|----------------------|
 | 1  | 101     | https://example.com/webhook          | order.created | abc123 | TRUE      | 2023-10-01 12:00:00  | 2023-10-01 12:00:00  |
+| 2  | 102     | https://example.com/webhook2         | user.updated  | def456 | TRUE      | 2023-11-01 12:00:00  | 2023-11-01 12:00:00  |
+| 3  | 103     | https://example.com/webhook3         | order.cancelled | ghi789 | FALSE     | 2023-12-01 12:00:00  | 2023-12-01 12:00:00  |
+| 4  | 104     | https://example.com/webhook4         | user.deleted  | jkl012 | TRUE      | 2024-01-01 12:00:00  | 2024-01-01 12:00:00  |

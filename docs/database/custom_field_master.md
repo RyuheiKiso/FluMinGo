@@ -28,8 +28,14 @@
 - `entity_name` と `field_key` の組み合わせで一意性を検討してください。
 - 各種エンティティに対してカスタム項目による拡張が柔軟に行える基盤として活用してください.
 
+## 関係テーブル
+- `user`: カスタム項目の対象エンティティとして利用される場合があります。
+
 ## サンプルデータ
 | id | entity_name | field_key | field_label | field_type | default_value | validation_rules | is_active | created_at           | updated_at           |
 |----|-------------|-----------|-------------|------------|---------------|------------------|-----------|----------------------|----------------------|
 | 1  | user        | age       | 年齢        | number     | NULL          | {"min": 0}       | TRUE      | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
 | 2  | product     | color     | 色          | text       | "red"         | {"required": true}| TRUE      | 2023-11-01 00:00:00  | 2023-11-01 00:00:00  |
+| 3  | project     | deadline  | 締め切り     | date       | NULL          | {"required": true}| TRUE      | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  |
+| 4  | task        | priority  | 優先度       | text       | "medium"      | {"required": true}| TRUE      | 2024-01-15 00:00:00  | 2024-01-15 00:00:00  |
+| 5  | user        | nickname  | ニックネーム | text       | NULL          | {"maxLength": 50} | TRUE      | 2024-02-01 00:00:00  | 2024-02-01 00:00:00  |

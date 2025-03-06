@@ -25,7 +25,17 @@
 | id | dict_type | dict_key | dict_value | is_active | created_at           | updated_at           |
 |----|-----------|----------|------------|-----------|----------------------|----------------------|
 | 1  | API       | API      | Application Programming Interface | TRUE | 2023-10-01 00:00:00  | 2023-10-01 00:00:00  |
+| 2  | country   | JP       | Japan      | TRUE      | 2023-10-02 00:00:00  | 2023-10-02 00:00:00  |
+| 3  | country   | US       | United States | TRUE   | 2023-10-03 00:00:00  | 2023-10-03 00:00:00  |
+| 4  | currency  | JPY      | Japanese Yen | TRUE    | 2023-10-04 00:00:00  | 2023-10-04 00:00:00  |
+| 5  | currency  | USD      | US Dollar  | TRUE      | 2023-10-05 00:00:00  | 2023-10-05 00:00:00  |
+| 6  | unit      | KG       | Kilogram   | TRUE      | 2023-10-06 00:00:00  | 2023-10-06 00:00:00  |
+| 7  | unit      | M        | Meter      | TRUE      | 2023-10-07 00:00:00  | 2023-10-07 00:00:00  |
 
 ## 備考
 - dict_type と dict_key の組み合わせで一意性を検討してください。
 - 固定参照値を管理し、システム間での統一的なデータ利用を促進します.
+
+## 関係テーブル
+- `user_preferences`: ユーザー設定の参照データとして利用される場合があります。
+- `system_setting`: システム設定の参照データとして利用される場合があります。
