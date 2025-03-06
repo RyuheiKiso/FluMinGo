@@ -15,6 +15,9 @@
 | migration_name | VARCHAR(255)  | NOT NULL, UNIQUE                          | マイグレーションの名称またはファイル名    |
 | applied_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | マイグレーション適用日時               |
 
+## 関係テーブル
+- `schema_version`: スキーマバージョン管理情報を参照する場合があります。
+
 ## サンプルデータ
 
 | id | migration_name  | applied_at           |

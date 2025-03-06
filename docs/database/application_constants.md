@@ -24,6 +24,9 @@
 - constant_key による一意性を確保してください。
 - アプリケーションの動作条件や上限値などを動的に変更・参照する基盤としてご活用ください.
 
+## 関係テーブル
+- `system_setting`: システム設定の一部として利用される場合があります。
+
 ## サンプルデータ
 
 | id | constant_key    | constant_value | description          | is_active | created_at           | updated_at           |

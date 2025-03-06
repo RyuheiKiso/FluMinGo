@@ -25,6 +25,9 @@
 ## 固定値一覧
 - locale: デフォルトは "ja"
 
+## 関係テーブル
+- `notification`: 通知情報を管理する場合があります。
+
 ## サンプルデータ
 
 | id | template_name   | subject            | body                         | locale | created_at           | updated_at           |

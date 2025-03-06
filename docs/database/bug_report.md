@@ -25,6 +25,9 @@
 - バグ報告は対応状況に合わせて`status`を変更し、解決時に`resolved_at`に日時を記録してください。
 - 必要に応じて添付ファイルや再現手順のカラム追加も検討してください。
 
+## 関係テーブル
+- `user`: バグ報告の投稿者情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | title           | description       | severity | status       | resolved_at          | created_at           | updated_at           |

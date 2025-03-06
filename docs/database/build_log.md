@@ -22,6 +22,9 @@
 | created_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                      |
 | updated_at    | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | レコード更新日時    |
 
+## 関係テーブル
+- `ci_pipeline`: ビルドの実行元パイプライン情報を参照します。
+
 ## サンプルデータ
 
 | id | build_number    | branch       | status  | triggered_by | started_at           | finished_at          | log           | created_at           | updated_at           |

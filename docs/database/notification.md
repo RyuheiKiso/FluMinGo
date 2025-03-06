@@ -32,6 +32,9 @@
 - notification_type: info, warning, alert
 - is_read: 初期値 false
 
+## 関係テーブル
+- `user`: 通知の対象ユーザー情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | notification_type | message                   | is_read | created_at           | updated_at           |

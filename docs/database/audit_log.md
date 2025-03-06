@@ -41,6 +41,9 @@
 ## 固定値一覧
 - event_type: INSERT, UPDATE, DELETE など
 
+## 関係テーブル
+- `user`: 監査ログの対象ユーザー情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | event_type | target_table | record_id | change_summary      | old_data   | new_data                                     | ip_address      | created_at           | updated_at           |

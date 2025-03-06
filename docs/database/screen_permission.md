@@ -32,6 +32,10 @@
 - データベース側で外部キー制約を定義し、データ整合性を確保する。
 - 初期権限値を定義し、必要に応じたデフォルト設定をアプリケーションで管理する。
 
+## 関係テーブル
+- `user`: ユーザー情報を参照します。
+- `screen`: 画面情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | screen_id | can_read | can_create | can_update | can_delete | created_at           | updated_at           |

@@ -31,6 +31,9 @@
 - status: UP, DOWN, UNKNOWN
 - service_name: payment_gateway など
 
+## 関係テーブル
+- `notification`: サービス状態の通知情報を管理する場合があります。
+
 ## サンプルデータ
 
 | id | service_name     | status  | last_checked         | details      | created_at           | updated_at           |

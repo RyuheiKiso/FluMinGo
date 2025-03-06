@@ -28,6 +28,9 @@
 - 一意制約を厳守し、グループ名称の重複防止を徹底する。
 - 階層構造が必要な場合は、親子関係を管理するカラムや別テーブルで管理する設計を検討する。
 
+## 関係テーブル
+- `user_group_relation`: ユーザーとグループの関連情報を管理します。
+
 ## サンプルデータ
 
 | id | group_name  | group_type | description         | created_at           | updated_at           |

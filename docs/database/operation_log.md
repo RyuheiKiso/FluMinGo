@@ -38,6 +38,9 @@
 ## 固定値一覧
 - operation_type: login, update, delete など
 
+## 関係テーブル
+- `user`: 操作を実行したユーザー情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | operation_type | operation_detail      | ip_address      | created_at           | updated_at           |

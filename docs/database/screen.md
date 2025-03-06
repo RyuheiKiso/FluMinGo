@@ -31,6 +31,9 @@
 - parent_idに対して外部キー制約を追加し、存在しない画面参照を防止する。
 - 階層整合性を保つためのチェックロジックをアプリケーション側に実装する。
 
+## 関係テーブル
+- `screen_permission`: 各画面に対するアクセス権限を管理します。
+
 ## サンプルデータ
 
 | id | parent_id | screen_name    | route            | description    | icon         | created_at           | updated_at           |

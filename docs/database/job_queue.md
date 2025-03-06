@@ -35,6 +35,9 @@
 - status: pending, processing, completed, failed
 - job_type: 例）email_dispatch
 
+## 関係テーブル
+- `scheduler_task`: スケジューラータスクの実行結果を管理する場合があります。
+
 ## サンプルデータ
 
 | id | job_type         | payload               | status     | attempt_count | error_message | created_at           | updated_at           | priority |

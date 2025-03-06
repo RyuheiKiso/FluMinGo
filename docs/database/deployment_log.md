@@ -30,6 +30,9 @@
 - environment: production, staging
 - version: 例）v1.2.3
 
+## 関係テーブル
+- `ci_pipeline`: デプロイメントの実行元パイプライン情報を参照する場合があります。
+
 ## サンプルデータ
 
 | id | version | environment  | deployed_at          | description         | created_at           | updated_at           |

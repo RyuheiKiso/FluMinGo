@@ -25,6 +25,9 @@ APIリクエストのエンドポイント、メソッド、レスポンスタ�
 ## 固定値一覧
 - method: GET, POST, PUT, DELETE など（HTTPメソッド）
 
+## 関係テーブル
+- `user`: API利用者の情報を参照します。
+
 ## サンプルデータ
 
 | id | user_id | endpoint         | method | response_time | status_code | created_at           |
