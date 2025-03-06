@@ -12,7 +12,7 @@
 | カラム名     | データ型     | 制約                              | 説明                           |
 |--------------|--------------|-----------------------------------|--------------------------------|
 | id           | INT          | PRIMARY KEY, AUTO_INCREMENT       | 設定の一意な識別子             |
-| user_id      | INT          | NOT NULL                          | 対象ユーザーの識別子 (`user.id`) |
+| user_id      | INT          | NOT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) | 対象ユーザーの識別子 (`user.id`) |
 | preference_key   | VARCHAR(100)  | NOT NULL                        | 設定キー                       |
 | preference_value | VARCHAR(255)  | DEFAULT NULL                    | 設定値                         |
 | created_at   | DATETIME     | NOT NULL, DEFAULT CURRENT_TIMESTAMP | レコード作成日時             |

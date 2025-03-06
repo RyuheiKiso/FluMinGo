@@ -28,6 +28,7 @@
 ## 関係テーブル
 - `user_preferences`: ユーザー設定の参照データとして利用される場合があります。
 - `system_setting`: システム設定の参照データとして利用される場合があります。
+- `lookup_history`: 参照データの変更履歴を管理します。
 
 ## サンプルデータ
 | id | lookup_category | lookup_key   | lookup_value | is_active | created_at           | updated_at           |

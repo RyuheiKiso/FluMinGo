@@ -25,6 +25,7 @@
 
 ## 関係テーブル
 - `user`: A/Bテストの対象ユーザー情報を参照する場合があります。
+- `ab_test_result`: A/Bテストの結果情報を管理します。
 
 ## サンプルデータ
 | id | test_name         | description       | start_date          | end_date            | variant_options       | created_at           | updated_at           |

@@ -12,7 +12,7 @@
 | カラム名       | データ型      | 制約                                      | 説明                                          |
 |----------------|---------------|-------------------------------------------|-----------------------------------------------|
 | id             | INT           | PRIMARY KEY, AUTO_INCREMENT               | レコードの一意な識別子                          |
-| user_id        | INT           | NOT NULL                                  | ユーザーの識別子（`user` テーブル参照）         |
+| user_id        | INT           | NOT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) | ユーザーの識別子（`user` テーブル参照）         |
 | provider       | VARCHAR(50)   | NOT NULL                                  | MFAプロバイダ名（例: TOTP, SMS）                |
 | mfa_secret     | VARCHAR(255)  | NOT NULL                                  | MFAシークレットまたは設定データ                |
 | recovery_codes | TEXT          | DEFAULT NULL                              | バックアップ用リカバリーコード（JSON形式推奨）   |

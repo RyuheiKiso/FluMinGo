@@ -12,7 +12,7 @@
 | カラム名      | データ型      | 制約                                     | 説明                                           |
 |---------------|---------------|------------------------------------------|------------------------------------------------|
 | id            | INT           | PRIMARY KEY, AUTO_INCREMENT              | サブスクリプションの一意な識別子                     |
-| user_id       | INT           | DEFAULT NULL                             | 登録ユーザーの識別子（`user` テーブル参照、任意）       |
+| user_id       | INT           | DEFAULT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) | 登録ユーザーの識別子（`user` テーブル参照、任意）       |
 | url           | VARCHAR(255)  | NOT NULL, UNIQUE                         | WebhookエンドポイントURL                          |
 | event_type    | VARCHAR(100)  | NOT NULL                                 | 対象イベント（例: order.created, user.updated 等）    |
 | secret        | VARCHAR(255)  | DEFAULT NULL                             | 通知用認証シークレット（必要に応じて設定）            |
@@ -26,6 +26,7 @@
 
 ## 関係テーブル
 - `user`: Webhookサブスクリプションの所有者情報を参照します。
+- `webhook_event_log`: Webhookイベントのログ情報を管理します。
 
 ## サンプルデータ
 | id | user_id | url                                  | event_type    | secret | is_active | created_at           | updated_at           |

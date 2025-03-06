@@ -12,7 +12,7 @@
 | カラム名       | データ型      | 制約                                      | 説明                                  |
 |----------------|---------------|-------------------------------------------|---------------------------------------|
 | id             | INT           | PRIMARY KEY, AUTO_INCREMENT               | セッションの一意な識別子               |
-| user_id        | INT           | NOT NULL                                  | 対象ユーザーの識別子（`user` テーブル参照）|
+| user_id        | INT           | NOT NULL, FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) | 対象ユーザーの識別子（`user` テーブル参照）|
 | session_token  | VARCHAR(255)  | NOT NULL, UNIQUE                          | セッショントークン                     |
 | expires_at     | DATETIME      | NOT NULL                                  | セッション有効期限                     |
 | created_at     | DATETIME      | NOT NULL, DEFAULT CURRENT_TIMESTAMP       | レコード作成日時                       |
@@ -36,6 +36,7 @@
 
 ## 関係テーブル
 - `user`: セッションの所有者情報を参照します。
+- `session_activity_log`: セッションのアクティビティログを管理します。
 
 ## 解決策
 - 外部キー制約（fk_user）の導入でデータ整合性を保証する。
