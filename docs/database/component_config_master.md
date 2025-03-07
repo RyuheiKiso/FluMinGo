@@ -36,3 +36,5 @@
 | 3  | footer         | visibility | visible      | NULL       | TRUE      | 2024-01-01 00:00:00  | 2024-01-01 00:00:00  |
 | 4  | navbar         | style      | compact      | NULL       | TRUE      | 2024-01-15 00:00:00  | 2024-01-15 00:00:00  |
 | 5  | button         | color      | blue         | NULL       | TRUE      | 2024-02-01 00:00:00  | 2024-02-01 00:00:00  |
+| 6  | card           | shadow     | subtle       | sample new | TRUE      | 2024-03-01 00:00:00  | 2024-03-01 00:00:00  |
+| 7  | modal          | size       | large        | sample new | TRUE      | 2024-03-15 00:00:00  | 2024-03-15 00:00:00  |
